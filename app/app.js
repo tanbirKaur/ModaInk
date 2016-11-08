@@ -60,6 +60,11 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			url : "/designer/collections", 
 			// controller : 'designerLabelsController'
 		})
+		.state('product-details', {
+			templateUrl : "views/product-details.html",
+			url : "/product-details", 
+			// controller : 'designerLabelsController'
+		})
 
 
 

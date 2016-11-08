@@ -488,3 +488,137 @@ div.fotos li.toptwo, .toptwo {
 div.fotos li.roomone {
     margin-left: 18.1666667%;
 }
+
+
+
+
+.new-product {
+    margin-left: 15%;
+    margin-right: 15%;
+    background: rgba(245, 243, 243, 0.27);
+    min-height: 800px;
+    padding: 2em;
+}
+.flexslider {
+    margin: 0 0 10px;
+    background: #ffffff;
+    border: 4px solid #ffffff;
+    position: relative;
+    zoom: 1;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.flex-viewport {
+    max-height: 450px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    border: 1px solid #D1CFCF;
+}
+
+.slides, .slides > li, .flex-control-nav, .flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dress-info {
+    margin-left: 100px;
+}
+.dress-name {
+    margin: 30px 0;
+}
+.dress-name p {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 23px;
+    color: #CAC9C9;
+}
+.dress-name h3 {
+    float: left;
+    font-size: 19px;
+    color: #000;
+    font-weight: 500;
+    padding: 0;
+}
+.dress-name span {
+    float: right;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+.swatchanchor{
+    background-size: 400% !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    border: 0;
+    float: left;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 26px;
+    margin-right: 11px;
+    text-indent: -5000px;
+    background: #333;
+
+}
+.swatches{
+    text-align: center;
+}
+.swatches li {
+    float: none;
+    display: inline-block;
+    margin: 5px 0 5px 6px;
+}
+.product-variations{
+    padding: 20px;
+}
+.product-variations .swatches li a {
+    display: block;
+    border: 1px solid #e0e0e0;
+    color: black;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 28px;
+    height: 30px;
+    min-width: 40px;
+    padding: 0 5px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.out-of-stock{
+    background-color: rgba(0,0,0,.05);
+    pointer-events: none;
+}
+.purchase{
+    text-align: center;
+    padding: 20px;
+}
+.purchase .btn {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+.like-share {
+   text-align : center;
+}
+.like-share a{
+ padding: 10px;
+ text-decoration: none;
+ font-size: small;
+}
+
