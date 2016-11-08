@@ -65,24 +65,20 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			url : "/product-details", 
 			// controller : 'designerLabelsController'
 		})
-
-
-
-
-		// .state("user-profile-edit", {
-		// 	url: "/profile-edit",
-		// 	templateUrl : "views/editProfile.html",
-		// 	controller : "userProfileController"
-		// })
-		// .state("useful-links", {
-		// 	url: "/useful-links",
-		// 	templateUrl : "views/usefulLinks.html"
-		// //	controller : "homeController"
-		// })
-		// .state("collections", {
-		// 	url:"/collections",
-		// 	templateUrl : "views/collections.html"
-		// })
+		.state("cart", {
+			url: "/cart",
+			templateUrl : "views/cart.html",
+			// controller : "userProfileController"
+		})
+		.state("login", {
+			url: "/login",
+			templateUrl : "views/login.html"
+		//	controller : "homeController"
+		})
+		.state("women", {
+			url:"/women",
+			templateUrl : "views/women.html"
+		})
 		
 		// ;
 		$urlRouterProvider.otherwise("/");

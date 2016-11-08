@@ -525,6 +525,16 @@ div.fotos li.roomone {
     border: 1px solid #D1CFCF;
 }
 
+.flex-control-thumbs li {
+    display: inline;
+}
+
+.flex-control-thumbs img {
+    width: 25%;
+    padding: 10px;
+    display: inline-block;
+}
+
 .slides, .slides > li, .flex-control-nav, .flex-direction-nav {
     margin: 0;
     padding: 0;
@@ -569,7 +579,7 @@ div.fotos li.roomone {
     border-radius: 26px;
     margin-right: 11px;
     text-indent: -5000px;
-    background: #333;
+    background: #e8e890;
 
 }
 .swatches{
@@ -612,6 +622,9 @@ div.fotos li.roomone {
     margin-left: 5%;
     margin-bottom: 5%;
 }
+.purchase a {
+    color: black;
+}
 
 .like-share {
    text-align : center;
@@ -621,4 +634,179 @@ div.fotos li.roomone {
  text-decoration: none;
  font-size: small;
 }
+.stepper {
+    position: relative;
+    padding-bottom: 5%;
+    text-decoration: none;
+}
+.stepper__rule {
+    position: absolute;
+    top: 1.285714286em;
+    z-index: 0;
+    display: block;
+    height: 1px;
+    background-color: #d7d7d7;
+    content: '';
+}
+.stepper__step--active, .stepper__step--incomplete {
+    cursor: default;
+}
+.stepper__step {
+    text-decoration: none;
+    display: block;
+    float: left;
+    width: 100%;
+    padding: .3928571429rem;
+    color: #0b0b0b;
+    text-align: center;
+}
+.stepper__step--active .stepper__step-badge, .stepper__step--completed .stepper__step-badge {
+    color: #000;
+    background: #c8a75e;
+    border-color: #000;
+    text-decoration: none;
+}
+.stepper__step-badge {
+    text-decoration: none;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto .3928571429rem;
+    font-size: .8232026157em;
+    font-weight: 700;
+    line-height: 2rem;
+    color: #0b0b0b;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #d7d7d7;
+    border-radius: 50%;
+    user-select: select;
+}
+.stepper:after {
+    clear: both;
+    content: "";
+    display: block;
+}
 
+.prod-set {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    overflow: auto;
+    float: left;
+    padding-bottom: 7px;
+}
+
+.prod-set>div {
+    margin-left: 0px;
+    background: #fff;
+    border: 1px solid #eaeaec;
+    box-shadow: 0 0 4px rgba(40,44,63,.08);
+    margin-bottom: 30px;
+    text-transform: none;
+    padding-bottom: 0!important;
+    width: 100%;
+}
+
+.prod-set>div .col1 {
+    padding-left: 0;
+    float: left;
+    text-align: left;
+}
+
+.prod-set>div .col2 {
+    padding-left: 45px;
+    padding: 0 10px;
+    text-align: left;
+    margin-top: 0;
+    position: relative;
+    min-height: 145px;
+    margin-left: 100px;
+}
+.prod-set>div .col2 .prod-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.prod-name a {
+    font-size: inherit;
+    font-weight: 600;
+    color: #535766;
+}
+.edit {
+    border-top: 1px solid #d6d6d6;
+    margin-top:  10%;
+}
+.edit  a{
+    color: #535766;
+    padding-right: 10%;
+}
+.continue-shopping {
+    border:1px solid #d6d6d6;
+    margin-top: 5%;
+    text-align: center;
+    
+    font-size: 14px;
+    height: 50px;
+
+}
+
+.continue-shopping span{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+#right {
+    display: inline-block;
+    width: 29%;
+    vertical-align: top;
+    padding-left: 35px;
+}
+#right span {
+    float: right;
+}
+
+.order-summary-span {
+    float: none;
+    padding: 0;
+    position: relative;
+    border-bottom: 1px solid #eaeaec;
+}
+
+
+#right div {
+    padding-top: 5px;
+
+}
+#right label{
+    font-weight: light;
+}
+.login-form {
+    height: 80%;
+    padding: 1% 30%;
+}
+
+.login-form form {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.login-form input {
+    width: 100%;
+}
+.login-form button {
+    width: 45%;
+    height: 50px;
+    margin-left: 30%;
+    font-size: 24px;
+}
+.btn-primary {
+    background-color: black;
+    border: 2px solid black;
+}
+
+#women{
+    background-image: url('../images/women.jpg');
+}
