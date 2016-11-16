@@ -1465,7 +1465,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 }
 
 /* Search */
-#search_button {
+#search_button, #profile_button {
     position: relative;
     top: 34px;
     display: block;
@@ -1914,10 +1914,13 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
     }
 
     .header-fixed #Top_bar #header_cart {
-        top: 27px;
+        top: 25px;
     }
 
     .header-fixed #Top_bar #search_button {
+        top: 25px;
+    }
+    .header-fixed #Top_bar #profile_button {
         top: 25px;
     }
 
@@ -5223,13 +5226,16 @@ html,body {
     }
 
     #Top_bar.is-sticky #header_cart {
-        top: 27px;
+        top: 25px;
     }
 
     #Top_bar.is-sticky #search_button {
         top: 25px;
     }
 
+#Top_bar.is-sticky #profile_button {
+        top: 25px;
+    }
     #Top_bar.is-sticky a.button.action_button {
         top: 13px;
     }

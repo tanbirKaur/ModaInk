@@ -191,7 +191,8 @@
 					
 
 					<aside class = "widget woocommerce">
-						<div class="filter_title"> CATEGORIES </div>
+						<h4> CATEGORIES </h4>
+						<div class="filter_title"> Appreal </div>
 						<ul>
 						<li class="input-group">
 						        <input type="checkbox" aria-label="...">
@@ -206,36 +207,92 @@
 
 							<li class="input-group">
 						        <input type="checkbox" aria-label="...">
-						        <label>Tshirts</label>
+						        <label>Tshirts & Polos</label>
 						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
+						    </li>
 						    <li class="input-group">
 						        <input type="checkbox" aria-label="...">
 						        <label>Shirts</label>
 						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
+						    </li>
+							<li class="input-group">
 						        <input type="checkbox" aria-label="...">
-						        <label>Footwear</label>
+						        <label>Bottoms</label>
 						        <span class="num">(120)</span>
 						    </li><!-- /input-group -->
 						    <li class="input-group">
 						        <input type="checkbox" aria-label="...">
-						        <label>Kurtas</label>
+						        <label>Jackets &SweatShirts</label>
 						        <span class="num">(120)</span>
 						    </li><!-- /input-group -->
 						    <li class="input-group">
 						        <input type="checkbox" aria-label="...">
-						        <label>Accessories</label>
+						        <label>Ethenic</label>
 						        <span class="num">(120)</span>
 						    </li><!-- /input-group -->
 						    <li class="input-group">
 						        <input type="checkbox" aria-label="...">
-						        <label>Bootom Wear</label>
+						        <label>Beachwear</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Suits</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+						    </ul>
+
+						<div class="filter_title"> Footwear </div>
+						<ul>
+							<li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Boots</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Dress Shoes</label>
 						        <span class="num">(120)</span>
 						    </li><!-- /input-group -->
 
-						    </ul>
+							<li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Sneakers & Athelicts</label>
+						        <span class="num">(120)</span>
+						    </li>
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Wedges</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Dress Shoes</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+
+							<li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Sneakers & Athelicts</label>
+						        <span class="num">(120)</span>
+						    </li>
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Loafers & Slip-Ons</label>
+						        <span class="num">(120)</span>
+						    </li>
+							<li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Slippers</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+						    <li class="input-group">
+						        <input type="checkbox" aria-label="...">
+						        <label>Espadrills</label>
+						        <span class="num">(120)</span>
+						    </li><!-- /input-group -->
+					    </ul>
+
   
 					</aside>
 
@@ -313,19 +370,22 @@
 						</form>
 					</aside>
 
+					<script type="text/javascript">
+						span = document.querySelector('.filter_title');
+ul = document.querySelector('#abc')
 
-					
+span.addEventListener('click', function (e) {
+    if (e.offsetX > span.offsetWidth) {
+        ul.className = 'c1';
+    } else {
+        ul.className = 'c2';
+        
+        
+    }
+});
 
+					</script>
 					
-					<aside id="woocommerce_product_search-2" class="widget woocommerce widget_product_search">
-						<h3>Search Products</h3>
-						<form role="search" method="get" class="woocommerce-product-search" action="#">
-							<label class="screen-reader-text" for="s">Search for:</label>
-							<input type="search" class="search-field" placeholder="Search Products&hellip;" value="" name="s" title="Search for:" />
-							<input type="submit" value="Search" />
-							<input type="hidden" name="post_type" value="product" />
-						</form>
-					</aside>
 				</div>
 			</div>
 

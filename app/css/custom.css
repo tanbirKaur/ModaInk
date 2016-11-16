@@ -8,6 +8,8 @@ a:hover {
 	margin: 10px 0 10px 0;
 }
 
+
+
 /*.designer_name {
 	height: 30px;
 	background-color: #c8a75e;
@@ -95,7 +97,7 @@ a:hover {
 }
 
 .filter_title , .filter_title_not_collapswable{
-	    font-size: 12px;
+	font-size: 12px;
     line-height: 16px;
     color: #3e4152;
     text-transform: uppercase;
@@ -113,6 +115,10 @@ a:hover {
     margin-right: 2px;
     color: rgb(173, 174, 175);
 }
+
+ul.c1 {display: block; }
+ul.c2 {display: none;}
+
 
 .num {
 	    color: #94969f;
@@ -344,22 +350,38 @@ li[data-colorhex='white'] {
     padding-top: 10px;
     border-top: 1px dotted #d4d5d9;
 }
+#designerIndexLeftPanel{
+    margin-left: 10%;
+    position: fixed;
+    font-size: 16px;
+}
+
+#designerIndexLeftPanel a {
+    color: black;
+    display: block;
+    padding-bottom: 10px;
+}
 
 .alphabet-list {
     list-style: none;
     display: flex;
-    text-align: center;
-    padding-left: 4%
+    margin-left: 10%
+    
 }
 
 .alphabet-list li{
-    margin: 10px;
+    margin: 15px;
     font-size: large;
+}
+
+.alphabet-list a{
+    color: black;
 }
 
 .designer-listing{
     list-style: none;
-
+    padding-bottom: 20px;
+    display: block;
 }
 
 .alpha {
@@ -369,6 +391,9 @@ li[data-colorhex='white'] {
 
 .alphabets{
     list-style: none;
+}
+.alphabets a{
+    color: black;
 }
 
 .designer-listing-main{
@@ -439,7 +464,7 @@ div#firstmenu li {
 }
 
 div#firstmenu li a{
-    color: white;
+    color: #444;
     font-weight: bold;
     font-size: 20px;
 }
@@ -498,6 +523,7 @@ div.fotos li.roomone {
     background: rgba(245, 243, 243, 0.27);
     min-height: 800px;
     padding: 2em;
+        margin-bottom: 30px;
 }
 .flexslider {
     margin: 0 0 10px;
@@ -742,20 +768,29 @@ div.fotos li.roomone {
     padding-right: 10%;
 }
 .continue-shopping {
-    border:1px solid #d6d6d6;
-    margin-top: 5%;
     text-align: center;
-    
-    font-size: 14px;
+    font-size: 15px;
     height: 50px;
-
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.place-order{
+    text-align: center;
+    height: 50px;
+}
+.place-order button{
+    font-size: 18px;
+    font-weight: 500;
+    
 }
 
-.continue-shopping span{
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
-    text-transform: uppercase;
+
+#continue-shopping {
+    background: white;
+    border: 3px solid black;
+    color: black;
+
 }
 
 #right {
@@ -808,5 +843,38 @@ div.fotos li.roomone {
 }
 
 #women{
-    background-image: url('../images/women.jpg');
+    background-image: url('/images/women.jpg');
 }
+#custom-search-input{
+    border: solid 1px #E4E4E4;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 15%;
+    margin-bottom: 30px;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#header_cart:hover , #search_button:hover, #profile_button:hover{
+    color: white;
+}
+

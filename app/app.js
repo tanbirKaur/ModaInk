@@ -13,7 +13,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 		})
 		.state("customization",{ 	
 			url : '/customization',
-			templateUrl:"views/customize.html",
+			templateUrl:"views/customize-how-it-works.html",
 			// controller : "logoutController"
 		})		
 		.state("footwear",{ 
@@ -78,6 +78,18 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 		.state("women", {
 			url:"/women",
 			templateUrl : "views/women.html"
+		})
+		.state("men", {
+			url:"/men",
+			templateUrl : "views/men.html"
+		})
+		.state("accessories", {
+			url:"/accessories",
+			templateUrl : "views/accessories.html"
+		})
+		.state("diamond-designers", {
+			url:"/diamond-designers",
+			templateUrl : "views/dimond-designers.html"
 		})
 		
 		// ;
