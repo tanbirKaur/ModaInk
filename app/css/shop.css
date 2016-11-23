@@ -1664,10 +1664,10 @@ p.demo_store {
 	margin: 0 1% 20px !important;
 	clear: none;
 }
-.woocommerce ul.products:not(.col-4)
+/*.woocommerce ul.products:not(.col-4)
 li.product:nth-child(3n+1) {
 	clear: both;
-}
+}*/
 
 .woocommerce ul.products.col-4 li.product {
 	width: 23% !important;
@@ -1689,14 +1689,12 @@ li.product:nth-child(3n+1) {
 .woocommerce ul.products.list li.product .image_frame {
 	width: 33%;
 }
-.woocommerce ul.products.list li.product .desc {
-	width: 67%;
+.desc {
+	
 	position: relative;
 }
-.woocommerce ul.products.list li.product .desc h4 {
-	padding-right: 70px;
-}
-.woocommerce ul.products.list li.product .desc .star-rating {
+
+.desc .star-rating {
 	position: absolute;
 	top: 15px;
 	right: 15px;
@@ -2493,14 +2491,14 @@ h3#ship-to-different-address label {
 	.woocommerce ul.products.list li.product .image_frame {
 		width: 100%;
 	}
-	.woocommerce ul.products.list li.product .desc {
+	 .desc {
 		width: 100%;
 		position: relative;
 	}
-	.woocommerce ul.products.list li.product .desc h4 {
+	.desc h4 {
 		padding-right: 0;
 	}
-	.woocommerce ul.products.list li.product .desc .star-rating {
+	.desc .star-rating {
 		position: relative;
 		top: 0;
 		right: 0;

@@ -2021,9 +2021,9 @@ p.demo_store {
     clear: none;
 }
 
-.woocommerce ul.products:not(.col-4) li.product:nth-child(3n+1) {
+/*.woocommerce ul.products:not(.col-4) li.product:nth-child(3n+1) {
     clear: both;
-}
+}*/
 
 .woocommerce ul.products.col-4 li.product {
     width: 23% !important;
