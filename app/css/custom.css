@@ -818,24 +818,18 @@ div.fotos li.roomone {
 #right label{
     font-weight: light;
 }
-.login-form {
-    height: 80%;
-    padding: 1% 30%;
-}
+
 
 .login-form form {
     position: relative;
     margin-bottom: 24px;
 }
 
-.login-form input {
-    width: 100%;
-}
+
 .login-form button {
-    width: 45%;
-    height: 50px;
+    
     margin-left: 30%;
-    font-size: 24px;
+    
 }
 .btn-primary {
     background-color: black;
@@ -893,12 +887,21 @@ div.fotos li.roomone {
     width: 60%;
 }    
 
+.login-fb-gm{
+    border-left: 1px solid #181818;
+}
+.login-fb-gm button{
+     display: block;
+    margin: 10%;
 
-.carousel-inner .active.left { left: -33%; }
-.carousel-inner .next        { left:  33%; }
-.carousel-inner .prev        { left: -33%; }
-.carousel-control.left,.carousel-control.right {background-image:none;}
-.item:not(.prev) {visibility: visible;}
-.item.right:not(.prev) {visibility: hidden;}
-.rightest{ visibility: visible;}
+}
 
+#fbLogin {
+    background: #3b5998;
+    }
+#gPlusLogin {
+    background:  #d34836;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+   

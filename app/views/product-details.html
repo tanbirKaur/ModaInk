@@ -81,7 +81,7 @@
 					</div>
 					<div class="purchase">
 						<a href="/cart"><button class="btn btn-sm "> Add to cart </button></a>
-						<a href="/login"><button class="btn btn-sm ">customize now <i class="icon-right-open"></i></button></a>
+						<button class="btn btn-sm " data-toggle="modal" data-target="#myModal">customize now <i class="icon-right-open"></i></button>
 						<span>This product is available for customization.</span>
 						<div>
 						<span>7 Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="">Write a review </a></span>
@@ -89,8 +89,7 @@
 					
 					</div>
 
-					
-
+					<div ng-include src="'views/login.html'"></div>
 					
 					<div class="like-share">
 					<a  href="#"><i class="icon-heart-empty-fa"></i>Like</a>

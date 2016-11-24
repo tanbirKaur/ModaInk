@@ -1,55 +1,49 @@
-	 <div id="Content" class="without_headers">
-	<div class="content_wrapper clearfix">
+	 
+	    
+	    
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-	    <div class="login-form ng-scope">
-		   
-        <h4 class="text-center" style="color:rgba(14, 12, 17, 0.84)">Log In with Email</h4>
-		    <h5 class="text-center" style="color:#666666">Good to have you back!</h5><br>
-
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Login to ModaInk</h4>
+      </div>
+      <div class="modal-body row">
+        <div class="login-form ng-scope col-md-6">
 		    <div class="panel-body">
-		   
-<!-- <style type="text/css">
-	
+		        <form id="loginform" role="form">
+		                <input style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
+		                <input style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
 
-</style>
-<div class="row"> -->
-	<!-- <div class="col-md-6" style="margin:auto;">
-		<button ng-click="fbLogin();" style="background-image:url('img/fb_signin.png');background-repeat:no-repeat;width:69%;margin-left:15%;"></button>
-		<fb:login-button size="xlarge" style="margin-top:7px;" scope="public_profile,email" ng-click="checkLoginState();">Login with Facebook
-		</fb:login-button>
-	</div>
-
-	<div class="col-md-6" style="margin:auto;">
-		 <button ng-click="onLogInButtonClick()" style="background-repeat:no-repeat;background-image:url('img/google_signin.png');width:69%;margin-left:15%;"></button>
-	</div> -->
-<!-- </div> -->
-		<!-- <br><p style="left:40%;position:relative;">-or using email-</p><br> -->
-
-		    	<!--<a href="" onclick="checkLoginState()"><img src="img/fb_login.png" border="0" alt=""></a>-->
-		        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-		        
-		        <form id="loginform" class="form-horizontal ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" role="form" novalidate="">
-
-		                <input style="height:50px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
-		                  
-		            <br> 
-		            
-		                <input style="height:50px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
-
-		            <h5 class="text-center">Forgotten your password? <a>RESET IT NOW</a></h5>
-		            <br>
-		            
-		            <div style="border-top: 1px solid#888; padding-top:20px;">
-		                <button class="btn btn-primary" ng-click="login()">LOG IN</button>
-		            </div>
+		                <button class="btn btn-sm" ng-click="login()">LOG IN</button>
 		        </form>
-
 		    </div>                     
-	
-  <script src="https://apis.google.com/js/platform.js" gapi_processed="true"></script>
-
-	    </div>
-	    </div>
 	    </div>
 
+	    <div class="login-fb-gm col-md-6">
+	    	<button id="fbLogin">
+
+		    	<span>
+		    	<i class="icon-facebook"></i>
+		    		FACEBOOK
+		    	</span>
+	    	</button>
+	    	<button id="gPlusLogin">
+		    	<span>
+		    	<i class="icon-google"></i>
+		    		GOOGLE
+		    	</span>
+	    	</button>
+	    </div>
+
+	    
+      </div>
+      <h6 class="text-center">Forgotten your password? <a> RESET IT NOW </a></h6>
+     
+    </div>
+
+  </div>
+</div>
 	   
