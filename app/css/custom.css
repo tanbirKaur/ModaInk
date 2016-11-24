@@ -878,3 +878,27 @@ div.fotos li.roomone {
     color: white;
 }
 
+.accessories_whatToBuy {
+    text-align: center;
+    width: 40%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+.accessories_whatToBuy h3{
+        font-weight: bolder;
+    }
+
+.formal_accessories_label{
+    width: 60%;
+}    
+
+
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+.item:not(.prev) {visibility: visible;}
+.item.right:not(.prev) {visibility: hidden;}
+.rightest{ visibility: visible;}
+

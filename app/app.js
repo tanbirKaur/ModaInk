@@ -92,6 +92,8 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			templateUrl : "views/dimond-designers.html"
 		})
 		
+		
+		
 		// ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);
