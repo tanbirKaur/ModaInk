@@ -1,7 +1,7 @@
 	 
 	    
 	    
-<div id="myModal" class="modal fade" role="dialog">
+<div id="loginModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -30,6 +30,7 @@
 		    		FACEBOOK
 		    	</span>
 	    	</button>
+
 	    	<button id="gPlusLogin">
 		    	<span>
 		    	<i class="icon-google"></i>
@@ -40,10 +41,63 @@
 
 	    
       </div>
-      <h6 class="text-center">Forgotten your password? <a> RESET IT NOW </a></h6>
+      <div class="profile-links">
+      	<a> Recover Password</a>
+	  	<span style="float: right;">New to ModaInk? <a data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Sign Up here!</a>
+      </div>
      
     </div>
 
   </div>
 </div>
-	   
+
+<div id="registerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">SignUp with ModaInk</h4>
+      </div>
+      <div class="modal-body">
+        <div class="registration-form ng-scope">
+		    	<button id="fbRegister">
+
+			    	<span>
+			    	<i class="icon-facebook"></i>
+			    		FACEBOOK
+			    	</span>
+		    	</button>
+
+				OR &nbsp;
+		    	<button id="gPlusRegister">
+			    	<span>
+			    	<i class="icon-google"></i>
+			    		GOOGLE
+			    	</span>
+		    	</button>
+    	
+		        <form id="registerform" role="form" >
+		       <span style="margin-left: 16%;">OR USING EMAIL</span> 	
+		                <input style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
+		                <input style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
+
+		                <input style="height:30px;" id="contact-number" type="text" min="1000000000" max="9999999999" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern"name="contact_number" placeholder="Mobile Number" required="">
+
+		                <button class="btn btn-md" style="width: 60%">Sign Up</button>
+		        </form>
+	    </div>
+
+	    
+
+	    
+      </div>
+      <div class="profile-links">
+	  	<span style="float: right;">Already a member? <a data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login!</a>
+      </div>
+     
+    </div>
+
+  </div>
+</div>	   

@@ -896,12 +896,31 @@ div.fotos li.roomone {
 
 }
 
-#fbLogin {
+#fbLogin, #fbRegister {
     background: #3b5998;
     }
-#gPlusLogin {
+#gPlusLogin, #gPlusRegister {
     background:  #d34836;
+    
+}
+#gPlusLogin {
     padding-left: 10%;
     padding-right: 10%;
+}
+.profile-links{
+    padding: 5%;
+    padding-top: 0;
+
+}
+.modal-title{
+    text-align: center;
+}
+#registerModal .modal-body{
+    margin-left: 25%;
+}
+
+#registerform{
+margin-left: 5%;
+padding-top: 5%;
 }
    

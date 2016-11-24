@@ -5998,7 +5998,7 @@ ul.owl-carousel > * {
 }
 
 /* Inputs */
-input[type="text"],input[type="tel"],input[type="password"],input[type="email"],textarea,select,.woocommerce .quantity input.qty {
+input[type="text"],input[type="tel"],input[type="number"],input[type="password"],input[type="email"],textarea,select,.woocommerce .quantity input.qty {
     background-color: #fff;
     color: #626262;
     -webkit-box-shadow: inset 0 0 2px 2px rgba(0,0,0,0.02);
