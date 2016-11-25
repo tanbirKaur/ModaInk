@@ -404,10 +404,7 @@ li[data-colorhex='white'] {
 }
 
 
-div#about{
-    position: relative;
-    z-index: 50;
-}
+
 div#about {
     background-color: #ddd;
 }
@@ -464,9 +461,11 @@ div#firstmenu li {
 }
 
 div#firstmenu li a{
-    color: #444;
+    color: #000;
     font-weight: bold;
     font-size: 20px;
+    -webkit-text-stroke-width: .7px;
+    -webkit-text-stroke-color: #fff;
 }
 div#logo {
     margin-top: 170px;
@@ -923,4 +922,8 @@ div.fotos li.roomone {
 margin-left: 5%;
 padding-top: 5%;
 }
-   
+
+.footer-blog{
+    position: relative;
+    z-index: 9999;
+}
