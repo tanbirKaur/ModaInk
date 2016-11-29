@@ -66,9 +66,13 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			// controller : 'designerLabelsController'
 		})
 		.state("cart", {
-			url: "/cart",
+			url: "/checkout/cart",
 			templateUrl : "views/cart.html",
 			// controller : "userProfileController"
+		})
+		.state("billing-details", {
+			url:"/checkout/billing-details",
+			templateUrl : "views/billing-details.html"
 		})
 		.state("login", {
 			url: "/login",
@@ -91,6 +95,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			url:"/diamond-designers",
 			templateUrl : "views/dimond-designers.html"
 		})
+
 		
 		
 		
