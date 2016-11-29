@@ -1337,7 +1337,8 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
     display: block;
     height: 50px;
     line-height: 60px;
-    padding: 5px 0;
+        padding-left: 30%;
+    padding-top: 5%
 }
 
 /* overflow: hidden; */

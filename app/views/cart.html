@@ -1,18 +1,24 @@
 <div id="Content" class="without_headers">
 	<div class="content_wrapper clearfix" style="margin-left: 15%; margin-right: 15%; margin-bottom: 10%;">
 	<nav class="stepper">
-		<div class="stepper__rule" style="left: 16.6667%; right: 16.6667%;"></div>
-			<a class="stepper__step stepper__step--active" href="/checkout/bag" style="width: 33.3333%;">
+		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
+		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
+		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
+			<a class="stepper__step stepper__step--active" href="/checkout/cart" style="width: 25%;">
 				<span class="stepper__step-badge">1</span>
 				<span class="stepper__step-title">Bag</span>
 			</a>
-			<a class="stepper__step stepper__step--incomplete" href="/checkout/shipping-address" style="width: 33.3333%;">
+			<a class="stepper__step stepper__step--incomplete" href="#" style="width: 25%;">
 				<span class="stepper__step-badge">2</span>
 				<span class="stepper__step-title">Delivery Address</span>
 			</a>
-			<a class="stepper__step stepper__step--incomplete" href="/checkout/payment" style="width: 33.3333%;">
+			<a class="stepper__step stepper__step--incomplete" href="#" style="width: 25%;">
 				<span class="stepper__step-badge">3</span>
 				<span class="stepper__step-title">Payment</span>
+			</a>
+			<a class="stepper__step stepper__step--incomplete" href="#" style="width: 25%;">
+				<span class="stepper__step-badge">4</span>
+				<span class="stepper__step-title">Review</span>
 			</a>
 		</nav>
 		<hr>
@@ -50,7 +56,7 @@
 					</div>
 				</div>
 				<div class="continue-shopping">
-				<a href="/"><button id="continue-shopping" >Continue Shopping <i class="icon-cart"></i></button></a>
+				<a href="/"><button id="continue-shopping" class="alt-action" >Continue Shopping <i class="icon-cart"></i></button></a>
 			</div>
 			</div>
 			
@@ -89,7 +95,7 @@
 
 				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. 443</span></div>
 				<div class="place-order">
-				<button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></div>
+				<a href="/checkout/billing-details"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>
 </div>
             </div>

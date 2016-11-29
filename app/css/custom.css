@@ -785,7 +785,7 @@ div.fotos li.roomone {
 }
 
 
-#continue-shopping {
+.alt-action {
     background: white;
     border: 3px solid black;
     color: black;
@@ -926,4 +926,87 @@ padding-top: 5%;
 .footer-blog{
     position: relative;
     z-index: 9999;
+}
+.billing-address{
+        box-shadow: 0 0 3px #BBB;
+    background: white;
+    padding: 3% 10%;
+
+}
+.billing-left{
+    float: left;
+    width: 100%;
+}
+.billing-right{
+    float: right;
+    width: 100%;
+
+}
+.billing-left label, .billing-right label{
+    padding-top: 0px;
+    font-size: 13px;
+    color: #645d54;
+    display: inherit;
+
+}
+.billing-left input, .billing-right input, .billing-left select{
+    margin: 0;
+    width: 100%;
+}
+label.required:after, span.required:after, i.required {
+    color: red;
+    content: " *";
+    font-size: 12px;
+    font-weight: normal;
+}
+.pull-right{
+    float: right;
+}
+
+.billing-address textarea {
+    height: 90px !important;
+    padding-top: 5px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+.billing-address .row{
+    padding-bottom: 5%;
+}
+.radio_btn_wrapper [type="radio"]:checked+span:before {
+    background: #c8a75e;;
+    box-shadow: 0 0 0 2px #645d54;
+}
+.radio_btn_wrapper [type="radio"]+span:before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    -moz-border-radius: 1em;
+    -o-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    border: 3px solid #FFF;
+    box-shadow: 0 0 0 2px #645d54;
+    margin-right: 20px;
+    transition: 0.5s ease all;
+}
+.radio_btn_wrapper [type="radio"] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.radio_btn_wrapper label {
+    display: block;
+    cursor: pointer;
+    line-height: 1;
+}
+.back_btn{
+    font-size: 20px;
+    border: 2px solid #c8a75e;
+    margin-right: 5%;    
 }
