@@ -74,6 +74,10 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			url:"/checkout/billing-details",
 			templateUrl : "views/billing-details.html"
 		})
+		.state("payment-method", {
+			url:"/checkout/payment",
+			templateUrl : "views/payment-method.html"
+		})
 		.state("login", {
 			url: "/login",
 			templateUrl : "views/login.html"

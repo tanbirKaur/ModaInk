@@ -927,8 +927,8 @@ padding-top: 5%;
     position: relative;
     z-index: 9999;
 }
-.billing-address{
-        box-shadow: 0 0 3px #BBB;
+.billing-address, .payment_option_container{
+    box-shadow: 0 0 3px #BBB;
     background: white;
     padding: 3% 10%;
 
@@ -976,6 +976,9 @@ label.required:after, span.required:after, i.required {
     background: #c8a75e;;
     box-shadow: 0 0 0 2px #645d54;
 }
+.radio_btn_wrapper {
+     padding: 2%;
+}
 .radio_btn_wrapper [type="radio"]+span:before {
     content: '';
     display: inline-block;
@@ -996,14 +999,16 @@ label.required:after, span.required:after, i.required {
     clip: rect(0 0 0 0);
     height: 1px;
     overflow: hidden;
-    padding: 0;
+   padding: 0;
     position: absolute;
     width: 1px;
+
 }
 .radio_btn_wrapper label {
     display: block;
     cursor: pointer;
     line-height: 1;
+    font-weight: normal;
 }
 .back_btn{
     font-size: 20px;
