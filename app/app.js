@@ -16,6 +16,11 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 			templateUrl:"views/customize-how-it-works.html",
 			// controller : "logoutController"
 		})		
+		.state("customize",{ 	
+			url : '/customize',
+			templateUrl:"views/customize.html",
+			// controller : "logoutController"
+		})	
 		.state("footwear",{ 
 			url : '/footwear',
 			templateUrl:"views/footwear.html",

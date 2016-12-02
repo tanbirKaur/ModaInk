@@ -79,7 +79,7 @@ a:hover {
     float: right;
         margin: 12px 0 0;
 }
-.sort li, label{
+.sort li, .sort label{
 	    display: inline-block;
     margin-left: 5px;
     text-decoration: none;
@@ -1015,3 +1015,60 @@ label.required:after, span.required:after, i.required {
     border: 2px solid #c8a75e;
     margin-right: 5%;    
 }
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.new-product-customize{
+    min-height: 550px;
+     margin-left: 10%;
+    margin-right: 10%;
+    background: rgba(245, 243, 243, 0.27);
+    padding: 2em;
+    margin-bottom: 30px;
+}
+.container {
+    width: 100%;
+}
+
+.custom-size li {
+    padding: 2%;
+}
+
+.custom-look li img:hover{
+    border: 1px solid black;
+}
+
+
+.custom-size input{
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    width: 60%;
+    text-align: center;
+    float: right;
+}
+
+.custom-size label{
+    display: inline-flex;
+}
+
+.custom-size i{
+    color: #181818;
+}
+
+.custom-measurement {
+    margin-left: 0;
+    max-height: 500px;
+    overflow: scroll;
+}
+
+    
