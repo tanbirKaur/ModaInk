@@ -101,7 +101,7 @@ a:hover {
     line-height: 16px;
     color: #3e4152;
     text-transform: uppercase;
-    padding: 0 0 15px;
+    padding: 15px 0px;
     clear: both;
     font-weight: bold;
     cursor: pointer;
@@ -128,6 +128,7 @@ ul.c2 {display: none;}
 
 .input-group label{
 	font-weight: normal;
+    padding-left: 5px;
 }
 
 
@@ -640,15 +641,16 @@ div.fotos li.roomone {
 .purchase{
     text-align: center;
     padding: 20px;
+    margin-left: 4%
 }
 .purchase .btn {
     font-size: 14px;
     text-transform: uppercase;
     margin-left: 5%;
-    margin-bottom: 5%;
 }
 .purchase a {
     color: black;
+    display: inline-block;
 }
 
 .like-share {
