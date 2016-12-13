@@ -1,10 +1,12 @@
-var app = angular.module("myApp", ["ui.router"]);
+var app = angular.module("ModaInk", ["ui.router"]);
+window.app == app;
+window.apiUrl = "http://localhost:3000";
 app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state("index", {
 			url: "/",
-			templateUrl : "views/home.html"
-		//	controller : "homeController"
+			templateUrl : "views/home.html",
+			controller : "HomeController"
 		})
 		.state("madeToOrder",{ 	
 			url : '/madeToOrder',
