@@ -1,7 +1,7 @@
-var app = angular.module("ModaInk", ["ui.router"]);
+var app = angular.module("ModaInk", ["ui.router","LocalStorageModule"]);
 window.app == app;
-window.apiUrl = "http://localhost:3000";
-app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
+window.apiUrl = "http://dev.modaink.com/api";
+app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localStorageServiceProvider){
 	$stateProvider
 		.state("index", {
 			url: "/",
@@ -113,4 +113,6 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider){
 		// ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);
+    	localStorageServiceProvider.setPrefix('modaink')
+    	.setStorageType('sessionStorage');
 });
