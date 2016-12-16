@@ -3,6 +3,8 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
+
+	// http Methods
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
 		httpService.callHttp("POST","users/authenticate",{},loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure,true);
@@ -13,6 +15,11 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 		httpService.callHttp("POST","users",{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
 	}
 
+	$scope.getDesigners = function () {
+		httpService.callHttp("GET","designers",{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+	}
+
+	// http Success and Failure Methods
 	$scope.onLoginSuccess = function (response) {
 		var userCreated = response.statusText == "Created";
 		if (userCreated) {
@@ -21,7 +28,11 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 		};
 	}
 	$scope.onLoginFailure = function (response) {
-		alert(response.data.message);
+		if (!response.data) {
+			alert("Oops something went wrong. Login failed!");
+		} else {
+			alert(response.data.message);
+		}
 	}
 
 	$scope.onSignUpSuccess = function (response) {
@@ -35,4 +46,13 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 	$scope.onSignUpFailure = function (response) {
 		alert(response.data.message);
 	}
+
+	$scope.onGetDesignersSuccess = function (response) {
+		$scope.designers = response.data;
+	}
+	$scope.onGetDesignersFailure = function (response) {
+		alert(response.data.message);
+	}
+
+	$scope.getDesigners();
 });

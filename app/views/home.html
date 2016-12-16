@@ -32,68 +32,18 @@
                       </div>
                   </div>
                   <div class="col-xs-12 col-md-8" style="float: right;">
-                     <div class="column column_trailer_box designer_column">
-                        <div class="trailer_box">
-                            <!-- Animated area -->
-                            <div class="animate" data-anim-type="fadeInUp">
-                                <a href="#"><img class="scale-with-grid" src="images/Designers/designer_1.png" alt="Fall<br />Winter '13/14" />
-                                    <div class="desc">
-                                        <div id = "designer_name" class="line">
-                                            Dolce & Gabbanasdfghjk
-                                        </div>
-                                    </div></a>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="column column_trailer_box designer_column">
-                        <div class="trailer_box">
-                            <!-- Animated area -->
-                            <div class="animate" data-anim-type="fadeInUp">
-                                <a href="#"><img class="scale-with-grid" src="images/Designers/designer_2.png" alt="Fall<br />Winter '13/14" />
-                                    <div class="desc ">
-                                        <div id = "designer_name" class="line">
-                                            Dolce & Gabbanasdfghjk
-                                        </div>
-                                    </div></a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="column column_trailer_box designer_column">
-                        <div class="trailer_box">
-                            <!-- Animated area -->
-                            <div class="animate" data-anim-type="fadeInUp">
-                                <a href="#"><img class="scale-with-grid" src="images/Designers/designer_3.png" alt="Fall<br />Winter '13/14" />
-                                    <div class="desc ">
-                                        <div id = "designer_name" class="line">
-                                            Dolce & Gabbanasdfghjk
-                                        </div>
-                                    </div></a>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="column column_trailer_box designer_column">
-                        <div class="trailer_box">
-                            <!-- Animated area -->
-                            <div class="animate" data-anim-type="fadeInUp">
-                                <a href="#"><img class="scale-with-grid" src="images/Designers/designer_4.png" alt="Fall<br />Winter '13/14" />
-                                    <div class="desc ">
-                                        <div id = "designer_name" class="line">
-                                            Dolce & Gabbanasdfghjk
-                                        </div>
-                                    </div></a>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="column column_trailer_box designer_column">
-                        <div class="trailer_box">
-                            <!-- Animated area -->
-                            <div class="animate" data-anim-type="fadeInUp">
-                                <a href="#"><img class="scale-with-grid" src="images/Designers/designer_5.png" alt="Fall<br />Winter '13/14" />
-                                    <div class="desc ">
-                                        <div id = "designer_name" class="line">
-                                            Dolce & Gabbanasdfghjk
-                                        </div>
-                                    </div></a>
+                    <div ng-repeat="designer in designers">
+                        <div class="column column_trailer_box designer_column">
+                            <div class="trailer_box">
+                                <!-- Animated area -->
+                                <div class="animate" data-anim-type="fadeInUp">
+                                    <a ng-href="designer-details/{{designer.firstName}}"><img class="scale-with-grid" ng-src="images/Designers/designer_1.png" alt="Fall<br />Winter '13/14" />
+                                        <div class="desc">
+                                            <div id = "designer_name" class="line">
+                                                {{designer.firstName}} {{designer.lastName}}
+                                            </div>
+                                        </div></a>
+                                </div>
                             </div>
                         </div>
                     </div>
