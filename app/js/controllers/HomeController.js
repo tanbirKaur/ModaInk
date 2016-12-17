@@ -5,11 +5,12 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.password;
 	$scope.menProducts = undefined;
 	$scope.womenProducts = undefined;
+	$scope.alertHidden = function(){};
 
 	// http Methods
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
-		httpService.callHttp("POST","users/authenticate",{},loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure,true);
+		httpService.callHttp("POST","users/authenticate",{},{},loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure,true);
 	}
 
 	$scope.signUp = function () {
@@ -30,11 +31,34 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.onLoginSuccess = function (response) {
 		var userCreated = response.statusText == "Created";
 		if (userCreated) {
-			storageService.set("accessToken",response.data.accessToken);
-			alert("Login Successful!");
+			$scope.alertHidden = function () {
+				storageService.set("accessToken",response.data.accessToken);
+				alert("Login Successful!");
+			}
+			hideModal("loginModal");
 		};
 	}
 	$scope.onLoginFailure = function (response) {
+		$scope.alertHidden = function () {
+			if (!response.data) {
+				alert("Oops something went wrong. Login failed!");
+			} else {
+				alert(response.data.message);
+			}
+		}
+		hideModal("loginModal");
+	}
+
+	$scope.onSignUpSuccess = function (response) {
+		$scope.alertHidden = function () {
+			var userCreated = response.statusText == "Created";
+			if (userCreated) {
+				alert("Sign Up Successful!");
+			};
+		}
+		hideModal("registerModal");
+	}
+	$scope.onSignUpFailure = function (response) {
 		if (!response.data) {
 			alert("Oops something went wrong. Login failed!");
 		} else {
@@ -42,22 +66,11 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		}
 	}
 
-	$scope.onSignUpSuccess = function (response) {
-		console.log("SIGN UP: ",response);
-		var userCreated = response.statusText == "Created";
-		if (userCreated) {
-			alert("Sign Up Successful!");
-		};
-	}
-	$scope.onSignUpFailure = function (response) {
-		alert(response.data.message);
-	}
-
 	$scope.onGetDesignersSuccess = function (response) {
 		$scope.designers = response.data;
 	}
 	$scope.onGetDesignersFailure = function (response) {
-		alert(response.data.message);
+		//Do Nothing
 	}
 
 	$scope.onGetCategorySuccess = function (response) {
@@ -77,4 +90,11 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 			return product.gender == gender;
 		});
 	}
+
+	var hideModal = function(modal) {
+       return angular.element('#'+modal).modal('hide');
+	}
+	angular.element('#loginModal').on('hidden.bs.modal', function () {
+		$scope.alertHidden();
+	});
 });
