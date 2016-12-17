@@ -60,7 +60,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 		.state('designer-details', {
 			templateUrl : "views/designer-details.html",
 			url : "/designer-details/:designerId", 
-			// controller : 'designerLabelsController'
+			controller : 'DesignersController'
 		})
 		.state('designer-collections', {
 			templateUrl : "views/designer-collections.html",

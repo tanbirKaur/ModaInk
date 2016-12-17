@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('HomeController', function($scope,$http,httpService,storageService) {
+app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
@@ -11,7 +11,7 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 	}
 
 	$scope.signUp = function () {
-		var signUpInfo = { "email": $scope.email,"password": $scope.password ,"contactNumber":$scope.contactNumber};
+		var signUpInfo = { "email": $scope.email,"password": $scope.password ,"mobile":$scope.contactNumber};
 		httpService.callHttp("POST","users",{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
 	}
 
@@ -37,11 +37,10 @@ app.controller('HomeController', function($scope,$http,httpService,storageServic
 
 	$scope.onSignUpSuccess = function (response) {
 		console.log("SIGN UP: ",response);
-		// var userCreated = response.statusText == "Created";
-		// if (userCreated) {
-		// 	storageService.set("accessToken",response.data.accessToken);
-		// 	alert("Login Successful!");
-		// };
+		var userCreated = response.statusText == "Created";
+		if (userCreated) {
+			alert("Sign Up Successful!");
+		};
 	}
 	$scope.onSignUpFailure = function (response) {
 		alert(response.data.message);
