@@ -61,7 +61,7 @@
 
 </head>
 
-<body ng-app="ModaInk"  class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
+<body ng-app="ModaInk" ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
     <!-- #Wrapper -->
     <!-- Main Theme Wrapper -->
     <div id="Wrapper">
@@ -98,198 +98,23 @@
                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
                                                 <a href="/women"><span>WOMEN</span></a>
                                                 <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/for-her-clothing-for-her.html"><span>Apparel</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
+                                                    <li ng-repeat="product in womenProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
+                                                        <a class="mfn-megamenu-title" href="views/for-her-clothing-for-her.html"><span>{{product.name}}</span></a>
+                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-dresses.html"><span>Dresses</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-jackets.html"><span>Jackets & Sweatshirts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-jeans.html"><span>Bottoms</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-shorts.html"><span>Ethic</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-tops.html"><span>Tops</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-tops.html"><span>Beachwear</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Sleepwear</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Sports Wear</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Accessories</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/shoes-for-her.html"><span>Footwear</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-ankle-boots.html"><span>Boots</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-ballet-pumps.html"><span>Pumps & Heels</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-heals.html"><span>Sneakers</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sandals.html"><span>Flats</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Wedges</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Clogs</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Slippers</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Sandals</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Espadrilles</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/for-her-accessories.html"><span>Accessories</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-bags-accessories.html"><span>Bags & Luggage</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-belts.html"><span>Scarves & stoles</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-hats-caps-accessories.html"><span>Jewellery</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-rucksacks-accessories.html"><span>Socks & Gloves</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Belts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Head Accessories</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Formal Accessories</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Sunglasses</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Stationery</span></a>
+                                                                <a href="views/for-her-dresses.html"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                            </li>
                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
                                                 <a href="/men"><span>MEN</span></a>
                                                 <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/for-her-clothing-for-her.html"><span>Apparel</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
+                                                    <li ng-repeat="product in menProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
+                                                        <a class="mfn-megamenu-title" href="views/for-her-clothing-for-her.html"><span>{{product.name}}</span></a>
+                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-dresses.html"><span>Tshirts & Polos</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-jackets.html"><span>Jackets & Sweatshirts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-jeans.html"><span>Bottoms</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-shorts.html"><span>Ethic</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-tops.html"><span>Shirts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-tops.html"><span>Beachwear</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Suits</span></a>
-                                                            </li>
-                                                           
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Accessories</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/shoes-for-her.html"><span>Footwear</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-ankle-boots.html"><span>Boots</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-ballet-pumps.html"><span>Dress Shoes</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-heals.html"><span>Sneakers</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sandals.html"><span>Loafers & SlipOns</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Athelicts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Clogs</span></a>
-                                                            </li>
-                                                            
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Slippers</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-slippers.html"><span>Espadrilles</span></a>
-                                                            </li>
-
-                                                        </ul>
-                                                    </li>
-                                                    <li class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="views/for-her-accessories.html"><span>Accessories</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-bags-accessories.html"><span>Bags & Luggage</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-belts.html"><span>Scarves</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-hats-caps-accessories.html"><span>Jewellery</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-rucksacks-accessories.html"><span>Socks & Gloves</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Belts</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Head Accessories</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Formal Accessories</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Sunglasses</span></a>
-                                                            </li>
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="views/for-her-sunglasses.html"><span>Stationery</span></a>
+                                                                <a href="views/for-her-dresses.html"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>

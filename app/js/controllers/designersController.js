@@ -3,7 +3,7 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 	// http Methods
 	$scope.getDesignerDetails = function () {
 		var designerId = $stateParams.designerId;
-		httpService.callHttp("GET","designers/"+designerId,{},{},$scope.onGetDesignerDetailsSuccess,$scope.onGetDesignerDetailsFailure,true);
+		httpService.callHttp("GET","designers/"+designerId,{},{},{},$scope.onGetDesignerDetailsSuccess,$scope.onGetDesignerDetailsFailure,true);
 	}
 
 	// http Success and Failure Methods

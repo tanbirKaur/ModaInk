@@ -3,6 +3,8 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
+	$scope.menProducts = undefined;
+	$scope.womenProducts = undefined;
 
 	// http Methods
 	$scope.login = function () {
@@ -12,11 +14,16 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.signUp = function () {
 		var signUpInfo = { "email": $scope.email,"password": $scope.password ,"mobile":$scope.contactNumber};
-		httpService.callHttp("POST","users",{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
+		httpService.callHttp("POST","users",{},{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
 	}
 
 	$scope.getDesigners = function () {
-		httpService.callHttp("GET","designers",{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+		httpService.callHttp("GET","designers",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+	}
+
+	$scope.getCategories = function () {
+		var params = {includeSubCategories:true};
+		httpService.callHttp("GET","categories",params,{},{},$scope.onGetCategorySuccess,$scope.onGetCategoryFailure,true);
 	}
 
 	// http Success and Failure Methods
@@ -53,5 +60,21 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		alert(response.data.message);
 	}
 
+	$scope.onGetCategorySuccess = function (response) {
+		$scope.productCategories = response.data;
+		$scope.menProducts = filteredProducts('men');
+		$scope.womenProducts = filteredProducts('women');
+	}
+	$scope.onGetCategoryFailure = function (response) {
+		alert(response.data.message);
+	}
 	$scope.getDesigners();
+	$scope.getCategories();
+
+	//custom methods
+	var filteredProducts = function(gender){
+		return $scope.productCategories.filter(function (product) {
+			return product.gender == gender;
+		});
+	}
 });
