@@ -9,7 +9,7 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 	}
 	$scope.getDesignerProducts = function (designerId) {
 		var params = {designerId : designerId};
-		httpService.callHttp("GET","designers",params,{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+		httpService.callHttp("GET","products",params,{},{},$scope.onGetDesignerProductsSuccess,$scope.onGetDesignerProductsFailure,true);
 	}
 
 	// http Success and Failure Methods
