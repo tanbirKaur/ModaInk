@@ -1,5 +1,5 @@
 
-<div id="Content" class=" woocommerce woocommerce-page with_aside aside_left without_headers">
+<div id="Content" ng-controller="HomeController" class=" woocommerce woocommerce-page with_aside aside_left without_headers">
 		<div class="content_wrapper clearfix">
 
 			<!-- .sections_group -->
@@ -12,13 +12,9 @@
 
 								<div class="shop-filters">
 									<p class="woocommerce-result-count">
-										Showing all 5 results
+										Showing all {{exclusiveProducts.length}} results
 									</p>
-
-
-									
 									<form class="woocommerce-ordering" method="get">
-										
 									<ul class="sort widget woocommerce">
 									<label>Sort:</label>
 										<li data-sortkey=":popularity">Popular</li>
@@ -30,130 +26,24 @@
 									</ul>
 									</form>
 								</div>
-
-
 								<div class="products_wrapper ">
 									<ul class="products ">
-
-										
-
-										<li class="product">
-
+										<li class="product" ng-repeat="product in exclusiveProducts">
 											<div class="image_frame	" >
 												<div class="image_wrapper">
-													<a href="/product-details"><div class="mask"></div><img src="http://www.kmozi.com/image/cache/products/new-navy-blue-jacquard-floral-pot-designer-lahenga-1053-250x300.jpg" title="New Navy Blue Jacquard Floral Pot Designer Lahenga.." alt="New Navy Blue Jacquard Floral Pot Designer Lahenga.."></a>
-													
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details"></a>
+													<a href="/product-details/{{product.id}}/{{product.designer.id}}"><div class="mask"></div><img ng-src="{{product[0].url}}" title="{{product.description}}" alt="{{product.description}}"></a>
+												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details/{{product.id}}/{{product.designer.id}}"></a>
 											</div>
 											<div class="desc">
-
-												<h4><a href="/product-details">Ship Your Idea</a></h4>
-
+												<h4><a href="/product-details/{{product.id}}/{{product.designer.id}}">{{product.name}}</a></h4>
 												<div >
-													
-												<span class="price"><span class="amount">Rs. 4500</span></span>
-
+												<span class="price"><span class="amount">Rs. {{product.skus[0].price}}</span></span>
 												</div>
-
 											</div>
 
 										</li>
-
-										<li class="product" >
-
-											<div class="image_frame	" >
-												<div class="image_wrapper" >
-													<a href="/product-details"><div class="mask"></div><img src="http://assets.myntassets.com/h_307,q_95,w_230/v1/assets/images/1230054/2016/8/1/11470041645801-Roadster-Blue-Denim-Washed-Casual-Shirt-5301470041635589-1_mini.jpg"></a>
-													
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details"><span class="product-loading-icon added-cart"></span></a>
-											</div>
-											<div class="desc">
-
-												<h4><a href="/product-details">Mast &amp; Harbour</a></h4>
-
-												<div>
-													
-												<span class="price"><span class="amount">Rs. 999</span></span>
-
-												</div>
-
-											</div>
-										</li>
-
-
-										<li class="product" >
-
-											<div class="image_frame	" >
-												<div class="image_wrapper" >
-													<a href="/product-details"><div class="mask"></div><img alt="Mast &amp; Harbour Women Navy Blue Striped Fit and Flare Dress" src="http://assets.myntassets.com/h_307,q_95,w_230/v1/assets/images/1385354/2016/9/6/11473164432781-Mast--Harbour-Women-Navy-Blue-Striped-Fit-and-Flare-Dress-7781473164432525-1_mini.jpg"></a>
-													
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details"><span class="product-loading-icon added-cart"></span></a>
-											</div>
-											<div class="desc">
-
-												<h4><a href="/product-details">Mast &amp; Harbour</a></h4>
-
-												<div>
-													
-												<span class="price"><span class="amount">Rs. 999</span></span>
-
-												</div>
-
-											</div>
-
-										</li>
-
-										<li class="product" >
-
-											<div class="image_frame	" >
-												<div class="image_wrapper" >
-													<a href="/product-details"><div class="mask"></div><img src="http://www.kmozi.com/image/cache/products/new-designer-banglori-silk-pink-and-grey-embroidered-lehegha-choli-1623-250x300.jpg" title="New Designer Banglori Silk Pink And Grey Embroidered Lehegha Choli.." alt="New Designer Banglori Silk Pink And Grey Embroidered Lehegha Choli.."></a>
-													
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details"><span class="product-loading-icon added-cart"></span></a>
-											</div>
-											<div class="desc">
-
-												<h4><a href="/product-details">Mast &amp; Harbour</a></h4>
-
-												<div>
-													
-												<span class="price"><span class="amount">Rs. 999</span></span>
-
-												</div>
-
-											</div>
-										</li>
-
-
-										<li class="product" >
-
-											<div class="image_frame	" >
-												<div class="image_wrapper" >
-													<a href="/product-details"><div class="mask"></div>
-											<img alt="Sanwara Red &amp; Beige Patterned Kurta Pyjama"  src="http://assets.myntassets.com/h_307,q_95,w_230/v1/assets/images/1521259/2016/9/16/11474023494385-Sanwara-Men-Kurta-Pyjama-701474023494142-1_mini.jpg"></a>
-													
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details"><span class="product-loading-icon added-cart"></span></a>
-											</div>
-											<div class="desc">
-
-												<h4><a href="/product-details">Mast &amp; Harbour</a></h4>
-
-												<div>
-													
-												<span class="price"><span class="amount">Rs. 999</span></span>
-
-												</div>
-
-											</div>
-										</li>
-
-
-
-
-
 									</ul>
 								</div>
-
 					</div>
 				</div>
 			</div>

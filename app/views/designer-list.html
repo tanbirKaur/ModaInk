@@ -1,34 +1,10 @@
-<div id="Content" class="without_headers">
+<div ng-controller="DesignersController" id="Content" class="without_headers">
 	<div class="content_wrapper clearfix">
 	<div>
         <ul class="alphabet-list">
-            <li><a href="#09">0-9</a></li>
-            <li><a href="#a">A</a></li>
-            <li><a href="#b">B</a></li>
-            <li><a href="#c">C</a></li>
-            <li><a href="#d">D</a></li>
-            <li><a href="#e">E</a></li>
-            <li><a href="#f">F</a></li>
-            <li><a href="#g">G</a></li>
-            <li><a href="#h">H</a></li>
-            <li><a href="#i">I</a></li>
-            <li><a href="#j">J</a></li>
-            <li><a href="#k">K</a></li>
-            <li><a href="#l">L</a></li>
-            <li><a href="#m">M</a></li>
-            <li><a href="#n">N</a></li>
-            <li><a href="#o">O</a></li>
-            <li><a href="#p">P</a></li>
-            <li><a href="#q">Q</a></li>
-            <li><a href="#r">R</a></li>
-            <li><a href="#s">S</a></li>
-            <li><a href="#t">T</a></li>
-            <li><a href="#u">U</a></li>
-            <li><a href="#v">V</a></li>
-            <li><a href="#w">W</a></li>
-            <li><a href="#x">X</a></li>
-            <li><a href="#y">Y</a></li>
-            <li><a href="#z">Z</a></li>
+            <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                <a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>
+            </li>
         </ul>
         <hr>
     <div>
@@ -53,176 +29,30 @@
 						<a href="/diamond-designers" >Diamond Designers</a>
 						<a href="#" >Jedi</a>
 						<a href="#" >Featured Designers</a>
-						<a href="#" ">New Designers</a>
+						<a href="#" >New Designers</a>
 						<a href="#" >Premium Designers</a>
-						<a href="#"">Student Designers</a>
+						<a href="#" >Student Designers</a>
 					
 				</div>
 			</div>
 		<div class="col-md-8" style="padding-left: 50px;">
 	                <ul class="alphabets">
 	               
-	                    <li>
-	                    	<ul class="designer-listing" id="09">
-	                    		<li class="alpha">0 to 9</li>
+	                    <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+	                    	<ul class="designer-listing" id="{{designerGroup.$key}}">
+	                    		<li class="alpha">{{designerGroup.$key}}</li>
 	                    		<hr>
 	                    		<div class="col-md-12">
-	                            <li><a href="/designer-details/">1600 AD NAISHA NAGPAL</a></li>
-	                            <li><a href="/designer-details/shweta-kapur">431-88/ Shweta Kapur</a></li>
-	                            <li><a href="/designer-details/5-elements">5 Elements / Radhika</a></li>
-	                            <li><a href="/designer-details/84-86">84-86</a></li>
+    	                            <li ng-repeat="designer in designerGroup">
+                                        <a href="/designer-details/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
+                                    </li>
 	                            </div>
 	                		</ul>
 	                	</li>
-	                
-	                	<li>
-	                		<ul class="designer-listing" id="a">
-	                            <li class="alpha">A</li>
-	                            <hr>
-	                            <div class="col-md-6">
-	                            <li><a href="/designer-details/aadi-shop-by-shalini">Aadi Shop By Shalini</a></li>
-	                            <li><a href="/designer-details/aamaya-by-priyanka">Aamaya by Priyanka</a></li>
-	                            <li><a href="/designer-details/aartivijay-gupta">Aartivijay Gupta</a></li>
-	                            <li><a href="/designer-details/aawa-by-aastha-wadhwa">Aastha Wadhwa</a></li>
-	                            <li><a href="/designer-details/aaylixir">Aaylixir</a></li>
-	                            <li><a href="/designer-details/abhinav-mishra">Abhinav Mishra</a></li>
-	                            <li><a href="/designer-details/abhishek-vermaa ">Abhishek Vermaa</a></li>
-	                            <li><a href="/designer-details/abu-jani-and-sandeep-khosla">Abu Jani Sandeep Khosla </a></li>
-	                            </div>
-	                            <div class="col-md-6">
-	                            <li><a href="/designer-details/aadi-shop-by-shalini">Aadi Shop By Shalini</a></li>
-	                            <li><a href="/designer-details/aamaya-by-priyanka">Aamaya by Priyanka</a></li>
-	                            
-	                            <li><a href="/designer-details/aartivijay-gupta">Aartivijay Gupta</a></li>
-	                            <li><a href="/designer-details/aawa-by-aastha-wadhwa">Aastha Wadhwa</a></li>
-	                            <li><a href="/designer-details/aaylixir">Aaylixir</a></li>
-	                            <li><a href="/designer-details/abhinav-mishra">Abhinav Mishra</a></li>
-	                            <li><a href="/designer-details/abhishek-vermaa ">Abhishek Vermaa</a></li>
-	                            <li><a href="/designer-details/abu-jani-and-sandeep-khosla">Abu Jani Sandeep Khosla </a></li>
-	                            </div>
-	                		</ul>
-	                	</li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="b">
-	                            <li class="alpha">B</li>
-	                            <hr>
-	                            <div class="col-md-12">
-	                            <li><a href="/designer-details/babita-malkani">Babita Malkani </a></li>
-	                            <li><a href="/designer-details/bangdar-sarali">Bangdar Sarali </a></li>
-	                            <li><a href="/designer-details/bansri">Bansri </a></li>
-	                            <li><a href="/designer-details/bhanuni-by-jyoti">Bhanuni By Jyoti </a></li>
-	                            <li><a href="/designer-details/bhaavya-bhatnagar">Bhaavya Bhatnagar</a></li>
-	                            </div>
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="c">
-	                            <li class="alpha">C</li>
-	                            <hr>
-	                            <div class="col-md-12">
-	                            <li><a href="/designer-details/carousel-by-simran-arya">Carousel by Simran Arya</a></li>
-	                            <li><a href="/designer-details/carrie-elizabeth">Carrie Elizabeth</a></li>
-	                            <li><a href="/designer-details/casa-pop">Casa Pop</a></li>
-	                            <li><a href="/designer-details/chandrani-siingh-fllora">Chandrani Siingh Fllora </a></li>
-	                            </div>
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="d">
-	                            <li class="alpha">D</li>
-	                            <hr>
-	                            <div class="col-md-12">
-	                            <li><a href="/designer-details/dandelion">Dandelion</a></li>
-	                            <li><a href="/designer-details/dang">Dang</a></li>
-	                            <li><a href="/designer-details/dauphine">Dauphine</a></li>
-	                            <li><a href="/designer-details/debyani">Debyani</a></li>
-	                            <li><a href="/designer-details/deepa-by-deepa-gurnani">Deepa by Deepa Gurnani</a></li>
-	                            </div>
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="e">
-	                            <li class="alpha">E</li>
-	                              <hr>
-	                              <div class="col-md-12">
-	                            <li><a href="/designer-details/eesha-zaveri">Eesha Zaveri </a></li>
-	                            <li><a href="/designer-details/eina-ahluwalia">Eina Ahluwalia </a></li>
-	                            <li><a href="/designer-details/ekaya">Ekaya</a></li>
-	                            <li><a href="/designer-details/ekru">Ekru</a></li>
-	                            <li><a href="/elle">Elle Loves</a></li>
-	                            <li><a href="/designer-details/elysian-by-gitanjali">Elysian By Gitanjali</a></li>
-	                            <li><a href="/designer-details/enroute-by-mr-metal">Enroute By Mr. Metal</a></li>
-	                            </div>
-	                        </ul>
-	                    </li>
-	                
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="f">
-	                            <li class="alpha">F</li>
-	                              <hr>
-	                              <div class="col-md-12">
-	                            <li><a href="/designer-details/falguni-and-shane-peacock">Falguni and Shane Peacock </a></li>
-	                            <li><a href="/designer-details/farah-sanjana">Farah Sanjana</a></li>
-	                            <li><a href="/designer-details/finura-by-richa">Finura By Richa </a></li>
-	                            <li><a href="/designer-details/fizzy-goblet">Fizzy Goblet </a></li>
-	                            </div>
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="g">
-	                            <li class="alpha">G</li>
-	                              <hr>
-	                            <li><a href="/designer-details/gaaya-by-gayatri-kilachand">Gaaya By Gayatri Kilachand </a></li>
-	                            <li><a href="/designer-details/gaurav-gupta">Gaurav Gupta </a></li>
-	                            <li><a href="/designer-details/gauri-and-nainika">Gauri And Nainika</a></li>
-	                            
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="h">
-	                            <li class="alpha">H</li>
-	                              <hr>
-	                            <li><a href="/designer-details/hair-drama-company">Hair Drama Company </a></li>
-	                            <li><a href="/designer-details/harshitaa-chatterjee-deshpande">Harshitaa Chatterjee Deshpande </a></li>
-	                            <li><a href="/designer-details/hema-kaul">Hema Kaul</a></li>
-	                            
-	                        </ul>
-	                    </li>
-	                
-	                    <li>
-	                        <ul class="designer-listing" id="i">
-	                            <li class="alpha">I</li>
-	                              <hr>
-	                            <li><a href="/designer-details/ikai-by-ragini-ahuja">Ikai by Ragini Ahuja </a></li>
-	                            <li><a href="/designer-details/ikebaana">Ikebaana </a></li>
-	                            <li><a href="/designer-details/ilk-by-shikha-and-vinita">ILK / Shikha and Vinita </a></li>
-	                            <li><a href="/designer-details/inayat">Inayat </a></li>
-	                                                        <li><a href="/designer-details/i-am-design">I AM DESIGN</a></li>
-	                            <li><a href="/designer-details/itrana-by-sonal-gupta">Itrana By Sonal Gupta </a></li>
-	                        </ul>
-	                    </li>
-	                
 	                </ul>
 	                </div>
 	                </div>
-
                 </div>
-		
 		</div>
 	</div>
-                
-               
-                
-    </div>
-
-        
-	</div>
 </div>
-

@@ -1,4 +1,4 @@
-var app = angular.module("ModaInk", ["ui.router","LocalStorageModule"]);
+var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter"]);
 window.app == app;
 window.apiUrl = "http://dev.modaink.com/api";
 app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localStorageServiceProvider){
@@ -36,7 +36,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 		.state("exclusive", {
 			url: "/exclusive",
 			templateUrl : "views/exclusive.html",
-		//	controller : "homeController"
+			controller : "HomeController"
 		})
 		.state("exclusive-men", {
 			url: "/exclusive/men",
@@ -55,7 +55,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 		}).state("designers-list", {
 			url: "/designers",
 			templateUrl : "views/designer-list.html",
-			// controller : "designerProfileController"
+			controller : 'DesignersController'
 		})
 		.state('designer-details', {
 			templateUrl : "views/designer-details.html",
@@ -69,8 +69,8 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
-			url : "/product-details", 
-			// controller : 'designerLabelsController'
+			url : "/product-details/:productId/:designerId", 
+			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {
 			url: "/checkout/cart",

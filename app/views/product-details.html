@@ -3,45 +3,33 @@
 		<div class="new-product">
 				<div class="col-md-5 zoom-grid">
 					<div class="flexslider">
-						
-					<div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 1000%; transition-duration: 0.6s; transform: translate3d(-1017px, 0px, 0px);"><li data-thumb="images/Products/si.jpg" class="clone" style="width: 339px; float: left; display: block;">
-							<div class="thumb-image"> <img src="images/Products/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+					
+					<div class="flex-viewport" style="overflow: hidden; position: relative;">
+                        <ul class="slides" style="width: 1000%; transition-duration: 0.6s; transform: translate3d(-1017px, 0px, 0px);">
+                            <li ng-repeat="image in product.images" data-thumb="{{image.url}}" class="clone" style="width: 339px; float: left; display: block;">
+							    <div class="thumb-image"> <img ng-src="{{image.url}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							
-							<li data-thumb="images/Products/si1.jpg" style="width: 339px; float: left; display: block;" class="">
-								<div class="thumb-image"> <img src="images/Products/si1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
-							<li data-thumb="images/Products/si2.jpg" style="width: 339px; float: left; display: block;" class="flex-active-slide">
-							<div class="thumb-image"> <img src="images/Products/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li> 
-						<li data-thumb="images/Products/si.jpg" class="clone" style="width: 339px; float: left; display: block;">
-								<div class="thumb-image"> <img src="images/Products/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
-							</ul>
+						</ul>
 							</div>
 							<ol class="flex-control-nav flex-control-thumbs">
-							<li><img src="images/Products/si.jpg" class="flex-active"></li>
-							<li><img src="images/Products/si1.jpg" class=""></li>
-							<li><img src="images/Products/si2.jpg" class=""></li>
+							<li ng-repeat="image in product.images">
+                                <img ng-src="{{image.url}}" class="flex-active">
+                            </li>
 							</ol>
-
 							<ul class="flex-direction-nav"><li></ul></div>
 				</div>
 				<div class="col-md-5 dress-info">
 					<div class="dress-name">
-						<h3>LOREM IPSUM DRESS</h3>
-						<span>Rs. 459.00</span>
+						<h3>{{product.name}}</h3>
+						<span>Rs. {{sku.price}}</span>
 						<div class="clearfix"></div>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+						<p>{{product.description}}</p>
 					</div>
-
-					
 
 					<div>
 						<ul class="swatches Color">
 							<li class="selected">
 							<a title="color" class="swatchanchor" >
-							
 							</a>
 							
 							<span style="font-weight: bold;">

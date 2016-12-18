@@ -27,6 +27,11 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		httpService.callHttp("GET","categories",params,{},{},$scope.onGetCategorySuccess,$scope.onGetCategoryFailure,true);
 	}
 
+	$scope.getProducts = function (params) {
+		if (!params) params = {};
+		httpService.callHttp("GET","products",params,{},{},$scope.onGetProductsSuccess,$scope.onGetProductsFailure,true);
+	}
+
 	// http Success and Failure Methods
 	$scope.onLoginSuccess = function (response) {
 		var userCreated = response.statusText == "Created";
@@ -70,24 +75,39 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		$scope.designers = response.data;
 	}
 	$scope.onGetDesignersFailure = function (response) {
-		//Do Nothing
+		console.log("onGetDesignersFailure:"+response);
+	}
+
+	$scope.onGetProductsSuccess = function (response) {
+		$scope.products = response.data;
+		$scope.exclusiveProducts = filteredProducts("isExclusive",true);
+		storageService.set("products",$scope.products);
+	}
+	$scope.onGetProductsFailure = function (response) {
+		console.log("onGetProductsFailure:"+response);
 	}
 
 	$scope.onGetCategorySuccess = function (response) {
 		$scope.productCategories = response.data;
-		$scope.menProducts = filteredProducts('men');
-		$scope.womenProducts = filteredProducts('women');
+		$scope.menProducts = filteredProductsCategory('men');
+		$scope.womenProducts = filteredProductsCategory('women');
 	}
 	$scope.onGetCategoryFailure = function (response) {
 		alert(response.data.message);
 	}
 	$scope.getDesigners();
 	$scope.getCategories();
-
+	$scope.getProducts();
 	//custom methods
-	var filteredProducts = function(gender){
+	var filteredProductsCategory = function(gender){
 		return $scope.productCategories.filter(function (product) {
 			return product.gender == gender;
+		});
+	}
+
+	var filteredProducts = function(filterKey,value){
+		return $scope.products.filter(function (product) {
+			return product[filterKey] == value;
 		});
 	}
 
