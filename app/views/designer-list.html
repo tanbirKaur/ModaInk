@@ -16,7 +16,7 @@
 
 					<div id="custom-search-input">
                 <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Find your Designer" />
+                    <input ng-model="designerSearch" type="text" class="form-control input-lg" placeholder="Find your Designer" />
                     <span class="input-group-btn">
                         <button class="btn btn-info btn-lg" type="button">
                             <i class="icon-search"></i>
@@ -38,7 +38,7 @@
 		<div class="col-md-8" style="padding-left: 50px;">
 	                <ul class="alphabets">
 	               
-	                    <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+	                    <li ng-repeat="designerGroup in designerList | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
 	                    	<ul class="designer-listing" id="{{designerGroup.$key}}">
 	                    		<li class="alpha">{{designerGroup.$key}}</li>
 	                    		<hr>
