@@ -75,7 +75,7 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		$scope.designers = response.data;
 	}
 	$scope.onGetDesignersFailure = function (response) {
-		console.log("onGetDesignersFailure:"+response);
+		console.log("onGetDesignersFailure:",response);
 	}
 
 	$scope.onGetProductsSuccess = function (response) {
@@ -84,7 +84,7 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		storageService.set("products",$scope.products);
 	}
 	$scope.onGetProductsFailure = function (response) {
-		console.log("onGetProductsFailure:"+response);
+		console.log("onGetProductsFailure:",response);
 	}
 
 	$scope.onGetCategorySuccess = function (response) {
