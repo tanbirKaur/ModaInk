@@ -38,16 +38,6 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			templateUrl : "views/exclusive.html",
 			controller : "HomeController"
 		})
-		.state("exclusive-men", {
-			url: "/exclusive/men",
-			templateUrl : "views/exclusive-men.html",
-			// controller : "designerProfileController"
-		})
-		.state("exclusive-women", {
-			url: "/exclusive/women",
-			templateUrl : "views/exclusive-women.html",
-			// controller : "designerProfileController"
-		})
 		.state("sale", {
 			url: "/sale",
 			templateUrl : "views/discount.html",
@@ -116,3 +106,37 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
     	localStorageServiceProvider.setPrefix('modaink')
     	.setStorageType('sessionStorage');
 });
+
+//Global helper methods
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (window.isEquivalent(this[i],obj)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+window.isEquivalent = function (a, b) {
+	
+    // Create arrays of property names
+    var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    // If number of properties is different, objects are not equivalent
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+        // If values of same property are not equal, objects are not equivalent
+        if (a[propName] !== b[propName]) {
+           return false;
+        }
+    }
+
+    // If we made it this far, objects are considered equivalent
+    return true;
+}

@@ -12,7 +12,7 @@
 
 								<div class="shop-filters">
 									<p class="woocommerce-result-count">
-										Showing all {{exclusiveProducts.length}} results
+										Showing all {{products.length}} results
 									</p>
 									<form class="woocommerce-ordering" method="get">
 									<ul class="sort widget woocommerce">
@@ -28,11 +28,13 @@
 								</div>
 								<div class="products_wrapper ">
 									<ul class="products ">
-										<li class="product" ng-repeat="product in exclusiveProducts">
-											<div class="image_frame	" >
+										<li class="product" ng-repeat="product in products">
+											<div class="image_frame" >
 												<div class="image_wrapper">
 													<a href="/product-details/{{product.id}}/{{product.designer.id}}"><div class="mask"></div><img ng-src="{{product[0].url}}" title="{{product.description}}" alt="{{product.description}}"></a>
-												</div><span class="onsale"><i class="icon-star"></i></span><a href="/product-details/{{product.id}}/{{product.designer.id}}"></a>
+												</div>
+												<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
+												<a href="/product-details/{{product.id}}/{{product.designer.id}}"></a>
 											</div>
 											<div class="desc">
 												<h4><a href="/product-details/{{product.id}}/{{product.designer.id}}">{{product.name}}</a></h4>

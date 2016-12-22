@@ -5,6 +5,8 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.password;
 	$scope.menProducts = undefined;
 	$scope.womenProducts = undefined;
+	$scope.filterApplied = false;
+	$scope.productFilters = [{key:"isExclusive",val:true}];
 	$scope.alertHidden = function(){};
 
 	// http Methods
@@ -79,10 +81,12 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	}
 
 	$scope.onGetProductsSuccess = function (response) {
+		$scope.allProducts = response.data;
 		$scope.products = response.data;
-		$scope.exclusiveProducts = filteredProducts("isExclusive",true);
+		applyFilters();
 		storageService.set("products",$scope.products);
 	}
+
 	$scope.onGetProductsFailure = function (response) {
 		console.log("onGetProductsFailure:",response);
 	}
@@ -92,22 +96,79 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		$scope.menProducts = filteredProductsCategory('men');
 		$scope.womenProducts = filteredProductsCategory('women');
 	}
+
 	$scope.onGetCategoryFailure = function (response) {
 		alert(response.data.message);
 	}
 	$scope.getDesigners();
 	$scope.getCategories();
 	$scope.getProducts();
+	//Web View Methods
+	$scope.addFilter = function(key,val){
+		var filter = {key:key,val:val};
+		console.log('Adding Filter:',filter);
+		var alreadyAddedFilter = $scope.productFilters.contains(filter);
+		if (!alreadyAddedFilter) {
+			$scope.productFilters.push(filter);
+			console.log('Filter Added');
+		};
+		applyFilters();
+	}
+
+	$scope.removeFilter = function (key,val,checked) {
+		if (checked) {
+			return false;
+		}
+		var filter = {key:key,val:val};
+		console.log('Removing Filter:',filter);
+		for (var filterIndex = 0; filterIndex < $scope.productFilters.length; filterIndex++) {
+			var existingFilter = $scope.productFilters[filterIndex];
+			var filterIsPresent = angular.equals(filter,existingFilter);
+			if (filterIsPresent) {
+				$scope.productFilters.splice(filterIndex,1);
+				console.log('Filter Removed');
+				break;
+			}
+		}
+		applyFilters();
+		return true;
+	}
+
+	$scope.resetFilters = function(){
+		$scope.productFilters = [];
+		applyFilters();
+	}
+
+	$scope.productCountForCategory = function(category){
+		return filterProducts($scope.allProducts,"category.name",category).length;
+	}
+
 	//custom methods
+	var applyFilters = function(){
+		var products = [];
+		if ($scope.productFilters.length == 0) {
+			$scope.products = $scope.allProducts;
+		}else {$scope.productFilters.forEach(function (filter) {
+			filterProducts($scope.allProducts,filter.key,filter.val).forEach(function (product) {
+					products.push(product);
+				})
+			});
+			$scope.products = products;
+		}
+	}
+
+	var filterProducts = function(products,filterKey,value){
+		var keys = filterKey.split('.');
+		return products.filter(function (product) {
+			var keyLevel = 0;
+			var obj = product;
+			while(keyLevel < keys.length) obj = obj[keys[keyLevel++]];
+			return obj == value;
+		});
+	}
 	var filteredProductsCategory = function(gender){
 		return $scope.productCategories.filter(function (product) {
 			return product.gender == gender;
-		});
-	}
-
-	var filteredProducts = function(filterKey,value){
-		return $scope.products.filter(function (product) {
-			return product[filterKey] == value;
 		});
 	}
 

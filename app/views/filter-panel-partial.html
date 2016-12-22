@@ -1,139 +1,36 @@
 <div class="sidebar four-columns columns">
 				<div class="widget-area clearfix ">
-
-
-
-
 				<aside id="woocommerce_layered_nav_filters-2" class="widget woocommerce widget_layered_nav_filters">
-					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a style="font-size: x-small; float: right;">RESET ALL</a>
-
+					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
-						<li class="chosen">
-							<a title="Remove filter" href="/be/shop/product-category/for-her/accessories/bags-accessories/?max_price=20">Rs. 299.00 - Rs. 5000
+						<li class="chosen" ng-repeat="productFilter in productFilters">
+							<a title="Remove filter" href="/be/shop/product-category/for-her/accessories/bags-accessories/?max_price=20">{{productFilter.key}} - {{productFilter.val}}
 							</a>
 						</li>
 						
 					</ul>
 				</aside>
-
-
 				<aside class="basic_categorization widget woocommerce">
 						<ul>
 							<li ><a href="/exclusive" style="color: #c8a75e">All</a></li>
-							<li><a href="/exclusive/men" >Men</a></li>
-							<li><a href="/exclusive/women">Women</a></li>
+							<li><a href="" ng-click="addFilter('gender','men')">Men</a></li>
+							<li><a href="" ng-click="addFilter('gender','women')">Women</a></li>
 						</ul>
 					</aside>
-					
-
 					<aside class = "widget woocommerce">
 						<h4> CATEGORIES </h4>
-						<div class="filter_title"> Appreal </div>
-						<ul>
-						<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Dresses</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Tops</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-
-				
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Tshirts & Polos</label>
-						        <span class="num">(120)</span>
-						    </li>
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Shirts</label>
-						        <span class="num">(120)</span>
-						    </li>
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Bottoms</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Jackets &SweatShirts</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Ethenic</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Beachwear</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Suits</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
+						<div ng-repeat="category in productCategories">
+							<div class="filter_title"> {{category.name}} </div>
+							<ul>
+								<li class="input-group" ng-repeat="subCategory in category.subCategories">
+							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter('category.name',subCategory.name,subCategory.checked) || addFilter('category.name',subCategory.name)" aria-label="...">
+							        <label>{{subCategory.name}}</label>
+							        <span class="num">({{productCountForCategory(subCategory.name)}})</span>
+							    </li><!-- /input-group -->
 						    </ul>
-
-						<div class="filter_title"> Footwear </div>
-						<ul>
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Boots</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Dress Shoes</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Sneakers & Athelicts</label>
-						        <span class="num">(120)</span>
-						    </li>
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Wedges</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Dress Shoes</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Sneakers & Athelicts</label>
-						        <span class="num">(120)</span>
-						    </li>
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Loafers & Slip-Ons</label>
-						        <span class="num">(120)</span>
-						    </li>
-							<li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Slippers</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-						    <li class="input-group">
-						        <input type="checkbox" aria-label="...">
-						        <label>Espadrills</label>
-						        <span class="num">(120)</span>
-						    </li><!-- /input-group -->
-					    </ul>
-
-  
+						</div>
 					</aside>
-
-					<aside class = "widget woocommerce" style="height: 120px;"">
+					<aside class = "widget woocommerce" style="height: 120px;">
 						<div class="filter_title"> colour </div>
 						<div>
 						<ul >
