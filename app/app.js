@@ -33,9 +33,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			templateUrl : "views/for-her-heals.html",
 			// controller : "searchController"
 		})
-		.state("exclusive", {
-			url: "/exclusive",
-			templateUrl : "views/exclusive.html",
+		.state("products", {
+			url: "/products",
+			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
 		.state("sale", {

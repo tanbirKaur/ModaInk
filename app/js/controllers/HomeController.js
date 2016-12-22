@@ -115,6 +115,17 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		applyFilters();
 	}
 
+	$scope.resetCheckBoxForCategoryFilter = function (val) {
+		$scope.productCategories.forEach(function (category) {
+			category.subCategories = category.subCategories.map(function (subCategory) {	
+				if (subCategory.name == val) {
+					subCategory.checked = false;
+				}
+				return subCategory;
+			});
+		});
+	}
+
 	$scope.removeFilter = function (key,val,checked) {
 		if (checked) {
 			return false;
