@@ -28,12 +28,12 @@
 
 					<div>
 						<ul class="swatches Color">
-							<li class="selected">
-							<a title="color" class="swatchanchor" >
+							<li class="selected" ng-repeat="variantValue in sku.variantValues" ng-if="variantValue.variant.name=='Colour'">
+							<a title="color" class="swatchanchor" style="background:{{variantValue.name}}" >
 							</a>
 							
 							<span style="font-weight: bold;">
-							<a>Yellow</a> / <a>Black</a>
+                            <a>{{variantValue.description}}</a>
 							</span>
 							
 							</li>
@@ -47,28 +47,14 @@
 
 					<div class="product-variations">
 						<ul class="swatches">
-							<li>
-								<a> 6 </a>
+							<li ng-repeat="variantValue in sku.variantValues" ng-if="variantValue.variant.name=='Size'">
+								<a> {{variantValue.name}} </a>
 							</li>
-							<li>
-								<a> 8 </a>
-							</li>
-							<li class="out-of-stock">
-								<a> 10 </a>
-							</li>
-							<li>
-								<a> 12 </a>
-							</li>
-							<li>
-								<a> 14 </a>
-							</li>
-							<li class="out-of-stock">
-								<a> 16 </a>
-							</li>
+							<!-- <li class="out-of-stock"> -->
 						</ul>
 					</div>
 					<div class="purchase">
-						<a href="/checkout/cart"><button class="btn btn-sm "> Add to cart </button></a>
+                        <a href="/checkout/cart"><button class="btn btn-sm "> Add to cart </button></a>
 						<button class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
 						<span>This product is available for customization.</span>
 						<div>
