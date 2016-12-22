@@ -19,7 +19,7 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	}
 
 	$scope.getDesigners = function () {
-		httpService.callHttp("GET","designers",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+		httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
 	}
 
 	$scope.getCategories = function () {
