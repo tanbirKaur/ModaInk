@@ -1,5 +1,5 @@
 var app = window.app;
-app.factory('httpService', ['$http', function($http,storageService) {
+app.factory('httpService', ['$http','storageService', function($http,storageService) {
 	var httpService = {};
     httpService.callHttp = function (method, resouceName, params, headers, data, successCallback, errorCallback,noAuthentication) {
     	if (!noAuthentication) {

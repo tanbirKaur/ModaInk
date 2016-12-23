@@ -15,6 +15,10 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		httpService.callHttp("POST","users/authenticate",{},{},loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure,true);
 	}
 
+	$scope.getUserDetails = function () {
+		httpService.callHttp("GET","users/me",{},{},{},$scope.onGetUserDetailsSuccess,$scope.onGetUserDetailsFailure);
+	}
+
 	$scope.signUp = function () {
 		var signUpInfo = { "email": $scope.email,"password": $scope.password ,"mobile":$scope.contactNumber};
 		httpService.callHttp("POST","users",{},{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
@@ -40,6 +44,7 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		if (userCreated) {
 			$scope.alertHidden = function () {
 				storageService.set("accessToken",response.data.accessToken);
+				$scope.getUserDetails();
 				alert("Login Successful!");
 			}
 			hideModal("loginModal");
@@ -54,6 +59,13 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 			}
 		}
 		hideModal("loginModal");
+	}
+
+	$scope.onGetUserDetailsSuccess = function (response) {
+		$scope.userDetails = response.data;
+	}
+	$scope.onGetUserDetailsFailure = function (response) {
+		console.log('onGetUserDetailsFailure');
 	}
 
 	$scope.onSignUpSuccess = function (response) {
