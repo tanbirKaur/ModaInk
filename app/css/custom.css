@@ -32,8 +32,9 @@ a:hover {
 	width: 100% 
 }
 
-#Content {
-	border-bottom: 2px solid #181818;
+.footer-blog {
+	border-top: 2px solid #181818;
+    bottom: 0px;
 }
 
 .basic_categorization li {
@@ -49,6 +50,7 @@ a:hover {
 .basic_categorization a:hover {
 	color: #c8a75e;
 	text-decoration: underline;
+
 }
 
 .product {
@@ -352,17 +354,21 @@ li[data-colorhex='white'] {
     border-top: 1px dotted #d4d5d9;
 }
 #designerIndexLeftPanel{
-    margin-left: 10%;
-    position: fixed;
+    margin: 0% 10%;
+    
     font-size: 16px;
 }
 
 #designerIndexLeftPanel a {
     color: black;
-    display: block;
-    padding-bottom: 10px;
+    display: inline-flex;
+    padding: 10px;
 }
-
+ #designer-categories{
+    margin-left: 8%;
+    margin-bottom: 2%;
+}
+ }
 .alphabet-list {
     list-style: none;
     display: flex;
@@ -392,6 +398,7 @@ li[data-colorhex='white'] {
 
 .alphabets{
     list-style: none;
+    width: 95%;
 }
 .alphabets a{
     color: black;
@@ -844,7 +851,6 @@ div.fotos li.roomone {
     border: solid 1px #E4E4E4;
     border-radius: 10px;
     background-color: #fff;
-    width: 15%;
     margin-bottom: 30px;
 }
 
