@@ -22,7 +22,40 @@
 			</a>
 		</nav>
 		<div class="billing-address">
-			<h3>BILLING ADDRESS</h3>
+
+			
+			<div class="row">
+				<div class="col-lg-4 col-sm-12 ">
+				<h3>BILLING ADDRESS</h3>
+				</div>
+				<div class="col-lg-4 col-sm-12">
+					
+				</div>
+				<div>
+					<div class="desktop_version button_wrap" id="billing-buttons-container">
+                	<button type="button" class="button back_btn alt-action"><span>Back</span></button>
+			        <a href="/checkout/payment"><button type="submit" class="button "><span style="font-size: 20px;">Continue</span></button></a>
+			     </div>
+				</div>
+			</div>
+			<div class="row">
+			<div id="existing_address">
+				<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 ">
+					<div class="billing-left radio_btn_wrapper">
+            			<label for="billing:use_for_shipping_yes" >
+			            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1" checked="checked" title="Ship to this address" " style="display: inline-flex;">
+			            <span style="display: block; font-weight: bold">type</span>
+			            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
+			            <span style="display: block; ">line1 , line2</span>
+			            <span style="display: block; ">landmark</span>
+			            <span style="display: block; ">city - pincode</span>
+			            <span style="display: block; ">Mobile:  mobile</span>
+			            </label>
+			        </div>
+				</div>
+			</div>
+			</div>
+			<h3> NEW BILLING ADDRESS</h3>
 			<div class="row">
 				<div class="col-lg-5 col-sm-12 ">
 				</div>
@@ -82,7 +115,7 @@
 				<div class="col-lg-5 col-sm-12">
 					<div id="zip" class="billing-right">
 	        			<label for="billing:zip" class="required">Zip/Postal Code</label>
-			            <input type="text" id="billing:zip" name="billing[zip]" value="+91" title="zip" class="input-text required-entry validation-passed">
+			            <input type="text" id="billing:zip" name="billing[zip]"  title="zip" class="input-text required-entry validation-passed">
 			    	</div>
 				</div>
 			</div>
@@ -97,7 +130,7 @@
 					<div id="city" class="billing-right">
 	        			<label for="billing:city" class="required">City</label>
 	        			
-			            <input type="text" id="billing:city" name="billing[city]" value="+91" title="City" class="input-text required-entry validation-passed" >
+			            <input type="text" id="billing:city" name="billing[city]" title="City" class="input-text required-entry validation-passed" >
 			    	</div>
 				</div>
 			</div>
