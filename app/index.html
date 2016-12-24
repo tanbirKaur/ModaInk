@@ -135,13 +135,45 @@
                                                 <a href="/madeToOrder"><span>MADE TO ORDER</span></a>
                                             </li>
                                             <li>
-                                            <div class="top_bar_right_wrapper">
-                                                <a id="search_button" href="#"><i class="icon-search"></i></a>
-                                                <a id="profile_button" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-user"></i></a>
-                                                <a id="header_cart" href="/checkout/cart"><i class="fa fa-shopping-bag"></i><span>0</span></a>
-                                            </div>
+                                            <li class="dropdown header_buttons ">
+                                                
+                                                  <a id="profile_button" href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Your Account</a></li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <div style="margin-left: 10%;">
+                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
+
+                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
+                                                        </div>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="/profile">User Name <br/>
+                                                    User Email</a></li>
+
+                                                    <li class="divider"></li>
+                                                    <li><a href="/cart">User Bag</a></li>
+                                                    <li><a href="/wishlist">User wishlist</a></li>
+
+                                                    <li class="divider"></li>
+                                                    <li><a href="/profile">User wallet</a></li>
+                                                    <li><a href="/profile">Saved addresses</a></li>
+                                                    <li><a href="/profile">User badges</a></li>
+
+                                                    <li class="divider"></li>
+                                                    <li><a href="/cart">Edit Profile</a></li>
+                                                    <li><a href="/wishlist">Logout</a></li>
+                                                  </ul>
+                                            </li>
+                                            <li class="header_buttons">
+                                                <a id="search_button" href="#" style="font-size: 18px;"><i class="icon-search"></i></a>
                                             </li>
 
+                                            <li class="header_buttons">
+                                            <div>
+                                                <a id="header_cart" href="/checkout/cart"><i class="fa fa-shopping-bag"></i><span>0</span></a></div>
+                                            </li>
                                         </ul>
 
                                     </nav>
