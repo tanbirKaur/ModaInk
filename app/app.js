@@ -96,6 +96,11 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			url:"/diamond-designers",
 			templateUrl : "views/dimond-designers.html"
 		})
+		.state("my-profile", {
+			url:"/myProfile",
+			templateUrl : "views/user-profile.html"
+		})
+
 
 		
 		

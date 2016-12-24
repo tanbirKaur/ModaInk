@@ -1079,4 +1079,43 @@ label.required:after, span.required:after, i.required {
     overflow: scroll;
 }
 
+.user-profile-actions {
+    margin: 0% 10%;
+
+}
+.user-profile-actions > ul {
+    padding-right: 5%;
+}
+
+.user-profile-actions > ul > li > a {
+    text-transform: uppercase;
+}
+
+.user-profile-actions > ul > li.active > a , .user-profile-actions > ul > li.active > a:hover {
+    background-color: #c8a75e;
+}
+
+.profile-details-section {
+    border: 1px solid #eaeaec;
+    -webkit-box-shadow:  3px 3px 3px  rgba(0,0,0,.03);
+    box-shadow: 3px 3px 3px  rgba(0,0,0,.03);
+    margin-bottom: 10%;
     
+}
+.userDetails label{
+    display: block;
+    padding: 15px;
+    font-size: 16px;
+}
+.profile-title {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+.savedAdddress {
+    padding-bottom: 5%;
+}
+
+#add-billing-address-container {
+    float: right;
+    padding-top: 5%;
+}    

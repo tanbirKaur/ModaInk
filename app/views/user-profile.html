@@ -1,0 +1,122 @@
+<div id="Content" class="without_headers" >
+    <div class="content_wrapper clearfix">
+    
+    <div class="row user-profile-actions">
+
+    	<ul class="nav nav-pills nav-stacked col-md-4">
+		  <li role="presentation" class="active">
+		  	<a data-toggle="tab" href="#accountInformation"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Account Information</a>
+		  </li>
+		  <li role="presentation">
+		  	<a data-toggle="tab" href="#addresBook"><i class="fa fa-address-book-o"></i>&nbsp;&nbsp;Address book</a>
+		  </li>
+		  <li role="presentation">
+		  	<a data-toggle="tab"  href="#myOrders"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;My Orders</a>
+		  </li>
+		  <li role="presentation">
+		  	<a data-toggle="tab"  href="#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
+		  </li>
+		  <li role="presentation">
+		  	<a data-toggle="tab"  href="#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>
+		  </li>
+		</ul>
+
+		
+
+		<div class="col-md-8 profile-details-section">
+			<div class="tab-content">
+	    		<div id="accountInformation" class="tab-pane fade in active">
+	    		<h4 class="profile-title"><i class="fa fa-user-o"></i>&nbsp;&nbsp;ACCOUNT INFORMATION</h4>
+	    		<hr/>
+			    	<div class="row userDetails">
+				    	<div class="col-md-4">
+				    		<label> First Name </label>
+				    		<label> Last Name </label>
+				    		<label> E-mail Id </label>
+				    		<label> MobileNumber </label>
+				    		<label> Date of Birth </label>
+				    	</div>
+
+				    	<div class="col-md-4">
+				    		<label> User.firstName</label>
+				    		<label> User.lastName</label>
+				    		<label> User.E-mail Id </label>
+				    		<label> User.MobileNumber </label>
+				    		<label> User.Date of Birth </label>
+
+				    	</div>
+			    		
+			    	</div>
+		    	</div>
+	    		<div id="addresBook" class="tab-pane fade">
+	    			<div class = "container" style="padding-top: 5%;">
+					  	<div class="panel-group" id="accordion">
+					  		<div class="panel panel-default">
+							    <div class="panel-heading">
+							      <h4 class="panel-title">
+							        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#savedAdddress">
+							          Saved Addresses:
+							        </a>
+							      </h4>
+							    </div>
+							    <div id="savedAdddress" class="panel-collapse collapse in">
+							      <div class="panel-body">
+							        <div class="row">
+										<div id="existing_address">
+											<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 savedAdddress ">
+							            			<a href=""><i class="fa fa-times" style="display: inline-flex; font-size: 16px;"></i></a>
+										            <span style="display: inline-flex; font-weight: bold">type</span>
+										            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
+										            <span style="display: block; ">line1 , line2</span>
+										            <span style="display: block; ">landmark</span>
+										            <span style="display: block; ">city - pincode</span>
+										            <span style="display: block; ">Mobile:  mobile</span>
+											</div>
+										</div>
+																
+							      </div>
+							    </div>
+					  		</div>
+					  		</div>
+					  		<div class="panel panel-default">
+							    <div class="panel-heading">
+							      <h4 class="panel-title">
+							        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#newAddress">
+							          Add new Address
+							        </a>
+							      </h4>
+							    </div>
+							    <div id="newAddress" class="panel-collapse collapse">
+							      <div class="panel-body">
+							    	<div ng-include src="'views/add-new-address-partial.html'"> </div>
+							    		<div>
+											<div class="desktop_version button_wrap" id="add-billing-address-container">
+						                	<button type="button" class="button btn-sm"><span style="font-size: 16px;">Cancel</span></button>
+									        <a href="/checkout/payment"><button type="submit" class="button btn-sm"><span style="font-size: 16px;">Save</span></button></a>
+									     	</div>
+										</div>
+							    	</div>
+							      </div>
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+	    		<div id="myOrders" class="tab-pane fade">
+	    			HiIIIIIIsssss
+	    		</div>
+	    		<div id="wishlist" class="tab-pane fade">
+	    			HiIIIIIIaaaaa
+	    		</div>
+	    		<div id="rewards" class="tab-pane fade">
+	    			HiIIIIIIaaaaaddd
+	    		</div>
+    		</div>
+		</div>
+    </div>
+
+    
+
+
+    </div>
+</div>
