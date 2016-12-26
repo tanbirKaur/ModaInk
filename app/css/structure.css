@@ -4120,13 +4120,14 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
        }
 
 #Footer .footer_copy .social {
-    float: right;
-    margin-right: 20px;
+    
+        padding-left: 37%;
+    padding-bottom: 1%;
 }
 
 #Footer .footer_copy .social li {
     display: inline-block;
-    margin-right: 6px;
+    margin-right: 15px;
 }
 
 #Footer .footer_copy .social li:last-child {
@@ -4134,8 +4135,8 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
 }
 
 #Footer .footer_copy .social li a {
-    color: rgba(255,255,255,.3);
-    font-size: 15px;
+    
+    font-size: 24px;
     line-height: 15px;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -4144,9 +4145,35 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
     transition: all .3s ease-in-out;
 }
 
-#Footer .footer_copy .social li a:hover {
-    color: #fff;
+#Footer .footer_copy .social .skype a:hover {
+    color: #12A5F4;
 }
+
+#Footer .footer_copy .social .facebook a:hover {
+    color: #335795;
+}
+
+#Footer .footer_copy .social .googleplus a:hover {
+    color: #DD4B39;
+}
+
+#Footer .footer_copy .social .twitter a:hover {
+    color: #03ABEA;
+}
+
+#Footer .footer_copy .social .Vimeo a:hover {
+    color: #4EBBFF;
+}
+#Footer .footer_copy .social .flickr a:hover {
+    color: #0063DC;
+}
+#Footer .footer_copy .social .linkedin a:hover {
+    color: #0077B5;
+}
+
+
+
+
 
 #Footer .footer_copy .social-menu {
     float: right;

@@ -1118,4 +1118,30 @@ label.required:after, span.required:after, i.required {
 #add-billing-address-container {
     float: right;
     padding-top: 5%;
-}    
+}   
+
+#back_to_top {
+     bottom: 50px;
+        float: right;
+        right: 10px;
+        position: fixed;
+}
+
+#social {
+    border-bottom: 1px solid #c8a75e;
+}
+
+.footer-links{
+    padding: 2%;
+}
+.footer-links label, .footer-links a{
+    padding-bottom:5%;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+}
+
+.footer-links a:hover{
+    color: #c8a75e;
+}
+
