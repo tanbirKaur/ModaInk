@@ -1175,7 +1175,7 @@ label.required:after, span.required:after, i.required {
     border-bottom-color: transparent;
 }
 
-span.round-tab {
+span.round-tab, button.round-tab {
     width: 70px;
     height: 70px;
     line-height: 70px;
@@ -1190,7 +1190,14 @@ span.round-tab {
     font-size: 25px;
 }
 
-.exchange span.round-tab {
+.send-reply button.round-tab{
+    width: 70px;
+    height: 50px;
+    line-height: 20px;
+    color: black;
+}  
+
+.exchange span.round-tab  {
     width: 50px;
     height: 50px;
     line-height: 50px;
@@ -1268,6 +1275,34 @@ span.round-tab:hover {
     font-size: 16px;
     padding: 2% !important;
 }
+
+.img-circle {
+    margin: auto 10px auto auto;
+    width: 40px;
+    height: 40px;
+}
+
+.message , .reply {
+    background: whitesmoke;
+    margin: 2%;
+    padding: 2%;
+}
+.message button {
+    font-size: large;
+    color: black;
+    background: transparent;
+    padding: 5px;
+}
+
+.reply textarea{
+    width: 100%;
+}
+
+.send-reply {
+    height: 50px;
+}
+
+
 
 /*Footer*/
 
