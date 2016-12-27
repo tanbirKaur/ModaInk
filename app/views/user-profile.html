@@ -1,119 +1,171 @@
 <div id="Content" class="without_headers" >
     <div class="content_wrapper clearfix">
     
-    <div class="row user-profile-actions">
+	    <div class="row user-profile-actions">
 
-    	<ul class="nav nav-pills nav-stacked col-md-4">
-		  <li role="presentation" class="active">
-		  	<a data-toggle="tab" href="#accountInformation"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Account Information</a>
-		  </li>
-		  <li role="presentation">
-		  	<a data-toggle="tab" href="#addresBook"><i class="fa fa-address-book-o"></i>&nbsp;&nbsp;Address book</a>
-		  </li>
-		  <li role="presentation">
-		  	<a data-toggle="tab"  href="#myOrders"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;My Orders</a>
-		  </li>
-		  <li role="presentation">
-		  	<a data-toggle="tab"  href="#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
-		  </li>
-		  <li role="presentation">
-		  	<a data-toggle="tab"  href="#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>
-		  </li>
-		</ul>
+	    	<ul class="nav nav-pills nav-stacked col-md-4">
+			  <li role="presentation" class="active">
+			  	<a data-toggle="tab" href="#accountInformation"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Account Information</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab" href="#addresBook"><i class="fa fa-address-book-o"></i>&nbsp;&nbsp;Address book</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab"  href="#myOrders"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;My Orders</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab"  href="#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab"  href="#message"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;Messages</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab"  href="#measurement"><i class="fa fa-scissors"></i>&nbsp;&nbsp;My Measurements</a>
+			  </li>
+			  <li role="presentation">
+			  	<a data-toggle="tab"  href="#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>
+			  </li>
+			</ul>
 
-		
+			
 
-		<div class="col-md-8 profile-details-section">
-			<div class="tab-content">
-	    		<div id="accountInformation" class="tab-pane fade in active">
-	    		<h4 class="profile-title"><i class="fa fa-user-o"></i>&nbsp;&nbsp;ACCOUNT INFORMATION</h4>
-	    		<hr/>
-			    	<div class="row userDetails">
-				    	<div class="col-md-4">
-				    		<label> First Name </label>
-				    		<label> Last Name </label>
-				    		<label> E-mail Id </label>
-				    		<label> MobileNumber </label>
-				    		<label> Date of Birth </label>
-				    	</div>
+			<div class="col-md-8 profile-details-section">
+				<div class="tab-content">
+		    		<div id="accountInformation" class="tab-pane fade in active">
+			    		<h4 class="profile-title"><i class="fa fa-user-o"></i>&nbsp;&nbsp;ACCOUNT INFORMATION</h4>
+			    		<hr/>
+					    	<div class="row userDetails">
+						    	<div class="col-md-4">
+						    		<label> First Name </label>
+						    		<label> Last Name </label>
+						    		<label> E-mail Id </label>
+						    		<label> Mobile Number </label>
+						    		<label> Date of Birth </label>
+						    	</div>
 
-				    	<div class="col-md-4">
-				    		<label> User.firstName</label>
-				    		<label> User.lastName</label>
-				    		<label> User.E-mail Id </label>
-				    		<label> User.MobileNumber </label>
-				    		<label> User.Date of Birth </label>
+						    	<div class="col-md-4">
+						    		<label> User.firstName</label>
+						    		<label> User.lastName</label>
+						    		<label> User.E-mail Id </label>
+						    		<label> User.MobileNumber </label>
+						    		<label> User.Date of Birth </label>
 
-				    	</div>
-			    		
+						    	</div>
+					    		
+					    	</div>
 			    	</div>
-		    	</div>
-	    		<div id="addresBook" class="tab-pane fade">
-	    			<div class = "container" style="padding-top: 5%;">
-					  	<div class="panel-group" id="accordion">
-					  		<div class="panel panel-default">
-							    <div class="panel-heading">
-							      <h4 class="panel-title">
-							        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#savedAdddress">
-							          Saved Addresses:
-							        </a>
-							      </h4>
-							    </div>
-							    <div id="savedAdddress" class="panel-collapse collapse in">
-							      <div class="panel-body">
-							        <div class="row">
-										<div id="existing_address">
-											<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 savedAdddress ">
-							            			<a href=""><i class="fa fa-times" style="display: inline-flex; font-size: 16px;"></i></a>
-										            <span style="display: inline-flex; font-weight: bold">type</span>
-										            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
-										            <span style="display: block; ">line1 , line2</span>
-										            <span style="display: block; ">landmark</span>
-										            <span style="display: block; ">city - pincode</span>
-										            <span style="display: block; ">Mobile:  mobile</span>
+
+		    		<div id="addresBook" class="tab-pane fade">
+		    			<div class = "container" style="padding-top: 5%;">
+						  	<div class="panel-group" id="accordion">
+						  		<div class="panel panel-default">
+								    <div class="panel-heading">
+								      <h4 class="panel-title">
+								        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#savedAdddress">
+								          Saved Addresses:
+								        </a>
+								      </h4>
+								    </div>
+								    <div id="savedAdddress" class="panel-collapse collapse in">
+								        <div class="panel-body">
+									        <div class="row">
+												<div id="existing_address">
+													<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 savedAdddress ">
+									            			<a href=""><i class="fa fa-times" style="display: inline-flex; font-size: 16px;"></i></a>
+												            <span style="display: inline-flex; font-weight: bold">type</span>
+												            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
+												            <span style="display: block; ">line1 , line2</span>
+												            <span style="display: block; ">landmark</span>
+												            <span style="display: block; ">city - pincode</span>
+												            <span style="display: block; ">Mobile:  mobile</span>
+													</div>
+												</div>
+																		
+									        </div>
+									    </div>
+						  			</div>
+						  		</div>
+						  		<div class="panel panel-default">
+								    <div class="panel-heading">
+								      <h4 class="panel-title">
+								        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#newAddress">
+								          Add new Address
+								        </a>
+								      </h4>
+								    </div>
+								    <div id="newAddress" class="panel-collapse collapse">
+								    	<div class="panel-body">
+									    	<div ng-include src="'views/add-new-address-partial.html'">
+									    	</div>
+								    		<div>
+												<div class="desktop_version button_wrap" id="add-billing-address-container">
+								                	<button type="button" class="button btn-sm"><span style="font-size: 16px;">Cancel</span></button>
+											        <a href="/checkout/payment"><button type="submit" class="button btn-sm"><span style="font-size: 16px;">Save</span></button></a>
+										     	</div>
 											</div>
-										</div>
-																
-							      </div>
-							    </div>
-					  		</div>
-					  		</div>
-					  		<div class="panel panel-default">
-							    <div class="panel-heading">
-							      <h4 class="panel-title">
-							        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#newAddress">
-							          Add new Address
-							        </a>
-							      </h4>
-							    </div>
-							    <div id="newAddress" class="panel-collapse collapse">
-							      <div class="panel-body">
-							    	<div ng-include src="'views/add-new-address-partial.html'"> </div>
-							    		<div>
-											<div class="desktop_version button_wrap" id="add-billing-address-container">
-						                	<button type="button" class="button btn-sm"><span style="font-size: 16px;">Cancel</span></button>
-									        <a href="/checkout/payment"><button type="submit" class="button btn-sm"><span style="font-size: 16px;">Save</span></button></a>
-									     	</div>
-										</div>
-							    	</div>
-							      </div>
+							    		</div>
+								    </div>
 							    </div>
 						    </div>
 					    </div>
 				    </div>
-			    </div>
-	    		<div id="myOrders" class="tab-pane fade">
-	    			HiIIIIIIsssss
+
+		    		<div id="myOrders" class="tab-pane fade">
+		    			<ul class="nav nav-tabs nav-justified" style=" padding-top: 5%;">
+							
+						    <li role="presentation" class="active">
+						  		<a href="#ongoingOrder" data-toggle="tab">Ongoing Orders</a>
+					  		</li>
+						    <li role="presentation">
+						    	<a href="#pastOrder" data-toggle="tab">Past Orders</a>
+					    	</li>
+					    	<li role="presentation" >
+						  		<a href="#exchangeReturns" data-toggle="tab">Exchange and Returns</a>
+							</li>
+						</ul>
+						<div ng-include src="'views/orders.html'"></div>
+		    		</div>
+
+		    		<div id="wishlist" class="tab-pane fade woocommerce woocommerce-content">
+		    			<div class="products_wrapper ">
+									<ul class="products ">
+										<li class="product" ng-repeat="product in products">
+											<div class="image_frame" >
+												<div class="image_wrapper">
+													<a href="/product-details/{{product.id}}/{{product.designer.id}}"><div class="mask"></div><img ng-src="{{product[0].url}}" title="{{product.description}}" alt="{{product.description}}"></a>
+												</div>
+												<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
+												<a href="/product-details/{{product.id}}/{{product.designer.id}}"></a>
+											</div>
+											<div class="desc">
+												<h4><a href="/product-details/{{product.id}}/{{product.designer.id}}">{{product.name}}</a></h4>
+												<div >
+												<span class="price"><span class="amount">Rs. {{product.skus[0].price}}</span></span>
+												<a href=""> <i class="fa fa-shopping-bag"></i>Move to Cart</a>
+												<a href="" style="float: right;"> <i class="fa fa-trash-o"></i></a>
+												</div>
+											</div>
+
+										</li>
+									</ul>
+								</div>
+		    		</div>
+
+		    		<div id="message" class="tab-pane fade">
+		    			my chats with designer goes here
+		    		</div>
+
+		    		<div id="measurement" class="tab-pane fade">
+		    			my measurements for customization and made to order goes here
+		    		</div>
+
+		    		<div id="rewards" class="tab-pane fade">
+		    			my points goes here
+		    		</div>
+
 	    		</div>
-	    		<div id="wishlist" class="tab-pane fade">
-	    			HiIIIIIIaaaaa
-	    		</div>
-	    		<div id="rewards" class="tab-pane fade">
-	    			HiIIIIIIaaaaaddd
-	    		</div>
-    		</div>
-		</div>
-    </div>
+			</div>
+	    </div>
 
     
 

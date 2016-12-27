@@ -1079,6 +1079,9 @@ label.required:after, span.required:after, i.required {
     overflow: scroll;
 }
 
+
+/*user profile*/
+
 .user-profile-actions {
     margin: 0% 10%;
 
@@ -1092,7 +1095,7 @@ label.required:after, span.required:after, i.required {
 }
 
 .user-profile-actions > ul > li.active > a , .user-profile-actions > ul > li.active > a:hover {
-    background-color: #c8a75e;
+    background-color: #c8a75e !important;
 }
 
 .profile-details-section {
@@ -1100,6 +1103,7 @@ label.required:after, span.required:after, i.required {
     -webkit-box-shadow:  3px 3px 3px  rgba(0,0,0,.03);
     box-shadow: 3px 3px 3px  rgba(0,0,0,.03);
     margin-bottom: 10%;
+    min-height: 400px;
     
 }
 .userDetails label{
@@ -1118,7 +1122,154 @@ label.required:after, span.required:after, i.required {
 #add-billing-address-container {
     float: right;
     padding-top: 5%;
-}   
+}  
+
+.orders {
+    border: 1px solid #eaeaec;
+    -webkit-box-shadow:  3px 3px 3px  rgba(0,0,0,.03);
+    box-shadow: 3px 3px 3px  rgba(0,0,0,.03);
+    margin-bottom: 10%;
+   
+}
+
+.orders div{
+    padding: 0 2%;
+}
+
+.wizard {
+    margin: 20px auto;
+    background: #fff;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin-bottom: 0;
+        border: 0px;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 70%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.exchange .connecting-line {
+    width: 75% !important;
+    top: 30% !important;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+.exchange span.round-tab {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 33.33%;
+}
+
+.exchange .nav-tabs > li {
+    width: 20% !important;
+}
+
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard .nav-tabs > li label{
+    padding-left: 25%;
+    font-size: 16px;
+}
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+.exchange .nav-tabs > li a{
+    height: 50px !important;
+}
+
+.wizard .nav-tabs > li a:hover {
+    background: transparent;
+}
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 50px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+
+.order-info {
+    font-size: 16px;
+    padding: 2% !important;
+}
+
+/*Footer*/
 
 #back_to_top {
      bottom: 50px;
