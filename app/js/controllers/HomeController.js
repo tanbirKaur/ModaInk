@@ -6,6 +6,7 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.menProducts = undefined;
 	$scope.womenProducts = undefined;
 	$scope.filterApplied = false;
+	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = [{key:"isExclusive",val:true}];
 	$scope.alertHidden = function(){};
 
@@ -17,6 +18,10 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.getUserDetails = function () {
 		httpService.callHttp("GET","users/me",{},{},{},$scope.onGetUserDetailsSuccess,$scope.onGetUserDetailsFailure);
+	}
+
+	$scope.getShoppingCartItems= function () {
+		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcart/items ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
 	}
 
 	$scope.signUp = function () {
@@ -63,9 +68,19 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.onGetUserDetailsSuccess = function (response) {
 		$scope.userDetails = response.data;
+		$scope.getShoppingCartItems();
 	}
 	$scope.onGetUserDetailsFailure = function (response) {
 		console.log('onGetUserDetailsFailure');
+	}
+
+	$scope.onGetShoppingCartItemsSuccess = function (response) {
+		$scope.shoppingcartItems = response.data;
+		$scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+		storageService.set("cartItems",$scope.shoppingcartItems);
+	}
+	$scope.onGetShoppingCartItemsFailure = function (response) {
+		console.log('onGetShoppingCartItemsFailure');
 	}
 
 	$scope.onSignUpSuccess = function (response) {
@@ -105,8 +120,6 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.onGetCategorySuccess = function (response) {
 		$scope.productCategories = response.data;
-		$scope.menProducts = filteredProductsCategory('men');
-		$scope.womenProducts = filteredProductsCategory('women');
 	}
 
 	$scope.onGetCategoryFailure = function (response) {

@@ -1,4 +1,4 @@
-<div id="Content" class="without_headers">
+<div ng-controller="UserProfileController" id="Content" class="without_headers">
 	<div class="content_wrapper clearfix" style="margin-left: 15%; margin-right: 15%; margin-bottom: 10%;">
 	<nav class="stepper">
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
@@ -23,29 +23,31 @@
 		</nav>
 		<hr>
 		<div  id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
-			<h4 style="display: inline-block;n">My Shopping Cart (1 item)</h4>
-			<h4 style="float: right;"> Total: 499</h4>	
+			<h4 style="display: inline-block;n">My Shopping Cart ({{cartItems.length}} item)</h4>
+			<h4 style="float: right;"> Total: {{totalPrice}}</h4>	
 			<hr>
 
 			<div class="prod-set">
-				<div class="b-white row prod-item br-b-grey">
+				<div ng-repeat="cartItem in cartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
-						<a href="/Tshirts/Roadster/Roadster-Olive-Green-T-shirt/1345907/buy" >
+						<a href="product-details/{{cartItem.item.product.id}}/{{cartItem.item.product.designer.id}}" >
 							<img src="http://assets.myntassets.com/h_128,q_100,w_96/v1/assets/images/1345907/2016/7/28/11469692725940-Roadster-Olive-Green-T-shirt-4481469692720722-1.jpg" alt="image of Roadster Olive Green T-shirt" width="96" height="128">
 						</a>
 					</div>
 					<div class="col2">
 						<div class="prod-name">
-							<a href="">Roadster Olive Green T-shirt</a>
-							<span style="float: right; padding-right: 10%">Rs. 320</span>
+							<a href="">{{cartItem.item.product.name}}</a>
+							<span style="float: right; padding-right: 10%">Rs. {{cartItem.item.price-cartItem.item.discountPrice}}</span>
 						</div>
 						<div class="size/qty">
-							<span >Size: 14</span>
-							<span style="padding-left: 10%">Qty: 1</span>
-							<span style="float: right; padding-right: 10%"> <span>(20% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. 499</span> </span>
+							<div ng-repeat="variant in cartItem.item.variantValues">
+								<span >{{variant.variant.name}}: {{variant.description}}</span>
+							</div>
+							<span style="padding-left: 10%">Qty: {{cartItem.item.quantity}}</span>
+							<span style="float: right; padding-right: 10%"> <span>({{(cartItem.item.discountPrice/cartItem.item.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.item.price}}</span> </span>
 						</div>
 						<div class="designer" style="padding-top: 2%">
-							<span >Sold By: Abc designer</span>
+							<span >Sold By: {{cartItem.item.product.designer.firstName}} {{cartItem.item.product.designer.lastName}}</span>
 						</div>
 						<div class="edit">
 							<a href=""> <i class="icon-pencil"></i>Edit Item</a>

@@ -65,7 +65,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 		.state("cart", {
 			url: "/checkout/cart",
 			templateUrl : "views/cart.html",
-			// controller : "userProfileController"
+			controller : "UserProfileController"
 		})
 		.state("billing-details", {
 			url:"/checkout/billing-details",
