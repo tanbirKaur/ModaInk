@@ -28,7 +28,7 @@
 								</div>
 								<div class="products_wrapper ">
 									<ul class="products ">
-										<li class="product" ng-repeat="product in products">
+										<li class="product" ng-repeat="product in products track by $index">
 											<div class="image_frame" >
 												<div class="image_wrapper">
 													<a href="/product-details/{{product.id}}/{{product.designer.id}}"><div class="mask"></div><img ng-src="{{product[0].url}}" title="{{product.description}}" alt="{{product.description}}"></a>

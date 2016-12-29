@@ -1,13 +1,17 @@
 var app = window.app;
-app.controller('HomeController', function($scope,httpService,storageService) {
+app.controller('HomeController', function($scope,$stateParams,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
 	$scope.menProducts = undefined;
 	$scope.womenProducts = undefined;
+	$scope.userName = undefined;
 	$scope.filterApplied = false;
 	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = [{key:"isExclusive",val:true}];
+	$scope.categoryGender = {men:true,women:true};
+	$scope.parentCategory = $stateParams.topCategory;
+	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
 
 	// http Methods
@@ -68,6 +72,8 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.onGetUserDetailsSuccess = function (response) {
 		$scope.userDetails = response.data;
+		storageService.set("userDetails",$scope.userDetails);
+		$scope.userName = $scope.userDetails.firstName + $scope.userDetails.lastName;
 		$scope.getShoppingCartItems();
 	}
 	$scope.onGetUserDetailsFailure = function (response) {
@@ -76,8 +82,6 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 
 	$scope.onGetShoppingCartItemsSuccess = function (response) {
 		$scope.shoppingcartItems = response.data;
-		$scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
-		storageService.set("cartItems",$scope.shoppingcartItems);
 	}
 	$scope.onGetShoppingCartItemsFailure = function (response) {
 		console.log('onGetShoppingCartItemsFailure');
@@ -125,18 +129,19 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	$scope.onGetCategoryFailure = function (response) {
 		alert(response.data.message);
 	}
-	$scope.getDesigners();
-	$scope.getCategories();
-	$scope.getProducts();
+
 	//Web View Methods
 	$scope.addFilter = function(key,val){
 		var filter = {key:key,val:val};
 		console.log('Adding Filter:',filter);
+		if (key == 'gender') {
+			$scope.categoryGender[val] = true;
+		}
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
 		if (!alreadyAddedFilter) {
 			$scope.productFilters.push(filter);
 			console.log('Filter Added');
-		};
+		}
 		applyFilters();
 	}
 
@@ -186,7 +191,9 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 			$scope.products = $scope.allProducts;
 		}else {$scope.productFilters.forEach(function (filter) {
 			filterProducts($scope.allProducts,filter.key,filter.val).forEach(function (product) {
-					products.push(product);
+					if (products.indexOf(product) == -1) {
+						products.push(product);
+					}
 				})
 			});
 			$scope.products = products;
@@ -198,7 +205,20 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 		return products.filter(function (product) {
 			var keyLevel = 0;
 			var obj = product;
-			while(keyLevel < keys.length) obj = obj[keys[keyLevel++]];
+			if (keys[0] == 'category') {
+				var keyName = 'category';
+				while(obj[keyName]){
+					obj = obj[keyName];
+					if (obj.name == value) {
+						return true;
+					}
+					if (obj) {
+						keyName = 'subcategory';
+					}
+				}
+			} else {
+				obj = obj[filterKey];
+			}
 			return obj == value;
 		});
 	}
@@ -214,4 +234,15 @@ app.controller('HomeController', function($scope,httpService,storageService) {
 	angular.element('#loginModal').on('hidden.bs.modal', function () {
 		$scope.alertHidden();
 	});
+
+	if ($scope.parentCategory) {
+		$scope.categoryGender[$scope.parentCategory] = true;
+		$scope.productFilters.push({key:"category",val:$scope.subCategory});
+		applyFilters();
+	} else {
+		$scope.getDesigners();
+		$scope.getCategories();
+		$scope.getProducts();
+	}
+
 });
