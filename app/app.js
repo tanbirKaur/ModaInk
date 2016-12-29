@@ -33,8 +33,13 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			templateUrl : "views/for-her-heals.html",
 			// controller : "searchController"
 		})
-		.state("products", {
+		.state("/", {
 			url: "/products",
+			templateUrl : "views/products.html",
+			controller : "HomeController"
+		})
+		.state("products", {
+			url: "/products/:topCategory/:subCategory",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
