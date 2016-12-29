@@ -9,7 +9,6 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.filterApplied = false;
 	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = [{key:"isExclusive",val:true}];
-	$scope.categoryGender = {men:true,women:true};
 	$scope.parentCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
@@ -134,9 +133,6 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.addFilter = function(key,val){
 		var filter = {key:key,val:val};
 		console.log('Adding Filter:',filter);
-		if (key == 'gender') {
-			$scope.categoryGender[val] = true;
-		}
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
 		if (!alreadyAddedFilter) {
 			$scope.productFilters.push(filter);
@@ -201,11 +197,10 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	}
 
 	var filterProducts = function(products,filterKey,value){
-		var keys = filterKey.split('.');
 		return products.filter(function (product) {
 			var keyLevel = 0;
 			var obj = product;
-			if (keys[0] == 'category') {
+			if (filterKey == 'category') {
 				var keyName = 'category';
 				while(obj[keyName]){
 					obj = obj[keyName];
@@ -216,7 +211,9 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 						keyName = 'subcategory';
 					}
 				}
-			} else {
+			} else if (filterKey == 'gender') {
+				obj = obj.category[filterKey];
+			}else {
 				obj = obj[filterKey];
 			}
 			return obj == value;
@@ -236,7 +233,6 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	});
 
 	if ($scope.parentCategory) {
-		$scope.categoryGender[$scope.parentCategory] = true;
 		$scope.productFilters.push({key:"category",val:$scope.subCategory});
 		applyFilters();
 	} else {
