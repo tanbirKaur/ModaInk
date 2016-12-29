@@ -105,11 +105,10 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			url:"/myProfile",
 			templateUrl : "views/user-profile.html"
 		})
-
-
-		
-		
-		
+		.state("become-seller", {
+			url:"/becomeSeller",
+			templateUrl : "views/vendor-signup-and how-it-works.html"
+		})
 		// ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);

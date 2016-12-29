@@ -1175,7 +1175,7 @@ label.required:after, span.required:after, i.required {
     border-bottom-color: transparent;
 }
 
-span.round-tab {
+span.round-tab, button.round-tab {
     width: 70px;
     height: 70px;
     line-height: 70px;
@@ -1190,7 +1190,14 @@ span.round-tab {
     font-size: 25px;
 }
 
-.exchange span.round-tab {
+.send-reply button.round-tab{
+    width: 70px;
+    height: 50px;
+    line-height: 20px;
+    color: black;
+}  
+
+.exchange span.round-tab  {
     width: 50px;
     height: 50px;
     line-height: 50px;
@@ -1269,6 +1276,34 @@ span.round-tab:hover {
     padding: 2% !important;
 }
 
+.img-circle {
+    margin: auto 10px auto auto;
+    width: 40px;
+    height: 40px;
+}
+
+.message , .reply {
+    background: whitesmoke;
+    margin: 2%;
+    padding: 2%;
+}
+.message button {
+    font-size: large;
+    color: black;
+    background: transparent;
+    padding: 5px;
+}
+
+.reply textarea{
+    width: 100%;
+}
+
+.send-reply {
+    height: 50px;
+}
+
+
+
 /*Footer*/
 
 #back_to_top {
@@ -1295,4 +1330,91 @@ span.round-tab:hover {
 .footer-links a:hover{
     color: #c8a75e;
 }
+
+/*vendor flow*/
+.vendor-flow{
+    background-color: #181818;
+
+}
+.vendor-flow img{
+    width: 100%;
+}
+.become-Designer-Button{
+    color: #181818;
+    margin-top: 20px;
+}
+
+.become-Designer-Button, .register-Designer-Button {
+    border: 2px solid #181818;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.register-Designer-Button{
+        margin-left: 40%;
+}
+
+.register-Designer-Button:hover , .become-Designer-Button:hover {
+    color: #fff;
+    background-color: #181818;
+
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100%;
+}
+.custom-btn{
+    background-color: #fff;
+    border: 2px solid #fff;
+    margin: 2%;
+    font-size: 16px;
+    color: #181818;
+   
+}
+
+.custom-btn:hover {
+    border-color: #181818;
+    background-color: #fff;
+    color: #181818;
+}
+
+.full-width input{
+    width: 100%;
+}
+.box-body label{
+    color: #fff;
+    font-size: 16px;
+
+}
+.box-title  {
+    color: #fff;
+}
+.box-footer {
+    float: right;
+}
+
+
+
+
 
