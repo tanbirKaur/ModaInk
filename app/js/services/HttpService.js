@@ -3,7 +3,7 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
 	var httpService = {};
     httpService.callHttp = function (method, resouceName, params, headers, data, successCallback, errorCallback,noAuthentication) {
     	if (!noAuthentication) {
-	    	headers.accessToken = storageService.get("accessToken");
+	    	headers.accessToken = 'Bearer' + storageService.get("accessToken");
     	};
 		$http({	method: method, 
 			url: window.apiUrl+"/"+resouceName,
