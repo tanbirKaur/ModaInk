@@ -109,6 +109,30 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localS
 			url:"/becomeSeller",
 			templateUrl : "views/vendor-signup-and how-it-works.html"
 		})
+		.state("about-us", {
+			url:"/aboutUs",
+			templateUrl : "views/about-us.html"
+		})
+		.state("privacy-policy", {
+			url:"/privacy-policy",
+			templateUrl : "views/privacy-policy.html"
+		})
+		.state("returns-and-exchange", {
+			url:"/returns-and-exchange",
+			templateUrl : "views/returns-and-exchange.html"
+		})
+		.state("shipping-policy", {
+			url:"/shipping-policy",
+			templateUrl : "views/shipping-policy.html"
+		})
+		.state("terms-and-cond", {
+			url:"/terms-and-cond",
+			templateUrl : "views/terms-and-cond.html"
+		})
+		.state("disclaimer", {
+			url:"/disclaimer",
+			templateUrl : "views/disclaimer.html"
+		})
 		// ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);

@@ -1414,6 +1414,9 @@ span.round-tab:hover {
     float: right;
 }
 
+.border-top{
+    border-top: 1px solid #181818;
+}
 
 
 
