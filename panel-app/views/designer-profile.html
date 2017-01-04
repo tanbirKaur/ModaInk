@@ -1,0 +1,515 @@
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" ng-controller="DesignerController">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Designer Profile
+      </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+
+        <!-- /.col -->
+        <div class="col-md-12">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#basic-info" data-toggle="tab">Basic Info</a></li>
+              <li ng-show="isAdmin"><a href="#products" data-toggle="tab">Products(admin)</a></li>
+              <li ng-show="isAdmin"><a href="#product-requests" data-toggle="tab">Product Requests(admin)</a></li>
+              <li ng-show="isAdmin"><a href="#ongoing-orders" data-toggle="tab">Ongoing Orders(admin)</a></li>
+              <li ng-show="isAdmin"><a href="#past-orders" data-toggle="tab">Past Orders(admin)</a></li>
+              <li ng-show="isAdmin"><a href="#payouts" data-toggle="tab">Payouts(admin)</a></li>
+              <li><a href="#edit-profile" data-toggle="tab">Edit Profile</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+
+              <div class="active tab-pane" id="basic-info">
+                
+                <div class="row">
+                <div class="col-md-3">
+
+                  <!-- Profile Image -->
+                  <div class="box box-default">
+                    <div class="box-body box-profile">
+                      <img class="profile-user-img img-responsive img-circle" src="images/user4-128x128.jpg" alt="User profile picture">
+
+                      <h3 class="profile-username text-center">{{designerDetails.firstName}} {{designerDetails.lastname}}</h3>
+
+                      <p class="text-muted text-center">{{designerDetails.bagde.name}}</p>
+
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <b>Products</b> <a class="pull-right">15</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Sales</b> <a class="pull-right">9</a>
+                        </li>
+                        
+                      </ul>
+
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+
+                <div class="col-md-8">
+                  <!-- About Me Box -->
+          				<div class="box box-default">
+          					<div class="box-header with-border">
+          					  <h3 class="box-title">About</h3>
+          					</div>
+          					<!-- /.box-header -->
+          					<div class="box-body">
+          					 
+
+          					  <strong><i class="fa fa-home margin-r-5"></i> Address</strong>
+
+          					  <p class="text-muted">Malibu, California</p>
+
+          					  <hr>
+          					   <strong><i class="fa fa-institution margin-r-5"></i> Studio Name</strong>
+
+          					  <p class="text-muted">
+          					    XYZ Studio of Design</p>
+
+          					  <hr>
+
+          					  <strong><i class="fa fa-phone margin-r-5"></i>Contact</strong>
+          					  <p class="text-muted">+91-8745963214; email@random.com</p>
+          					  <hr>
+
+
+          					  <strong><i class="fa fa-info-circle margin-r-5"></i>Design Types</strong>
+
+          					  <p>
+          					    <span class="label label-danger">Ethnic</span>
+          					    <span class="label label-success">Footwear</span>
+          					    <span class="label label-info"></span>
+          					    <span class="label label-warning"></span>
+          					    <span class="label label-primary"></span>
+          					  </p>
+
+          					  <hr>
+
+          					  <strong><i class="fa fa-file-text-o margin-r-5"></i> Details</strong>
+
+          					  <p>A short bio of the designer.</p>
+          					</div>
+          					<!-- /.box-body -->
+          				</div>
+                          <!-- /.box -->
+                        </div>
+
+                      	</div>
+                      </div>
+
+                <div class="tab-pane" id="products" ng-include src="'views/registered-products.html'">
+              </div>
+
+
+              <div class="tab-pane" id="product-requests" ng-include src="'views/requested-products.html'">
+                </div>
+                <!-- /.row -->
+            <div class="tab-pane" id="ongoing-orders">
+
+              <table id="table-ongoing-order" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Product ID</th>
+                  <th>Name</th>
+                  <th>Order Date</th>
+                  <th>Size</th>
+                  <th>Color</th>
+                  <th>Quantity</th>
+                  <th>Status</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>XL</td>
+                  <td>Red</td>
+                  <td>1</td>
+                  <td><small class="label bg-primary">Started</small></td>
+                </tr>
+                <tr>
+                  <td>113</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>XL</td>
+                  <td>Red</td>
+                  <td>1</td>
+                  <td><small class="label bg-yellow">Packed</small></td>
+                </tr>
+                <tr>
+                  <td>114</td>
+                  <td>B112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>XS</td>
+                  <td>Red</td>
+                  <td>1</td>
+                  <td><small class="label bg-yellow">Packed</small></td>
+                </tr>
+                <tr>
+                  <td>115</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>XL</td>
+                  <td>Red</td>
+                  <td>1</td>
+                  <td><small class="label bg-green">Shipped</small></td>
+                </tr>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>XL</td>
+                  <td>Green</td>
+                  <td>1</td>
+                  <td><small class="label bg-primary">Started</small></td>
+                </tr>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>20/10/2016</td>
+                  <td>XL</td>
+                  <td>Blue</td>
+                  <td>1</td>
+                  <td><small class="label bg-green">Shipped</small></td>
+                </tr>
+                
+                </tbody>
+
+              </table>    
+
+
+
+            </div>
+
+            <div class="tab-pane" id="past-orders">
+
+              <table id="table-past-orders" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Product ID</th>
+                  <th>Name</th>
+                  <th>Order Date</th>
+                  <th>Shipped Date</th>
+                  <th>Payment</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-green">Done</small></td>
+                </tr>
+                <tr>
+                  <td>113</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-yellow">Pending</small></td>
+                </tr>
+                <tr>
+                  <td>114</td>
+                  <td>B112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-yellow">Pending</small></td>
+                </tr>
+                <tr>
+                  <td>115</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-green">Done</small></td>
+                </tr>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>22/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-green">Done</small></td>
+                </tr>
+                <tr>
+                  <td>112</td>
+                  <td>A112</td>
+                  <td>Product Name</td>
+                  <td>20/10/2016</td>
+                  <td>30/10/2016</td>
+                  <td><small class="label bg-green">Done</small></td>
+                </tr>
+                
+                </tbody>
+
+              </table>    
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+              <!-- /.tab-pane -->
+
+              <div class="tab-pane" id="payouts" ng-include src="'views/payout-partial.html'">
+			         
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="edit-profile">
+		            <form role="form">  
+		              	<div class="box box-primary remove-box-top">
+				            <!-- /.box-header -->
+				              <div class="box-body row">
+
+					              	
+						            <div class="form-group">
+						              <h3 class="form-subheaders">BASIC INFORMATION</h3>
+						            </div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">First Name</label>
+					                  <input type="text" class="form-control" id="firstName" placeholder="First Name">
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label for="exampleInputPassword1">Last Name</label>
+					                  <input type="text" class="form-control" >
+					                </div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">Date Of Birth</label>
+					                  <div class="input-group">
+					                  <div class="input-group-addon">
+					                    <i class="fa fa-calendar"></i>
+					                  </div>
+					                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+					                </div>
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label for="exampleInputPassword1">Brand/ Studio Name</label>
+					                  <input type="text" class="form-control" >
+					                </div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">Address</label>
+					                  <div class="input-group">
+					                  <div class="input-group-addon">
+					                    <i class="fa fa-map-marker"></i>
+					                  </div>
+					                  <input type="text" class="form-control">
+					                </div>
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label>Mobile Number</label>
+
+					                  <div class="input-group">
+					                    <div class="input-group-addon">
+					                      <i class="fa fa-phone"></i>
+					                    </div>
+					                    <input type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask>
+					                  </div>
+					                </div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">Email</label>
+					                  <div class="input-group">
+					                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+					                    <input type="email" class="form-control" placeholder="Email">
+					                  </div>
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">Official Email</label>
+					                  <div class="input-group">
+					                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+					                    <input type="email" class="form-control" placeholder="Email">
+					                  </div>
+					                </div>
+
+					                <div class="form-group col-md-5">
+					                  <label>Type of designer</label>
+					                  <select class="form-control" style="width: 100%;"  >
+					                    <option>Fresh Talent (experience < 1year)</option>
+					                    <option>New Gen (experience < 5year)</option>
+					                    <option>Experienced Designer (experience > 5year)</option>
+					                    <option>Student Designer (Still in College)</option>
+					                  </select>
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">VAT/TIN</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					                <div class="form-group col-md-5">
+					                  <label>Import Export Code </label>
+					                  <div class="input-group">
+					                        <span class="input-group-addon">
+					                          <input type="checkbox" checked="true">
+					                        </span>
+					                    <input type="text" class="form-control">
+					                  </div>
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group col-md-5">
+					                  <label for="exampleInputEmail1">Portfolio</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					                <div class="form-group col-md-11">
+					                  <label>Tell us about you (IN maximum of 500 characters.)</label>
+					                  <textarea class="form-control" rows="3" maxlength="500"></textarea>
+					                </div>
+
+					                <div class="col-md-12" >
+					                  <h3 class="form-subheaders">DELIVERY INFORMATION</h3>
+					                </div>
+
+					                <div class="form-group col-md-5" >
+					                  <label for="exampleInputEmail1">Delivery Coordinator's Name</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label>Mobile Number</label>
+
+					                  <div class="input-group">
+					                    <div class="input-group-addon">
+					                      <i class="fa fa-phone"></i>
+					                    </div>
+					                    <input type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask>
+					                  </div>
+					                </div>
+
+
+					                <div class="form-group col-md-11">
+					                  <label>Address</label>
+					                  <textarea class="form-control" rows="3"></textarea>
+					                </div>
+
+					                <div class="col-md-12" >
+					                  <h3 class="form-subheaders" >BANK ACCOUNT DETAILS</h3>
+					                </div>
+
+					                <div class="form-group col-md-5" >
+					                  <label for="exampleInputEmail1">Account Number</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label for="exampleInputEmail1">Account Holder Name</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+
+					                <div class="form-group col-md-5" >
+					                  <label for="exampleInputEmail1">IFSC Code</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					                <div class="form-group col-md-1"></div>
+
+					                <div class="form-group form-group col-md-5">
+					                  <label for="exampleInputEmail1">Bank Code</label>
+					                  <input type="text" class="form-control">
+					                </div>
+
+					            
+
+					                 
+					                
+					                
+					              </div>
+					              <!-- /.box-body -->
+
+				              <div class="box-footer">
+
+					                <button type="submit" class="btn btn-primary " >Save</button>
+					                <button type="submit" class="btn btn-danger " >Reset</button>
+				              </div>
+					            
+				        </div>
+				    </form>
+
+
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <script type="text/javascript-lazy">
+  $("#table-ongoing-order, #table-past-orders").DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+</script>
+
+  <!-- /.content-wrapper -->

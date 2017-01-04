@@ -1,0 +1,539 @@
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Add Product
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Simple</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <form role="form">
+      
+              <div class="box-body">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Product Name</label>
+                    <input type="text" class="form-control" id="productName" placeholder="Enter Product Name">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Product Price</label>
+                    <input type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
+                  </div>  
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label>Product Category</label>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Apparel</option>
+                      <option>Accessories</option>
+                      <option>Footwear</option>
+                      
+                    </select>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="form-group">
+                    <label>Sub-Category</label>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Dress</option>
+                      <option>Top</option>
+                      <option>Bottoms</option>
+                      <option>Jackets & Sweatshirts</option>
+                      <option>Ethnic</option>
+                      <option>Beachwear</option>
+                      
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label>Details</label>
+                <textarea class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Color Options</label>
+                <input class="form-control" type="text" placeholder="Get the bootstrap input tags using angularjs" id="colorOptions">
+              </div>
+
+              <div class="form-group">
+                <label>Sizes Available</label>
+
+                  <div class="row">
+                    <div class="col-md-1">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="XS">XS
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-1">
+                      <div class="checkbox col-sm-3">
+                        <label>
+                          <input type="checkbox" >M
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-1">
+                      <div class="checkbox col-sm-3">
+                        <label>
+                          <input type="checkbox" >L
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-1">
+                      <div class="checkbox col-sm-3">
+                        <label>
+                          <input type="checkbox" >XL
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+
+
+              <div class="form-group">
+                <label>Specification</label>
+                <textarea class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Shipping Days</label>
+                    <input type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="">Return Days</label>
+                    <input type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days">
+                  </div>  
+                </div>
+              </div>
+
+         
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Is Customizable?</label><br>
+                    <input type="checkbox" name="isCustomizable">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Customization Charges</label>
+                    <input type="number" class="form-control" id="customizationCharges" placeholder="" disabled="disabled" min='0'>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="box box-solid" style="border-top: 0px; ">
+
+                <div class="box-body" style="padding: 0px;">
+                  <div class="box-group" id="accordion">
+                    <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                    <div class="panel box"  style="border-top: 0px; ">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                            Sleeve
+                        </h4>
+                            <div class="pull-right"><i class="fa fa-chevron-down pull-right" ></i></div>
+                      </div>
+                      </a>
+                      <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="box-body">
+                          
+                          <div class="form-group">
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Bracket Length
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Cap Sleeve
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Inset Cap
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Long Length
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Short Length
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Sleeveless
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>   
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Threee Quarter
+                                  </label>
+                                </div>
+                              </div>
+
+                                              
+                            </div>                                                     
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="panel box" style="border-top: 0px;">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                            Shirt/Top Length
+                        </h4>
+                            <div class="pull-right"><i class="fa fa-chevron-down pull-right" ></i></div>
+                      </div>
+                      </a>
+                      <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="box-body">
+                          <div class="form-group">
+
+                               <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox">Above Hip
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Low Hip
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>   
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox">Mid-Thigh
+                                  </label>
+                                </div>
+                              </div>
+
+                                              
+                            </div>                                                     
+
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel box"  style="border-top: 0px; ">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                          
+                            Bottom Length
+                        </h4>
+
+                            <div class="pull-right"><i class="fa fa-chevron-down pull-right" ></i></div>
+
+                      </div>
+                      </a>
+                      <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="box-body">
+                          
+                          <div class="form-group">
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Above Knee
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Ankle Length
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Below Knee
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Ful Length
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Mid-Calf
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Mini
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>   
+
+                        
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>                    
+
+                    <div class="panel box"  style="border-top: 0px; ">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                      <div class="box-header with-border">
+                        <h4 class="box-title">
+                            Neck
+                        </h4>
+                            <div class="pull-right"><i class="fa fa-chevron-down pull-right" ></i></div>
+                      </div>
+                      </a>
+                      <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="box-body">
+                          
+                          <div class="form-group">
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >U Neck
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >V Neck
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Scoop
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Boat
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Deep V
+                                  </label>
+                                </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >High Neck Collar
+                                  </label>
+                                </div>
+                              </div>                              
+                            </div>   
+
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" >Square
+                                  </label>
+                                </div>
+                              </div>
+
+                                              
+                            </div>                                                     
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>              
+
+                                       
+              <div class="form-group">
+                <label for="exampleInputFile">Primary Image</label>
+                <input type="file" id="exampleInputFile">
+
+                <p class="help-block">Main display image.</p>
+              </div>
+
+
+             <div class="form-group">
+                <label for="exampleInputFile">Secondary Images</label>
+                <input type="number" min='0' max="10" id="secondaryImages" placeholder="Number of images (0-10)" class="form-control" style="width: 15%;">
+
+                <input type="file" id="exampleInputFile">
+                <input type="file" id="exampleInputFile">
+                <input type="file" id="exampleInputFile">
+
+                <p class="help-block">Secondary specifications images.</p>
+             </div>
+
+
+             <div>
+                <label>Preview</label>
+                <!-- Box Comment -->
+                <div class="box box-widget">
+
+                  <div class="box-header with-border">
+                    <div class="user-block">
+                      <img class="img-circle" src="images/user1-128x128.jpg" alt="User Image">
+                      <span class="username"><a href="#">Product Name</a></span>
+                      <span class="description">Shared publicly - 7:30 PM Today</span>
+                    </div>
+                    
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body" style="padding:0;">
+                    <!-- /.user-block -->
+                        <div class="row margin-bottom">
+                        
+                          <div class="col-md-4">
+                                <img class="img-responsive" src="images/photo2.png" alt="Photo">
+                          </div>
+                           <div class="col-md-4">
+                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
+                          </div>
+                           <div class="col-md-4">
+                                <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
+                          </div>
+                               
+                          <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                  </div>
+                 
+                </div>
+                <!-- /.box -->
+              </div>
+              
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Cancel</button>
+              </div>
+            </form>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
