@@ -3,9 +3,9 @@ angular.module('portal-modaink')
 		var httpService = {};
 	    httpService.callHttp = function (method, resouceName, params, headers, data, successCallback, errorCallback,noAuthentication) {
 	    	if (!noAuthentication) {
-		    	headers.accessToken = 'Bearer' + storageService.get("accessToken");
+		    	headers.Authorization = 'Bearer ' + storageService.get("accessToken");
 	    	};
-			$http({	method: method, 
+				$http({	method: method, 
 				url: window.apiUrl+"/"+resouceName,
 				headers: headers,
 				data:data,
