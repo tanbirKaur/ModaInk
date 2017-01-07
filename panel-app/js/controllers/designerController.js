@@ -2,7 +2,7 @@ var app = window.app;
 app.controller('DesignerController', function($scope,$stateParams, httpService) {
 	// http Methods
 	$scope.getDesignerDetails = function (designerId) {
-		httpService.callHttp("GET","designers/"+designerId,{},{},{},$scope.onGetDesignerDetailsSuccess,$scope.onGetDesignerDetailsFailure);
+		httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess);
 	}
 	$scope.getDesigners = function () {
 		httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
@@ -18,9 +18,6 @@ app.controller('DesignerController', function($scope,$stateParams, httpService) 
 		if (designerDetailsFound) {
 			$scope.designerDetails = response.data;
 		};
-	}
-	$scope.onGetDesignerDetailsFailure = function (response) {
-		console.log("onGetDesignerDetailsFailure",response);
 	}
 
 	$scope.onGetDesignersSuccess = function (response) {
