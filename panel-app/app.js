@@ -1,15 +1,18 @@
 var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter']);
 window.app == app;
 window.apiUrl = "http://dev.modaink.com/api";
+window.apiUrl = "http://localhost:8000";
 app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
             url: '/home',
-            templateUrl: '/views/products.html'
+            templateUrl: '/views/products.html',
+            controller:'HomeController'
         })
         .state('orders', {
             url: '/orders',
-            templateUrl: '/views/orders.html'
+            templateUrl: '/views/orders.html',
+            controller:'OrderController'
         })
         .state('add-product', {
             url: '/add-product',
