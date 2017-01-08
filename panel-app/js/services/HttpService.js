@@ -7,6 +7,7 @@ angular.module('portal-modaink')
 				ctrlCallback(res);
 			};
        	}
+
        	var httpFailed = function (res,name) {
        		console.log(name+' Failed');
        	}
@@ -36,13 +37,31 @@ angular.module('portal-modaink')
 			},true);
 		}
 
+		httpService.getDesigners = function (successCallback,failureCallback) {
+			httpService.callHttp("GET","designers/publicInfo",{},{},{},function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,httpService.getDesigners);
+			},true);
+		}
+
 		httpService.getDesignerDetails = function (designerId,successCallback,failureCallback) {
 			httpService.callHttp("GET","designers/"+designerId,{},{},{},function (response) {
-				redirectCallback(response,onDesignerDetailsSuccess,successCallback);
+				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,httpService.getDesignerDetails);
 			});
 		}
+
+		httpService.getDesignerProducts = function (designerId,successCallback,failureCallback) {
+			var params = {designerId : designerId};
+			httpService.callHttp("GET","products",params,{},{},function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,httpService.getDesignerProducts);
+			});
+		}
+
 
 		return httpService;
 	 }]);
