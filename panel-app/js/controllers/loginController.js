@@ -4,11 +4,13 @@ app.controller('LoginController', function($scope,$stateParams,$location, httpSe
 		$scope.email = "tanbirkaur16@gmail.com";
 		$scope.password = "P@ssw0rd";
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
-		httpService.designerLogin(loginInfo,$scope.onLoginSuccess);
+        httpService.designerLogin(loginInfo,$scope.onLoginSuccess);
 	}
 
 	$scope.onLoginSuccess = function (response) {
-		$location.path( "/");
+        httpService.getCurrentUserDetails(function(res){
+            $location.path( "/");
+        });
 	}
 })
 

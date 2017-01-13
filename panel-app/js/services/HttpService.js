@@ -1,5 +1,5 @@
 angular.module('portal-modaink')
-       .factory('httpService', ['$http','storageService', function($http,storageService) {
+       .factory('httpService', ['$rootScope','$http','storageService', function($rootScope,$http,storageService) {
 		var emptyFunction = function (response) {}
        	var redirectCallback = function (res,localCallback,ctrlCallback,name) {
 			localCallback(res,name);
@@ -9,11 +9,16 @@ angular.module('portal-modaink')
        	}
 
        	var httpFailed = function (res,name) {
-       		console.log(name+' Failed');
+       		console.log('Failed:',name);
        	}
 
    		var onDesignerLoginSuccess = function (response) {
 			storageService.set('accessToken',response.data.accessToken);
+			$rootScope.userLoggedIn = true;
+		}
+
+		var onGetCurrentUserDetails = function (response){
+			$rootScope.userDetails = response.data;
 		}
 
 		var httpService = {};
@@ -45,6 +50,15 @@ angular.module('portal-modaink')
 			},true);
 		}
 
+		httpService.getCurrentUserDetails = function(successCallback,failureCallback){
+			var url = $rootScope.isAdmin ? "admins/me" : "designers/me"
+			httpService.callHttp("GET",url,{},{},{},function (response) {
+				redirectCallback(response,onGetCurrentUserDetails,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,httpService.getCurrentUserDetails);
+			});
+		}
+
 		httpService.getDesignerDetails = function (designerId,successCallback,failureCallback) {
 			httpService.callHttp("GET","designers/"+designerId,{},{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
@@ -55,7 +69,8 @@ angular.module('portal-modaink')
 
 		httpService.getDesignerProducts = function (designerId,successCallback,failureCallback) {
 			var params = {designerId : designerId};
-			httpService.callHttp("GET","products",params,{},{},function (response) {
+			var url = $rootScope.isAdmin ? "products" : "designers/"+designerId+'/products';
+			httpService.callHttp("GET",url,params,{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,httpService.getDesignerProducts);

@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="css/custom.css">
 
     <!-- JS (load angular, ui-router, and our custom js file) -->
-  <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="js/angular.js"></script>
+  <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="js/angular-local-storage.min.js"></script>
   <script type="text/javascript" src="js/angular-filter.min.js"></script>
   <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -113,13 +113,12 @@
       <!-- Sidebar user panel -->
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        
+      <ul class="sidebar-menu" ng-show="userLoggedIn">
         
         <li class="active"><a href="/home">Products</a></li>
         <li><a href="/orders">Orders</a></li>
-        <li><a href="/product-requests">Product Requests(Admin)</a></li>
-        <li><a href="/designers">Designers(admin)</a></li> 
+        <li ng-if="iaAdmin"><a href="/product-requests">Product Requests</a></li>
+        <li ng-if="iaAdmin"><a href="/designers">Designers</a></li> 
         <li><a href="/payouts">Payouts</a></li>
 
         <li><a href="/pages/tables/invoice.html">Invoices</a></li>

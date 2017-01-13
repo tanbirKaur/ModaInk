@@ -18,9 +18,7 @@
       <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#registered" data-toggle="tab">Registered</a></li>
-              
-              <li><a href="#newRequests" data-toggle="tab">Requests</a></li>
-              
+              <li ng-show="isAdmin"><a href="#newRequests" data-toggle="tab">Requests</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="registered">
