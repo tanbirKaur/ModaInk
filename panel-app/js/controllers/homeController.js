@@ -9,6 +9,8 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
     if (!storageService.get('accessToken')) {
         $location.path("/login");
     } else {
-        httpService.getDesignerProducts($rootScope.userDetails.id,$scope.onGetDesignerProductsSuccess);
+        httpService.getCurrentUserDetails(function(response){
+            httpService.getDesignerProducts($rootScope.userDetails.id,$scope.onGetDesignerProductsSuccess);
+        });
     }
 });

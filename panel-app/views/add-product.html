@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" href="css/ng-tags-input.bootstrap.min.css"> -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -22,14 +23,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Name</label>
-                    <input type="text" class="form-control" id="productName" placeholder="Enter Product Name">
+                    <input ng-model="newProduct.name" type="text" class="form-control" id="productName" placeholder="Enter Product Name">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Price</label>
-                    <input type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
+                    <input ng-model="newProduct.price" type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
                   </div>  
                 </div>
               </div>
@@ -38,29 +39,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                     <label>Product Category</label>
-                    <select class="form-control select2" style="width: 100%;">
-                      <option selected="selected">Apparel</option>
-                      <option>Accessories</option>
-                      <option>Footwear</option>
-                      
+                    <select ng-model="categoryIdx" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories" class="form-control select2" style="width: 100%;">
                     </select>
                     </div>
-
-
                 </div>
 
                 <div class="col-md-6">
 
                   <div class="form-group">
                     <label>Sub-Category</label>
-                    <select class="form-control select2" style="width: 100%;">
-                      <option selected="selected">Dress</option>
-                      <option>Top</option>
-                      <option>Bottoms</option>
-                      <option>Jackets & Sweatshirts</option>
-                      <option>Ethnic</option>
-                      <option>Beachwear</option>
-                      
+                    <select ng-model="subCategoryIdx" ng-options="idx as category.name for (idx, category) in subCategories" class="form-control select2" style="width: 100%;">
                     </select>
                   </div>
                 </div>
@@ -70,57 +58,31 @@
 
               <div class="form-group">
                 <label>Details</label>
-                <textarea class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
+                <textarea ng-model="newProduct.description" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
               </div>
 
               <div class="form-group">
-                <label>Color Options</label>
-                <input class="form-control" type="text" placeholder="Get the bootstrap input tags using angularjs" id="colorOptions">
+                <label>Color Tags</label>
+                <tags-input style="height: 20%;" ng-model="newProduct.colors"></tags-input>
               </div>
 
               <div class="form-group">
                 <label>Sizes Available</label>
 
                   <div class="row">
-                    <div class="col-md-1">
+                    <div ng-repeat="(key, val) in skus" class="col-md-1">
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" name="XS">XS
-                        </label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-1">
-                      <div class="checkbox col-sm-3">
-                        <label>
-                          <input type="checkbox" >M
-                        </label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-1">
-                      <div class="checkbox col-sm-3">
-                        <label>
-                          <input type="checkbox" >L
-                        </label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-1">
-                      <div class="checkbox col-sm-3">
-                        <label>
-                          <input type="checkbox" >XL
+                          <input ng-model="skus[key]"  type="checkbox" name="{{key}}">{{key}}
                         </label>
                       </div>
                     </div>
                   </div>
-
               </div>
-
 
               <div class="form-group">
                 <label>Specification</label>
-                <textarea class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
+                <textarea ns-model="newProduct.description" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
               </div>
 
               <div class="row">
@@ -528,7 +490,7 @@
               
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button ng-click="addNewProduct()" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-primary">Cancel</button>
               </div>
             </form>

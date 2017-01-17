@@ -28,7 +28,7 @@
                             <div class="row margin-bottom" >
                               <div ng-repeat="image in product.images">
                                 <div ng-if="$index ==0" class="col-sm-8">
-                                  <img class="img-responsive" src="{{image.url}}" alt="Photo">
+                                  <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
                                 </div>
                                 <!-- /.col -->
                                 <div ng-if="$index == 1 || $index == 2" class="col-sm-4">

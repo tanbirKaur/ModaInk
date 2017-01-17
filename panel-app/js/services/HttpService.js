@@ -9,7 +9,7 @@ angular.module('portal-modaink')
        	}
 
        	var httpFailed = function (res,name) {
-       		console.log('Failed:',name);
+       		console.log('Failed:'+name);
        	}
 
    		var onDesignerLoginSuccess = function (response) {
@@ -38,7 +38,7 @@ angular.module('portal-modaink')
 			httpService.callHttp("POST","designers/authenticate/",{},{},loginInfo,function (response) {
 				redirectCallback(response,onDesignerLoginSuccess,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,httpService.designerLogin);
+				redirectCallback(response,httpFailed,failureCallback,"designerLogin");
 			},true);
 		}
 
@@ -46,7 +46,7 @@ angular.module('portal-modaink')
 			httpService.callHttp("GET","designers/publicInfo",{},{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,httpService.getDesigners);
+				redirectCallback(response,httpFailed,failureCallback,"getDesigners");
 			},true);
 		}
 
@@ -55,7 +55,7 @@ angular.module('portal-modaink')
 			httpService.callHttp("GET",url,{},{},{},function (response) {
 				redirectCallback(response,onGetCurrentUserDetails,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,httpService.getCurrentUserDetails);
+				redirectCallback(response,httpFailed,failureCallback,"getCurrentUserDetails");
 			});
 		}
 
@@ -63,20 +63,43 @@ angular.module('portal-modaink')
 			httpService.callHttp("GET","designers/"+designerId,{},{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,httpService.getDesignerDetails);
+				redirectCallback(response,httpFailed,failureCallback,"getDesignerDetails");
 			});
 		}
 
 		httpService.getDesignerProducts = function (designerId,successCallback,failureCallback) {
-			var params = {designerId : designerId};
 			var url = $rootScope.isAdmin ? "products" : "designers/"+designerId+'/products';
+			var params = {isApproved:true};
 			httpService.callHttp("GET",url,params,{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,httpService.getDesignerProducts);
+				redirectCallback(response,httpFailed,failureCallback,"getDesignerProducts");
 			});
 		}
 
+		httpService.createProduct = function(productDetails,successCallback,failureCallback){
+			httpService.callHttp("POST","products",{},{},productDetails,function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,"createProduct");
+			});
+		}
 
+		// httpService.uploadImage = function(type,url,successCallback,failureCallback){
+		// 	httpService.callHttp("POST","upload/"+type+"/images",{},{},{},function (response) {
+		// 		redirectCallback(response,emptyFunction,successCallback);
+		// 	},function (response) {
+		// 		redirectCallback(response,httpFailed,failureCallback,"createProduct");
+		// 	});
+		// }
+
+		httpService.getProductCategories = function(successCallback,failureCallback){
+			var params = {includeSubCategories:true};
+			httpService.callHttp("GET","categories",params,{},{},function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,"getProductCategories");
+			});
+		}
 		return httpService;
 	 }]);

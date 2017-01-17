@@ -1,4 +1,4 @@
-var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter']);
+var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter','ngTagsInput']);
 window.app == app;
 window.apiUrl = "http://dev.modaink.com/api";
 //window.apiUrl = "http://localhost:8000";
@@ -16,7 +16,8 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
         })
         .state('add-product', {
             url: '/add-product',
-            templateUrl: '/views/add-product.html'
+            templateUrl: '/views/add-product.html',
+            controller: 'ProductController'
         })
         .state('product-requests', {
             url: '/product-requests',
@@ -45,7 +46,10 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/designer-profile.html',
             controller: "DesignerController"
         })
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
+        });
         $urlRouterProvider.otherwise('/home');
         
 });
