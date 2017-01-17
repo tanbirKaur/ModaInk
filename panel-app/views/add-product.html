@@ -2,8 +2,12 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      <h1 ng-if="mode == 'c'">
         Add Product
+        <small></small>
+      </h1>
+      <h1 ng-if="mode == 'v'">
+        Review Product
         <small></small>
       </h1>
       <ol class="breadcrumb">
@@ -23,14 +27,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Name</label>
-                    <input ng-model="newProduct.name" type="text" class="form-control" id="productName" placeholder="Enter Product Name">
+                    <input ng-model="newProduct.name" ng-readonly="mode=='v'" type="text" class="form-control" id="productName" placeholder="Enter Product Name">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Price</label>
-                    <input ng-model="newProduct.price" type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
+                    <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
                   </div>  
                 </div>
               </div>
@@ -39,7 +43,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                     <label>Product Category</label>
-                    <select ng-model="categoryIdx" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories" class="form-control select2" style="width: 100%;">
+                    <select ng-model="categoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories" class="form-control select2" style="width: 100%;">
                     </select>
                     </div>
                 </div>
@@ -48,7 +52,7 @@
 
                   <div class="form-group">
                     <label>Sub-Category</label>
-                    <select ng-model="subCategoryIdx" ng-options="idx as category.name for (idx, category) in subCategories" class="form-control select2" style="width: 100%;">
+                    <select ng-model="subCategoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name for (idx, category) in subCategories" class="form-control select2" style="width: 100%;">
                     </select>
                   </div>
                 </div>
@@ -58,12 +62,12 @@
 
               <div class="form-group">
                 <label>Details</label>
-                <textarea ng-model="newProduct.description" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
+                <textarea ng-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
               </div>
 
               <div class="form-group">
                 <label>Color Tags</label>
-                <tags-input style="height: 20%;" ng-model="newProduct.colors"></tags-input>
+                <tags-input ng-readonly="mode=='v'" style="height: 20%;" ng-model="colors"></tags-input>
               </div>
 
               <div class="form-group">
@@ -73,7 +77,7 @@
                     <div ng-repeat="(key, val) in skus" class="col-md-1">
                       <div class="checkbox">
                         <label>
-                          <input ng-model="skus[key]"  type="checkbox" name="{{key}}">{{key}}
+                          <input ng-model="skus[key]" ng-readonly="mode=='v'" type="checkbox" name="{{key}}">{{key}}
                         </label>
                       </div>
                     </div>
@@ -82,14 +86,14 @@
 
               <div class="form-group">
                 <label>Specification</label>
-                <textarea ns-model="newProduct.description" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
+                <textarea ns-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Shipping Days</label>
-                    <input type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required">
+                    <input  type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required">
                   </div>
                 </div>
 
@@ -459,8 +463,8 @@
                   <div class="box-header with-border">
                     <div class="user-block">
                       <img class="img-circle" src="images/user1-128x128.jpg" alt="User Image">
-                      <span class="username"><a href="#">Product Name</a></span>
-                      <span class="description">Shared publicly - 7:30 PM Today</span>
+                      <span class="username"><a href="#">{{newProduct.name}}</a></span>
+                      <span class="description">Shared publicly - {{newProduct.createdAt|date:'hh:mm a'}} Today</span>
                     </div>
                     
                   </div>
@@ -469,16 +473,9 @@
                     <!-- /.user-block -->
                         <div class="row margin-bottom">
                         
-                          <div class="col-md-4">
-                                <img class="img-responsive" src="images/photo2.png" alt="Photo">
+                          <div class="col-md-4" ng-repeat="image in newProduct.images">
+                                <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
                           </div>
-                           <div class="col-md-4">
-                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
-                          </div>
-                           <div class="col-md-4">
-                                <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
-                          </div>
-                               
                           <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -489,7 +486,7 @@
               </div>
               
 
-              <div class="box-footer">
+              <div class="box-footer" ng-show="mode == 'c'">
                 <button ng-click="addNewProduct()" class="btn btn-primary">Submit</button>
                 <button type="submit" class="btn btn-primary">Cancel</button>
               </div>
