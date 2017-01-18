@@ -14,6 +14,7 @@ angular.module('portal-modaink')
 
    		var onDesignerLoginSuccess = function (response) {
 			storageService.set('accessToken',response.data.accessToken);
+			storageService.set('isAdmin',true);
 			$rootScope.userLoggedIn = true;
 		}
 
@@ -34,11 +35,12 @@ angular.module('portal-modaink')
 			}).then(successCallback, errorCallback);
 		};
 
-		httpService.designerLogin = function (loginInfo,successCallback,failureCallback) {
-			httpService.callHttp("POST","designers/authenticate/",{},{},loginInfo,function (response) {
+		httpService.login = function (loginInfo,successCallback,failureCallback) {
+			var url = storageService.get("isAdmin") ? "admins/authenticate/" : "designers/authenticate/"
+			httpService.callHttp("POST",url,{},{},loginInfo,function (response) {
 				redirectCallback(response,onDesignerLoginSuccess,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,"designerLogin");
+				redirectCallback(response,httpFailed,failureCallback,"login");
 			},true);
 		}
 
@@ -51,7 +53,7 @@ angular.module('portal-modaink')
 		}
 
 		httpService.getCurrentUserDetails = function(successCallback,failureCallback){
-			var url = $rootScope.isAdmin ? "admins/me" : "designers/me"
+			var url = storageService.get("isAdmin") ? "admins/me" : "designers/me"
 			httpService.callHttp("GET",url,{},{},{},function (response) {
 				redirectCallback(response,onGetCurrentUserDetails,successCallback);
 			},function (response) {
@@ -67,13 +69,13 @@ angular.module('portal-modaink')
 			});
 		}
 
-		httpService.getDesignerProducts = function (designerId,successCallback,failureCallback) {
-			var url = $rootScope.isAdmin ? "products" : "designers/"+designerId+'/products';
+		httpService.getProducts = function (designerId,successCallback,failureCallback) {
+			var url = storageService.get("isAdmin") ? "products" : "designers/"+designerId+'/products';
 			var params = {isApproved:true};
 			httpService.callHttp("GET",url,params,{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
-				redirectCallback(response,httpFailed,failureCallback,"getDesignerProducts");
+				redirectCallback(response,httpFailed,failureCallback,"getProducts");
 			});
 		}
 

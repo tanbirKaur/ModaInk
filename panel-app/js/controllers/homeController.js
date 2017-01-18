@@ -5,12 +5,14 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
             $scope.products = response.data;
         }
     }
+    $rootScope.userLoggedIn = storageService.get('accessToken')
+    $rootScope.isAdmin = storageService.get("isAdmin");
 
-    if (!storageService.get('accessToken')) {
+    if (!$rootScope.userLoggedIn) {
         $location.path("/login");
     } else {
         httpService.getCurrentUserDetails(function(response){
-            httpService.getDesignerProducts($rootScope.userDetails.id,$scope.onGetDesignerProductsSuccess);
+            httpService.getProducts($rootScope.userDetails.id,$scope.onGetDesignerProductsSuccess);
         });
     }
 });

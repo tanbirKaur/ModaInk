@@ -1,10 +1,15 @@
 var app = window.app;
-app.controller('LoginController', function($scope,$stateParams,$location, httpService, storageService) {
+app.controller('LoginController', function($scope,$rootScope,$stateParams,$location, httpService, storageService) {
     $scope.email = "tanbirkaur16@gmail.com";
     $scope.password = "P@ssw0rd";
+    $rootScope.isAdmin = storageService.get("isAdmin");
+    $scope.$watch("isAdmin",function(newValue, oldValue, scope){
+        $rootScope.isAdmin = newValue;
+        storageService.set("isAdmin",newValue);
+    });
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
-        httpService.designerLogin(loginInfo,$scope.onLoginSuccess);
+        httpService.login(loginInfo,$scope.onLoginSuccess);
 	}
 
 	$scope.onLoginSuccess = function (response) {
