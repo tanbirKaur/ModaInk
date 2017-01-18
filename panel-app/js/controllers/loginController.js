@@ -4,7 +4,6 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.password = "P@ssw0rd";
     $rootScope.isAdmin = storageService.get("isAdmin");
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
-        $rootScope.isAdmin = newValue;
         storageService.set("isAdmin",newValue);
     });
 	$scope.login = function () {
