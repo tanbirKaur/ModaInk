@@ -5,6 +5,19 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
             $scope.products = response.data;
         }
     }
+
+    $scope.getUnApprovedProducts = function () {
+        httpService.getUnApprovedProducts(function(response){
+            $scope.unApprovedProducts = response.data;
+        });
+    }
+
+    $scope.approveProduct = function (productId) {
+        httpService.approveProduct(productId,function(response){
+            $scope.getUnApprovedProducts();
+        });
+    }
+
     $rootScope.userLoggedIn = storageService.get('accessToken')
     $rootScope.isAdmin = storageService.get("isAdmin");
 

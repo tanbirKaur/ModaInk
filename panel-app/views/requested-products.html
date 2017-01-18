@@ -1,12 +1,12 @@
 <div class="row">
-                  <div class="col-md-5">
+                  <div ng-repeat="product in unApprovedProducts" ng-if="!product.isApproved" class="col-md-5">
                     <!-- Box Comment -->
                     <div class="box box-widget">
                       <div class="box-header with-border">
                         <div class="user-block">
-                          <span class="username"><a href="#">Product Name</a></span>
-                          <span class="description" ><a href="#">Designer Name</a></span>
-                          <span class="description">ID: 1234567 | Uploaded On - 7:30 PM Today</span>
+                          <span class="username" ><a href="">{{product.name}}</a></span>
+                          <span class="description" ><a href="">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
+                          <span class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</span>
                         </div>
                         <!-- /.user-block -->
                         <div class="box-tools">
@@ -22,16 +22,17 @@
                       <!-- /.box-header -->
                       <div class="box-body" style="padding:0;">
                         <!-- /.user-block -->
-                            <div class="row margin-bottom">
-                              <div class="col-sm-8">
-                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
-                              </div>
-                              <!-- /.col -->
-                              <div class="col-sm-4">
-                                    <img class="img-responsive" src="images/photo2.png" alt="Photo">
-                                    <br>
-                                    <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
-                            
+                            <div class="row margin-bottom" >
+                              <div ng-repeat="image in product.images">
+                                <div ng-if="$index ==0" class="col-sm-8 col-md-7">
+                                  <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                                </div>
+                                <!-- /.col -->
+                                <div ng-if="$index == 1 || $index == 2" class="col-sm-4 col-md-3">
+                                      <img ng-if="$index == 1" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                                      <br>
+                                      <img ng-if="$index == 2" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                                </div>
                               </div>
                               <!-- /.col -->
                             </div>
@@ -59,47 +60,48 @@
                           </div>
 
                           <div class="row text-center" style="margin: 4px;">
-                            <div class="col-md-12 btn btn-danger" >Cancel Request</div>
+                            <button ng-click="approveProduct(product.id)" class="col-md-6 btn btn-success">Accept</button>
+                            <div class="col-md-6 btn btn-danger">Reject</div>
                           </div>
+
                         <!-- /.row -->
                       </div>
                       
                     </div>
                     <!-- /.box -->
                   </div>
-                  <div class="col-md-1"></div>
                   <!-- /.col -->
-                  <div class="col-md-5">
-                    <!-- Box Comment -->
-                    <div class="box box-widget">
+<!--                   <div class="col-md-5">
+ -->                    <!-- Box Comment -->
+<!--                     <div class="box box-widget">
                       <div class="box-header with-border">
                         <div class="user-block">
-                          <span class="username"><a href="#">Product Name</a></span>
-                          <span class="description" ><a href="#">Designer Name</a></span>
+                          <span class="username"><a href="">Product Name</a></span>
+                          <span class="description" ><a href="">Designer Name</a></span>
                           <span class="description">ID: 1234567 | Uploaded On - 7:30 PM Today</span>
                         </div>
-                        <!-- /.user-block -->
+ -->                        <!-- /.user-block -->
                     
                         <!-- /.box-tools -->
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body" style="padding:0;">
-                        <!-- /.user-block -->
-                            <div class="row margin-bottom">
+<!--                       </div>
+ -->                      <!-- /.box-header -->
+<!--                       <div class="box-body" style="padding:0;">
+ -->                        <!-- /.user-block -->
+<!--                             <div class="row margin-bottom">
                               <div class="col-sm-8">
                                 <img class="img-responsive" src="images/photo1.png" alt="Photo">
                               </div>
-                              <!-- /.col -->
-                              <div class="col-sm-4">
+ -->                              <!-- /.col -->
+<!--                               <div class="col-sm-4">
                                     <img class="img-responsive" src="images/photo2.png" alt="Photo">
                                     <br>
                                     <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
                             
                               </div>
-                              <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                      </div>
+ -->                              <!-- /.col -->
+<!--                             </div>
+ -->                            <!-- /.row -->
+<!--                       </div>
                       <div class="box-footer" style="padding:0;">
                           <div class="row"  style="border-bottom: 1px solid #f4f4f4;">
                             <div class="col-sm-6 border-right">
@@ -107,174 +109,30 @@
                                 <h5 class="description-header">5</h5>
                                 <span class="description-text">QUANTITY</span>
                               </div>
-                              <!-- /.description-block -->
-                            </div>
+ -->                              <!-- /.description-block -->
+                            <!-- </div> -->
 
                             <!-- /.col -->
-                            <div class="col-sm-6">
+<!--                             <div class="col-sm-6">
                               <div class="description-block">
                                 <h5 class="description-header">5,000</h5>
                                 <span class="description-text">PRICE</span>
                               </div>
-                              <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                          </div>
+ -->                              <!-- /.description-block -->
+<!--                             </div>
+ -->                            <!-- /.col -->
+                          <!-- </div> -->
 
                           
-                          <div class="row text-center" style="margin: 4px;">
-                            <div class="col-md-6 btn btn-success">Accept</div>
-                            <div class="col-md-6 btn btn-danger">Reject</div>
+<!--                           <div class="row text-center" style="margin: 4px;">
+                            <div class="col-md-12 btn btn-danger" >Cancel Request</div>
                           </div>
-                        <!-- /.row -->
-                      </div>
+ -->                        <!-- /.row -->
+                      <!-- </div> -->
                       
-                    </div>
+                    <!-- </div> -->
                     <!-- /.box -->
                   </div> 
 
-                  <div class="col-md-1"></div>
-
-                  <div class="col-md-5">
-                    <!-- Box Comment -->
-                    <div class="box box-widget">
-                      <div class="box-header with-border">
-                        <div class="user-block">
-                          <span class="username"><a href="#">Product Name</a></span>
-                          <span class="description" ><a href="#">Designer Name</a></span>
-                          <span class="description">ID: 1234567 | Uploaded On - 7:30 PM Today</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <div class="box-tools">
-                          
-                          <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
-                            <i class="fa fa-edit"></i></button> 
-                         
-                            <!-- Product to be removed  -->
-                         <!--  <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></button> -->
-                        </div>
-                        <!-- /.box-tools -->
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body" style="padding:0;">
-                        <!-- /.user-block -->
-                            <div class="row margin-bottom">
-                              <div class="col-sm-8">
-                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
-                              </div>
-                              <!-- /.col -->
-                              <div class="col-sm-4">
-                                    <img class="img-responsive" src="images/photo2.png" alt="Photo">
-                                    <br>
-                                    <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
-                            
-                              </div>
-                              <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                      </div>
-                      <div class="box-footer" style="padding:0;">
-                          <div class="row"  style="border-bottom: 1px solid #f4f4f4;">
-                            <div class="col-sm-6 border-right">
-                              <div class="description-block">
-                                <h5 class="description-header">5</h5>
-                                <span class="description-text">QUANTITY</span>
-                              </div>
-                              <!-- /.description-block -->
-                            </div>
-
-                            <!-- /.col -->
-                            <div class="col-sm-6">
-                              <div class="description-block">
-                                <h5 class="description-header">5,000</h5>
-                                <span class="description-text">PRICE</span>
-                              </div>
-                              <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                          </div>
-
-                          <div class="row text-center" style="margin: 4px;">
-                            <div class="col-md-12 btn btn-danger" >Cancel Request</div>
-                          </div>
-                        <!-- /.row -->
-                      </div>
-                      
-                    </div>
-                    <!-- /.box -->
-                  </div>
-                  <div class="col-md-1"></div>
-                  <!-- /.col -->
-                  <div class="col-md-5">
-                    <!-- Box Comment -->
-                    <div class="box box-widget">
-                      <div class="box-header with-border">
-                        <div class="user-block">
-                          <span class="username"><a href="#">Product Name</a></span>
-                          <span class="description" ><a href="#">Designer Name</a></span>
-                          <span class="description">ID: 1234567 | Uploaded On - 7:30 PM Today</span>
-                        </div>
-                        <!-- /.user-block -->
-                        <div class="box-tools">
-                          
-                          <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
-                            <i class="fa fa-edit"></i></button> 
-                         
-                            <!-- Product to be removed  -->
-                         <!--  <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></button> -->
-                        </div>
-                        <!-- /.box-tools -->
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body" style="padding:0;">
-                        <!-- /.user-block -->
-                            <div class="row margin-bottom">
-                              <div class="col-sm-8">
-                                <img class="img-responsive" src="images/photo1.png" alt="Photo">
-                              </div>
-                              <!-- /.col -->
-                              <div class="col-sm-4">
-                                    <img class="img-responsive" src="images/photo2.png" alt="Photo">
-                                    <br>
-                                    <img class="img-responsive" src="images/photo3.jpg" alt="Photo">
-                            
-                              </div>
-                              <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                      </div>
-                      <div class="box-footer" style="padding:0;">
-                          <div class="row"  style="border-bottom: 1px solid #f4f4f4;">
-                            <div class="col-sm-6 border-right">
-                              <div class="description-block">
-                                <h5 class="description-header">5</h5>
-                                <span class="description-text">QUANTITY</span>
-                              </div>
-                              <!-- /.description-block -->
-                            </div>
-
-                            <!-- /.col -->
-                            <div class="col-sm-6">
-                              <div class="description-block">
-                                <h5 class="description-header">5,000</h5>
-                                <span class="description-text">PRICE</span>
-                              </div>
-                              <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                          </div>
-
-                          <div class="row text-center" style="margin: 4px;">
-                            <div class="col-md-12 btn btn-danger" >Cancel Request</div>
-                          </div>
-                        <!-- /.row -->
-                      </div>
-                      
-                    </div>
-                    <!-- /.box -->
-                  </div>
-                  <div class="col-md-1"></div>
-
-                  <!-- /.col -->
-                 
+                  <!-- /.col -->                 
                 </div>
