@@ -23,32 +23,32 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Name</label>
-                    <input ng-model="newProduct.name" ng-readonly="mode=='v'" type="text" class="form-control" id="productName" placeholder="Enter Product Name">
+                    <input ng-model="newProduct.name" ng-readonly="mode=='v'" type="text" required class="form-control" id="productName" placeholder="Enter Product Name">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Price</label>
-                    <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="text" class="form-control" id="productPrice" placeholder="Enter Product Price">
+                    <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="text" required class="form-control" id="productPrice" placeholder="Enter Product Price">
                   </div>  
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
+                <div class="col-md-6" >
+                    <div class="form-group" >
                     <label>Product Category</label>
-                    <select ng-model="categoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories" class="form-control select2" style="width: 100%;">
+                    <select  ng-model="categoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories"   class="form-control select2" style="width: 100%;">
                     </select>
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6" >
 
-                  <div class="form-group">
+                  <div class="form-group" required>
                     <label>Sub-Category</label>
-                    <select ng-model="subCategoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name for (idx, category) in subCategories" class="form-control select2" style="width: 100%;">
+                    <select ng-model="subCategoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name for (idx, category) in subCategories"  class="form-control select2" style="width: 100%;">
                     </select>
                   </div>
                 </div>
@@ -61,12 +61,12 @@
                 <textarea ng-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" >
                 <label>Color Tags</label>
                 <tags-input ng-readonly="mode=='v'" style="height: 20%;" ng-model="colors"></tags-input>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" required>
                 <label>Sizes Available</label>
 
                   <div class="row">
@@ -79,15 +79,7 @@
                           <label class="input-group-addon" ng-model="skus[key]" ng-readonly="mode=='v'" type="text" name="{{key}}">
                             {{key}}
                           </label>
-                          <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quantity <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">1</a></li>
-                              <li><a href="#">2 </a></li>
-                              <li><a href="#">3 </a></li>
-                              <li><a href="#">100</a></li>
-                            </ul>
-                          </div>
+                          <input  type="number" class="form-control" placeholder="Quantity">
                         </div><!-- /input-group -->
                         <div class="col-md-1"></div>
                     </div>
@@ -99,18 +91,18 @@
                 <textarea ns-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
               </div>
 
-              <div class="row">
+              <div class="row" >
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Shipping Days</label>
-                    <input  type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required">
+                    <input  type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required" required>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Return Days</label>
-                    <input type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days">
+                    <input type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days" required>
                   </div>  
                 </div>
               </div>
@@ -119,25 +111,18 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>Is Customizable?</label><br>
-                    <input type="checkbox" name="isCustomizable">
+                    <label >Is Customizable?</label><br>
+                    <input ng-model="isCustomizable" type="checkbox" name="isCustomizable">
                   </div>
                 </div>
 
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Customization Charges</label>
-                    <input type="number" class="form-control" id="customizationCharges" placeholder="" disabled="disabled" min='0'>
-                  </div>
 
-                </div>
               </div>
 
-              <div class="box box-solid" style="border-top: 0px; ">
+              <div ng-show="isCustomizable" class="box box-solid" style="border-top: 0px; ">
 
                 <div class="box-body" style="padding: 0px;">
                   <div class="box-group" id="accordion">
-                    <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                     <div class="panel box"  style="border-top: 0px; ">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                       <div class="box-header with-border">
@@ -446,22 +431,21 @@
 
                                        
               <div class="form-group">
-                <label for="exampleInputFile">Primary Image</label>
-                <input file-model="primaryImage" type="file" id="exampleInputFile">
+                <label for="primaryImages" class="block">Primary Image</label>
+                <input file-model="primaryImage" type="file" id="primaryImages" class="fileUpload" required>
+                <button ng-click="uploadImages(image)"> Upload Image </button>
 
-                <p class="help-block">Main display image.</p>
+                <p class="help-block">Main display image. Only one image can be used as Primary Image</p>
               </div>
 
 
              <div class="form-group">
-                <label for="exampleInputFile">Secondary Images</label>
-                <input type="number" min='0' max="10" id="secondaryImages" placeholder="Number of images (0-10)" class="form-control" style="width: 15%;">
+                <label for="secondaryImages" class="block">Secondary Images</label>
+                <input file-model="primaryImage" type="file" id="secondaryImages" class="fileUpload">
+               <button ng-click="uploadImages(image)"> Upload Image </button>
 
-                <input type="file" id="exampleInputFile">
-                <input type="file" id="exampleInputFile">
-                <input type="file" id="exampleInputFile">
+               <p class="help-block">Secondary specifications images. You can upload multiple images.</p>
 
-                <p class="help-block">Secondary specifications images.</p>
              </div>
 
 
@@ -472,7 +456,6 @@
 
                   <div class="box-header with-border">
                     <div class="user-block">
-                      <img class="img-circle" src="images/user1-128x128.jpg" alt="User Image">
                       <span class="username"><a href="#">{{newProduct.name}}</a></span>
                       <span class="description">Shared publicly - {{newProduct.createdAt|date:'hh:mm a'}} Today</span>
                     </div>

@@ -58,9 +58,24 @@
     margin-left: 0px;
   }
 
+  .user-block .username {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 80%;
+      white-space: nowrap;
+      padding:0px;
+  }
+
 
 .form-control-feedback {
     top: 0 !important;
 }
-  
 
+.fileUpload{
+    display: inline-block !important;
+}
+
+
+.block{
+    display: block;
+}

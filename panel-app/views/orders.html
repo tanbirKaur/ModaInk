@@ -16,16 +16,16 @@
 
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#new-orders" data-toggle="tab">New Orders</a></li>
-              <li><a href="#ongoing-orders" data-toggle="tab">Ongoing Orders</a></li>
-              <li><a href="#past-orders" data-toggle="tab">Past Orders</a></li>
-              <li><a href="#all-orders" data-toggle="tab">All Orders</a></li>
-              <li><a href="#all-orders-admin" data-toggle="tab">All Orders admin</a></li>
+              <li ng-hide="isAdmin" ng-class="{'active': !isAdmin}"><a href="#new-orders" data-toggle="tab">New Orders</a></li>
+              <li ng-hide="isAdmin"><a href="#ongoing-orders" data-toggle="tab">Ongoing Orders</a></li>
+              <li ng-hide="isAdmin"><a href="#past-orders" data-toggle="tab">Past Orders</a></li>
+              <li ng-hide="isAdmin"><a href="#all-orders" data-toggle="tab">All Orders</a></li>
+              <li><a href="#all-orders-admin" data-toggle="tab" ng-class="{'active': isAdmin}">All Orders </a></li>
             </ul>
             <div class="fill">
               <div class="tab-content" style="padding: 5px; min-height: 500px;">
 
-                <div class="active tab-pane" id="new-orders">
+                <div ng-class="{'active': !isAdmin}" class="tab-pane" id="new-orders">
 
                   <table id="tableNewOrders" class="table table-bordered table-striped">
                     <thead>
@@ -52,7 +52,9 @@
                       <td>XL</td>
                       <td>Red</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                        </td>
                     </tr>
                     <tr>
                       <td>113</td>
@@ -63,7 +65,9 @@
                       <td>XL</td>
                       <td>Red</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                      </td>
                     </tr>
                     <tr>
                       <td>114</td>
@@ -74,7 +78,9 @@
                       <td>XS</td>
                       <td>Red</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                      </td>
                     </tr>
                     <tr>
                       <td>115</td>
@@ -85,7 +91,9 @@
                       <td>XL</td>
                       <td>Red</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                      </td>
                     </tr>
                     <tr>
                       <td>112</td>
@@ -96,7 +104,9 @@
                       <td>XL</td>
                       <td>Green</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                      </td>
                     </tr>
                     <tr>
                       <td>112</td>
@@ -107,7 +117,9 @@
                       <td>XL</td>
                       <td>Blue</td>
                       <td>1</td>
-                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div><div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div></td>
+                      <td><div class="btn btn-success no-padding-top no-padding-bottom">Accept</div>
+                        <!--<div class="btn btn-danger no-padding-top no-padding-bottom">Reject</div>-->
+                      </td>
                     </tr>
                     
                     </tbody>
@@ -459,7 +471,7 @@
 
                 </div>
 
-                <div class="tab-pane" id="all-orders-admin">
+                <div ng-class="{'active': isAdmin}" class= "tab-pane" id="all-orders-admin">
 
                   
                   <table id="tableAllAdminOrders" class="table table-bordered table-striped">

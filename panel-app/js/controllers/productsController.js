@@ -42,42 +42,41 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         };
     });
 
-    $scope.uploadImages = function (callback) {
-        httpService.uploadImage('products',$scope.primaryImage,function(res){
-            callback(res);
-        })
-    }
-
-    $scope.addNewProduct = function(){
-        $scope.uploadImages(function (response) {
-            var imageUploaded = response.data;
+    $scope.uploadImages = function (imageName) {
+        httpService.uploadImage('products',imageName,function(res){
+            var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
                 alert('image uploaded:'+image.originalFileName);
                 $scope.newProduct.images.push({url:image.fileUrl});
             })
-            $scope.newProduct.colours.length = 0;
-            $scope.colors.forEach(function(color){
-                $scope.newProduct.colours.push(color.text);
-            })
-            Object.keys($scope.skus).forEach(function(skuName){
-                if ($scope.skus[skuName]) {
-                    $scope.newProduct.skus.push({sizeVariantValue:skuName,quantity:1});
-                };
-            });
-            $scope.newProduct.discountPrice
-            $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
-            $scope.newProduct.discountPrice = 0;
-            $scope.newProduct.isExclusive = true;
-            $scope.newProduct.designer = {id:$rootScope.userDetails.id};
+        })
+    }
 
-            console.log(JSON.stringify($scope.newProduct));
-            httpService.createProduct($scope.newProduct,function(res){
-                if (res.data && res.data.id) {
-                    console.log("New product created successfully");
-                } else {
-                    console.log("Product response:"+JSON.stringify(res));
-                }
-            });
+
+
+    $scope.addNewProduct = function(){
+        $scope.newProduct.colours.length = 0;
+        $scope.colors.forEach(function(color){
+            $scope.newProduct.colours.push(color.text);
+        })
+        Object.keys($scope.skus).forEach(function(skuName){
+            if ($scope.skus[skuName]) {
+                $scope.newProduct.skus.push({sizeVariantValue:skuName,quantity:1});
+            };
+        });
+        $scope.newProduct.discountPrice
+        $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
+        $scope.newProduct.discountPrice = 0;
+        $scope.newProduct.isExclusive = true;
+        $scope.newProduct.designer = {id:$rootScope.userDetails.id};
+
+        console.log(JSON.stringify($scope.newProduct));
+        httpService.createProduct($scope.newProduct,function(res){
+            if (res.data && res.data.id) {
+                console.log("New product created successfully");
+            } else {
+                console.log("Product response:"+JSON.stringify(res));
+            }
         });
     }
 });

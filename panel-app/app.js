@@ -46,6 +46,7 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/designer-profile.html',
             controller: "DesignerController"
         })
+
         $locationProvider.html5Mode({
           enabled: true,
           requireBase: false
