@@ -111,13 +111,17 @@ angular.module('portal-modaink')
 			});
 		}
 
-		// httpService.uploadImage = function(type,url,successCallback,failureCallback){
-		// 	httpService.callHttp("POST","upload/"+type+"/images",{},{},{},function (response) {
-		// 		redirectCallback(response,emptyFunction,successCallback);
-		// 	},function (response) {
-		// 		redirectCallback(response,httpFailed,failureCallback,"createProduct");
-		// 	});
-		// }
+		httpService.uploadImage = function(type,url,successCallback,failureCallback){
+			var headers = {};
+			headers['Content-Type'] = undefined;
+			var fd = new FormData();
+            fd.append('file', url);
+			httpService.callHttp("POST","upload/"+type+"/images",{},headers,fd,function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,"createProduct");
+			});
+		}
 
 		httpService.getProductCategories = function(successCallback,failureCallback){
 			var params = {includeSubCategories:true};
