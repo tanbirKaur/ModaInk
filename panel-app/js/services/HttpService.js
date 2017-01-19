@@ -14,7 +14,6 @@ angular.module('portal-modaink')
 
    		var onDesignerLoginSuccess = function (response) {
 			storageService.set('accessToken',response.data.accessToken);
-			storageService.set('isAdmin',true);
 			$rootScope.userLoggedIn = true;
 		}
 
@@ -93,6 +92,14 @@ angular.module('portal-modaink')
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"approveProduct");
+			});
+		}		
+
+		httpService.rejectProduct = function (id,successCallback,failureCallback) {
+			httpService.callHttp("PUT","products/"+id+"/reject",{},{},{},function (response) {
+				redirectCallback(response,emptyFunction,successCallback);
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,"rejectProduct");
 			});
 		}		
 

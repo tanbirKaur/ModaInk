@@ -18,6 +18,12 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
         });
     }
 
+    $scope.rejectProduct = function (productId) {
+        httpService.approveProduct(productId,function(response){
+            $scope.getUnApprovedProducts();
+        });
+    }
+
     $rootScope.userLoggedIn = storageService.get('accessToken')
     $rootScope.isAdmin = storageService.get("isAdmin");
 

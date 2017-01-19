@@ -1,4 +1,10 @@
+<div ng-hide="unApprovedProducts && unApprovedProducts.length > 0" class="row">
+    <div class="col-md-4 col-md-offset-4">
+          <span class="color-brown text-info">Great! no more pending product requests</span>
+    </div>
+</div>
 <div class="row">
+
                   <div ng-repeat="product in unApprovedProducts" ng-if="!product.isApproved" class="col-md-5">
                     <!-- Box Comment -->
                     <div class="box box-widget">
@@ -61,7 +67,7 @@
 
                           <div class="row text-center" style="margin: 4px;">
                             <button ng-click="approveProduct(product.id)" class="col-md-6 btn btn-success">Accept</button>
-                            <div class="col-md-6 btn btn-danger">Reject</div>
+                            <button ng-click="rejectProduct(product.id)" class="col-md-6 btn btn-danger">Reject</button>
                           </div>
 
                         <!-- /.row -->
