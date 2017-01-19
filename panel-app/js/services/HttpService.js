@@ -79,7 +79,7 @@ angular.module('portal-modaink')
 		}
 
 		httpService.getUnApprovedProducts = function (successCallback,failureCallback) {
-			var params = {isApproved:false};
+			var params = {isApproved:'null'};
 			httpService.callHttp("GET","products",params,{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
