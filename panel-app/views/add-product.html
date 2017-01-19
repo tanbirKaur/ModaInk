@@ -10,11 +10,7 @@
         Review Product
         <small></small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Simple</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -74,12 +70,26 @@
                 <label>Sizes Available</label>
 
                   <div class="row">
-                    <div ng-repeat="(key, val) in skus" class="col-md-1">
-                      <div class="checkbox">
-                        <label>
-                          <input ng-model="skus[key]" ng-readonly="mode=='v'" type="checkbox" name="{{key}}">{{key}}
-                        </label>
-                      </div>
+                    <div ng-repeat="(key, val) in skus" class="col-md-3">
+                        
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                              <input type="checkbox" aria-label="...">
+                            </span>
+                          <label class="input-group-addon" ng-model="skus[key]" ng-readonly="mode=='v'" type="text" name="{{key}}">
+                            {{key}}
+                          </label>
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quantity <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2 </a></li>
+                              <li><a href="#">3 </a></li>
+                              <li><a href="#">100</a></li>
+                            </ul>
+                          </div>
+                        </div><!-- /input-group -->
+                        <div class="col-md-1"></div>
                     </div>
                   </div>
               </div>
