@@ -145,27 +145,27 @@
                                                   <a id="profile_button" href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
                                                   <ul class="dropdown-menu">
                                                     <li><a>Your Account</a></li>
-                                                    <li class="divider"></li>
-                                                    <li>
-                                                        <div style="margin-left: 10%;">
-                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
-
-                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
+                                                        <div ng-hide="userName">
+                                                            <li  class="divider"></li>
+                                                            <li>
+                                                                <div style="margin-left: 10%;">
+                                                                    <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
+                                                                    <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
+                                                                </div>
+                                                            </li>
                                                         </div>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="/myProfile">User Name <br/>
-                                                    User Email</a></li>
-
-                                                    <li class="divider"></li>
-                                                    <li><a href="/cart">My Orders</a></li>
-                                                    <li><a href="/wishlist">My wishlist</a></li>
-                                                    <li><a href="/profile">Saved addresses</a></li>
-                                                    <li><a href="/profile">User badges</a></li>
-
-                                                    <li class="divider"></li>
-                                                    <li><a href="/myProfile/edit">Edit Profile</a></li>
-                                                    <li><a href="/wishlist">Logout</a></li>
+                                                        <div ng-show="userName">
+                                                            <li class="divider"></li>
+                                                            <li ><a href="/myProfile">{{userName}} <br/>{{userDetails.email}}</a></li>\          
+                                                            <li class="divider"></li>
+                                                            <li ><a href="/cart">My Orders</a></li>
+                                                            <li ><a href="/wishlist">My wishlist</a></li>
+                                                            <li ><a href="/profile">Saved addresses</a></li>
+                                                            <li ><a href="/profile">User badges</a></li>
+                                                            <li class="divider"></li>
+                                                            <li ><a href="/myProfile/edit">Edit Profile</a></li>
+                                                            <li ><a href="/wishlist">Logout</a></li>
+                                                        </div>
                                                   </ul>
                                             </li>
                                             
@@ -205,7 +205,6 @@
             </header>
         </div>
 <div ng-include src="'views/login.html'"></div>
-<div ng-include src="'views/alert.html'"></div>
         <!-- #Content -->
         <!-- Main Content -->
         <div ui-view></div>
