@@ -8,7 +8,7 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.userName = undefined;
 	$scope.filterApplied = false;
 	$scope.shoppingcartItemCount = 0;
-	$scope.productFilters = [{key:"isExclusive",val:true}];
+	$scope.productFilters = {isExclusive:'true'};
 	$scope.parentCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
@@ -44,8 +44,13 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.getProducts = function (params,data) {
 		if (!params) params = {offset:0,limit:30};
 		params = {};
-		if (!data) data = {};
-		httpService.callHttp("POST","products/searchService",params,{},data,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
+		var filterInfo = {filters:[]};
+		if (data){
+			Object.keys(data).forEach(function(key){
+				filterInfo.filters.push({filterName:key,filterMatch:data[key]});
+			});
+		}
+		httpService.callHttp("POST","products/searchService",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	}
 
 	// http Success and Failure Methods
@@ -251,7 +256,7 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	} else {
 		$scope.getDesigners();
 		$scope.getCategories();
-		$scope.getProducts();
+		$scope.getProducts({},$scope.productFilters);
 	}
 
 });
