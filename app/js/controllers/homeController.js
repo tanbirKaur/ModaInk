@@ -9,6 +9,8 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.filterApplied = false;
 	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = {isExclusive:'true'};
+	$scope.sortOption = {};
+	$scope.filterParams = {};
 	$scope.parentCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
@@ -44,13 +46,30 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.getProducts = function (params,data) {
 		if (!params) params = {offset:0,limit:30};
 		params = {};
-		var filterInfo = {filters:[]};
+		var filterInfo = {filters:[],sortBy:[]};
+		Object.keys($scope.sortOption).forEach(function(key){
+			filterInfo.sortBy.push({sortAttribute:key,sortOrder:$scope.sortOption[key]});
+		});
 		if (data){
 			Object.keys(data).forEach(function(key){
 				filterInfo.filters.push({filterName:key,filterMatch:data[key]});
 			});
 		}
 		httpService.callHttp("POST","products/searchService",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
+	}
+
+	//Product filters and sort
+
+	$scope.sortBy = function (key) {
+		var sortValue = $scope.sortOption[key];
+		$scope.sortOption = {};
+		$scope.sortOption[key] = sortValue;
+		if (!$scope.sortOption[key] || $scope.sortOption[key] == 'desc') {
+			$scope.sortOption[key] = 'asc'
+		} else {
+			$scope.sortOption[key] = 'desc'
+		}
+		$scope.getProducts($scope.filterParams,$scope.productFilters);
 	}
 
 	// http Success and Failure Methods
@@ -256,7 +275,7 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	} else {
 		$scope.getDesigners();
 		$scope.getCategories();
-		$scope.getProducts({},$scope.productFilters);
+		$scope.getProducts($scope.filterParams,$scope.productFilters);
 	}
 
 });

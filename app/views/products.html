@@ -17,13 +17,8 @@
 									<form class="woocommerce-ordering" method="get">
 									<ul class="sort widget woocommerce">
 									<label>Sort:</label>
-										<li data-sortkey=":popularity">Popular</li>
-										<li data-sortkey=":new">New</li>
-										<li data-sortkey=":discount">Discount</li>
-									<label>Price: </label>
-										<li data-sortkey=":low">Low</li>
-										<li data-sortkey=":high">High</li>
-									</ul>
+										<li><a href="" ng-click="sortBy('price')">Price</a></li>
+										<li><a href="" ng-click="sortBy('discountPrice')">Discount</a></li>
 									</form>
 								</div>
 								<div class="products_wrapper ">
