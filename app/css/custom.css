@@ -9,6 +9,17 @@ a:hover {
 }
 
 
+.category_name_homepage {
+    border-top: 2px solid #181818;
+    border-bottom: 2px solid #181818;
+    margin: 12px;
+    text-align: center;
+}
+
+.category_name_homepage label {
+    padding-bottom: 10%;
+}
+
 
 /*.designer_name {
 	height: 30px;
@@ -361,14 +372,14 @@ li[data-colorhex='white'] {
 
 #designerIndexLeftPanel a {
     color: black;
-    display: inline-flex;
+    display: block;
     padding: 10px;
 }
  #designer-categories{
     margin-left: 8%;
     margin-bottom: 2%;
 }
- }
+
 .alphabet-list {
     list-style: none;
     display: flex;
@@ -1341,7 +1352,7 @@ span.round-tab:hover {
 }
 .become-Designer-Button{
     color: #181818;
-    margin-top: 20px;
+    padding: 8px;
 }
 
 .become-Designer-Button, .register-Designer-Button {
@@ -1349,6 +1360,7 @@ span.round-tab:hover {
     background-color: transparent;
     font-size: 20px;
     font-weight: bold;
+    display: inline-block;
     
 }
 
