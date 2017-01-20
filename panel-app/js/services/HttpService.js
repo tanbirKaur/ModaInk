@@ -85,9 +85,18 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
 			});
-		}		
+		}
 
-		httpService.approveProduct = function (id,successCallback,failureCallback) {
+	   httpService.getRejectedProducts = function (successCallback,failureCallback) {
+		   var params = {isApproved:'false'};
+		   httpService.callHttp("GET","products",params,{},{},function (response) {
+			   redirectCallback(response,emptyFunction,successCallback);
+		   },function (response) {
+			   redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
+		   });
+	   }
+
+           httpService.approveProduct = function (id,successCallback,failureCallback) {
 			httpService.callHttp("PUT","products/"+id+"/approve",{},{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {

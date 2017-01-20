@@ -12,6 +12,12 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
         });
     }
 
+    $scope.getRejectedProducts = function () {
+        httpService.getRejectedProducts(function(response){
+            $scope.rejectedProducts = response.data;
+        });
+    };
+
     $scope.approveProduct = function (productId) {
         httpService.approveProduct(productId,function(response){
             $scope.getUnApprovedProducts();
