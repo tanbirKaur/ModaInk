@@ -28,9 +28,13 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
 
     $scope.onDesignerRequestSuccess = function (response) {
         console.log(response);
+
+
     }
     $scope.onDesignerRequestFailure = function (response) {
         console.log(response);
+        alert('Designer request places successfully. Check your email for further information');
+//        $('#registrationSucessful').modal();
     }
 
     //View methods

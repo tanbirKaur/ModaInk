@@ -4161,15 +4161,13 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
     color: #03ABEA;
 }
 
-#Footer .footer_copy .social .Vimeo a:hover {
+#Footer .footer_copy .social .insta a:hover {
     color: #4EBBFF;
 }
-#Footer .footer_copy .social .flickr a:hover {
+#Footer .footer_copy .social .youtube a:hover {
     color: #0063DC;
 }
-#Footer .footer_copy .social .linkedin a:hover {
-    color: #0077B5;
-}
+
 
 
 

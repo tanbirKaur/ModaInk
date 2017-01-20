@@ -11,13 +11,13 @@
                       <div class="box-header with-border">
                         <div class="user-block">
                           <span class="username" ><a href="">{{product.name}}</a></span>
-                          <span class="description" ><a href="">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
+                          <span ng-if="isAdmin" class="description" ><a href="/designer-profile/:id">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
                           <span class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</span>
                         </div>
                         <!-- /.user-block -->
                         <div class="box-tools">
                           
-                          <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
+                          <button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
                             <i class="fa fa-edit"></i></button> 
                          
                             <!-- Product to be removed  -->
@@ -66,8 +66,9 @@
                           </div>
 
                           <div class="row text-center" style="margin: 4px;">
-                            <button ng-click="approveProduct(product.id)" class="col-md-6 btn btn-success">Accept</button>
-                            <button ng-click="rejectProduct(product.id)" class="col-md-6 btn btn-danger">Reject</button>
+                            <button ng-if="isAdmin" ng-click="approveProduct(product.id)" class="col-md-6 btn btn-success">Accept</button>
+                            <button ng-if="isAdmin" ng-click="rejectProduct(product.id)" class="col-md-6 btn btn-danger">Reject</button>
+                            <label ng-if="!isAdmin" class="col-md-12 btn btn-danger">Waiting for approval</label>
                           </div>
 
                         <!-- /.row -->

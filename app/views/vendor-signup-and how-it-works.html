@@ -97,7 +97,7 @@
 
               <div class="box-footer col-md-8" >
 
-                <a href="javascript:void(0)"><button ng-click="becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
+                <a href="javascript:void(0)" ><button ng-click="becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
                 <a href="javascript:void(0)"><button class="btn btn-primary custom-btn" >Cancel</button></a>
               </div>
             </form>
@@ -107,8 +107,31 @@
     	</div>
 
     </div>
-    
-    <script type="text/javascript">
+
+
+      <div id="registrationSucessful" class="modal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content" >
+            <div class="modal-header">
+              <h4 class="modal-title">Thank you for registration</h4>
+            </div>
+            <div class="modal-body">
+              <p>Your request is sucessfully submitted. We will send you futher details in your email address.</p>
+            </div>
+
+            <div  class="modal-footer">
+              <a href="#"><button class="btn" data-dismiss="modal">OK</button></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  <script type="text/javascript">
     $(document).ready( function() {
       $(document).on('change', '.btn-file :file', function() {
     var input = $(this),

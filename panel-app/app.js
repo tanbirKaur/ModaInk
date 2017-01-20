@@ -1,7 +1,7 @@
 var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter','ngTagsInput']);
 window.app == app;
 window.apiUrl = "http://dev.modaink.com/api";
-//window.apiUrl = "http://localhost:8000";
+// window.apiUrl = "http://192.168.0.100:8000";
 app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {

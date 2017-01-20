@@ -8,13 +8,20 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     });
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
-        httpService.login(loginInfo,$scope.onLoginSuccess);
+        httpService.login(loginInfo,$scope.onLoginSuccess, $scope.onLoginFailure);
 	}
 
 	$scope.onLoginSuccess = function (response) {
         httpService.getCurrentUserDetails(function(res){
+
             $location.path( "/");
         });
 	}
+
+    $scope.onLoginFailure = function () {
+        
+    }
+
+
 })
 
