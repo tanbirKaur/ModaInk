@@ -1,5 +1,5 @@
 <div class="sidebar four-columns columns" style="max-width: 18%;">
-				<div class="widget-area clearfix ">
+<!-- 				<div class="widget-area clearfix ">
 				<aside id="woocommerce_layered_nav_filters-2" class="widget woocommerce widget_layered_nav_filters">
 					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
@@ -11,9 +11,9 @@
 				</aside>
 				<aside class="basic_categorization widget woocommerce">
 						<ul>
-							<li ><a href="/exclusive" style="color: #c8a75e">All</a></li>
-							<li><a href="" ng-click="addFilter('gender','men')">Men</a></li>
-							<li><a href="" ng-click="addFilter('gender','women')">Women</a></li>
+							<li ><a href="" ng-click="addFilter('gender','men');addFilter('gender','women')" >All</a></li>
+							<li><a href="" ng-click="addFilter('gender','men')" >Men</a></li>
+							<li><a href="" ng-click="addFilter('gender','women')" >Women</a></li>
 						</ul>
 					</aside>
 					<aside class = "widget woocommerce">
@@ -22,10 +22,10 @@
 							<div class="filter_title"> {{category.name}} </div>
 							<ul>
 								<li class="input-group" ng-repeat="subCategory in category.subCategories">
-							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter('category.name',subCategory.name,subCategory.checked) || addFilter('category.name',subCategory.name)" aria-label="...">
+							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter('category',subCategory.name,subCategory.checked) || addFilter('category',subCategory.name)" aria-label="...">
 							        <label>{{subCategory.name}}</label>
 							        <span class="num">({{productCountForCategory(subCategory.name)}})</span>
-							    </li><!-- /input-group -->
+							    </li>
 						    </ul>
 						</div>
 					</aside>
@@ -106,4 +106,4 @@
 					
 					
 				</div>
-			</div>
+ -->			</div>

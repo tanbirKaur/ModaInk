@@ -16,7 +16,7 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	// http Methods
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
-		httpService.callHttp("POST","users/authenticate",{},{},loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure,true);
+		httpService.login(loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure);
 	}
 
 	$scope.getUserDetails = function () {
@@ -41,9 +41,11 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 		httpService.callHttp("GET","categories",params,{},{},$scope.onGetCategorySuccess,$scope.onGetCategoryFailure,true);
 	}
 
-	$scope.getProducts = function (params) {
-		if (!params) params = {};
-		httpService.callHttp("GET","products",params,{},{},$scope.onGetProductsSuccess,$scope.onGetProductsFailure,true);
+	$scope.getProducts = function (params,data) {
+		if (!params) params = {offset:0,limit:30};
+		params = {};
+		if (!data) data = {};
+		httpService.callHttp("POST","products/searchService",params,{},data,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	}
 
 	// http Success and Failure Methods
@@ -73,17 +75,27 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 		$scope.userDetails = response.data;
 		storageService.set("userDetails",$scope.userDetails);
 		$scope.userName = $scope.userDetails.firstName + $scope.userDetails.lastName;
-		$scope.getShoppingCartItems();
+//		$scope.getShoppingCartItems();
 	}
 	$scope.onGetUserDetailsFailure = function (response) {
 		console.log('onGetUserDetailsFailure');
+		$scope.userDetails = {"id":1,"firstName":"Taj","lastName":"Ahmed","email":"test@mailinator.com","mobile":"9999999999","dateOfBirth":null,"avatarUrl":null,"isEmailVerified":false,"isActive":true,"createdBy":null,"updatedBy":null,"createdAt":"2016-12-18T08:51:25.000Z"};
+		storageService.set("userDetails",$scope.userDetails);
+		$scope.userName = $scope.userDetails.firstName + $scope.userDetails.lastName;
+//		$scope.getShoppingCartItems();
 	}
 
 	$scope.onGetShoppingCartItemsSuccess = function (response) {
 		$scope.shoppingcartItems = response.data;
 	}
 	$scope.onGetShoppingCartItemsFailure = function (response) {
+		$scope.shoppingcartItems = [{"id":11,"item":{"skuCode":"PR3-XL-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":11,"name":"XL","description":"Extra Large","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}},{"id":12,"item":{"skuCode":"PR3-S-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":8,"name":"S","description":"Small","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}}];
+		$scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+		storageService.set("cartItems",$scope.shoppingcartItems);
 		console.log('onGetShoppingCartItemsFailure');
+		$scope.shoppingcartItems = [{"id":11,"item":{"skuCode":"PR3-XL-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":11,"name":"XL","description":"Extra Large","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}},{"id":12,"item":{"skuCode":"PR3-S-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":8,"name":"S","description":"Small","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}}];
+		$scope.shoppingcartItemCount = $scope.shoppingcartItemCount.length;
+		storageService.set("cartItems",	$scope.shoppingcartItems);
 	}
 
 	$scope.onSignUpSuccess = function (response) {
@@ -111,9 +123,10 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	}
 
 	$scope.onGetProductsSuccess = function (response) {
-		$scope.allProducts = response.data;
-		$scope.products = response.data;
-		applyFilters();
+		$scope.allProductInfo = response.data;
+		$scope.allProducts = response.data.products;
+		$scope.products = response.data.products;
+		// applyFilters();
 		storageService.set("products",$scope.products);
 	}
 

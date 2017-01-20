@@ -46,7 +46,6 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
 
     if (productId) {
         $scope.product = findProductById(productId);
-        $scope.sku = $scope.product.skus[0];
     };
 
 });

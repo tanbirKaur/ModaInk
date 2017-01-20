@@ -5,10 +5,10 @@
 					<div class="flexslider">
 					
 					<div class="flex-viewport" style="overflow: hidden; position: relative;">
-                        <ul class="slides" style="width: 1000%; transition-duration: 0.6s; transform: translate3d(-1017px, 0px, 0px);">
-                            <li ng-repeat="image in product.images" data-thumb="{{image.url}}" class="clone" style="width: 339px; float: left; display: block;">
-							    <div class="thumb-image"> <img ng-src="{{image.url}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
+                        <ul class="slides" >
+							    <div class="thumb-image"> 
+                                    <img ng-src="{{product.previewImage}}" data-imagezoom="true" class="img-responsive" alt=""/> 
+                                </div>
 						</ul>
 							</div>
 							<ol class="flex-control-nav flex-control-thumbs">
@@ -20,20 +20,18 @@
 				</div>
 				<div class="col-md-5 dress-info">
 					<div class="dress-name">
-						<h3>{{product.name}}</h3>
-						<span>Rs. {{sku.price}}</span>
+						<h3>{{product.productName}}</h3>
+						<span>Rs. {{product.price}}</span>
 						<div class="clearfix"></div>
-						<p>{{product.description}}</p>
+						<p>{{product.productDescription}}</p>
 					</div>
 
 					<div>
 						<ul class="swatches Color">
-							<li class="selected" ng-repeat="variantValue in sku.variantValues" ng-if="variantValue.variant.name=='Colour'">
-							<a title="color" class="swatchanchor" style="background:{{variantValue.name}}" >
-							</a>
-							
+							<li class="selected" ng-repeat="color in product.colours">
+							<a title="color" class="swatchanchor" style="background:{{color}}" ></a>
 							<span style="font-weight: bold;">
-                            <a>{{variantValue.description}}</a>
+                            <a>{{color}}</a>
 							</span>
 							
 							</li>
@@ -47,10 +45,9 @@
 
 					<div class="product-variations">
 						<ul class="swatches">
-							<li ng-repeat="variantValue in sku.variantValues" ng-if="variantValue.variant.name=='Size'">
-								<a> {{variantValue.name}} </a>
+							<li ng-repeat="sku in product.allSkus">
+								<a ng-class="{'disbled':sku.isOutOfStock}"> {{sku.size}} </a>
 							</li>
-							<!-- <li class="out-of-stock"> -->
 						</ul>
 					</div>
 					<div class="purchase">
