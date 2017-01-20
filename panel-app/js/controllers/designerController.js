@@ -9,7 +9,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService) 
 	}
 
 	$scope.getDesignerProducts = function(designerId){
-		httpService.getDesignerProducts(designerId,$scope.onGetDesignerProductsSuccess)
+		httpService.getProducts(designerId,$scope.onGetDesignerProductsSuccess)
 	}
 	// http Success and Failure Methods
 	$scope.onGetDesignerDetailsSuccess = function (response) {
