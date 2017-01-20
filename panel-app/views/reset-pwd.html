@@ -1,0 +1,28 @@
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <h3 class="login-box-msg">Reset Password?</h3>
+
+            <label>Enter new Password</label>
+            <div class="form-group has-feedback">
+                <input ng-model="password" type="password" class="form-control" placeholder="New Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+
+            <label>Confirm Password</label>
+        <div class="form-group has-feedback">
+            <input ng-model="password" type="password" class="form-control" placeholder="Confirm Password">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <!-- /.col -->
+        <div>
+            <a href="/login"> <button ng-click="resetPwd()" class="btn btn-primary btn-block btn-flat">RESET PASSWORD</button></a>
+            <a href="/waiting-for-approval">Waiting for approval</a>
+        </div>
+        <!-- /.col -->
+
+
+    </div>
+    <!-- /.login-box-body -->
+</div>

@@ -1,0 +1,23 @@
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <h3 class="login-box-msg">Forgot Password?</h3>
+        <p>We will send you a link to reset your password. </p>
+        <h5>Enter your Email Address</h5>
+
+        <div class="form-group has-feedback">
+            <input ng-model= "email" type="email" class="form-control" placeholder="Email">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <!-- /.col -->
+        <div>
+           <a href="/reset-pwd/sentLink"> <button ng-click="sendResetLink()" class="btn btn-primary btn-block btn-flat">SEND RESET LINK</button></a>
+        </div>
+        <!-- /.col -->
+    <div style="margin-top: 5%"><a href="/login">Login!</a><br></div>
+
+
+</div>
+<!-- /.login-box-body -->
+</div>
