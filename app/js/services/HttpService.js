@@ -32,13 +32,7 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
     }
 
 
-    httpService.verifyEmail = function (info,successCallback,failureCallback) {
-        httpService.callHttp("PUT","designers/verifyEmail",{},info,{},function (response) {
-            redirectCallback(response,emptyFunction,successCallback);
-        },function (response) {
-            redirectCallback(response,httpFailed,failureCallback,"login");
-        },true);
-    }
+
 
     return httpService;
  }]);
