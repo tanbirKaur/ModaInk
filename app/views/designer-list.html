@@ -1,46 +1,81 @@
 <div ng-controller="DesignersController" id="Content" class="without_headers">
 	<div class="content_wrapper clearfix">
-		<div id="designerIndexLeftPanel">
-			<div id="designer-categories">
-				<a href="" style="color: #c8a75e; font-weight: bold;">All Designers</a>
-				<a href="/diamond-designers" >Diamond Designers</a>
-				<a href="#" >Jedi</a>
-				<a href="#" >Featured Designers</a>
-				<a href="#" >New Designers</a>
-				<a href="#" >Premium Designers</a>
-				<a href="#" >Student Designers</a>
-			</div>
-			
 
-			<div id="custom-search-input">
-                <div class="input-group">
-                    <input ng-model="designerSearch" type="text" class="form-control input-lg" placeholder="Find your Designer" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="icon-search"></i>
-                        </button>
-                    </span>
-                </div>
-			</div>
 		<div>
-        <ul class="alphabet-list">
-            <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
-                <a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>
-            </li>
-        </ul>
-        <hr>
-    <div>
+			<ul class="alphabet-list">
+				<li><a href="#09">0-9</a></li>
+				<li><a href="#a">A</a></li>
+				<li><a href="#b">B</a></li>
+				<li><a href="#c">C</a></li>
+				<li><a href="#d">D</a></li>
+				<li><a href="#e">E</a></li>
+				<li><a href="#f">F</a></li>
+				<li><a href="#g">G</a></li>
+				<li><a href="#h">H</a></li>
+				<li><a href="#i">I</a></li>
+				<li><a href="#j">J</a></li>
+				<li><a href="#k">K</a></li>
+				<li><a href="#l">L</a></li>
+				<li><a href="#m">M</a></li>
+				<li><a href="#n">N</a></li>
+				<li><a href="#o">O</a></li>
+				<li><a href="#p">P</a></li>
+				<li><a href="#q">Q</a></li>
+				<li><a href="#r">R</a></li>
+				<li><a href="#s">S</a></li>
+				<li><a href="#t">T</a></li>
+				<li><a href="#u">U</a></li>
+				<li><a href="#v">V</a></li>
+				<li><a href="#w">W</a></li>
+				<li><a href="#x">X</a></li>
+				<li><a href="#y">Y</a></li>
+				<li><a href="#z">Z</a></li>
+			</ul>
+			<hr/>
+		</div>
+
+		<div class="row">
+				<div class="col-md-3">
+
+					<div id="designerIndexLeftPanel">
+
+						<div id="custom-search-input">
+							<div class="input-group">
+								<input ng-model="designerSearch" type="text" class="form-control input-lg" placeholder="Find your Designer" />
+								<span class="input-group-btn">
+									<button class="btn btn-info btn-lg" type="button">
+										<i class="icon-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div style="font-weight: bold; font-size: 18px; padding-bottom: 20px; ">BY CATEGORY</div>
+						<a href="/designers">All Designers</a>
+						<a href="#" style="color: #c8a75e; font-weight: bold;">Diamond Designers</a>
+						<a href="#" >Jedi</a>
+						<a href="#" >Featured Designers</a>
+						<a href="#">New Designers</a>
+						<a href="#">Premium Designers</a>
+						<a href="#">Student Designers</a>
+
+
+					</div>
+				</div>
+        <!--<ul class="alphabet-list">-->
+            <!--<li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">-->
+                <!--<a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>-->
+            <!--</li>-->
+        <!--</ul>-->
 
 
 
-    <div class="row">
-    	
-		<div style="padding-left: 50px; margin-bottom: 15%;">
+
+				<div class="col-md-8" style="padding-left: 50px; margin-bottom: 15%;">
 	                <ul class="alphabets">
 	               
 	                    <li ng-repeat="designerGroup in designerList | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
-	                    	<ul class="designer-listing" id="{{designerGroup.$key}}">
-	                    		<li class="alpha">{{designerGroup.$key}}</li>
+	                    	<ul class="designer-listing" id="{{designerGroup.$key | lowercase}}">
+	                    		<li class="alpha">{{designerGroup.$key | uppercase}}</li>
 	                    		<hr>
 	                    		<div class="col-md-12">
     	                            <li ng-repeat="designer in designerGroup">
@@ -51,8 +86,6 @@
 	                	</li>
 	                </ul>
 	                </div>
-	                </div>
-                </div>
+			</div>
 		</div>
-	</div>
 </div>

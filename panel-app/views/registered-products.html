@@ -4,9 +4,9 @@
                     <div class="box box-widget">
                       <div class="box-header with-border">
                         <div class="user-block">
-                          <span class="username" ><a href="#">{{product.name}}</a></span>
-                          <span class="description" ><a href="#">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
-                          <span class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</span>
+                          <div class="username btn-box-tool" data-toggle="tooltip" title={{product.name}} ><a href="#">{{product.name}}</a></div>
+                          <div class="description" ><a href="#">{{product.designer.firstName}} {{product.designer.lastName}}</a></div>
+                          <div class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</div>
                         </div>
                         <!-- /.user-block -->
                         <div class="box-tools">
@@ -44,7 +44,7 @@
                         <div class="row">
                           <div class="col-sm-6 border-right">
                             <div class="description-block">
-                              <h5 class="description-header">3,200</h5>
+                              <h5 class="description-header">0</h5>
                               <span class="description-text">SALES</span>
                             </div>
                             <!-- /.description-block -->
@@ -53,7 +53,7 @@
                           <!-- /.col -->
                           <div class="col-sm-6">
                             <div class="description-block">
-                              <h5 class="description-header">35</h5>
+                              <h5 class="description-header">0</h5>
                               <span class="description-text">PRODUCTS</span>
                             </div>
                             <!-- /.description-block -->
@@ -66,6 +66,8 @@
                     </div>
                     <!-- /.box -->
                   <!-- /.col -->
+
+
                 </div>
                   <!-- /.col -->
                  

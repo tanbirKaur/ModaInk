@@ -32,6 +32,15 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             url: '/register-designer',
             templateUrl: '/views/register-designer-form.html'
         })
+        .state('designer-requests', {
+            url: '/designer-requests',
+            templateUrl: '/views/new-designer-request.html'
+        })
+        .state('designer-profile',{
+            url: '/designer-profile/:id',
+            templateUrl: '/views/designer-profile.html',
+            controller: "DesignerController"
+        })
         .state('payouts',{
             url: '/payouts',
             templateUrl: '/views/payouts.html'
@@ -41,12 +50,31 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/login.html',
             controller: 'LoginController'
         })
-        .state('designer-profile',{
-            url: '/designer-profile/:id',
-            templateUrl: '/views/designer-profile.html',
-            controller: "DesignerController"
+        .state('reset-pwd',{
+            url: '/reset-pwd',
+            templateUrl: '/views/reset-pwd.html',
+            controller: 'LoginController'
         })
-        $locationProvider.html5Mode({
+        .state('forgot-pwd',{
+            url: '/forgot-pwd',
+            templateUrl: '/views/forgot-pwd.html',
+            controller: 'LoginController'
+        })
+        .state('linkSent',{
+            url: '/reset-pwd/sentLink',
+            templateUrl: '/views/link-sent.html',
+            controller: 'LoginController'
+        })
+        .state('waiting',{
+            url: '/waiting-for-approval',
+            templateUrl: '/views/waiting-for-approval.html',
+            controller: 'LoginController'
+        })
+
+
+
+
+    $locationProvider.html5Mode({
           enabled: true,
           requireBase: false
         });
