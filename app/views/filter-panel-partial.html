@@ -1,11 +1,10 @@
 <div class="sidebar four-columns columns" style="max-width: 18%;">
-<!-- 				<div class="widget-area clearfix ">
+				<div class="widget-area clearfix ">
 				<aside id="woocommerce_layered_nav_filters-2" class="widget woocommerce widget_layered_nav_filters">
 					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
 						<li class="chosen" ng-repeat="productFilter in productFilters">
-							<a title="Remove filter" ng-click="removeFilter(productFilter.key,productFilter.val) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.key}} - {{productFilter.val}}
-							</a>
+							<a title="Remove filter" ng-click="removeFilter(productFilter.key,productFilter.val) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.key}} - {{productFilter.val}}</a>
 						</li>
 					</ul>
 				</aside>
@@ -18,13 +17,13 @@
 					</aside>
 					<aside class = "widget woocommerce">
 						<h4> CATEGORIES </h4>
-						<div ng-repeat="category in productCategories">
-							<div class="filter_title"> {{category.name}} </div>
+						<div ng-repeat="(facet_val,facet_key) in allProductInfo.facets">
+							<div class="filter_title"> {{facet_val}} </div>
 							<ul>
-								<li class="input-group" ng-repeat="subCategory in category.subCategories">
+								<li class="input-group" ng-repeat="(name,val) in facet_key">
 							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter('category',subCategory.name,subCategory.checked) || addFilter('category',subCategory.name)" aria-label="...">
-							        <label>{{subCategory.name}}</label>
-							        <span class="num">({{productCountForCategory(subCategory.name)}})</span>
+							        <label>{{name}}</label>
+							        <span class="num">({{val}})</span>
 							    </li>
 						    </ul>
 						</div>
@@ -102,8 +101,5 @@
 							</div>
 						</form>
 					</aside>
-
-					
-					
 				</div>
- -->			</div>
+			</div>
