@@ -30,7 +30,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="">Product Price</label>
-                    <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="text" required class="form-control" id="productPrice" placeholder="Enter Product Price">
+                    <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="number" required class="form-control" id="productPrice" placeholder="Enter Product Price">
                   </div>  
                 </div>
               </div>
@@ -58,28 +58,28 @@
 
               <div class="form-group">
                 <label>Details</label>
-                <textarea ng-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
+                <textarea required ng-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
               </div>
 
               <div class="form-group" >
-                <label>Color Tags</label>
-                <tags-input ng-readonly="mode=='v'" style="height: 20%;" ng-model="colors"></tags-input>
+                <label>Colour Tags</label>
+                <tags-input ng-readonly="mode=='v'" style="height: 20%;" ng-model="colors" placeholder="Enter atleast one colour"> </tags-input>
               </div>
 
-              <div class="form-group" required>
+              <div class="form-group">
                 <label>Sizes Available</label>
 
                   <div class="row">
                     <div ng-repeat="(key, val) in skus" class="col-md-3">
                         
-                        <div class="input-group">
+                        <div class="input-group" >
                             <span class="input-group-addon">
-                              <input type="checkbox" aria-label="...">
+                              <input type="checkbox"  ng-model="skus[key]" ng-readonly="mode=='v'">
                             </span>
-                          <label class="input-group-addon" ng-model="skus[key]" ng-readonly="mode=='v'" type="text" name="{{key}}">
+                          <label class="input-group-addon"   type="text" name="{{key}}">
                             {{key}}
                           </label>
-                          <input  type="number" class="form-control" placeholder="Quantity">
+                          <input  type="number" class="form-control" placeholder="Quantity" >
                         </div><!-- /input-group -->
                         <div class="col-md-1"></div>
                     </div>
@@ -433,7 +433,7 @@
               <div class="form-group">
                 <label for="primaryImages" class="block">Primary Image</label>
                 <input file-model="primaryImage" type="file" id="primaryImages" class="fileUpload" required>
-                <button ng-click="uploadImages(image)"> Upload Image </button>
+                <button ng-click="uploadImages(primaryImage)"> Upload Image </button>
 
                 <p class="help-block">Main display image. Only one image can be used as Primary Image</p>
               </div>
@@ -441,8 +441,8 @@
 
              <div class="form-group">
                 <label for="secondaryImages" class="block">Secondary Images</label>
-                <input file-model="primaryImage" type="file" id="secondaryImages" class="fileUpload">
-               <button ng-click="uploadImages(image)"> Upload Image </button>
+                <input file-model="secondaryImage" type="file" id="secondaryImages" class="fileUpload">
+               <button ng-click="uploadImages(secondaryImage)"> Upload Image </button>
 
                <p class="help-block">Secondary specifications images. You can upload multiple images.</p>
 
