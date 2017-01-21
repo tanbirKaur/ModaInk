@@ -85,11 +85,6 @@ window.apiUrl = "http://dev.modaink.com/api";
 			templateUrl : "views/login.html"
 		//	controller : "homeController"
 		})
-        .state("verifyEmail", {
-            url: "/verifyEmail",
-            templateUrl : "views/verifyEmail.html",
-			controller :"LoginController"
-        })
 		.state("women", {
 			url:"/women",
 			templateUrl : "views/women.html"

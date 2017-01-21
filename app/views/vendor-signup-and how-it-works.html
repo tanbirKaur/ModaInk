@@ -13,24 +13,24 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" name="registrationForm">
               <div class="box-body row">
 
                 <div class="form-group full-width col-md-5">
                   <label for="exampleInputEmail1">First Name</label>
-                  <input ng-model="designer.firstName" type="text" class="form-control" >
+                  <input ng-model="designer.firstName" type="text" class="form-control"  required="">
                 </div>
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group full-width col-md-5">
                   <label for="exampleInputEmail1">Last Name</label>
-                  <input ng-model="designer.lastName" type="text" class="form-control" >
+                  <input ng-model="designer.lastName" type="text" class="form-control"  required="">
                 </div>
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group full-width col-md-5">
                   <label for="exampleInputPassword1">Brand/ Studio Name</label>
-                  <input ng-model="designer.brandName" type="text" class="form-control" >
+                  <input ng-model="designer.brandName" type="text" class="form-control" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
@@ -45,7 +45,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-map-marker"></i>
                   </div>
-                  <input ng-model="designer.pincode" type="text" class="form-control">
+                  <input ng-model="designer.pincode" type="text" class="form-control" required maxlength="6" minlength="6">
                 </div>
                 </div>
 
@@ -58,7 +58,7 @@
                     <div class="input-group-addon">
                       <i class="fa fa-phone"></i>
                     </div>
-                    <input ng-model="designer.mobileNumber" type="text" class="form-control" >
+                    <input ng-model="designer.mobileNumber" type="text" class="form-control" required maxlength="10" minlength="10">
                   </div>
                 </div>
 
@@ -66,7 +66,7 @@
                   <label for="exampleInputEmail1">Email</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input ng-model="designer.email" type="email" class="form-control" placeholder="Email">
+                    <input ng-model="designer.email" type="email" class="form-control" placeholder="Email" required>
                   </div>
                 </div>
 
@@ -86,7 +86,7 @@
 
                 <div class="form-group col-md-11">
                   <label>Tell us about you (In maximum of 500 characters.)</label>
-                  <textarea ng-model="designer.description" class="form-control" rows="3" maxlength="500"></textarea>
+                  <textarea ng-model="designer.description" class="form-control" rows="3" maxlength="500" required></textarea>
                 </div>
 
 
@@ -97,8 +97,8 @@
 
               <div class="box-footer col-md-8" >
 
-                <a href="javascript:void(0)" ><button ng-click="becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
-                <a href="javascript:void(0)"><button class="btn btn-primary custom-btn" >Cancel</button></a>
+                <a href="javascript:void(0)" ><button ng-click=" becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
+                <a href="/home" ><button class="btn btn-primary custom-btn" >Cancel</button></a>
               </div>
             </form>
           </div>
@@ -109,25 +109,37 @@
     </div>
 
 
-      <div id="registrationSucessful" class="modal" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content" >
-            <div class="modal-header">
+      <div id="registrationSucessful" class="modal fade " role="dialog">
+            <div class="header">
               <h4 class="modal-title">Thank you for registration</h4>
             </div>
-            <div class="modal-body">
+            <div class="content">
               <p>Your request is sucessfully submitted. We will send you futher details in your email address.</p>
             </div>
 
-            <div  class="modal-footer">
-              <a href="#"><button class="btn" data-dismiss="modal">OK</button></a>
+            <div  class="footer">
+              <a href="/home" ><button class="btn" data-dismiss="modal" >OK</button></a>
             </div>
           </div>
 
+
+      <div id="registrationFailure" class="modal fade " role="dialog">
+        <div class="header">
+          <h4 class="modal-title">OOPS something went wrong!!</h4>
+        </div>
+        <div class="content">
+          <p>These can be the reasons for failure</p>
+          <p>The Pin code and Mobile number should be in digits.</p>
+          <p>It is mandatory to choose a designer type.</p>
+          <p>Or Something went wrong with the server</p>
+        </div>
+
+        <div  class="footer">
+          <a href="#"><button class="btn" data-dismiss="modal">OK</button></a>
         </div>
       </div>
+
+
     </div>
 
 

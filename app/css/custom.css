@@ -2,6 +2,10 @@ a:hover {
     color: black;
 }
 
+
+#registrationFailure p, #registrationSuccessful p, #registrationFailure a, #registrationSuccessful a {
+    padding-left: 10%;
+}
 .designer_column {
 	height: 275px;
 	width: 175px;
