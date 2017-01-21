@@ -18,8 +18,8 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
         });
 	}
 
-    $scope.onLoginFailure = function () {
-        
+    $scope.onLoginFailure = function (response) {
+        console.log(response);
     }
 
 
