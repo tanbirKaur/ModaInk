@@ -29,7 +29,19 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
         })
     };
 
-	// http Success and Failure Methods
+    $scope.approveDesigner = function (designerId) {
+        httpService.approveDesigner(designerId,function(response){
+            $scope.getDesignerRequests();
+        });
+    };
+
+    $scope.rejectDesigner = function (designerId) {
+        httpService.rejectDesigner(designerId,function(response){
+            $scope.getDesignerRequests();
+        });
+    };
+
+    // http Success and Failure Methods
 	$scope.onGetDesignerDetailsSuccess = function (response) {
 		var designerDetailsFound = response.status == 200;
 		if (designerDetailsFound) {

@@ -22,7 +22,7 @@
               <div class="box box-widget">
                 <div class="box-header with-border">
                   <div class="user-block">
-                    <img class="img-circle" ng-src="{{designer.avatarUrl}}" alt="User Image">
+                    <img class="img-circle" ng-src="/images/avtar.png" alt="User Image">
                     <span class="username"><a href="/designer-profile/{{designer.id}}">{{designer.firstName}} {{deigner.lastName}}</a></span>
                   </div>
                   <!-- /.user-block -->
@@ -72,8 +72,8 @@
                   </div>
 
                   <div class="row text-center" style="margin: 3px 0 3px 0;">
-                    <button class="col-md-6 btn btn-success">Accept</button>
-                    <button class="col-md-6 btn btn-danger">Reject</button>
+                    <a href="" ng-click="approveDesigner(designer.id)" class="col-md-6 btn btn-success">Accept</a>
+                    <a href="" ng-click="rejectDesigner(designer.id)" class="col-md-6 btn btn-danger">Reject</a>
                   </div>
                   <!-- /.row -->
                 </div>
