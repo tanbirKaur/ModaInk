@@ -1,6 +1,10 @@
 var app = window.app;
 app.controller('HomeController', function($scope,$rootScope,$location,$state, httpService, storageService) {
 
+    if(!$rootScope.isActive && !$rootScope.isApproved && !$rootScope.isAdmin){
+        $state.go("login");
+    }
+
     $scope.setProduct = function (mode, product) {
         storageService.set('product',product);
     };
