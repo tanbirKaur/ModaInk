@@ -1,27 +1,4 @@
-/*
-|-------------------------------------------------------------------------
-| Be
-| Structure styles
-| http://BeantownThemes.com
-| http://themeforest.net/user/BeantownThemes
-|--------------------------------------------------------------------------
-| 1.0 Grid
-| 2.0 Layout
-| 3.0 Responsive-1240
-| 4.0 Responsive
-|
-*/
-/*
-|--------------------------------------------------------------------------
-|  1.0 Grid
-|  
-|--------------------------------------------------------------------------
-|
-| 
-|
-*/
-/* #Base 1200 Grid
-================================================== */
+
 body {
     min-width: 1240px;
     padding: 25px 0;
@@ -4121,7 +4098,7 @@ body:not(.with_aside) .portfolio_group.list .portfolio-item .portfolio-item-fw-w
 
 #Footer .footer_copy .social {
     
-        padding-left: 37%;
+        padding-left: 40%;
     padding-bottom: 1%;
 }
 
