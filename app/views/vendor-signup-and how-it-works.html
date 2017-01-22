@@ -97,7 +97,7 @@
 
               <div class="box-footer col-md-8" >
 
-                <a href="javascript:void(0)" ><button ng-click=" becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
+                <a href="javascript:void(0)" ><button ng-click=" registrationForm.$valid && becomeADesigner()" class="btn btn-primary custom-btn" >Submit</button></a>
                 <a href="/home" ><button class="btn btn-primary custom-btn" >Cancel</button></a>
               </div>
             </form>
@@ -143,7 +143,7 @@
     </div>
 
 
-  <script type="text/javascript">
+  <script type="text/javascript-lazy">
     $(document).ready( function() {
       $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
