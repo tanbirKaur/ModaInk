@@ -1,6 +1,5 @@
 var app = window.app;
-app.controller('DesignerController', function($scope,$stateParams, httpService, $state) {
-
+app.controller('DesignerController', function($scope,$stateParams, httpService, $state, $rootScope) {
 	//helper methods
 
 	$scope.redirectToViewProduct = function (mode, product) {
@@ -12,6 +11,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess);
 	}
 	$scope.getDesigners = function () {
+
 		httpService.getDesigners($scope.onGetDesignersSuccess);
 	}
 
@@ -23,6 +23,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		var designerDetailsFound = response.status == 200;
 		if (designerDetailsFound) {
 			$scope.designerDetails = response.data;
+			$scope.designerDetails.brand = {pickupAddress : {} , portfolioImages:[]};
 		};
 	}
 
@@ -45,11 +46,30 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		};
 
 	}
+	$scope.submitForApproval = function () {
+
+    }
+
+
+    $scope.uploadImages = function (imageName) {
+        httpService.uploadImage('designers',imageName,function(res){
+            var imageUploaded = res.data;
+            imageUploaded.forEach(function(image){
+                alert('image uploaded:'+image.originalFileName);
+                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl});
+            })
+        })
+    }
+
+
 	var designerId = $stateParams.id;
-	if (designerId) {
+	if (designerId ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
 	} else {
+		$scope.getDesignerDetails($rootScope.userId)
 		$scope.getDesigners();
 	}
+
+
 });

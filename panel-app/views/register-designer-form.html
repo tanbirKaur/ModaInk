@@ -13,45 +13,33 @@
               <div class="box-body row">
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1" >First Name</label>
-                  <input type="text" class="form-control" ng-model="designerDetails.firstName"  required>
+                  <label  >First Name</label>
+                  <input type="text" class="form-control" ng-model="designerDetails.firstName"  ng-readonly="!isAdmin" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
-                  <label for="exampleInputPassword1">Last Name</label>
-                  <input ng-model="designerDetails.lastName" type="text" class="form-control" required>
+                  <label >Last Name</label>
+                  <input ng-model="designerDetails.lastName" type="text" class="form-control" ng-readonly="!isAdmin" required>
                 </div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Date Of Birth</label>
+                  <label >Date Of Birth</label>
                   <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
+                  <input ng-model="designerDetails.dateOfBirth" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
                 </div>
                 </div>
 
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
-                  <label for="exampleInputPassword1">Brand/ Studio Name</label>
-                  <input ng-model="designerDetails.brand.name" type="text" class="form-control" required>
+                  <label >Brand/ Studio Name</label>
+                  <input ng-model="designerDetails.brand.name" type="text" class="form-control" ng-readonly="!isAdmin" required>
                 </div>
-
-                <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Pin Code</label>
-                  <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-map-marker"></i>
-                  </div>
-                  <input ng-model="designerDetails.pincode" type="text" class="form-control" required>
-                </div>
-                </div>
-
-                <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
                   <label>Mobile Number</label>
@@ -60,31 +48,35 @@
                     <div class="input-group-addon">
                       <i class="fa fa-phone"></i>
                     </div>
-                    <input type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required>
+                    <input ng-model="designerDetails.mobile" type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required minlength="10" maxlength="10">
                   </div>
                 </div>
+                  <div class="form-group col-md-1"></div>
 
-                <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Email</label>
+
+                  <div class="form-group col-md-5">
+                  <label >Email</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input ng-model="designerDetails.email" type="email" class="form-control" placeholder="Email" required>
+                    <input ng-model="designerDetails.email" type="email" class="form-control" placeholder="Email" ng-readonly="!isAdmin" required>
                   </div>
                 </div>
 
-                <div class="form-group col-md-1"></div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Official Email</label>
+                  <label >Official Email</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input ng-model="designerDetails.brand.email"type="email" class="form-control" placeholder="Email">
                   </div>
                 </div>
 
-                <div class="form-group col-md-5">
+                  <div class="form-group col-md-1"></div>
+
+
+                  <div class="form-group col-md-5">
                   <label>Type of designer</label>
-                  <select class="form-control" style="width: 100%;"   required>
+                  <select ng-model="designerDetails.type" class="form-control" style="width: 100%;"   required ng-readonly="!isAdmin">
                     <option>Fresh Talent (experience < 1year)</option>
                     <option>New Gen (experience < 5year)</option>
                     <option>Experienced Designer (experience > 5year)</option>
@@ -92,38 +84,39 @@
                   </select>
                 </div>
 
-                <div class="form-group col-md-1"></div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">VAT/TIN</label>
-                  <input type="text" class="form-control" >
+                  <label >VAT/TIN</label>
+                  <input type="text" class="form-control" ng-model="designerDetails.brand.TINumber">
                 </div>
 
-                <div class="form-group col-md-5">
+                  <div class="form-group col-md-1"></div>
+
+
+                  <div class="form-group col-md-5">
                   <label>Import Export Code </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="designerDetails.brand.IECNumber">
                 </div>
 
-                <div class="form-group col-md-1"></div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Referral</label>
-                  <input type="text" class="form-control">
+                  <label >Referral</label>
+                  <input type="text" class="form-control" ng-model="designerDetails.referrerCode">
                 </div>
 
                 <div class="form-group col-md-11">
                   <label>Tell us about you (IN maximum of 500 characters.)</label>
-                  <textarea class="form-control" rows="3" maxlength="500" required></textarea>
+                  <textarea class="form-control" rows="3" maxlength="500" required ng-model="designerDetails.description"></textarea>
                 </div>
 
-                <div  style="margin: 3% 0%;">
+                <div  class="col-md-10" style="margin: 3% 0%;">
                   <h4 class="box-title" style="display: inline-block">DELIVERY INFORMATION</h4>
                     <hr/>
                 </div>
 
                 <div class="form-group col-md-5" >
-                  <label for="exampleInputEmail1">Delivery Coordinator's Name</label>
-                  <input type="text" class="form-control" required>
+                  <label >Delivery Coordinator's Name</label>
+                  <input type="text" class="form-control" ng-model="designerDetails.brand.pickupAdress.fullName" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
@@ -135,158 +128,137 @@
                     <div class="input-group-addon">
                       <i class="fa fa-phone"></i>
                     </div>
-                    <input type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required>
+                    <input ng-model="designerDetails.brand.pickupAdress.mobile" type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required MINLENGTH="10" MAXLENGTH="10">
                   </div>
                 </div>
 
 
                 <div class="form-group col-md-5">
                   <label>Address Line 1</label>
-                    <input type="text" class="form-control" required>
+                    <input ng-model="designerDetails.brand.pickupAdress.line1" type="text" class="form-control" required>
                 </div>
 
                   <div class=" col-md-1"></div>
 
                   <div class="form-group col-md-5">
                       <label>Address Line 2</label>
-                      <input type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAdress.line2" type="text" class="form-control" required>
                   </div>
 
                   <div class="form-group col-md-5">
                       <label>City</label>
-                      <input type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAdress.city" type="text" class="form-control" required>
                   </div>
                   <div class=" col-md-1"></div>
               <div class="form-group col-md-5">
                   <label>State</label>
-                  <input type="text" class="form-control" required>
+                  <input ng-model="designerDetails.brand.pickupAdress.state" type="text" class="form-control" required>
               </div>
 
                   <div class="form-group col-md-5">
                       <label>Country</label>
-                      <input type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAdress.country" type="text" class="form-control" required>
                   </div>
 
                   <div class=" col-md-1"></div>
 
                   <div class="form-group col-md-5">
                       <label>Landmark</label>
-                      <input type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAdress.landmark" type="text" class="form-control" required>
                   </div>
 
-                <div style="margin-bottom: 3%;">
+                  <div class="form-group col-md-5">
+                      <label >Pin Code</label>
+                      <div class="input-group">
+                          <div class="input-group-addon">
+                              <i class="fa fa-map-marker"></i>
+                          </div>
+                          <input ng-model="designerDetails.brand.pickupAddress.pincode" type="text" class="form-control" ng-readonly="!isAdmin"required>
+                      </div>
+                  </div>
+
+                <div class="col-md-10" style="margin-bottom: 3%;">
                   <h4 class="box-title" style="display: inline-block">BANK ACCOUNT DETAILS</h4>
                     <hr/>
                 </div>
 
                 <div class="form-group col-md-5" >
-                  <label for="exampleInputEmail1">Account Number</label>
-                  <input type="text" class="form-control" required>
+                  <label >Bank Name</label>
+                  <input ng-model="designerDetails.brand.bankName" type="text" class="form-control" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
-                  <label for="exampleInputEmail1">Account Holder Name</label>
-                  <input type="text" class="form-control" required>
+                  <label >Account Holder Name</label>
+                  <input ng-model="designerDetails.brand.bankAccountName" type="text" class="form-control" required>
                 </div>
+              <div class="form-group col-md-5" >
+                  <label >Account Number</label>
+                  <input ng-model="designerDetails.brand.bankAccountNumber" type="text" class="form-control" required>
+              </div>
 
+                  <div class="form-group col-md-1"></div>
 
-                <div class="form-group col-md-5" >
-                  <label for="exampleInputEmail1">IFSC Code</label>
-                  <input type="text" class="form-control" required>
+                  <div class="form-group col-md-5" >
+                  <label >IFSC Code</label>
+                  <input ng-model="designerDetails.brand.bankIFSCode"type="text" class="form-control" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
-                  <label for="exampleInputEmail1">Bank Code</label>
-                  <input type="text" class="form-control" required>
+                  <label >Bank Branch</label>
+                  <input ng-model="designerDetails.brand.bankBranch"type="text" class="form-control" required>
                 </div>
 
-                 <div style="margin-bottom: 3%;">
+
+                  <div class="col-md-10" style="margin-bottom: 3%;">
                   <h4 class="box-title" style="display: inline-block">Upload some of your awesome work.</h4>
                      <hr/>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Upload Image</label>
-                        <div class="input-group" required="required">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp">
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img id='img-upload'/>
-                    </div>
-                </div>
-                 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Upload Image</label>
-                        <div class="input-group" required>
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp">
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img id='img-upload'/>
-                    </div>
-                  </div> 
-                <div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Upload Image</label>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp">
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img id='img-upload'/>
-                    </div>
-                  </div> 
-                <div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Upload Image</label>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Browse… <input type="file" id="imgInp">
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
-                        </div>
-                        <img id='img-upload'/>
-                    </div>
-                  </div> 
-                <div>
+                  <div class="form-group col-md-10">
+                      <input file-model="image" type="file" id="image" class="fileUpload">
+                      <button ng-click="uploadImages(image)"> Upload Image </button>
+                  </div>
+
+
+                  <div class="form-group col-md-12">
+                      <label>Preview</label>
+                      <!-- Box Comment -->
+                      <div class="box box-widget">
+
+                          <!-- /.box-header -->
+                          <div class="box-body" style="padding:0;">
+                              <!-- /.user-block -->
+                              <div class="row margin-bottom">
+
+                                  <div class="col-md-4" ng-repeat="image in designerDetails.brand.portfolioImages">
+                                      <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                                  </div>
+                                  <!-- /.col -->
+                              </div>
+                              <!-- /.row -->
+                          </div>
+
+                      </div>
+                      <!-- /.box -->
+                  </div>
 
                 
               </div>
 
-              <!-- /.box-body -->
+                <div class="box-footer col-md-10">
 
-              <div class="box-footer col-md-10">
+                    <button ng-click="registration-form.$valid && submitForApproval()" type="submit" class="btn btn-primary custom-btn" >Submit</button>
+                    <a ng-if="isAdmin" href="/designers"><button type="submit" class="btn btn-primary custom-btn" >Cancel</button></a>
+                </div>
 
-                <button ng-click="registration-form.$valid && submitForApproval()" type="submit" class="btn btn-primary custom-btn" >Submit</button>
-                <a ng-if="isAdmin" href="/designers"><button type="submit" class="btn btn-primary custom-btn" >Cancel</button></a>
-              </div>
-                </div>
-                </div>
-              </div>
             </form>
           </div>
 </section>
-</div>
+          </div>
 
           <!-- /.box -->
 

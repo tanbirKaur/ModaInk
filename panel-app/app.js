@@ -21,7 +21,9 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
         })
         .state('product-requests', {
             url: '/product-requests',
-            templateUrl: '/views/add-product-requests.html'
+            templateUrl: '/views/add-product-requests.html',
+            controller: 'ProductController'
+
         })
         .state('designers', {
             url: '/designers',
@@ -30,11 +32,15 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
         })
         .state('register-designer',{
             url: '/register-designer',
-            templateUrl: '/views/register-designer-form.html'
+            templateUrl: '/views/register-designer-form.html',
+            controller : 'DesignerController'
+
         })
         .state('designer-requests', {
             url: '/designer-requests',
-            templateUrl: '/views/new-designer-request.html'
+            templateUrl: '/views/new-designer-request.html',
+            controller : 'DesignerController'
+
         })
         .state('designer-profile',{
             url: '/designer-profile/:id',
