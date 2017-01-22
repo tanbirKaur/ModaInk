@@ -49,7 +49,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         httpService.uploadImage('products',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
-                alert('image uploaded:'+image.originalFileName);
+                alert('image uploaded:'+image.originalFileN
                 $scope.newProduct.images.push({url:image.fileUrl});
             })
         })
@@ -73,11 +73,11 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "skus": $scope.newProduct.skus
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
-            $('#addProductSuccess').modal();
+            $('#updateProductSuccess').modal();
         },
         function (response) {
             $scope.error = response.data.message;
-            $('#addProductFailed').modal()
+            $('#updateProductFailed').modal()
         })
     };
 
@@ -98,11 +98,11 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
 
         console.log(JSON.stringify($scope.newProduct));
         httpService.createProduct($scope.newProduct,function(res){
-            if (res.data && res.data.id) {
-                console.log("New product created successfully");
-            } else {
-                console.log("Product response:"+JSON.stringify(res));
-            }
+
+            $('#addProductSuccess').modal();
+        }, function (res) {
+            $scope.error = res.data.message;
+            $('#addProductFailure').modal();
         });
     }
 });
