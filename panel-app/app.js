@@ -13,8 +13,8 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/orders.html',
             controller:'OrderController'
         })
-        .state('add-product', {
-            url: '/add-product',
+        .state('addProduct', {
+            url: '/addProduct',
             templateUrl: '/views/add-product.html',
             controller: 'ProductController'
         })
@@ -79,6 +79,11 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             url: '/waiting-for-approval',
             templateUrl: '/views/waiting-for-approval.html',
             controller: 'LoginController'
+        })
+        .state("verifyEmail", {
+            url: "/verifyEmail",
+            templateUrl : "views/verifyEmail.html",
+            controller :"VerifyEmailController"
         })
 
 

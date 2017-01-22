@@ -86,3 +86,9 @@
     min-height: 350px;
     max-height: 350px;
 }
+
+
+.waiting-box{
+    width: 50%;
+    margin: 7% auto;
+}

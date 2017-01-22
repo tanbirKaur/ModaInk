@@ -5,17 +5,6 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $rootScope.isAdmin = storageService.get("isAdmin");
 
 
-    var token = $location.search().token;
-    var email = $location.search().email;
-
-    httpService.verifyEmail({ token:token, email:email} ,function (res) {
-        alert(JSON.stringify(res.data));
-        },function (res) {
-        alert('i should fail, but lets fill further info for now!')
-    })
-
-
-
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
         storageService.set("isAdmin",newValue);
     });
@@ -42,7 +31,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
                 $location.path("/register-designer");
             }
             else if ($rootScope.isActive  && !$rootScope.isApproved) {
-                $location.path('/waiting-for-approval')
+                $location.path("/waiting-for-approval")
             }
             else
                 $location.path( "/login");

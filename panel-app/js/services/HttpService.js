@@ -148,5 +148,13 @@ angular.module('portal-modaink')
 				redirectCallback(response,httpFailed,failureCallback,"getProductCategories");
 			});
 		}
+           // httpService.callHttp = function (method, resouceName, params, headers, data, successCallback, errorCallback,noAuthentication) {
+       httpService.verifyEmail = function (info,successCallback,failureCallback) {
+		    httpService.callHttp("PUT","designers/verifyEmail",info,{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+                       },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"login");
+                       },true);
+                 }
 		return httpService;
 	 }]);
