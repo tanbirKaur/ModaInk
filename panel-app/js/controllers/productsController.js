@@ -55,8 +55,6 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         })
     }
 
-
-
     $scope.updateProduct = function(){
         $scope.newProduct.skus = $scope.newProduct.skus.map(function (sku) {
             var newSku = {
@@ -70,7 +68,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "price": $scope.newProduct.price,
             "discountPrice": $scope.newProduct.discountPrice,
             "images": $scope.newProduct.images,
-            "skus": $scope.newProduct.skus
+            "skus": $scope.newProduct.skus,
+            "shippingDays":$scope.newProduct.shippingDays,
+            "returnDays":$scope.newProduct.returnDays
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
             $('#updateProductSuccess').modal();

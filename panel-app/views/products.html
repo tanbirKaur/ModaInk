@@ -16,6 +16,7 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#registered" data-toggle="tab">Registered</a></li>
               <li><a href="#newRequests" ng-click="getUnApprovedProducts()" data-toggle="tab">Requests</a></li>
+              <li><a href="#changeRequests" ng-click="getUnApprovedChangesProducts()" data-toggle="tab">Changed</a></li>
               <li><a href="#rejectedRequests" ng-click="getRejectedProducts()" data-toggle="tab">Not Approved</a></li>
             </ul>
             <div class="tab-content">
@@ -31,6 +32,11 @@
 
                 <div ng-include src="'views/requested-products.html'"></div>
                 <!-- /.row -->
+                </div>
+                <div class="tab-pane" id="changeRequests">
+
+                    <div ng-include src="'views/changed-products.html'"></div>
+                    <!-- /.row -->
                 </div>
 
 

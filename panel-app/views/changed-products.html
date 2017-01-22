@@ -1,0 +1,79 @@
+<div ng-hide="unApprovedChangesProducts && unApprovedChangesProducts.length > 0" class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <span class="color-brown text-info">Great! no more pending product requests</span>
+    </div>
+</div>
+<div class="row">
+
+    <div ng-repeat="product in unApprovedChangesProducts" ng-if="!product.isChangesApproved" class="col-md-5">
+        <!-- Box Comment -->
+        <div class="box box-widget">
+            <div class="box-header with-border">
+                <div class="user-block">
+                    <span class="username" ><a href="">{{product.name}}</a></span>
+                    <span ng-if="isAdmin" class="description" ><a href="/designer-profile/:id">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
+                    <span class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</span>
+                </div>
+                <!-- /.user-block -->
+                <div class="box-tools">
+
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body product-image" style="padding:0;">
+                <!-- /.user-block -->
+                <div class="row margin-bottom" >
+                    <div ng-repeat="image in product.images">
+                        <div ng-if="$index ==0" class="col-sm-8 col-md-7">
+                            <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                        </div>
+                        <!-- /.col -->
+                        <div ng-if="$index == 1 || $index == 2" class="col-sm-4 col-md-3">
+                            <img ng-if="$index == 1" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                            <br>
+                            <img ng-if="$index == 2" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <div class="box-footer" style="padding:0;">
+                <div class="row"  style="border-bottom: 1px solid #f4f4f4;">
+                    <div class="col-sm-6 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">5</h5>
+                            <span class="description-text">QUANTITY</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <div class="description-block">
+                            <h5 class="description-header">5,000</h5>
+                            <span class="description-text">PRICE</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+                <div class="row text-center" style="margin: 4px;">
+                    <button ng-if="isAdmin" ng-click="approveProductChanges(product.id)" class="col-md-6 btn btn-success">Accept</button>
+                    <button ng-if="isAdmin" ng-click="rejectProductChanges(product.id)" class="col-md-6 btn btn-danger">Reject</button>
+                    <label ng-if="!isAdmin" class="col-md-12 btn btn-danger">Waiting for approval</label>
+                </div>
+
+                <!-- /.row -->
+            </div>
+
+        </div>
+        <!-- /.box -->
+    </div>
+
+</div>
+
+<!-- /.col -->
+</div>

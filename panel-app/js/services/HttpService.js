@@ -120,6 +120,15 @@ angular.module('portal-modaink')
 			});
 		}
 
+       httpService.getUnApprovedChangesProducts = function (successCallback,failureCallback) {
+           var params = {isChangesApproved:'null'};
+           httpService.callHttp("GET","products",params,{},{},function (response) {
+               redirectCallback(response,emptyFunction,successCallback);
+           },function (response) {
+               redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
+           });
+       }
+
 	    httpService.getRejectedProducts = function (successCallback,failureCallback) {
 		   var params = {isApproved:'false'};
 		   httpService.callHttp("GET","products",params,{},{},function (response) {
@@ -145,7 +154,23 @@ angular.module('portal-modaink')
 			});
         };
 
-        httpService.approveDesigner = function (id,successCallback,failureCallback) {
+       httpService.approveProductChanges = function (id,successCallback,failureCallback) {
+           httpService.callHttp("PUT","products/"+id+"/approveChanges",{},{},{},function (response) {
+               redirectCallback(response,emptyFunction,successCallback);
+           },function (response) {
+               redirectCallback(response,httpFailed,failureCallback,"approveProductChanges");
+           });
+       };
+
+       httpService.rejectProductChanges = function (id,successCallback,failureCallback) {
+           httpService.callHttp("PUT","products/"+id+"/rejectChanges",{},{},{},function (response) {
+               redirectCallback(response,emptyFunction,successCallback);
+           },function (response) {
+               redirectCallback(response,httpFailed,failureCallback,"rejectProductChanges");
+           });
+       };
+
+       httpService.approveDesigner = function (id,successCallback,failureCallback) {
            httpService.callHttp("PUT","designers/"+id+"/approve",{},{},{},function (response) {
                redirectCallback(response,emptyFunction,successCallback);
            },function (response) {

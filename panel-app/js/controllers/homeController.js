@@ -16,12 +16,24 @@ app.controller('HomeController', function($scope,$rootScope,$location,$state, ht
     };
 
     $scope.getUnApprovedProducts = function () {
+        $scope.unApprovedProducts = [];
         httpService.getUnApprovedProducts(function(response){
-            $scope.unApprovedProducts = response.data;
+            response.data.forEach(function (product) {
+                $scope.unApprovedProducts.push(product);
+            });
         });
     };
 
-    $scope.getRejectedProducts = function () {
+    $scope.getUnApprovedChangesProducts = function () {
+        $scope.unApprovedChangesProducts = [];
+        httpService.getUnApprovedChangesProducts(function (res) {
+            res.data.forEach(function (product) {
+                $scope.unApprovedChangesProducts.push(product);
+            })
+        })
+    };
+
+        $scope.getRejectedProducts = function () {
         httpService.getRejectedProducts(function(response){
             $scope.rejectedProducts = response.data;
         });
@@ -36,6 +48,18 @@ app.controller('HomeController', function($scope,$rootScope,$location,$state, ht
     $scope.rejectProduct = function (productId) {
         httpService.approveProduct(productId,function(response){
             $scope.getUnApprovedProducts();
+        });
+    };
+
+    $scope.approveProductChanges = function (productId) {
+        httpService.approveProductChanges(productId,function(response){
+            $scope.getUnApprovedChangesProducts();
+        });
+    };
+
+    $scope.rejectProductChanges = function (productId) {
+        httpService.rejectProductChanges(productId,function(response){
+            $scope.getUnApprovedChangesProducts();
         });
     };
 
