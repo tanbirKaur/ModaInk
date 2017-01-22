@@ -1,6 +1,6 @@
 var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter"]);
 window.app == app;
-window.apiUrl = "http://dev.modaink.com/api";
+window.apiUrl = "http://modaink.com/api";
  app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localStorageServiceProvider){
 	$stateProvider
 		.state("index", {
@@ -43,11 +43,8 @@ window.apiUrl = "http://dev.modaink.com/api";
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
-		.state("sale", {
-			url: "/sale",
-			templateUrl : "views/discount.html",
-			// controller : "designerProfileController"
-		}).state("designers-list", {
+
+		.state("designers-list", {
 			url: "/designers",
 			templateUrl : "views/designer-list.html",
 			controller : 'DesignersController'
