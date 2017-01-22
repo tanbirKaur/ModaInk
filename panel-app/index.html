@@ -78,7 +78,12 @@
          
           
           <!-- User Account: style can be found in dropdown.less -->
-          <li  ng-show="userLoggedIn" class="dropdown user user-menu">
+          <li  ng-show="userLoggedIn && (!$rootScope.isActive && !rootScope.isApproved && !rootScope.isAdmin)" class="logo" style="background: none;">
+            <div class="pull-right" style="bottom: 0px">
+              <a ng-href="/login" ng-click="resetStorage()" class="btn btn-primary btn-flat">Logout</a>
+            </div>
+          </li>
+          <li  ng-show="userLoggedIn && (($rootScope.isActive && $rootScope.isApproved) || $rootScope.isAdmin)" class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="images/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>

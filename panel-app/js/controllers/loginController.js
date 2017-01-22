@@ -1,7 +1,7 @@
 var app = window.app;
 app.controller('LoginController', function($scope,$rootScope,$stateParams,$location, httpService, storageService) {
-    $scope.email = "tanbirkaur16@gmail.com";
-    $scope.password = "P@ssw0rd";
+    $scope.email = "designer@mailinator.com";
+    $scope.password = "Test123$";
     $rootScope.isAdmin = storageService.get("isAdmin");
 
 
@@ -20,6 +20,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 
 	$scope.onLoginSuccess = function (response) {
         httpService.getCurrentUserDetails(function(res){
+            $rootScope.userId =  res.data.id;
             $rootScope.isActive = res.data.isActive;
             $rootScope.isApproved = res.data.isApproved;
 
