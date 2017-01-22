@@ -4,15 +4,15 @@
 					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
 						<li class="chosen" ng-repeat="productFilter in productFilters">
-							<a title="Remove filter" ng-click="removeFilter(productFilter.key,productFilter.val) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.key}} - {{productFilter.val}}</a>
+							<a title="Remove filter" ng-click="removeFilter(productFilter) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.name}}</a>
 						</li>
 					</ul>
 				</aside>
 				<aside class="basic_categorization widget woocommerce">
 						<ul>
-							<li ><a href="" ng-click="addFilter('gender','men');addFilter('gender','women')" >All</a></li>
-							<li><a href="" ng-click="addFilter('gender','men')" >Men</a></li>
-							<li><a href="" ng-click="addFilter('gender','women')" >Women</a></li>
+							<li ><a href="" ng-click="addFilter('Mens Products','gender','men');addFilter('Womens Products','gender','women')" >All</a></li>
+							<li><a href="" ng-click="addFilter('Mens Products','gender','men')" >Men</a></li>
+							<li><a href="" ng-click="addFilter('Womens Products','gender','women')" >Women</a></li>
 						</ul>
 					</aside>
 					<aside class = "widget woocommerce">
