@@ -2,11 +2,18 @@
 
     <!-- /.login-logo -->
     <div >
-        <div class="login-box-body" >
+        <div ng-show="emailVerified" class="login-box-body" >
+
             <h4>Your Email Id is verified.</h4>
             <h5>Please refer to the mail and log in to the <a href="/login"> portal </a></h5>
 
             <div style="margin-top:10%;"><a href="/login">Login</a></div>
+        </div>
+        <div ng-hide="emailVerified" class="login-box-body" >
+
+            <h4>Your Email Id is not verified.</h4>
+            <h5>Please try again later </h5>
+
         </div>
     </div>
 </div>

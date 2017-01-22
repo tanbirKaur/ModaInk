@@ -19,8 +19,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form role="form" name="productForm">
-      
+      <form role="form" name="addProduct">
               <div class="box-body">
 
               <div class="row">
@@ -115,14 +114,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label >Shipping Days</label>
-                    <input  type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required" required>
+                    <input ng-model="newProduct.shippingDays" type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required" required>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
                     <label >Return Days</label>
-                    <input type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days" required>
+                    <input ng-model="newProduct.returnDays" type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days" required>
                   </div>  
                 </div>
               </div>
@@ -449,7 +448,7 @@
                                        
               <div class="">
                 <label for="primaryImages" class="block">Primary Image</label>
-                <input file-model="primaryImage" type="file" id="primaryImages" class="fileUpload" required>
+                <input file-model="primaryImage" type="file" id="primaryImages" class="fileUpload" >
                 <button ng-click="uploadImages(primaryImage)"> Upload Image </button>
 
                 <p class="help-block">Main display image. Only one image can be used as Primary Image</p>
