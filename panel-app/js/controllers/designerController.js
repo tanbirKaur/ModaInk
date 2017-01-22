@@ -23,7 +23,16 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		var designerDetailsFound = response.status == 200;
 		if (designerDetailsFound) {
 			$scope.designerDetails = response.data;
-			$scope.designerDetails.brand = {pickupAddress : {} , portfolioImages:[]};
+			if($scope.designerDetails.brand){
+				if(!$scope.designerDetails.brand.pickupAddress){
+                    $scope.designerDetails.brand.pickupAddress = {}
+				}
+                if(!$scope.designerDetails.brand.portfolioImages){
+                    $scope.designerDetails.brand.portfolioImages = {}
+                }
+			} else {
+                $scope.designerDetails.brand = {}
+			}
 		};
 	}
 
@@ -47,7 +56,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 
 	}
 	$scope.submitForApproval = function () {
-
+			console.log('pending approval');
     }
 
 

@@ -9,19 +9,19 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" name="registration-form">
+            <form role="form" name="registrationForm">
               <div class="box-body row">
 
                 <div class="form-group col-md-5">
                   <label  >First Name</label>
-                  <input type="text" class="form-control" ng-model="designerDetails.firstName"  ng-readonly="!isAdmin" required>
+                  <input type="text" name="firstName" class="form-control" ng-model="designerDetails.firstName"  ng-readonly="!isAdmin" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group form-group col-md-5">
                   <label >Last Name</label>
-                  <input ng-model="designerDetails.lastName" type="text" class="form-control" ng-readonly="!isAdmin" required>
+                  <input name="lastName" ng-model="designerDetails.lastName" type="text" class="form-control" ng-readonly="!isAdmin" required>
                 </div>
 
                 <div class="form-group col-md-5">
@@ -251,7 +251,7 @@
 
                 <div class="box-footer col-md-10">
 
-                    <button ng-click="registration-form.$valid && submitForApproval()" type="submit" class="btn btn-primary custom-btn" >Submit</button>
+                    <button ng-click="registrationForm.$valid && submitForApproval()" class="btn btn-primary custom-btn" >Submit</button>
                     <a ng-if="isAdmin" href="/designers"><button type="submit" class="btn btn-primary custom-btn" >Cancel</button></a>
                 </div>
 
