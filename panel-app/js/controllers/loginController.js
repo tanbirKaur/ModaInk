@@ -1,7 +1,7 @@
 var app = window.app;
 app.controller('LoginController', function($scope,$rootScope,$stateParams,$location, httpService, storageService) {
-    $scope.email = "designer@mailinator.com";
-    $scope.password = "Test123$";
+    $scope.email = "tanbirkaur16@gmail.com";
+    $scope.password = "P@ssw0rd";
     $rootScope.isAdmin = storageService.get("isAdmin");
 
 
@@ -11,6 +11,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 
     $scope.resetStorage = function () {
         storageService.clear();
+        $rootScope.userLoggedIn = false;
     };
 
 	$scope.login = function () {

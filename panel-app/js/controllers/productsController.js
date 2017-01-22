@@ -91,6 +91,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
                 $scope.newProduct.skus.push({sizeVariantValue:skuName,quantity:1});
             };
         });
+        if(!$scope.categoryIdx || !$scope.subCategoryIdx){
+            return alert(!$scope.categoryIdx?"Please select category":"Please select sub category");
+        }
         $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
         $scope.newProduct.discountPrice = 0;
         $scope.newProduct.isExclusive = true;
