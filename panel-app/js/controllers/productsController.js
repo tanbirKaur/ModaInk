@@ -49,7 +49,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         httpService.uploadImage('products',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
-                alert('image uploaded:'+image.originalFileN
+                alert('image uploaded:'+image.originalFileName);
                 $scope.newProduct.images.push({url:image.fileUrl});
             })
         })
