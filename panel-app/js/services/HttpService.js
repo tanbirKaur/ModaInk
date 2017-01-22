@@ -68,7 +68,23 @@ angular.module('portal-modaink')
 			});
 		}
 
-		httpService.getProducts = function (designerId,successCallback,failureCallback) {
+        httpService.updateDesignerDetails = function (designerId,data,successCallback,failureCallback) {
+           httpService.callHttp("PUT","designers/"+designerId,{},{},data,function (response) {
+               redirectCallback(response,emptyFunction,successCallback);
+           },function (response) {
+               redirectCallback(response,httpFailed,failureCallback,"updateDesignerDetails");
+           });
+        }
+
+        httpService.updateDesignerBrandDetails = function (designerId,data,successCallback,failureCallback) {
+            httpService.callHttp("PUT","designers/"+designerId+"/brand",{},{},data,function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"updateDesignerBrandDetails");
+            });
+        }
+
+        httpService.getProducts = function (designerId,successCallback,failureCallback) {
 			var url = storageService.get("isAdmin") ? "products" : "designers/"+designerId+'/products';
 			var params = {isApproved:true};
 			httpService.callHttp("GET",url,params,{},{},function (response) {
@@ -102,7 +118,7 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"approveProduct");
 			});
-		}		
+		};
 
 		httpService.rejectProduct = function (id,successCallback,failureCallback) {
 			httpService.callHttp("PUT","products/"+id+"/reject",{},{},{},function (response) {
@@ -110,7 +126,7 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"rejectProduct");
 			});
-		}		
+		};
 
 		httpService.createProduct = function(productDetails,successCallback,failureCallback){
 			httpService.callHttp("POST","products",{},{},productDetails,function (response) {
@@ -118,7 +134,7 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"createProduct");
 			});
-		}
+		};
 
 	   httpService.updateProduct = function(id,productDetails,successCallback,failureCallback){
 		   httpService.callHttp("PUT","products/"+id,{},{},productDetails,function (response) {

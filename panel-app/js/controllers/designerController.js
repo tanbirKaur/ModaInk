@@ -28,7 +28,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
                     $scope.designerDetails.brand.pickupAddress = {}
 				}
                 if(!$scope.designerDetails.brand.portfolioImages){
-                    $scope.designerDetails.brand.portfolioImages = {}
+                    $scope.designerDetails.brand.portfolioImages = []
                 }
 			} else {
                 $scope.designerDetails.brand = {}
@@ -56,8 +56,48 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 
 	}
 	$scope.submitForApproval = function () {
-			console.log('pending approval');
-    }
+		var designerDetails = {
+            "firstName": $scope.designerDetails.firstName,
+            "lastName": $scope.designerDetails.lastName,
+            "dateOfBirth": $scope.designerDetails.dateOfBirth,
+            "mobile": $scope.designerDetails.mobile,
+            "description": $scope.designerDetails.description,
+            "type": $scope.designerDetails.type
+        }
+		httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
+			alert(JSON.stringify(response));
+            var brandDetails = {
+                email: $scope.designerDetails.brand.email,
+                TINumber: $scope.designerDetails.brand.TINumber,
+                IECNumber: $scope.designerDetails.brand.IECNumber,
+                bankName: $scope.designerDetails.brand.bankName,
+                bankBranch: $scope.designerDetails.brand.bankBranch,
+                bankIFSCode: $scope.designerDetails.brand.bankIFSCode,
+                bankAccountName: $scope.designerDetails.brand.bankAccountName,
+                bankAccountNumber: $scope.designerDetails.brand.bankAccountNumber,
+                pickupAddress: {
+	                fullName: $scope.designerDetails.brand.pickupAddress.fullName,
+                    mobile: $scope.designerDetails.brand.pickupAddress.mobile,
+                    line1: $scope.designerDetails.brand.pickupAddress.line1,
+                    line2: $scope.designerDetails.brand.pickupAddress.line2,
+                    landmark: $scope.designerDetails.brand.pickupAddress.landmark,
+                    pincode: $scope.designerDetails.pincode,
+                    city: $scope.designerDetails.brand.pickupAddress.city,
+                    state: $scope.designerDetails.brand.pickupAddress.state,
+                    country: $scope.designerDetails.brand.pickupAddress.country
+				}
+            };
+            brandDetails.portfolioImages = [];
+            $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
+				brandDetails.portfolioImages.push({url:image.url,description:image.imageDescription});
+            });
+			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
+				console.log('Success.brand',response);
+            })
+        },function (res) {
+			alert('Update failed! try again');
+        });
+    };
 
 
     $scope.uploadImages = function (imageName) {
@@ -65,7 +105,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
                 alert('image uploaded:'+image.originalFileName);
-                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl});
+                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,imageDescription:$scope.imageDescription});
             })
         })
     }

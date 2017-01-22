@@ -77,10 +77,10 @@
                   <div class="form-group col-md-5">
                   <label>Type of designer</label>
                   <select ng-model="designerDetails.type" class="form-control" style="width: 100%;"   required ng-readonly="!isAdmin">
-                    <option>Fresh Talent (experience < 1year)</option>
-                    <option>New Gen (experience < 5year)</option>
-                    <option>Experienced Designer (experience > 5year)</option>
-                    <option>Student Designer (Still in College)</option>
+                    <option value="Fresh Talent">Fresh Talent (experience < 1year)</option>
+                    <option value="New Gen">New Gen (experience < 5year)</option>
+                    <option value="Established Designer">Experienced Designer (experience > 5year)</option>
+                    <option value="Student">Student Designer (Still in College)</option>
                   </select>
                 </div>
 
@@ -116,7 +116,7 @@
 
                 <div class="form-group col-md-5" >
                   <label >Delivery Coordinator's Name</label>
-                  <input type="text" class="form-control" ng-model="designerDetails.brand.pickupAdress.fullName" required>
+                  <input type="text" class="form-control" ng-model="designerDetails.brand.pickupAddress.fullName" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
@@ -128,36 +128,36 @@
                     <div class="input-group-addon">
                       <i class="fa fa-phone"></i>
                     </div>
-                    <input ng-model="designerDetails.brand.pickupAdress.mobile" type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required MINLENGTH="10" MAXLENGTH="10">
+                    <input ng-model="designerDetails.brand.pickupAddress.mobile" type="text" class="form-control" data-inputmask='"mask": "99999-99999"' data-mask required MINLENGTH="10" MAXLENGTH="10">
                   </div>
                 </div>
 
 
                 <div class="form-group col-md-5">
                   <label>Address Line 1</label>
-                    <input ng-model="designerDetails.brand.pickupAdress.line1" type="text" class="form-control" required>
+                    <input ng-model="designerDetails.brand.pickupAddress.line1" type="text" class="form-control" required>
                 </div>
 
                   <div class=" col-md-1"></div>
 
                   <div class="form-group col-md-5">
                       <label>Address Line 2</label>
-                      <input ng-model="designerDetails.brand.pickupAdress.line2" type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAddress.line2" type="text" class="form-control" required>
                   </div>
 
                   <div class="form-group col-md-5">
                       <label>City</label>
-                      <input ng-model="designerDetails.brand.pickupAdress.city" type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAddress.city" type="text" class="form-control" required>
                   </div>
                   <div class=" col-md-1"></div>
               <div class="form-group col-md-5">
                   <label>State</label>
-                  <input ng-model="designerDetails.brand.pickupAdress.state" type="text" class="form-control" required>
+                  <input ng-model="designerDetails.brand.pickupAddress.state" type="text" class="form-control" required>
               </div>
 
                   <div class="form-group col-md-5">
                       <label>Country</label>
-                      <input ng-model="designerDetails.brand.pickupAdress.country" type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAddress.country" type="text" class="form-control" required>
                   </div>
 
                   <div class=" col-md-1"></div>
@@ -173,7 +173,7 @@
                           <div class="input-group-addon">
                               <i class="fa fa-map-marker"></i>
                           </div>
-                          <input ng-model="designerDetails.brand.pickupAddress.pincode" type="text" class="form-control" ng-readonly="!isAdmin"required>
+                          <input ng-model="designerDetails.brand.pickupAddress.pincode" type="text" class="form-control" required>
                       </div>
                   </div>
 
@@ -221,6 +221,7 @@
                   <div class="form-group col-md-10">
                       <input file-model="image" type="file" id="image" class="fileUpload">
                       <button ng-click="uploadImages(image)"> Upload Image </button>
+                      <textarea ng-model="imageDescription" name="imageDescription" id="" cols="60" rows="10"></textarea>
                   </div>
 
 
@@ -251,7 +252,7 @@
 
                 <div class="box-footer col-md-10">
 
-                    <button ng-click="registrationForm.$valid && submitForApproval()" class="btn btn-primary custom-btn" >Submit</button>
+                    <button ng-click="submitForApproval()" class="btn btn-primary custom-btn" >Submit</button>
                     <a ng-if="isAdmin" href="/designers"><button type="submit" class="btn btn-primary custom-btn" >Cancel</button></a>
                 </div>
 
