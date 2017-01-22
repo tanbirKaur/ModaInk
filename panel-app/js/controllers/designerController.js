@@ -1,11 +1,5 @@
 var app = window.app;
-app.controller('DesignerController', function($scope,$stateParams, httpService, $state) {
-
-	//helper methods
-
-	$scope.redirectToViewProduct = function (mode, product) {
-		$state.go("add-product",{mode:mode,product:product});
-    }
+app.controller('DesignerController', function($scope,$stateParams, httpService) {
 
 	// http Methods
 	$scope.getDesignerDetails = function (designerId) {

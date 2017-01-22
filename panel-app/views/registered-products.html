@@ -4,15 +4,15 @@
                     <div class="box box-widget">
                       <div class="box-header with-border">
                         <div class="user-block">
-                          <div class="username btn-box-tool" data-toggle="tooltip" title={{product.name}} ><a ng-click="redirectToViewProduct('ve',product)">{{product.name}}</a></div>
+                          <div class="username btn-box-tool" data-toggle="tooltip" title={{product.name}} ><a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}</a></div>
                           <div ng-if="isAdmin"class="description" ><a href="/designer-profile/{{product.designer.id}}">{{product.designer.firstName}} {{product.designer.lastName}}</a></div>
                           <div class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</div>
                         </div>
                         <!-- /.user-block -->
                         <div class="box-tools">
                           
-                          <button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
-                            <i class="fa fa-edit"></i></button> 
+                          <a ng-if="!isAdmin" href="update-product?mode=ve" ng-click="setProduct('product',product)" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
+                            <i class="fa fa-edit"></i></a>
                          <button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="delete" data-widget="remove" >
                             <i class="fa fa-trash"></i></button> 
 

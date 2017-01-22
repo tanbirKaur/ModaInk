@@ -3,6 +3,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.email = "tanbirkaur16@gmail.com";
     $scope.password = "P@ssw0rd";
     $rootScope.isAdmin = storageService.get("isAdmin");
+
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
         storageService.set("isAdmin",newValue);
     });

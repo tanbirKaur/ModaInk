@@ -1,16 +1,21 @@
 var app = window.app;
-app.controller('HomeController', function($scope,$rootScope,$location, httpService, storageService) {
+app.controller('HomeController', function($scope,$rootScope,$location,$state, httpService, storageService) {
+
+    $scope.setProduct = function (mode, product) {
+        storageService.set('product',product);
+    };
+
     $scope.onGetDesignerProductsSuccess = function (response) {
         if (response.status == 200) {
             $scope.products = response.data;
         }
-    }
+    };
 
     $scope.getUnApprovedProducts = function () {
         httpService.getUnApprovedProducts(function(response){
             $scope.unApprovedProducts = response.data;
         });
-    }
+    };
 
     $scope.getRejectedProducts = function () {
         httpService.getRejectedProducts(function(response){
@@ -22,15 +27,15 @@ app.controller('HomeController', function($scope,$rootScope,$location, httpServi
         httpService.approveProduct(productId,function(response){
             $scope.getUnApprovedProducts();
         });
-    }
+    };
 
     $scope.rejectProduct = function (productId) {
         httpService.approveProduct(productId,function(response){
             $scope.getUnApprovedProducts();
         });
-    }
+    };
 
-    $rootScope.userLoggedIn = storageService.get('accessToken')
+    $rootScope.userLoggedIn = storageService.get('accessToken');
     $rootScope.isAdmin = storageService.get("isAdmin");
 
     if (!$rootScope.userLoggedIn) {

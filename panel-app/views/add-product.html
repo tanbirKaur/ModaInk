@@ -10,7 +10,11 @@
         Review Product
         <small></small>
       </h1>
-      
+      <h1 ng-if="mode == 've'">
+        Update Product
+        <small></small>
+      </h1>
+
     </section>
 
     <!-- Main content -->
@@ -22,16 +26,16 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Product Name</label>
-                    <input ng-model="newProduct.name" ng-readonly="mode=='v'" type="text" required class="form-control" id="productName" placeholder="Enter Product Name">
+                    <label >Product Name</label>
+                    <input ng-model="newProduct.name" ng-readonly="mode=='v' || mode=='ve'" type="text" required class="form-control" id="productName" placeholder="Enter Product Name">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Product Price</label>
+                    <label >Product Price</label>
                     <input ng-model="newProduct.price" ng-readonly="mode=='v'" type="number" required class="form-control" id="productPrice" placeholder="Enter Product Price">
-                  </div>  
+                  </div>
                 </div>
               </div>
 
@@ -39,7 +43,7 @@
                 <div class="col-md-6" >
                     <div class="form-group" >
                     <label>Product Category</label>
-                    <select  ng-model="categoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories"   class="form-control select2" style="width: 100%;">
+                    <select  ng-model="categoryIdx" ng-disabled="mode=='v' || mode=='ve'" ng-options="idx as category.name+'-'+category.gender for (idx, category) in categories"   class="form-control select2" style="width: 100%;">
                     </select>
                     </div>
                 </div>
@@ -48,13 +52,29 @@
 
                   <div class="form-group" required>
                     <label>Sub-Category</label>
-                    <select ng-model="subCategoryIdx" ng-disabled="mode=='v'" ng-options="idx as category.name for (idx, category) in subCategories"  class="form-control select2" style="width: 100%;">
+                    <select ng-model="subCategoryIdx" ng-disabled="mode=='v' || mode=='ve'" ng-options="idx as category.name for (idx, category) in subCategories"  class="form-control select2" style="width: 100%;">
                     </select>
                   </div>
                 </div>
               </div>
 
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label >Product Discount</label>
+                          <input ng-model="newProduct.discountPrice" ng-readonly="mode=='v'" type="number" required class="form-control" id="productDiscount" placeholder="Enter Product discount">
+                      </div>
+                  </div>
 
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <div class="form-group" >
+                          <input id="productExclusive" type="checkbox"  ng-model="newProduct.isExclusive" ng-readonly="mode=='v'">
+                          <label type="text" name="Mark Exclusive" readonly="true">Mark Exclusive</label>
+                          </div><!-- /input-group -->
+                      </div>
+                  </div>
+              </div>
 
               <div class="form-group">
                 <label>Details</label>
@@ -94,20 +114,19 @@
               <div class="row" >
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Shipping Days</label>
+                    <label >Shipping Days</label>
                     <input  type="number" min='0' class="form-control" id="shippingDays" placeholder="Shipping days required" required>
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="">Return Days</label>
+                    <label >Return Days</label>
                     <input type="number" min='0' class="form-control" id="returnDays" placeholder="Enter Return Days" required>
                   </div>  
                 </div>
               </div>
 
-         
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -249,9 +268,7 @@
                                   </label>
                                 </div>
                               </div>
-
-                                              
-                            </div>                                                     
+                            </div>
 
                           </div>
                           
@@ -430,7 +447,7 @@
               </div>              
 
                                        
-              <div class="form-group">
+              <div class="">
                 <label for="primaryImages" class="block">Primary Image</label>
                 <input file-model="primaryImage" type="file" id="primaryImages" class="fileUpload" required>
                 <button ng-click="uploadImages(primaryImage)"> Upload Image </button>
@@ -477,12 +494,17 @@
                 </div>
                 <!-- /.box -->
               </div>
-              
 
-              <div class="box-footer" ng-show="mode == 'c'">
-                <button ng-click="addNewProduct()" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-primary">Cancel</button>
+
+              <div class="box-footer" ng-if="mode == 've'">
+                  <button ng-click="updateProduct()" class="btn btn-primary">UPDATE</button>
+                  <!--<button type="submit" class="btn btn-primary">Cancel</button>-->
               </div>
+              <div class="box-footer" ng-if="mode == 'c'">
+                <button ng-click="addNewProduct()" class="btn btn-primary">Submit</button>
+                <!--<button type="submit" class="btn btn-primary">Cancel</button>-->
+              </div>
+            </div>
             </form>
 
     </section>
