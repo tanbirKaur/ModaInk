@@ -62,7 +62,7 @@
 
 
 
-<body ng-app="portal-modaink" class="hold-transition skin-blue sidebar-mini">
+<body ng-app="portal-modaink" ng-controller="LoginController" class="hold-transition skin-blue sidebar-mini">
 
 <div class="wrapper">
 
@@ -101,7 +101,7 @@
                   <a href="/designer-profile" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="/login" class="btn btn-default btn-flat">Logout</a>
+                  <a ng-href="/login" ng-click="resetStorage()" class="btn btn-default btn-flat">Logout</a>
                 </div>
               </li>
             </ul>
