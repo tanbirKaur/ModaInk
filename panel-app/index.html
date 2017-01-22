@@ -79,15 +79,15 @@
          
           
           <!-- User Account: style can be found in dropdown.less -->
-          <li  ng-show="userLoggedIn && ((!isActive && !isApproved) && !isAdmin)" class="logo" style="background: none;">
+          <li  ng-show="userLoggedIn && (!isActive && !isApproved)" class="logo" style="background: none;">
             <div class="pull-right" style="bottom: 0px">
               <a ng-href="/login" ng-click="resetStorage()" class="btn btn-primary btn-flat">Logout</a>
             </div>
           </li>
-          <li  ng-show="userLoggedIn && ((isActive && isApproved) || isAdmin)" class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <li  ng-show="!isAdmin && userLoggedIn && ((isActive && isApproved) || isAdmin)" class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="images/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{currentUser.firstName}} {{currentUser.lastName}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -95,8 +95,7 @@
                 <img src="images/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Jedi Designer
-                  <small>Member since Nov. 2012</small>
+                  {{currentUser.firstName}} {{currentUser.lastName}} - {{currentUser.type}}
                 </p>
               </li>
               <!-- Menu Body -->

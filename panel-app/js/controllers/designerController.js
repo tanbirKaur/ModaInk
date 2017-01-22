@@ -11,13 +11,24 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess);
 	}
 	$scope.getDesigners = function () {
-
 		httpService.getDesigners($scope.onGetDesignersSuccess);
 	}
 
 	$scope.getDesignerProducts = function(designerId){
 		httpService.getProducts(designerId,$scope.onGetDesignerProductsSuccess)
 	}
+
+    $scope.getDesignerRequests = function(){
+        httpService.getDesignerRequests(function (response) {
+			$scope.unApprovedDesigners = response.data;
+            $scope.unApprovedDesigners.forEach(function (designer) {
+                httpService.getDesignerBrandDetails(designer.id,function (response) {
+					designer.brandDetails = response.data;
+                })
+            });
+        })
+    };
+
 	// http Success and Failure Methods
 	$scope.onGetDesignerDetailsSuccess = function (response) {
 		var designerDetailsFound = response.status == 200;
@@ -119,6 +130,5 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 		$scope.getDesignerDetails($rootScope.userId)
 		$scope.getDesigners();
 	}
-
-
+    $scope.getDesignerRequests()
 });

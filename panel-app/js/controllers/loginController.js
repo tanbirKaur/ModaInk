@@ -4,6 +4,8 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.password = "Test123$";
     // $scope.email = "tanbirkaur16@gmail.com";
     // $scope.password = "P@ssw0rd";
+    $scope.email = "go4taj@gmail.com";
+    $scope.password = "T@J@modaink123";
     $rootScope.isAdmin = storageService.get("isAdmin");
 
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
@@ -23,6 +25,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 
 	$scope.onLoginSuccess = function (response) {
         httpService.getCurrentUserDetails(function(res){
+            $rootScope.currentUser = res.data;
             $rootScope.userId =  res.data.id;
             $rootScope.isActive = res.data.isActive;
             $rootScope.isApproved = res.data.isApproved;
