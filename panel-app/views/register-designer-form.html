@@ -3,6 +3,9 @@
 <div class="content-wrapper"  style="margin-right: 230px;">
 <section class="content" >
           <!-- general form elements -->
+    <div>
+        <h3>Complete your registration details to be a seller. </h3>
+    </div>
           <div class="box box-primary" style="padding: 5%;">
             <div class="box-header with-border">
               <h3 class="box-title">BASIC INFORMATION</h3>
@@ -221,7 +224,7 @@
                   <div class="form-group col-md-10">
                       <input file-model="image" type="file" id="image" class="fileUpload">
                       <button ng-click="uploadImages(image)"> Upload Image </button>
-                      <textarea ng-model="imageDescription" name="imageDescription" id="" cols="60" rows="10"></textarea>
+                      <textarea ng-model="imageDescription" name="imageDescription" id="" cols="30" rows="3" required placeholder="description for image"></textarea>
                   </div>
 
 

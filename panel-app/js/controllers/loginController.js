@@ -1,11 +1,7 @@
 var app = window.app;
 app.controller('LoginController', function($scope,$rootScope,$stateParams,$location, httpService, storageService) {
-    $scope.email = "designer@mailinator.com";
-    $scope.password = "Test123$";
-    // $scope.email = "tanbirkaur16@gmail.com";
-    // $scope.password = "P@ssw0rd";
-    $scope.email = "go4taj@gmail.com";
-    $scope.password = "T@J@modaink123";
+    $scope.email = "";
+    $scope.password = "";
     $rootScope.isAdmin = storageService.get("isAdmin");
 
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){

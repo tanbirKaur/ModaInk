@@ -115,7 +115,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 				brandDetails.portfolioImages.push({url:image.url,description:image.imageDescription});
             });
 			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
-				console.log('Success.brand',response);
+				$location.path('/waiting-for-approval');
             })
         },function (res) {
 			alert('Update failed! try again');

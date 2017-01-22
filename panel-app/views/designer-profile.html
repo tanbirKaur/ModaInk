@@ -19,11 +19,11 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#basic-info" data-toggle="tab">Basic Info</a></li>
-              <li ng-show="isAdmin"><a href="#products" data-toggle="tab">Products(admin)</a></li>
-              <li ng-show="isAdmin"><a href="#product-requests" data-toggle="tab">Product Requests(admin)</a></li>
-              <li ng-show="isAdmin"><a href="#ongoing-orders" data-toggle="tab">Ongoing Orders(admin)</a></li>
-              <li ng-show="isAdmin"><a href="#past-orders" data-toggle="tab">Past Orders(admin)</a></li>
-              <li ng-show="isAdmin"><a href="#payouts" data-toggle="tab">Payouts(admin)</a></li>
+              <li ng-show="isAdmin"><a href="#products" data-toggle="tab">Products</a></li>
+              <li ng-show="isAdmin"><a href="#product-requests" data-toggle="tab">Product Requests</a></li>
+              <li ng-show="isAdmin"><a href="#ongoing-orders" data-toggle="tab">Ongoing Orders</a></li>
+              <li ng-show="isAdmin"><a href="#past-orders" data-toggle="tab">Past Orders</a></li>
+              <li ng-show="isAdmin"><a href="#payouts" data-toggle="tab">Payouts</a></li>
               <li><a href="#edit-profile" data-toggle="tab">Edit Profile</a></li>
             </ul>
             <div class="tab-content">
@@ -35,7 +35,7 @@
                     <div class="box-body box-profile">
                       <img class="profile-user-img img-responsive img-circle" src="/images/user4-128x128.jpg" alt="User profile picture">
                       <h3 class="profile-username text-center">{{designerDetails.firstName}} {{designerDetails.lastName}}</h3>
-                      <p class="text-muted text-center">{{designerDetails.bagde.name}}</p>
+                      <p class="text-muted text-center">{{designerDetails.type}}</p>
                       <ul class="list-group">
                         <li class="list-group-item">
                           <b>Products</b> <a class="pull-right">15</a>
@@ -62,7 +62,7 @@
 
           					  <strong><i class="fa fa-home margin-r-5"></i> Address</strong>
 
-          					  <p class="text-muted">{{designerDetails.address.state}}, {{designerDetails.address.country}}</p>
+          					  <p class="text-muted">{{designerDetails.brand.pickupAddress.state}}, {{designerDetails.brand.pickupAddress.country}}</p>
 
           					  <hr>
           					   <strong><i class="fa fa-institution margin-r-5"></i> Studio Name</strong>
@@ -90,7 +90,7 @@
 
           					  <strong><i class="fa fa-file-text-o margin-r-5"></i> Details</strong>
 
-          					  <p>A short bio of the designer.</p>
+          					  <p>{{designerDetails.description}}</p>
           					</div>
           					<!-- /.box-body -->
           				</div>
