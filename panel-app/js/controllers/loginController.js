@@ -13,13 +13,19 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 
 	$scope.onLoginSuccess = function (response) {
         httpService.getCurrentUserDetails(function(res){
+            $rootScope.isActive = res.data.isActive;
+            $rootScope.isApproved = res.data.isApproved;
 
-            $location.path( "/");
+            if(!$rootScope.isActive && !$rootScope.isApproved && !$rootScope.isAdmin){
+                $location.path("/register-designer");
+            }
+            else
+                $location.path( "/home");
         });
 	}
 
     $scope.onLoginFailure = function (response) {
-        console.log(response);
+        alert(response.data.message);
     }
 
 
