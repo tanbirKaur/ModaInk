@@ -1,7 +1,6 @@
 var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter','ngTagsInput']);
 window.app == app;
 window.apiUrl = "http://dev.modaink.com/api";
-// window.apiUrl = "http://192.168.0.100:8000";
 app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
@@ -18,6 +17,11 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             url: '/add-product',
             templateUrl: '/views/add-product.html',
             controller: 'ProductController'
+        })
+        .state('update-product', {
+            url: '/update-product',
+            templateUrl: '/views/add-product.html',
+            controller: 'ProductController',
         })
         .state('product-requests', {
             url: '/product-requests',

@@ -120,7 +120,15 @@ angular.module('portal-modaink')
 			});
 		}
 
-		httpService.uploadImage = function(type,url,successCallback,failureCallback){
+	   httpService.updateProduct = function(id,productDetails,successCallback,failureCallback){
+		   httpService.callHttp("PUT","products/"+id,{},{},productDetails,function (response) {
+			   redirectCallback(response,emptyFunction,successCallback);
+		   },function (response) {
+			   redirectCallback(response,httpFailed,failureCallback,"updateProduct");
+		   });
+	   }
+
+	   httpService.uploadImage = function(type,url,successCallback,failureCallback){
 			var headers = {};
 			headers['Content-Type'] = undefined;
 			var fd = new FormData();
