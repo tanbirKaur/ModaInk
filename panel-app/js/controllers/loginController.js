@@ -32,7 +32,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
                 $location.path("/register-designer");
             }
             else if ($rootScope.isActive  && !$rootScope.isApproved) {
-                $location.path('/waiting-for-approval')
+                $location.path("/waiting-for-approval")
             }
             else
                 $location.path( "/login");

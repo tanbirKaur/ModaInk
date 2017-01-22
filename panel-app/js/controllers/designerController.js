@@ -3,7 +3,7 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
 	//helper methods
 
 	$scope.redirectToViewProduct = function (mode, product) {
-		$state.go("add-product",{mode:mode,product:product});
+		$state.go("addProduct",{mode:mode,product:product});
     }
 
 	// http Methods
