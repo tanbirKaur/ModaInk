@@ -4,6 +4,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.password = "P@ssw0rd";
     $rootScope.isAdmin = storageService.get("isAdmin");
 
+
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
         storageService.set("isAdmin",newValue);
     });
@@ -31,7 +32,8 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 	};
 
     $scope.onLoginFailure = function (response) {
-        alert(response.data.message);
+        $scope.error = response.data.message;
+        $('#loginFailure').modal();
     }
 
 
