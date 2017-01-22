@@ -73,7 +73,11 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "skus": $scope.newProduct.skus
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
-            alert(JSON.stringify(response.data));
+            $('#addProductSuccess').modal();
+        },
+        function (response) {
+            $scope.error = response.data.message;
+            $('#addProductFailed').modal()
         })
     };
 

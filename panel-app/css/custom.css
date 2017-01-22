@@ -79,11 +79,10 @@
 .block{
     display: block;
 }
-<<<<<<< Updated upstream
-
+.modal-dialog{
+    top:30%;
+}
 .product-image{
     min-height: 350px;
     max-height: 350px;
 }
-=======
->>>>>>> Stashed changes
