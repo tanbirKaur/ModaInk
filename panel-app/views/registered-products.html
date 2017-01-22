@@ -1,7 +1,7 @@
  <div class="row">
                   <div ng-repeat="product in products" ng-if="product.isApproved" class="col-md-5" >
                     <!-- Box Comment -->
-                    <div class="box box-widget">
+                    <div class="box box-widget" style="    border-bottom: solid;">
                       <div class="box-header with-border">
                         <div class="user-block">
                           <div class="username btn-box-tool" data-toggle="tooltip" title={{product.name}} ><a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}</a></div>
@@ -13,8 +13,8 @@
                           
                           <a ng-if="!isAdmin" href="update-product?mode=ve" ng-click="setProduct('product',product)" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
                             <i class="fa fa-edit"></i></a>
-                         <button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="delete" data-widget="remove" >
-                            <i class="fa fa-trash"></i></button> 
+                         <!--<button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" data-toggle="modal" data-target="#deleteProduct" title="delete" data-widget="remove" >-->
+                            <!--<i class="fa fa-trash"></i></button> -->
 
                             <!-- Product to be removed  -->
                          <!--  <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></button> -->
