@@ -25,11 +25,17 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
             $rootScope.isActive = res.data.isActive;
             $rootScope.isApproved = res.data.isApproved;
 
-            if(!$rootScope.isActive && !$rootScope.isApproved && !$rootScope.isAdmin){
+            if($scope.isAdmin){
+                $location.path( "/home");
+            }
+            else if(!$rootScope.isActive  && !$rootScope.isApproved ){
                 $location.path("/register-designer");
             }
+            else if ($rootScope.isActive  && !$rootScope.isApproved) {
+                $location.path('/waiting-for-approval')
+            }
             else
-                $location.path( "/home");
+                $location.path( "/login");
         });
 	};
 
