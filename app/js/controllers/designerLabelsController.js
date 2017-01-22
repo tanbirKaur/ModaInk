@@ -14,10 +14,11 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
             "email": designerInfo.email,
             "mobile": designerInfo.mobileNumber,
             "brand": {
-                "name": designerInfo.brandName
-            },
-            "address": {
-                "pincode": designerInfo.pincode,
+                "name": designerInfo.brand.name,
+                "pickupAddress" : {
+                    "pincode": designerInfo.brand.pickupAddress.pincode,
+
+                }
             },
         }
         if (designerInfo.referrerCode){

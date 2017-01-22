@@ -17,20 +17,20 @@
               <div class="box-body row">
 
                 <div class="form-group full-width col-md-5">
-                  <label for="exampleInputEmail1">First Name</label>
+                  <label >First Name</label>
                   <input ng-model="designer.firstName" type="text" class="form-control"  required="">
                 </div>
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group full-width col-md-5">
-                  <label for="exampleInputEmail1">Last Name</label>
+                  <label >Last Name</label>
                   <input ng-model="designer.lastName" type="text" class="form-control"  required="">
                 </div>
                 <div class="form-group col-md-1"></div>
 
                 <div class="form-group full-width col-md-5">
-                  <label for="exampleInputPassword1">Brand/ Studio Name</label>
-                  <input ng-model="designer.brandName" type="text" class="form-control" required>
+                  <label >Brand/ Studio Name</label>
+                  <input ng-model="designer.brand.name" type="text" class="form-control" required>
                 </div>
 
                 <div class="form-group col-md-1"></div>
@@ -40,12 +40,12 @@
                 </div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Pincode</label>
+                  <label >Pincode</label>
                   <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-map-marker"></i>
                   </div>
-                  <input ng-model="designer.pincode" type="text" class="form-control" required maxlength="6" minlength="6">
+                  <input ng-model="designer.brand.pickupAddress.pincode" type="text" class="form-control" required maxlength="6" minlength="6">
                 </div>
                 </div>
 
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="form-group col-md-5">
-                  <label for="exampleInputEmail1">Email</label>
+                  <label >Email</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                     <input ng-model="designer.email" type="email" class="form-control" placeholder="Email" required>
@@ -75,10 +75,10 @@
                 <div class="form-group col-md-5">
                   <label>Type of designer</label>
                   <select ng-model="designer.type" class="form-control" style="width: 100%;"  >
-                    <option>Fresh Talent (experience < 1year)</option>
-                    <option>New Gen (experience < 5year)</option>
-                    <option>Experienced Designer (experience > 5year)</option>
-                    <option>Student Designer (Still in College)</option>
+                    <option value="Fresh Talent">Fresh Talent (experience < 1year)</option>
+                    <option value="New Gen">New Gen (experience < 5year)</option>
+                    <option value="Established Designer">Established Designer (experience > 5year)</option>
+                    <option value="Student">Student Designer (Still in College)</option>
                   </select>
                 </div>
 
