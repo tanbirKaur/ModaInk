@@ -6,9 +6,9 @@
           <div class="col-md-2">
             <h2 class="box-title" style="font-size: 26px;">All Designers  </h2>
           </div>
-          <!--<div class="col-md-2">-->
-            <!--<a href="/register-designer"><div class="btn btn-primary" style="padding: 4px 12px;">Add Designer</div></a>-->
-          <!--</div>-->
+          <div class="col-md-2">
+            <a href="/register-designer"><div class="btn btn-primary" style="padding: 4px 12px;">Add Designer</div></a>
+          </div>
 
 
 
@@ -56,7 +56,7 @@
               <!-- Designer Card-->
 
               <div ng-repeat="designer in designerList"  class="col-md-4">
-                <div class="box remove-box-top"\">
+                <div class="box remove-box-top">
                   <div class="box-body text-center no-padding" >
                     <div class="bg-teal" style="padding: 3px;">
                       <img src="images/avtar.png" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;">
@@ -94,12 +94,9 @@
                     </div>
 
                     <div class="row" style="margin: 3%;">
-                        <div class="col-md-1 border-right"></div>
                         <a href="/designer-profile/{{designer.id}}"><div class="col-md-4 btn btn-default ">Profile</div></a>
-                        <div class="col-md-2 border-right"></div>
-                        <a href="/designer-profile#products"><div class="col-md-4 btn btn-default text-center">Collection</div></a>
-                        <div class="col-md-1 border-right"></div>
-                        
+                        <a href="/addProduct?mode=c"><div class="col-md-4 btn btn-default text-center">Add Product</div></a>
+                        <a href="/designer-profile/{{designer.id}}#products"><div class="col-md-4 btn btn-default text-center">Collection</div></a>
 
                     </div>              
 

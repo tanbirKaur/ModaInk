@@ -33,7 +33,8 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input ng-model="designerDetails.dateOfBirth" type="text" class="form-control datepicker" data-date-format="mm/dd/yyyy" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required readonly>
+                  <input ng-model="designerDetails.dateOfBirth" type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
+                      <datetimepicker data-ng-model="designerDetails.dateOfBirth" data-datetimepicker-config="{ startView:'day', minView:'day' }" />
                 </div>
                 </div>
 

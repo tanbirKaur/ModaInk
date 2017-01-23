@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('DesignerController', function($scope,$stateParams, httpService, $state, $rootScope) {
+app.controller('DesignerController', function($scope,$stateParams,$location, httpService, $state, $rootScope) {
 	//helper methods
 
 	$scope.redirectToViewProduct = function (mode, product) {
@@ -88,7 +88,6 @@ app.controller('DesignerController', function($scope,$stateParams, httpService, 
             "type": $scope.designerDetails.type
         }
 		httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
-			alert(JSON.stringify(response));
             var brandDetails = {
                 email: $scope.designerDetails.brand.email,
                 TINumber: $scope.designerDetails.brand.TINumber,
