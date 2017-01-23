@@ -6,17 +6,16 @@
       </h1>
               <a href="/addProduct?mode=c" ng-if="!isAdmin" ><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add product</button></a>
                <div class="col-md-5">
-           <input type="text" name="search" class="form-control search-bar" placeholder="search...">
-         </div>      
+         </div>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#registered" data-toggle="tab">Registered</a></li>
-              <li><a href="#newRequests" ng-click="getUnApprovedProducts()" data-toggle="tab">Requests</a></li>
-              <li><a href="#changeRequests" ng-click="getUnApprovedChangesProducts()" data-toggle="tab">Changed</a></li>
+              <li class="active"><a href="#registered" data-toggle="tab">Live Products</a></li>
+              <li><a href="#newRequests" ng-click="getUnApprovedProducts()" data-toggle="tab">New Product Requests</a></li>
+              <li><a href="#changeRequests" ng-click="getUnApprovedChangesProducts()" data-toggle="tab">Updated Products Requests</a></li>
               <li><a href="#rejectedRequests" ng-click="getRejectedProducts()" data-toggle="tab">Not Approved</a></li>
             </ul>
             <div class="tab-content">
