@@ -1,6 +1,14 @@
-<div ng-controller="UserProfileController" id="Content" class="without_headers">
+<div ng-controller="UserProfileController" id="Content" class="without_headers"  style="min-height: 250px;">
 	<div class="content_wrapper clearfix" style="margin-left: 15%; margin-right: 15%; margin-bottom: 10%;">
-	<nav class="stepper">
+
+		<div ng-if="cartItems.length < 1">
+			<h3>You have 0 intems in your cart.</h3>
+			<hr/>
+			<div class="continue-shopping">
+				<a href="/"><button id="continue-shopping" class="alt-action" >Continue Shopping <i class="icon-cart"></i></button></a>
+			</div>
+		</div>
+	<nav ng-if="cartItems.length > 0" class="stepper">
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
 		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
 		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
@@ -20,9 +28,11 @@
 				<span class="stepper__step-badge">4</span>
 				<span class="stepper__step-title">Review</span>
 			</a>
-		</nav>
 		<hr>
-		<div  id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
+
+	</nav>
+
+		<div  ng-if="cartItems.length > 0 " id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
 			<h4 style="display: inline-block;n">My Shopping Cart ({{cartItems.length}} item)</h4>
 			<h4 style="float: right;"> Total: {{totalPrice}}</h4>	
 			<hr>
@@ -63,7 +73,7 @@
 			
 		</div>
 
-		<div id="right">
+		<div ng-if="{{cartItems.length}} > 0" id="right">
 
 				<div  style="margin-left: : 10px;">PRICE DETAILS</div>
 
@@ -102,5 +112,3 @@
             </div>
 
 		</div>
-	</div>
-</div>
