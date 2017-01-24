@@ -92,3 +92,12 @@
     width: 50%;
     margin: 7% auto;
 }
+
+#sizeChart {
+    margin-left:17%;
+}
+
+#sizeChart iframe {
+    height:100%;
+    width: 100%;
+}
