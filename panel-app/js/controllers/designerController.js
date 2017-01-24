@@ -82,8 +82,11 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 	}
 	$scope.submitForApproval = function () {
 	    if($rootScope.isAdmin){
-	        $scope.addDesignerAsAdmin(function (response) {
-                alert(JSON.stringify(response.data));
+            $scope.addDesignerAsAdmin(function (response) {
+                $('#addDesignerSuccess').modal();
+            }, function (response) {
+                $scope.error = response.data.message;
+                $('#addDesignerFailure').modal();
             })
             return;
         }
