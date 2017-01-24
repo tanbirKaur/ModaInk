@@ -60,7 +60,7 @@ angular.module('portal-modaink')
            });
         };
 
-           httpService.getCurrentUserDetails = function(successCallback,failureCallback){
+		httpService.getCurrentUserDetails = function(successCallback,failureCallback){
 			var url = storageService.get("isAdmin") ? "admins/me" : "designers/me"
 			httpService.callHttp("GET",url,{},{},{},function (response) {
 				redirectCallback(response,onGetCurrentUserDetails,successCallback);
@@ -76,6 +76,14 @@ angular.module('portal-modaink')
 				redirectCallback(response,httpFailed,failureCallback,"getDesignerDetails");
 			});
 		}
+
+       httpService.addApprovedDesigner = function (data,successCallback,failureCallback) {
+           httpService.callHttp("POST","designers/asApproved",{},{},data,function (response) {
+               redirectCallback(response,emptyFunction,successCallback);
+           },function (response) {
+               redirectCallback(response,httpFailed,failureCallback,"addApprovedDesigner");
+           });
+       }
 
         httpService.updateDesignerDetails = function (designerId,data,successCallback,failureCallback) {
            httpService.callHttp("PUT","designers/"+designerId,{},{},data,function (response) {
