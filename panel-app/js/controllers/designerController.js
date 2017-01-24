@@ -9,7 +9,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 	// http Methods
 	$scope.getDesignerDetails = function (designerId) {
 		httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess,function (response) {
-            $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[]}};
+            $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
         });
 	}
 	$scope.getDesigners = function () {
@@ -88,12 +88,12 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             return;
         }
 		var designerDetails = {
-            "firstName": $scope.designerDetails.firstName,
-            "lastName": $scope.designerDetails.lastName,
-            "dateOfBirth": $scope.designerDetails.dateOfBirth,
-            "mobile": $scope.designerDetails.mobile,
-            "description": $scope.designerDetails.description,
-            "type": $scope.designerDetails.type
+            firstName: $scope.designerDetails.firstName,
+            lastName: $scope.designerDetails.lastName,
+            dateOfBirth: $scope.designerDetails.dateOfBirth,
+            mobile: $scope.designerDetails.mobile,
+            description: $scope.designerDetails.description,
+            type: $scope.designerDetails.type
         }
 		httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
             var brandDetails = {
@@ -130,22 +130,17 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     };
 
 	$scope.addDesignerAsAdmin = function (success, failure) {
-        httpService.addApprovedDesigner(newDesignerRequest,function (response) {
-            $('#addDesignerSuccess').modal();
-        }, function (response) {
-            $scope.error = response.data.message;
-            $('#addDesignerFailure').modal();
-
-        });
         var newDesignerRequest = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
-            dateOfBirth: $scope.designerDetails.dateOfBirth,
+            dateOfBirth: $( "#dateOfBirth" ).datepicker( "getDate" ).toISOString(),
             mobile: $scope.designerDetails.mobile,
             description: $scope.designerDetails.description,
             type: $scope.designerDetails.type,
             referrerCode: $scope.designerDetails.referrerCode,
+            email: $scope.designerDetails.email,
             brand: {
+                name:$scope.designerDetails.brand.name,
                 email: $scope.designerDetails.brand.email,
                 TINumber: $scope.designerDetails.brand.TINumber,
                 IECNumber: $scope.designerDetails.brand.IECNumber,
@@ -160,17 +155,19 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                     line1: $scope.designerDetails.brand.pickupAddress.line1,
                     line2: $scope.designerDetails.brand.pickupAddress.line2,
                     landmark: $scope.designerDetails.brand.pickupAddress.landmark,
-                    pincode: $scope.designerDetails.pincode,
+                    pincode: $scope.designerDetails.brand.pickupAddress.pincode,
                     city: $scope.designerDetails.brand.pickupAddress.city,
                     state: $scope.designerDetails.brand.pickupAddress.state,
-                    country: $scope.designerDetails.brand.pickupAddress.country
+                    country: "India"
                 }
             },
         };
+
         newDesignerRequest.brand.portfolioImages = [];
         $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
             newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.imageDescription});
         });
+        httpService.addApprovedDesigner(newDesignerRequest,success,failure);
     }
 
     $scope.uploadImages = function (imageName) {
