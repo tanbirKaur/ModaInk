@@ -130,12 +130,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     };
 
 	$scope.addDesignerAsAdmin = function (success, failure) {
-        newDesignerRequest = {"brand":{"pickupAddress":{"fullName":"Sambha","mobile":"7766443322","line1":"Bade pathar ke pas","line2":"Nadi kinare","city":"Ramgarh","state":"Karnataka","country":"India","landmark":"none","pincode":"554433"},"portfolioImages":[{"url":"https://dev-modaink-assets.s3.amazonaws.com/designers/U3lUS3ZIVndnaG9tZV9zdG9yZV9wcm9kdWN0MS0zMDB4MzAw.jpg","description":"description","$$hashKey":"object:102"}],"name":"KILLERS","email":"sambha@gabbar.com","TINumber":"12","IECNumber":"iiiccc","bankName":"SAMBHA","bankAccountName":"ididid","bankAccountNumber":"665544","bankIFSCode":"icici","bankBranch":"BBBB"},"firstName":"Gabbar","lastName":"SIngh","dateOfBirth":"2017-01-24T03:02:11.614Z","mobile":"7766554433","email":"gabbar@gabbar.com","type":"Established Designer","description":"desc"}
         httpService.addApprovedDesigner(newDesignerRequest,function (response) {
-            alert(JSON.stringify(response.data));
-        });
-        return;
+            $('#addDesignerSuccess').modal();
+        }, function (response) {
+            $scope.error = response.data.message;
+            $('#addDesignerFailure').modal();
 
+        });
         var newDesignerRequest = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,

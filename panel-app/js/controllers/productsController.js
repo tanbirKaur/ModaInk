@@ -9,8 +9,8 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.newProduct = storageService.get('product');
     }
 
-
-    $scope.skus = {XS:false,S:false,M:false,L:false,XL:false};
+    counter = 0;
+    $scope.skus = [];
 
     if ($scope.mode === 'v') {
         $scope.colors = $scope.newProduct.colours.map(function (color) {
@@ -88,9 +88,10 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.colors.forEach(function(color){
             $scope.newProduct.colours.push(color.text);
         })
+            console.log($scope.skus)
         Object.keys($scope.skus).forEach(function(skuName){
             if ($scope.skus[skuName]) {
-                $scope.newProduct.skus.push({sizeVariantValue:skuName,quantity:1});
+                $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
             };
         });
         if(!$scope.categoryIdx || !$scope.subCategoryIdx){
@@ -115,4 +116,11 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $('#addProductFailure').modal();
         });
     }
+
+    $scope.addMoreSizes = function () {
+        var abc = document.getElementsByClassName('addSize')[0].innerHTML;
+        abc = abc.replace(/\[*]/, '['+ ++counter + ']');
+
+        $('#sizeContainer').append(abc);
+    };
 });

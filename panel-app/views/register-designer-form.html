@@ -261,6 +261,30 @@
                 </div>
 
             </form>
+
+              <div id="addProductSuccess" class="modal fade " tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content alert-success">
+                          <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <p>Designer {{designerDetails.name}} Successfully Added.</p>
+
+                          </div>
+                      </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+              </div>
+
+              <div id="addDesignerFailure" class="modal fade " tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content alert-danger">
+                          <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <p>{{error}}</p>
+
+                          </div>
+                      </div><!-- /.modal-content -->
+                  </div><!-- /.modal-dialog -->
+              </div>
           </div>
 </section>
           </div>

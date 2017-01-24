@@ -89,19 +89,22 @@
                 <label>Sizes Available <a href="/sizeChart">Size Chart</a></label>
 
                   <div class="row">
-                    <div ng-repeat="(key, val) in skus" class="col-md-3">
-                        
-                        <div class="input-group" >
-                            <span class="input-group-addon">
-                              <input type="checkbox"  ng-model="skus[key]" ng-readonly="mode=='v'">
-                            </span>
-                          <label class="input-group-addon"   type="text" name="{{key}}">
-                            {{key}}
-                          </label>
-                          <input  type="number" class="form-control" placeholder="Quantity" >
-                        </div><!-- /input-group -->
-                        <div class="col-md-1"></div>
+                    <div class="col-md-4" id="sizeContainer">
+
+                        <div class="input-group addSize" >
+                          <input ng-model="skus[0].sizeVariantValue" type="text" class="form-control" placeholder="Size type" required>
+                          <input ng-model="skus[0].quantity" type="number" class="form-control" placeholder="Quantity" required >
+                        </div>
+
+
                     </div>
+
+                      <div class="col-md-2"></div>
+                      <button ng-click="addMoreSizes()">
+                      <i class="fa fa-plus">&nbsp; Add more sizes</i>
+                  </button>
+
+
                   </div>
               </div>
 
