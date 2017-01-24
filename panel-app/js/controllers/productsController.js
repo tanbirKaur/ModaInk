@@ -16,9 +16,6 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.colors = $scope.newProduct.colours.map(function (color) {
             return {text:color};
         });
-        $scope.newProduct.skus.forEach(function (skuDetail) {
-            $scope.skus[skuDetail.sizeVariantValue] = true;
-        });
     }
 
     httpService.onGetCategories = function(response){
@@ -88,11 +85,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.colors.forEach(function(color){
             $scope.newProduct.colours.push(color.text);
         })
-            console.log($scope.skus)
+        $scope.newProduct.skus.length = 0;
         Object.keys($scope.skus).forEach(function(skuName){
-            if ($scope.skus[skuName]) {
-                $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
-            };
+            $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
         });
         if(!$scope.categoryIdx || !$scope.subCategoryIdx){
             return alert(!$scope.categoryIdx?"Please select category":"Please select sub category");
@@ -102,14 +97,10 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.newProduct.isExclusive = true;
         if($scope.designerId){
             $scope.newProduct.designer = {id:$scope.designerId};
-
-        }
-        else
+        } else
             $scope.newProduct.designer = {id:$rootScope.userDetails.id};
 
-        console.log(JSON.stringify($scope.newProduct));
         httpService.createProduct($scope.newProduct,function(res){
-
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = res.data.message;
@@ -117,10 +108,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         });
     }
 
-    $scope.addMoreSizes = function () {
-        var abc = document.getElementsByClassName('addSize')[0].innerHTML;
-        abc = abc.replace(/\[*]/, '['+ ++counter + ']');
-
-        $('#sizeContainer').append(abc);
+    $scope.addSku = function () {
+        $scope.skus.push({sizeVariantValue:$scope.skuName,quantity:$scope.skuQuantity})
+        $scope.skuName = "";
+        $scope.skuQuantity= "";
     };
 });

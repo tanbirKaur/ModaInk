@@ -90,17 +90,20 @@
 
                   <div class="row">
                     <div class="col-md-4" id="sizeContainer">
-
                         <div class="input-group addSize" >
-                          <input ng-model="skus[0].sizeVariantValue" type="text" class="form-control" placeholder="Size type" required>
-                          <input ng-model="skus[0].quantity" type="number" class="form-control" placeholder="Quantity" required >
+                            <input ng-model="skuName" type="text" class="form-control" placeholder="Size type" required>
+                            <input ng-model="skuQuantity" type="number" class="form-control" placeholder="Quantity" required >
                         </div>
-
-
+                        <div ng-repeat="sku in skus">
+                            <div class="input-group addSize" >
+                                <input ng-model="sku.sizeVariantValue" type="text" class="form-control" placeholder="Size type" required>
+                                <input ng-model="sku.quantity" type="number" class="form-control" placeholder="Quantity" required >
+                            </div>
+                        </div>
                     </div>
 
                       <div class="col-md-2"></div>
-                      <button ng-click="addMoreSizes()">
+                      <button ng-click="addSku()">
                       <i class="fa fa-plus">&nbsp; Add more sizes</i>
                   </button>
 
