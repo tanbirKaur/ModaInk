@@ -155,6 +155,8 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 
 	$scope.onGetCategorySuccess = function (response) {
 		$scope.productCategories = response.data;
+        $scope.menProducts = filteredProductsCategory('men');
+        $scope.womenProducts = filteredProductsCategory('women');
 	}
 
 	$scope.onGetCategoryFailure = function (response) {
@@ -237,6 +239,12 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 			return obj == value;
 		});
 	};
+
+    var filteredProductsCategory = function(gender){ 
+    	return $scope.productCategories.filter(function (product) { 
+    		return product.gender == gender; 
+    	}); 
+    }
 
 	var hideModal = function(modal) {
        return angular.element('#'+modal).modal('hide');

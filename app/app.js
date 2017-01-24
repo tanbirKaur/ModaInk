@@ -26,13 +26,8 @@ window.apiUrl = "http://modaink.com/api";
 		.state("footwear",{ 
 			url : '/footwear',
 			templateUrl:"views/footwear.html",
-			// controller : "signupUserController"
 		})
-		.state("heals", {
-			url: "/footwear/heals",
-			templateUrl : "views/for-her-heals.html",
-			// controller : "searchController"
-		})
+
 		.state("/", {
 			url: "/products",
 			templateUrl : "views/products.html",
@@ -79,8 +74,8 @@ window.apiUrl = "http://modaink.com/api";
 		})
 		.state("login", {
 			url: "/login",
-			templateUrl : "views/login.html"
-		//	controller : "homeController"
+			templateUrl : "views/login.html",
+		    controller : "HomeController"
 		})
 		.state("women", {
 			url:"/women",
@@ -131,6 +126,7 @@ window.apiUrl = "http://modaink.com/api";
 			url:"/disclaimer",
 			templateUrl : "views/disclaimer.html"
 		})
+
 		// ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);
