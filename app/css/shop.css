@@ -1,25 +1,4 @@
-/*
- |------------------------------------------------------------------------
- | Be
- | Specific style
- | http://BeantownThemes.com
- | http://themeforest.net/user/BeantownThemes
- |-------------------------------------------------------------------------
- | 1.0 woocommerce-elements
- | 2.0 woocommerce-layout
- | 3.0 Demo Styles
- |
- */
-
-/*
- |--------------------------------------------------------------------------
- |  1.0 woocommerce
- |
- |--------------------------------------------------------------------------
- |
- |
- |
- */
+/
 
 @charset "UTF-8";@-moz-keyframes spin{100%{-moz-transform:rotate(360deg)}}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg)}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
 @font-face {
@@ -1738,6 +1717,8 @@ li.product:nth-child(3n+1) {
 .woocommerce ul.products li.product .desc {
 	background: #fff;
 	padding: 15px 20px;
+	min-height: 130px;
+	max-height: 130px;
 }
 
 .woocommerce ul.products li.product .product-loading-icon {

@@ -29,13 +29,20 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
 
     $scope.onDesignerRequestSuccess = function (response) {
         console.log(response);
-        $('#registrationSucessful').modal();
+        $('#sucess').show();
+        $('#registrationButtons').addClass('displayNone');
 
 
     }
     $scope.onDesignerRequestFailure = function (response) {
         console.log(response);
-       $('#registrationFailure').modal();
+        $('#failure').show();
+        $('#registrationButtons').addClass('displayNone');
+
+    }
+
+    $scope.removeClass = function () {
+        $('#registrationButtons').removeClass('displayNone');
     }
 
     //View methods
