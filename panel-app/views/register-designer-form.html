@@ -176,7 +176,7 @@
                           <div class="input-group-addon">
                               <i class="fa fa-map-marker"></i>
                           </div>
-                          <input ng-model="designerDetails.brand.pickupAddress.pincode" type="text" class="form-control" required>
+                          <input ng-model="designerDetails.brand.pickupAddress.pincode" type="text" class="form-control" required maxlength="6" minlength="6">
                       </div>
                   </div>
 
@@ -221,10 +221,10 @@
                      <hr/>
                 </div>
 
-                  <div class="form-group col-md-10">
-                      <input file-model="image" type="file" id="image" class="fileUpload">
-                      <button ng-click="uploadImages(image)"> Upload Image </button>
-                      <textarea ng-model="imageDescription" name="imageDescription" id="" cols="30" rows="3" required placeholder="description for image"></textarea>
+                  <div class="form-group col-md-10" name="imageGroup">
+                          <input file-model="image" type="file" id="image" class="fileUpload" required>
+                          <textarea ng-model="imageDescription" name="imageDescription" id="" cols="30" rows="3" required placeholder="description for image"></textarea>
+                          <button ng-disabled="!imageDescription" ng-click="uploadImages(image)"> Upload Image </button>
                   </div>
 
 
@@ -261,16 +261,15 @@
 
             </form>
 
-              <div id="addProductSuccess" class="modal fade " tabindex="-1" role="dialog">
+              <div id="addDesignerSuccess" class="modal fade " tabindex="-1" role="dialog">
                   <div class="modal-dialog" role="document">
                       <div class="modal-content alert-success">
                           <div class="modal-body">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                  <p>Designer {{designerDetails.name}} Successfully Added.</p>
-
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+                              <p>Designer {{designerDetails.name}} Successfully Added.</p>
                           </div>
-                      </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
+                      </div>
+                  </div>
               </div>
 
               <div id="addDesignerFailure" class="modal fade " tabindex="-1" role="dialog">

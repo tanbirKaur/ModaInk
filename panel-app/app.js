@@ -85,6 +85,11 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl : "views/verifyEmail.html",
             controller :"VerifyEmailController"
         })
+        .state("sizeChart", {
+            url: "/sizeChart",
+            templateUrl : "views/sizeChart.html",
+            controller :"VerifyEmailController"
+        })
 
 
 
