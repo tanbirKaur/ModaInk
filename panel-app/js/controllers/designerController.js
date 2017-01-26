@@ -96,11 +96,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             dateOfBirth: $scope.designerDetails.dateOfBirth,
             mobile: $scope.designerDetails.mobile,
             description: $scope.designerDetails.description,
-            type: $scope.designerDetails.type
+            type: $scope.designerDetails.type,
+            avatarUrl: $scope.designerDetails.avatarUrl
         }
 		httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
             var brandDetails = {
                 email: $scope.designerDetails.brand.email,
+                logoUrl: $scope.designerDetails.brand.logoUrl,
                 TINumber: $scope.designerDetails.brand.TINumber,
                 IECNumber: $scope.designerDetails.brand.IECNumber,
                 bankName: $scope.designerDetails.brand.bankName,
@@ -140,12 +142,14 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             mobile: $scope.designerDetails.mobile,
             description: $scope.designerDetails.description,
             type: $scope.designerDetails.type,
+            avatarUrl: $scope.designerDetails.avatarUrl,
             referrerCode: $scope.designerDetails.referrerCode,
             email: $scope.designerDetails.email,
             brand: {
                 name:$scope.designerDetails.brand.name,
                 email: $scope.designerDetails.brand.email,
                 TINumber: $scope.designerDetails.brand.TINumber,
+                logoUrl: $scope.designerDetails.brand.logoUrl,
                 IECNumber: $scope.designerDetails.brand.IECNumber,
                 bankName: $scope.designerDetails.brand.bankName,
                 bankBranch: $scope.designerDetails.brand.bankBranch,
@@ -173,15 +177,37 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         httpService.addApprovedDesigner(newDesignerRequest,success,failure);
     }
 
-    $scope.uploadImages = function (imageName) {
+    $scope.uploadImages = function (imageName , id) {
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
-                alert('image uploaded:'+image.originalFileName);
-                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,imageDescription:$scope.imageDescription});
+                alert('image uploaded sucessfully');
+                imageDescription = $(id).val();
+                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,imageDescription:imageDescription});
             })
         })
     }
+
+
+    $scope.uploadProfileImage = function (imageName) {
+        httpService.uploadImage('designers',imageName,function(res){
+            var imageUploaded = res.data;
+                alert('image uploaded sucessfully');
+                $scope.designerDetails.avatarUrl = imageUploaded[0].fileUrl;
+            }, function (res) {
+            alert('Something went wrong. Please try a different image')
+        })
+	}
+	$scope.uploadBrandLogo = function (imageName) {
+        httpService.uploadImage('designers',imageName,function(res){
+            var imageUploaded = res.data;
+                alert('image uploaded sucessfully');
+                $scope.designerDetails.brand.logoUrl = imageUploaded[0].fileUrl;
+            }, function (res) {
+            alert('Something went wrong. Please try a different image')
+
+        })
+	}
 
 
 	var designerId = $stateParams.id;

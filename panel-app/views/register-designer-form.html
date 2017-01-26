@@ -70,7 +70,7 @@
                   <label >Official Email</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input ng-model="designerDetails.brand.email"type="email" class="form-control" placeholder="Email">
+                    <input ng-model="designerDetails.brand.email"type="email" class="form-control" placeholder="Email" required>
                   </div>
                 </div>
 
@@ -112,6 +112,25 @@
                   <textarea class="form-control" rows="3" maxlength="500" required ng-model="designerDetails.description"></textarea>
                 </div>
 
+
+                  <div class="form-group col-md-3" name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.avatarUrl}}" alt="Please use a square image. Minimum ratio should be 600 X 600">
+                      </div>
+                      <input file-model="profileImage" type="file" id="profileImage" class="fileUpload" required>
+                      <button ng-disabled="!profileImage" ng-click="uploadProfileImage(profileImage)"> Upload Profile Picture </button>
+                  </div>
+
+                  <div class="col-md-3"></div>
+
+                  <div class="form-group col-md-3 " name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.brand.logoUrl}}" alt="Brand Logo">
+                      </div>
+                      <input file-model="brandLogo" type="file" id="brandLogo" class="fileUpload" >
+                      <button ng-disabled="!brandLogo" ng-click="uploadBrandLogo(brandLogo)"> Upload Brand Logo</button>
+                  </div>
+
                 <div  class="col-md-10" style="margin: 3% 0%;">
                   <h4 class="box-title" style="display: inline-block">DELIVERY INFORMATION</h4>
                     <hr/>
@@ -145,7 +164,7 @@
 
                   <div class="form-group col-md-5">
                       <label>Address Line 2</label>
-                      <input ng-model="designerDetails.brand.pickupAddress.line2" type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAddress.line2" type="text" class="form-control" >
                   </div>
 
                   <div class="form-group col-md-5">
@@ -167,7 +186,7 @@
 
                   <div class="form-group col-md-5">
                       <label>Landmark</label>
-                      <input ng-model="designerDetails.brand.pickupAddress.landmark" type="text" class="form-control" required>
+                      <input ng-model="designerDetails.brand.pickupAddress.landmark" type="text" class="form-control" >
                   </div>
 
                   <div class="form-group col-md-5">
@@ -221,35 +240,44 @@
                      <hr/>
                 </div>
 
-                  <div class="form-group col-md-10" name="imageGroup">
-                          <input file-model="image" type="file" id="image" class="fileUpload" required>
-                          <textarea ng-model="imageDescription" name="imageDescription" id="" cols="30" rows="3" required placeholder="description for image"></textarea>
-                          <button ng-disabled="!imageDescription" ng-click="uploadImages(image)"> Upload Image </button>
-                  </div>
-
-
-                  <div class="form-group col-md-12">
-                      <label>Preview</label>
-                      <!-- Box Comment -->
-                      <div class="box box-widget">
-
-                          <!-- /.box-header -->
-                          <div class="box-body" style="padding:0;">
-                              <!-- /.user-block -->
-                              <div class="row margin-bottom">
-
-                                  <div class="col-md-4" ng-repeat="image in designerDetails.brand.portfolioImages">
-                                      <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
-                                  </div>
-                                  <!-- /.col -->
-                              </div>
-                              <!-- /.row -->
-                          </div>
-
+                  <div class="form-group col-md-3 " name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.brand.portfolioImages[0].url}}" alt="Product Picture">
                       </div>
-                      <!-- /.box -->
+                      <input file-model="image" type="file" id="image" class="fileUpload" required>
+                      <textarea id="imageDescription" cols="22" rows="2" required placeholder="Description for image"></textarea>
+                      <button  ng-click="uploadImages(image , '#imageDescription')"> Upload Image </button>
+
                   </div>
 
+
+                  <div class="form-group col-md-3 " name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.brand.portfolioImages[1].url}}" alt="Product Picture">
+                      </div>
+                      <input file-model="image" type="file" id="image1" class="fileUpload" required>
+                      <textarea id="imageDescription1" cols="22" rows="2" required placeholder="Description for image"></textarea>
+                      <button ng-click="uploadImages(image, '#imageDescription1')"> Upload Image </button>
+
+                  </div>
+                  <div class="form-group col-md-3 " name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.brand.portfolioImages[2].url}}" alt="Product Picture">
+                      </div>
+                      <input file-model="image" type="file" id="image2" class="fileUpload" required>
+                      <textarea id="imageDescription2" cols="22" rows="2" required placeholder="Description for image"></textarea>
+                      <button ng-click="uploadImages(image, '#imageDescription2')"> Upload Image </button>
+
+                  </div>
+                  <div class="form-group col-md-3 " name="imageGroup">
+                      <div class="col-md-12" style="border: 1px solid; min-height: 200px; max-height: 200px">
+                          <img class="img-responsive" ng-src="{{designerDetails.brand.portfolioImages[3].url}}" alt="Product Picture">
+                      </div>
+                      <input file-model="image" type="file" id="image3" class="fileUpload" required>
+                      <textarea id="imageDescription3" cols="22" rows="2" required placeholder="Description for image"></textarea>
+                      <button ng-click="uploadImages(image, '#imageDescription3')"> Upload Image </button>
+
+                  </div>
                 
               </div>
 
