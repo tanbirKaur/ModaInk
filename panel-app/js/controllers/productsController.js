@@ -44,12 +44,13 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         };
     });
 
-    $scope.uploadImages = function (imageName) {
+    $scope.uploadImages = function (imageName , descriptionId) {
         httpService.uploadImage('products',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
-                alert('image uploaded:'+image.originalFileName);
-                $scope.newProduct.images.push({url:image.fileUrl});
+                alert('image uploaded successfully');
+                description = $(descriptionId).val()
+                $scope.newProduct.images.push({url:image.fileUrl, description: description});
             })
         })
     }

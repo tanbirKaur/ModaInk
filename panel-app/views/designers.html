@@ -59,7 +59,7 @@
                 <div class="box remove-box-top">
                   <div class="box-body text-center no-padding" >
                     <div class="bg-teal" style="padding: 3px;">
-                      <img src="images/avtar.png" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;">
+                      <img ng-src="{{designer.avatarUrl}}" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;">
                       <p>
                         {{designer.firstName}} {{designer.lastname}} - {{designer.badge.name}}<br>
                         <small>Member since: {{designer.createdAt | date : "MMM, yyyy"}}</small>
