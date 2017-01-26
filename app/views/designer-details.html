@@ -1,8 +1,8 @@
-<div id="Content" class="without_headers" ng-controller="DesignersController">
+<div ng-controller="DesignersController" id="Content" class="without_headers" >
 	<div class="content_wrapper clearfix">
 
 		<div id="logo" class="menu">
-			<a href="#editorial">
+			<a >
 			<h1>{{designerDetails.firstName}}</h1>
 			<span>{{designerDetails.brand.name}}</span>
 			</a>
@@ -12,9 +12,9 @@
 
 		<div id="firstmenu" class="menu">
 			<ul>
-				<li class="cat" id="advertisingl"><a href="#advertisinga">Made To Order</a></li>
+				<!--<li class="cat" id="advertisingl"><a href="#advertisinga">Made To Order</a></li>-->
 				<li class="cat active" id="customl"><a href="#custom">Customized Collection</a></li>
-				<li class="cat active" id="customl"><a href="/designer/collections">Shop Now</a></li>
+				<li class="cat active" id="shop"><a href="/designer/collections">Shop Now</a></li>
 			</ul>
 		</div>
 				<div id="about" class="fotos">
@@ -25,7 +25,7 @@
 							<p>Since her 4-year study at the College of Fine Arts (Hochschule für Bildende Künste) Dresden Judith Kröher works as a freelance makeup artist and hairstylist. With great attention to detail she has worked in film / television, advertising, theater / opera and photography. Her work is characterized by background, personality, character and passion. Judith Kröher lives and loves her job.</p>
 
 						</li>
-					<li class="four"><img ng-alt="{{designerDetails.firstName}}" src="images/Designers/judith.jpg"></li>
+					<li class="four"><img  src="{{designerDetails.avatarUrl}}"></li>
 					</ul>
 				</div>
 		

@@ -3,7 +3,7 @@
                     <div id="rev_slider_1_2_wrapper" class="rev_slider_wrapper fullwidthbanner-container" style="margin:0px auto;padding:0px;max-height:500px;">
                         <div id="rev_slider_1_2" class="rev_slider fullwidthabanner" style="max-height:500px;height:500px;">
                                     <!-- MAIN IMAGE -->
-                                    <img ng-src="{{homeImageUrl}}" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" style="visibility: visible;">
+                                    <img ng-src="{{homeImageUrl}}" alt="" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" style="visibility: visible; width: 100%">
                         </div>
                     </div>
                 </div>
@@ -21,15 +21,15 @@
 
                   </div>
                   <div class="col-xs-12 col-md-8" style="float: right;">
-                    <div ng-repeat="designer in designers|limitTo:5">
+                    <div ng-repeat="designer in designers | limitTo: -5">
                         <div class="column column_trailer_box designer_column">
                             <div class="trailer_box">
                                 <!-- Animated area -->
                                 <div class="animate" data-anim-type="fadeInUp">
-                                    <a target="_top" ng-href="designer-details/{{designer.id}}"><img class="scale-with-grid" ng-src="images/Designers/designer_1.png" alt="Fall<br />Winter '13/14" />
+                                    <a target="_top" ng-href="designer-details/{{designer.id}}"><img class="scale-with-grid" ng-src="{{designer.avatarUrl}}" alt="Fall<br />Winter '13/14" />
                                         <div class="desc">
                                             <div id = "designer_name" class="line">
-                                                {{designer.firstName}} {{designer.lastName}}
+                                                {{designer.brand.name}}
                                             </div>
                                         </div></a>
                                 </div>

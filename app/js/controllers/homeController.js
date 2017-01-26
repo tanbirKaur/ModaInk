@@ -262,4 +262,8 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 		$scope.getProducts($scope.filterParams);
 	}
 
+    $scope.hasImaget = function (designer) {
+        return designer.avatarUrl != undefined;
+    }
+
 });
