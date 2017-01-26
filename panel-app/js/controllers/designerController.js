@@ -85,7 +85,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             $scope.addDesignerAsAdmin(function (response) {
                 $('#addDesignerSuccess').modal();
             }, function (response) {
-                $scope.error = response.data.message;
+                $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
                 $('#addDesignerFailure').modal();
             })
             return;
@@ -184,6 +184,8 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 alert('image uploaded sucessfully');
                 imageDescription = $(id).val();
                 $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,imageDescription:imageDescription});
+            }, function (res) {
+                alert('Something went wrong. Please try with some other image')
             })
         })
     }

@@ -41,7 +41,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
 	};
 
     $scope.onLoginFailure = function (response) {
-        $scope.error = response.data.message;
+        $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
         $('#loginFailure').modal();
     }
 

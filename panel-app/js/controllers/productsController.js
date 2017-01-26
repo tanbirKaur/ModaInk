@@ -51,6 +51,8 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
                 alert('image uploaded successfully');
                 description = $(descriptionId).val()
                 $scope.newProduct.images.push({url:image.fileUrl, description: description});
+            }, function (res) {
+                alert('Something went wrong. Please try with some other image')
             })
         })
     }
@@ -76,7 +78,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $('#updateProductSuccess').modal();
         },
         function (response) {
-            $scope.error = response.data.message;
+            $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
             $('#updateProductFailed').modal()
         })
     };
@@ -104,7 +106,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         httpService.createProduct($scope.newProduct,function(res){
             $('#addProductSuccess').modal();
         }, function (res) {
-            $scope.error = res.data.message;
+            $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
             $('#addProductFailure').modal();
         });
     }
