@@ -2,6 +2,9 @@ a:hover {
     color: black;
 }
 
+.sku-select {
+    background: #c8a75e;
+}
 
 #registrationFailure p, #registrationSuccessful p, #registrationFailure a, #registrationSuccessful a {
     padding-left: 10%;

@@ -44,7 +44,7 @@
 					</div>
 
 					<div class="product-variations">
-						<ul class="swatches">
+						<ul id="sizelist" class="swatches">
 							<li ng-repeat="sku in product.allSkus">
 								<a ng-class="{'disbled':sku.isOutOfStock}"> {{sku.size}} </a>
 							</li>
@@ -365,4 +365,10 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript-lazy">
+$("#sizelist").on("click", "a", function(e){
+    e.preventDefault();
+    var $this = $(this).parent();
+    $this.addClass("sku-select").siblings().removeClass("sku-select");
+})
 </script>
