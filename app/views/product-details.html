@@ -1,4 +1,4 @@
-<div id="Content" class="without_headers">
+<div id="Content" class="without_headers" zoom-container>
 	<div class="content_wrapper clearfix">
 		<div class="new-product">
 				<div class="col-md-5 zoom-grid">
@@ -6,16 +6,16 @@
 					
 					<div class="flex-viewport" style="overflow: hidden; position: relative;">
                         <ul class="slides" >
-							    <div class="thumb-image"> 
-                                    <img ng-src="{{product.previewImage}}" data-imagezoom="true" class="img-responsive" alt=""/> 
+							    <div class="thumb-image">
+                                    <img ng-elevate-zoom id="gallery-preview" gallery="product-gallery" ng-src="{{previewImage}}" zoom-image="{{previewImage}}" class="img-responsive" alt=""/>
                                 </div>
 						</ul>
 							</div>
-							<ol class="flex-control-nav flex-control-thumbs">
-							<li ng-repeat="image in product.images">
-                                <img ng-src="{{image.url}}" class="flex-active">
-                            </li>
-							</ol>
+							<div id="product-gallery" class="flex-control-nav flex-control-thumbs product-gallery-list">
+                                <a href="" ng-repeat="image in product.images" ng-click="changeImage(image.url)">
+                                    <img ng-src="{{image.url}}" class="flex-active product-gallery-list-item" />
+                                </a>
+							</div>
 							<ul class="flex-direction-nav"><li></ul></div>
 				</div>
 				<div class="col-md-5 dress-info">
@@ -361,5 +361,8 @@
                                     </div>
 
                                     
+			</div>
+		</div>
 	</div>
 </div>
+</script>

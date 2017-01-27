@@ -573,6 +573,20 @@ div.fotos li.roomone {
     border: 1px solid #D1CFCF;
 }
 
+#gallery-preview {
+    height: 100% !important;
+    max-width: 340px;
+}
+
+.product-gallery-list {
+    margin-top: 10px !important;
+}
+
+.flex-active {
+    border: solid 1px gray;
+    height: 80px;
+}
+
 .flex-control-thumbs li {
     display: inline;
 }

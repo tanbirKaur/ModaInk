@@ -5,7 +5,7 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
     $scope.products = storageService.get("products");
     $scope.designer = {};
 
-    $scope.resigterDesignerRequest = function (designerInfo) {
+    $scope.registerDesignerRequest = function (designerInfo) {
         var designerRequest = {
             "firstName": designerInfo.firstName,
             "lastName": designerInfo.lastName,
@@ -28,17 +28,13 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
     }
 
     $scope.onDesignerRequestSuccess = function (response) {
-        console.log(response);
         $('#sucess').show();
         $('#registrationButtons').addClass('displayNone');
-
-
     }
     $scope.onDesignerRequestFailure = function (response) {
         console.log(response);
         $('#failure').show();
         $('#registrationButtons').addClass('displayNone');
-
     }
 
     $scope.removeClass = function () {
@@ -47,7 +43,11 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
 
     //View methods
     $scope.becomeADesigner = function () {
-        $scope.resigterDesignerRequest($scope.designer);
+        $scope.registerDesignerRequest($scope.designer);
+    }
+
+    $scope.changeImage = function (image) {
+        $scope.previewImage = image;
     }
     //custom methods
     var findProductById = function (id) {
@@ -58,6 +58,9 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
 
     if (productId) {
         $scope.product = findProductById(productId);
+        $scope.previewImage = $scope.product.previewImage;
+        if(!$scope.product.images) $scope.product.images = [];
+        $scope.product.images.push({url:$scope.product.previewImage});
     };
 
 });
