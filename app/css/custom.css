@@ -1447,5 +1447,8 @@ span.round-tab:hover {
     font-size: 14px;
 }
 
-
+#sizeChart iframe {
+    height:100%;
+    width: 100%;
+}
 

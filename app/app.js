@@ -126,6 +126,10 @@ window.apiUrl = "http://modaink.com/api";
 			url:"/disclaimer",
 			templateUrl : "views/disclaimer.html"
 		})
+		.state("sizeChart", {
+			url:"/sizechart",
+			templateUrl : "views/sizeChart.html"
+		})
 
 		// ;
 		$urlRouterProvider.otherwise("/");
