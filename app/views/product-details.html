@@ -1,7 +1,14 @@
 <div id="Content" class="without_headers" zoom-container>
 	<div class="content_wrapper clearfix">
-		<div class="new-product">
-				<div class="col-md-5 zoom-grid">
+		<div class="new-product row">
+			<div class="col-md-1">
+				<div id="product-gallery" class="flex-control-nav flex-control-thumbs product-gallery-list">
+					<a href="" ng-repeat="image in product.images" ng-click="changeImage(image.url)">
+						<img ng-src="{{image.url}}" class="flex-active product-gallery-list-item" />
+					</a>
+				</div>
+			</div>
+				<div class="col-md-4 zoom-grid">
 					<div class="flexslider">
 					
 					<div class="flex-viewport" style="overflow: hidden; position: relative;">
@@ -11,11 +18,7 @@
                                 </div>
 						</ul>
 							</div>
-							<div id="product-gallery" class="flex-control-nav flex-control-thumbs product-gallery-list">
-                                <a href="" ng-repeat="image in product.images" ng-click="changeImage(image.url)">
-                                    <img ng-src="{{image.url}}" class="flex-active product-gallery-list-item" />
-                                </a>
-							</div>
+
 							<ul class="flex-direction-nav"><li></ul></div>
 				</div>
 				<div class="col-md-5 dress-info">
@@ -53,7 +56,7 @@
 					<div class="purchase">
                         <a href="/checkout/cart"><button class="btn btn-sm "> Add to cart </button></a>
 						<button ng-if="product.isExclusive" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
-						<span ng-if="product.isExclusive">This product is available for customization.</span>
+						<label ng-if="product.isExclusive">This product is available for customization.</label>
 						<div>
 						<span>7 Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="">Write a review </a></span>
 					</div>
@@ -71,7 +74,9 @@
 
 				
 				</div>
+
 				<hr>
+		</div>
 				<!---728x90--->
 					<div class="reviews-tabs">
       	<ul class="menu-advanced ">

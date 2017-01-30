@@ -543,8 +543,8 @@ div.fotos li.roomone {
 
 
 .new-product {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
     background: rgba(245, 243, 243, 0.27);
     min-height: 800px;
     padding: 2em;
@@ -595,7 +595,7 @@ div.fotos li.roomone {
 }
 
 .flex-control-thumbs img {
-    width: 25%;
+    width: 100%;
     padding: 10px;
     display: inline-block;
 }
@@ -1488,4 +1488,7 @@ height: auto;
 .designerProfileImage > img , .designerCollectionImageSmall > img  {
 object-fit: cover;
 }
-
+.zoomWindowContainer >div {
+    width: 600px !important;
+    height: 500px !important;
+}
