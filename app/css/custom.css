@@ -546,9 +546,7 @@ div.fotos li.roomone {
     margin-left: 10%;
     margin-right: 10%;
     background: rgba(245, 243, 243, 0.27);
-    min-height: 800px;
     padding: 2em;
-        margin-bottom: 30px;
 }
 .flexslider {
     margin: 0 0 10px;
@@ -616,16 +614,15 @@ div.fotos li.roomone {
     margin-top: 16px;
     font-size: 13px;
     line-height: 23px;
-    color: #CAC9C9;
 }
-.dress-name h3 {
+.dress-name > div >h3 {
     float: left;
     font-size: 19px;
     color: #000;
     font-weight: 500;
     padding: 0;
 }
-.dress-name span {
+.dress-name >div >span {
     float: right;
     color: #000000;
     font-size: 20px;

@@ -23,8 +23,10 @@
 				</div>
 				<div class="col-md-5 dress-info">
 					<div class="dress-name">
-						<h3>{{product.productName}}</h3>
-						<span>Rs. {{product.price}}</span>
+						<div class="row">
+							<h3 class="col-md-8">{{product.productName}}</h3>
+							<span class="col-md-4">Rs. {{product.price}}</span>
+						</div>
 						<div class="clearfix"></div>
 						<p>{{product.productDescription}}</p>
 					</div>
@@ -223,7 +225,7 @@
                                         <div class="fancy_heading fancy_heading_arrows">
                                             <!-- Animated area -->
                                             <div class="animate" data-anim-type="zoomIn">
-                                                <h2 class="title"><i class="icon-right-dir"></i>Similar Products<i class="icon-left-dir"></i></h2>
+                                                <h2 class="title"><i class="icon-right-dir"></i>You may also like<i class="icon-left-dir"></i></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -293,7 +295,7 @@
                                         <div class="fancy_heading fancy_heading_arrows">
                                             <!-- Animated area -->
                                             <div class="animate" data-anim-type="zoomIn">
-                                                <h2 class="title"><i class="icon-right-dir"></i>Products from same Designer<i class="icon-left-dir"></i></h2>
+                                                <h2 class="title"><i class="icon-right-dir"></i>More from {{product.brandName}}<i class="icon-left-dir"></i></h2>
                                             </div>
                                         </div>
                                     </div>
