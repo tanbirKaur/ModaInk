@@ -52,8 +52,8 @@
 					</div>
 					<div class="purchase">
                         <a href="/checkout/cart"><button class="btn btn-sm "> Add to cart </button></a>
-						<button class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
-						<span>This product is available for customization.</span>
+						<button ng-if="product.isExclusive" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
+						<span ng-if="product.isExclusive">This product is available for customization.</span>
 						<div>
 						<span>7 Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="">Write a review </a></span>
 					</div>
@@ -62,10 +62,10 @@
 
 					<div ng-include src="'views/login.html'"></div>
 					
-					<div class="like-share">
-					<a  href="#"><i class="icon-heart-empty-fa"></i>Like</a>
-						<a href="#"><i class="icon-plus"></i>Share</a>
-					</div>
+					<!--<div class="like-share">-->
+					<!--<a  href="#"><i class="icon-heart-empty-fa"></i>Like</a>-->
+						<!--<a href="#"><i class="icon-plus"></i>Share</a>-->
+					<!--</div>-->
 
 
 
@@ -74,16 +74,10 @@
 				<hr>
 				<!---728x90--->
 					<div class="reviews-tabs">
-      <!-- Main component for a primary marketing message or call to action -->
-      <!-- <ul class="nav" id="myTab">
-        <li class="test-class active"><a class="deco-none misc-class" href="#how-to" data-toggle=""> More Information</a></li>
-        <li class="test-class"><a class="deco-none misc-class" href="#features">Specifications</a></li>
-        <li class="test-class"><a class="deco-none" href="#source">Reviews (7)</a></li>
-      </ul> -->
       	<ul class="menu-advanced ">
             <li class="active"><a href="#how-to" data-toggle="nav-tabs" > More Information</a></li>
             <li><a href="#features" data-toggle="pill">Specifications</a></li>
-            <li><a href="##source" data-toggle="pill">Reviews (7)</a></li>
+            <li><a href="#source" data-toggle="pill">Reviews (7)</a></li>
         </ul>
 
       <div class="tab-content responsive hidden-xs hidden-sm">

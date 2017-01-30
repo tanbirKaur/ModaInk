@@ -1469,3 +1469,23 @@ span.round-tab:hover {
     width: 100%;
 }
 
+.designerProfileImage{
+    height: 730px;
+    width: 620px;
+    overflow: hidden;
+    box-sizing:content-box;
+}
+.designerCollectionImageSmall {
+    width: 145px;
+    height: 216px;
+    overflow: hidden;
+    box-sizing:content-box;
+}
+.designerProfileImage > img , .designerCollectionImageSmall > img  {
+width: 100%;
+height: auto;
+}
+.designerProfileImage > img , .designerCollectionImageSmall > img  {
+object-fit: cover;
+}
+

@@ -1,10 +1,10 @@
-<div ng-controller="DesignersController" id="Content" class="without_headers" >
+<div ng-controller="DesignerDetailsController" id="Content" class="without_headers" >
 	<div class="content_wrapper clearfix">
 
 		<div id="logo" class="menu">
 			<a >
-			<h1>{{designerDetails.firstName}}</h1>
-			<span>{{designerDetails.brand.name}}</span>
+			<h1>{{designerDetails.brand.name}}</h1>
+			<span>{{designerDetails.firstName}}</span>
 			</a>
 		</div>
 
@@ -14,41 +14,41 @@
 			<ul>
 				<!--<li class="cat" id="advertisingl"><a href="#advertisinga">Made To Order</a></li>-->
 				<li class="cat active" id="customl"><a href="#custom">Customized Collection</a></li>
-				<li class="cat active" id="shop"><a href="/designer/collections">Shop Now</a></li>
+				<li class="cat active" id="shop"><a href="/designers/{{designerDetails.id}}/product">Shop Now</a></li>
 			</ul>
 		</div>
 				<div id="about" class="fotos">
 					<ul>
-						<li class="two ">
+						<li class="two " style="margin-right: 17%">
 						<h2 style="padding-bottom: 30%">About</h2>
 
-							<p>Since her 4-year study at the College of Fine Arts (Hochschule für Bildende Künste) Dresden Judith Kröher works as a freelance makeup artist and hairstylist. With great attention to detail she has worked in film / television, advertising, theater / opera and photography. Her work is characterized by background, personality, character and passion. Judith Kröher lives and loves her job.</p>
+							<p style="font-size: 16px;">{{designerDetails.description}}</p>
 
 						</li>
-					<li class="four"><img  src="{{designerDetails.avatarUrl}}"></li>
+					<li class="three designerProfileImage" ><img  src="{{designerDetails.avatarUrl}}"></li>
 					</ul>
 				</div>
 		
-				<div id="advertisinga" class="fotos">
-					<ul>
-					<li class=" three"><img alt="Judith Kroeher" src="images/Products/lahenga-1-custom.jpg"></li>
-					<li class=" three"><img alt="Judith Kroeher" src="images/Products/3-custom.jpg"></li>
-					<li class="four"><img alt="Judith Kroeher" src="images/Products/lahenga-2-custom.jpg"></li>
-					
-					<li class=" two topone">
-						<div class="infos">
-							<h3>Chancellery</h3>
-							<p><strong>Photographer</strong> <span class="who">Peter Wattendorff</span></p>
-							<p><strong>Clients</strong> <span class="who">Kiermeier Haselier Grosse Rechtsanwälte Steuerberater Partnerschaft</span></p>
-						</div>
-					</li>
-					</ul>
-				</div>
+				<!--<div id="advertisinga" class="fotos">-->
+					<!--<ul>-->
+					<!--<li class=" three"><img alt="Judith Kroeher" src="images/Products/lahenga-1-custom.jpg"></li>-->
+					<!--<li class=" three"><img alt="Judith Kroeher" src="images/Products/3-custom.jpg"></li>-->
+					<!--<li class="four"><img alt="Judith Kroeher" src="images/Products/lahenga-2-custom.jpg"></li>-->
+					<!---->
+					<!--<li class=" two topone">-->
+						<!--<div class="infos">-->
+							<!--<h3>Chancellery</h3>-->
+							<!--<p><strong>Photographer</strong> <span class="who">Peter Wattendorff</span></p>-->
+							<!--<p><strong>Clients</strong> <span class="who">Kiermeier Haselier Grosse Rechtsanwälte Steuerberater Partnerschaft</span></p>-->
+						<!--</div>-->
+					<!--</li>-->
+					<!--</ul>-->
+				<!--</div>-->
 				
 				<div id="custom" class="fotos">
 					<ul>
-					<li class="three roomone"><img alt="Judith Kroeher" src="images/Products/6-custom.jpg"></li>
-					<li class="one toptwo"><img alt="Judith Kroeher" src="images/Products/5-custom.jpg"></li>
+					<li class="three roomone designerProfileImage" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
+					<li class="one toptwo designerCollectionImageSmall"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
 					<li class="two">
 						<div class="infos">
 							<h3>Rococo Tomorrow</h3>
@@ -57,8 +57,8 @@
 						</div>
 					</li>	
 					
-					<li class=" three break"><img alt="Judith Kroeher" src="images/Products/9-custom.jpg"></li>
-					<li class="toptwo one roomone"><img alt="Judith Kroeher" src="images/Products/8-custom.jpg"></li>
+					<li class=" three break designerProfileImage"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
+					<li class="toptwo one roomone designerCollectionImageSmall"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
 					<li class=" topone two roomone">
 						<div class="infos">
 							<h3>Flourish Biedermeier</h3>
@@ -67,8 +67,7 @@
 						</div>
 					</li>
 					
-					<li class="topone roomone three"><img alt="Judith Kroeher" src="images/Products/7-custom.jpg"></li>
-					
+
 					</ul>
 				</div>
 		</div>

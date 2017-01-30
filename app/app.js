@@ -47,11 +47,11 @@ window.apiUrl = "http://modaink.com/api";
 		.state('designer-details', {
 			templateUrl : "views/designer-details.html",
 			url : "/designer-details/:designerId", 
-			controller : 'DesignersController'
+			controller : 'DesignerDetailsController'
 		})
 		.state('designer-collections', {
 			templateUrl : "views/designer-collections.html",
-			url : "/designer/collections", 
+			url : "/designer/collections",
 			// controller : 'designerLabelsController'
 		})
 		.state('product-details', {
