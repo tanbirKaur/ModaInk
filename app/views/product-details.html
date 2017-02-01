@@ -3,7 +3,7 @@
 		<div class="new-product row">
 			<div class="col-md-1">
 				<div id="product-gallery" class="flex-control-nav flex-control-thumbs product-gallery-list">
-					<a href="" ng-repeat="image in product.images" ng-click="changeImage(image.url)">
+					<a href="" ng-repeat="image in product.productImages" ng-click="changeImage(image.url)">
 						<img ng-src="{{image.url}}" class="flex-active product-gallery-list-item" />
 					</a>
 				</div>
