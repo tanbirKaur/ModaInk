@@ -51,7 +51,7 @@
 					<div class="product-variations">
 						<ul id="sizelist" class="swatches">
 							<li ng-repeat="sku in product.allSkus">
-								<a ng-class="{'disbled':sku.isOutOfStock}"> {{sku.size}} </a>
+								<a style="cursor:pointer;" ng-class="{'disbled':sku.isOutOfStock}"> {{sku.size}} </a>
 							</li>
 						</ul>
 					</div>
