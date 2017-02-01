@@ -147,28 +147,27 @@
                                                 
                                                   <a id="profile_button" href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
                                                   <ul class="dropdown-menu">
-                                                    <li><a>Your Account</a></li>
-                                                        <div ng-hide="userName">
-                                                            <li  class="divider"></li>
-                                                            <li>
-                                                                <div style="margin-left: 10%;">
-                                                                    <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
-                                                                    <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
-                                                                </div>
-                                                            </li>
-                                                        </div>
-                                                        <div ng-show="userName">
-                                                            <li class="divider"></li>
-                                                            <li ><a href="/myProfile">{{userName}} <br/>{{userDetails.email}}</a></li>\          
-                                                            <li class="divider"></li>
-                                                            <li ><a href="/cart">My Orders</a></li>
-                                                            <li ><a href="/wishlist">My wishlist</a></li>
-                                                            <li ><a href="/profile">Saved addresses</a></li>
-                                                            <li ><a href="/profile">User badges</a></li>
-                                                            <li class="divider"></li>
-                                                            <li ><a href="/myProfile/edit">Edit Profile</a></li>
-                                                            <li ><a href="/wishlist">Logout</a></li>
-                                                        </div>
+                                                    <div ng-hide="userLoggedIn">
+                                                        <li  class="divider"></li>
+                                                        <li>
+                                                            <div style="margin-left: 10%;">
+                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
+                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+                                                    <div ng-show="userLoggedIn">
+                                                        <li class="divider"></li>
+                                                        <li ><a href="/myProfile">{{userName}}({{userDetails.email}})</a></li>
+                                                        <li class="divider"></li>
+                                                        <li ><a href="/cart">My Orders</a></li>
+                                                        <li ><a href="/wishlist">My wishlist</a></li>
+                                                        <li ><a href="/profile">Saved addresses</a></li>
+                                                        <li ><a href="/profile">User badges</a></li>
+                                                        <li class="divider"></li>
+                                                        <li ><a href="/myProfile/edit">Edit Profile</a></li>
+                                                        <li ><a href="/wishlist">Logout</a></li>
+                                                    </div>
                                                   </ul>
                                             </li>
                                             
@@ -178,7 +177,7 @@
 
                                             <li class="header_buttons">
                                             <div>
-                                                <a id="header_cart" href="/checkout/cart"><i class="fa fa-shopping-bag"></i><span>{{shoppingcartItemCount}}</span></a></div>
+                                                <a id="header_cart" href="" ng-click="openMyCart()"><i class="fa fa-shopping-bag"></i><span>{{shoppingcartItemCount}}</span></a></div>
                                             </li>
                                         </ul>
 

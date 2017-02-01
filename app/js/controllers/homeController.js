@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('HomeController', function($scope,$stateParams,httpService,storageService) {
+app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
@@ -53,6 +53,14 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 		httpService.callHttp("POST","products/searchService",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
 
+	$scope.openMyCart = function () {
+		if($rootScope.userLoggedIn){
+			$state.go("cart");
+		} else {
+			showModal("errorModal");
+		}
+    };
+
 	//Product filters and sort
 
 	$scope.sortBy = function (key) {
@@ -71,15 +79,17 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	$scope.onLoginSuccess = function (response) {
 		var userCreated = response.statusText == "Created";
 		if (userCreated) {
+			$rootScope.userLoggedIn = true;
 			$scope.alertHidden = function () {
-				storageService.set("accessToken",response.data.accessToken);
-				$scope.getUserDetails();
 				alert("Login Successful!");
 			};
 			hideModal("loginModal");
+            storageService.set("accessToken",response.data.accessToken);
+            $scope.getUserDetails();
 		}
 	};
 	$scope.onLoginFailure = function (response) {
+        $rootScope.userLoggedIn = false;
 		$scope.alertHidden = function () {
 			if (!response.data) {
 				alert("Oops something went wrong. Login failed!");
@@ -91,9 +101,9 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	};
 
 	$scope.onGetUserDetailsSuccess = function (response) {
-		$scope.userDetails = response.data;
-		storageService.set("userDetails",$scope.userDetails);
-		$scope.userName = $scope.userDetails.firstName + $scope.userDetails.lastName;
+        $scope.userDetails = response.data;
+        storageService.set("userDetails",$scope.userDetails);
+        $scope.userName = $scope.userDetails.firstName;
 //		$scope.getShoppingCartItems();
 	};
     $scope.onGetUserDetailsFailure = function () {
@@ -249,6 +259,9 @@ app.controller('HomeController', function($scope,$stateParams,httpService,storag
 	var hideModal = function(modal) {
        return angular.element('#'+modal).modal('hide');
 	};
+    var showModal = function(modal) {
+        return angular.element('#'+modal).modal('show');
+    };
 	angular.element('#loginModal').on('hidden.bs.modal', function () {
 		$scope.alertHidden();
 	});
