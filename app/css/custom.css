@@ -656,6 +656,7 @@ div.fotos li.roomone {
     padding: 20px;
 }
 .product-variations .swatches li a {
+    text-decoration: none;
     display: block;
     border: 1px solid #e0e0e0;
     color: black;
