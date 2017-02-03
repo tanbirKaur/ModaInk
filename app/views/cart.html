@@ -80,19 +80,19 @@
 				<div class="order-summary-span ">
 					<div>
 	              		<label>Bag Total</label>
-	              		<span>Rs. 399 </span>
+	              		<span>Rs. {{totalPrice}} </span>
               		</div>
               		<div>
 	              		<label>Bag Discount</label>
-	              		<span class="value greenrupees c-green">- Rs. 120 </span>
+	              		<span class="value greenrupees c-green">Rs. {{totalDiscount}}</span>
               		</div>
               		<div class="sub-total">
 	              		<label>Sub Total</label>
-	              		<span class="item-total red">Rs. 279</span>
+	              		<span class="item-total red">Rs. {{subTotal}}</span>
               		</div>
               		<div class="vat">
 	              		<label>Estimated VAT/CST<div class="vathint"></div></label>
-	              		<span class="vat-fee">Rs. 15</span>
+	              		<span class="vat-fee">Rs. {{vatPrice}}</span>
               		</div>
               		<div class="coupon">
               			<label>Coupon Discount</label>
@@ -100,11 +100,11 @@
           			</div>
           			<div class="shipping">
           				<label>Delivery Charges</label>
-  						<span class="shipping-fee red"><span class="shipping-charge">Rs. 149</span></span>
+  						<span class="shipping-fee red"><span class="shipping-charge">Rs. {{deliveryCharges}}</span></span>
 					</div>
 				</div>
 
-				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. 443</span></div>
+				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{payableAmount}}</span></div>
 				<div class="place-order">
 				<a href="/checkout/billing-details"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>

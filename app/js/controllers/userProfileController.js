@@ -20,6 +20,17 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
 
     //Controller function calls
     $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
-        return prev+next.item.price-next.item.discountPrice;
+        return prev+parseFloat(next.item.price-next.item.discountPrice);
     },0);
+    $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
+        return prev+parseFloat(next.item.discountPrice);
+    },0);
+
+    //temporary fix for NaN
+    if(isNaN($scope.totalPrice)) $scope.totalPrice = 0;
+    if(isNaN($scope.totalDiscount)) $scope.totalDiscount= 0;
+    $scope.subTotal = 0;
+    $scope.vatPrice = 0;
+    $scope.deliveryCharges = 0;
+    $scope.payableAmount = 0;
 });
