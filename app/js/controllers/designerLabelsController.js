@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('DesignerLabelsController', function($scope,$stateParams,httpService,storageService) {
+app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService) {
     var productId = $stateParams.productId;
     var designerId = $stateParams.designerId;
     $scope.products = storageService.get("products");
@@ -25,7 +25,27 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
             designerRequest.referrerCode = designerInfo.referrerCode;
         }
         httpService.callHttp("POST","designers",{},{},designerRequest,$scope.onDesignerRequestSuccess,$scope.onDesignerRequestFailure,true);
-    }
+    };
+
+    $scope.addItemToCart = function(id){
+        var itemInfo = {item: {id: id}};
+        httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcart/items",{},{},itemInfo,function (response) {
+            var successTemplate = angular.element("#cartAddSuccess");
+            $compile(successTemplate)({title:'Add Item To Cart',message:'Item Added Successfully!'},function (elem, scope) {
+                elem.modal('show');
+            });
+        },function (failure) {
+            alert("ERR! couldn't add item to cart");
+        });
+    };
+
+    $scope.addToCart = function () {
+        if($rootScope.userLoggedIn){
+            $scope.addItemToCart(parseInt(productId));
+        } else {
+            showModal("loginModal");
+        }
+    };
 
     $scope.onDesignerRequestSuccess = function (response) {
         $('#sucess').show();
@@ -55,6 +75,10 @@ app.controller('DesignerLabelsController', function($scope,$stateParams,httpServ
             return product.id == id;
         });
     }
+
+    var showModal = function(modal) {
+        return angular.element('#'+modal).modal('show');
+    };
 
     if (productId) {
         $scope.product = findProductById(productId);

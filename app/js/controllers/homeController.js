@@ -57,7 +57,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		if($rootScope.userLoggedIn){
 			$state.go("cart");
 		} else {
-			showModal("errorModal");
+			showModal("loginModal");
 		}
     };
 
@@ -102,6 +102,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
 	$scope.onGetUserDetailsSuccess = function (response) {
         $scope.userDetails = response.data;
+        $rootScope.userDetails = $scope.userDetails;
         storageService.set("userDetails",$scope.userDetails);
         $scope.userName = $scope.userDetails.firstName;
 //		$scope.getShoppingCartItems();
@@ -118,12 +119,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.shoppingcartItems = response.data;
 	};
     $scope.onGetShoppingCartItemsFailure = function () {
-        $scope.shoppingcartItems = [{"id":11,"item":{"skuCode":"PR3-XL-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":11,"name":"XL","description":"Extra Large","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}},{"id":12,"item":{"skuCode":"PR3-S-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":8,"name":"S","description":"Small","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}}];
-		$scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
-		storageService.set("cartItems",$scope.shoppingcartItems);
 		console.log('onGetShoppingCartItemsFailure');
-		$scope.shoppingcartItems = [{"id":11,"item":{"skuCode":"PR3-XL-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":11,"name":"XL","description":"Extra Large","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}},{"id":12,"item":{"skuCode":"PR3-S-PK","quantity":10,"price":2999,"discountPrice":100,"variantValues":[{"id":8,"name":"S","description":"Small","variant":{"name":"Size"}},{"id":16,"name":"#dd2f86","description":"pink","variant":{"name":"Colour"}}],"product":{"id":15,"name":"Product 3","description":"This is the description of product 3","isExclusive":false,"designer":{"id":7,"firstName":"Designer 2","lastName":"Mailinator"},"category":{"id":8,"name":"Tops","createdAt":"2016-12-16T20:18:45.000Z"},"images":[{"url":"http://modaink.s3.url/image1.png","sortOrder":1},{"url":"http://modaink.s3.url/image2.png","sortOrder":2},{"url":"http://modaink.s3.url/image3.png","sortOrder":3}]}}}];
-		$scope.shoppingcartItemCount = $scope.shoppingcartItemCount.length;
 		storageService.set("cartItems",	$scope.shoppingcartItems);
 	};
 
@@ -170,7 +166,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	}
 
 	$scope.onGetCategoryFailure = function (response) {
-		alert(response.data.message);
+		console.log('onGetCategoryFailure');
 	}
 
 	//Web View Methods

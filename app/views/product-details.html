@@ -56,7 +56,7 @@
 						</ul>
 					</div>
 					<div class="purchase">
-                        <a href="/checkout/cart"><button class="btn btn-sm "> Add to cart </button></a>
+                        <a href=""><button class="btn btn-sm " ng-click="addToCart()"> Add to cart </button></a>
 						<button ng-if="product.isExclusive" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
 						<label ng-if="product.isExclusive">This product is available for customization.</label>
 						<div>
@@ -71,12 +71,7 @@
 					<a  href="#"><i class="icon-heart-empty-fa"></i>Like</a>
 						<a href="#"><i class="icon-plus"></i>Share</a>
 					</div>
-
-
-
-				
 				</div>
-
 				<hr>
 		</div>
 				<!---728x90--->

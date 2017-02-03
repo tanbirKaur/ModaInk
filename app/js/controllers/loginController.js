@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('LoginController', function($scope,httpService,storageService,$location) {
+app.controller('LoginController', function($scope,$rootScope,httpService,storageService,$location) {
     var token = $location.search().token;
     var email = $location.search().email;
     var baererType = $location.search().bearerType;
