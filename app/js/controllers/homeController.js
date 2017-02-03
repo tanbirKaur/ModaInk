@@ -105,19 +105,19 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         $rootScope.userDetails = $scope.userDetails;
         storageService.set("userDetails",$scope.userDetails);
         $scope.userName = $scope.userDetails.firstName;
-//		$scope.getShoppingCartItems();
+		$scope.getShoppingCartItems();
 	};
+
     $scope.onGetUserDetailsFailure = function () {
         console.log('onGetUserDetailsFailure');
-		$scope.userDetails = {"id":1,"firstName":"Taj","lastName":"Ahmed","email":"test@mailinator.com","mobile":"9999999999","dateOfBirth":null,"avatarUrl":null,"isEmailVerified":false,"isActive":true,"createdBy":null,"updatedBy":null,"createdAt":"2016-12-18T08:51:25.000Z"};
-		storageService.set("userDetails",$scope.userDetails);
-		$scope.userName = $scope.userDetails.firstName + $scope.userDetails.lastName;
-//		$scope.getShoppingCartItems();
 	};
 
 	$scope.onGetShoppingCartItemsSuccess = function (response) {
 		$scope.shoppingcartItems = response.data;
+        $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+        storageService.setLocal("cartItems",$scope.shoppingcartItems);
 	};
+
     $scope.onGetShoppingCartItemsFailure = function () {
 		console.log('onGetShoppingCartItemsFailure');
 		storageService.set("cartItems",	$scope.shoppingcartItems);

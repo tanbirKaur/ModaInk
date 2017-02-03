@@ -1,6 +1,7 @@
 var app = window.app;
 app.factory('storageService', function(localStorageService) {
 	var storageService = {};
+	var localInfo = {};
 	storageService.get = function (key) {
 		return callStorageMethod("get",key);
 	}
@@ -12,6 +13,20 @@ app.factory('storageService', function(localStorageService) {
 	storageService.remove = function (key) {
 		callStorageMethod("remove",key);
 	}
+
+	//save locally instead of storage
+    storageService.getLocal = function (key) {
+        return localInfo[key];
+    }
+
+    storageService.setLocal = function (key,val) {
+        localInfo[key] = val;
+    }
+
+    storageService.removeLocal = function (key) {
+        delete localInfo[key]
+    }
+
 
 	var callStorageMethod = function (method, key, val) {
 		if (localStorageService.isSupported) {

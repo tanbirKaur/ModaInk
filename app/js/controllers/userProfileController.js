@@ -1,6 +1,6 @@
 var app = window.app;
 app.controller('UserProfileController', function($scope,httpService,storageService) {
-    $scope.cartItems = storageService.get("cartItems");
+    $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
 
     if (!$scope.cartItems) $scope.cartItems = [];
@@ -13,6 +13,7 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     $scope.onAddItemToWishListSuccess = function (response) {
         alert(response.data.message);
     }
+
     $scope.onAddItemToWishListFailure = function (response) {
         console.log('onAddItemToWishListFailure',response);
     }
