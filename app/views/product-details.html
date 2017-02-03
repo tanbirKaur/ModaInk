@@ -57,8 +57,8 @@
 					</div>
 					<div class="purchase">
                         <a href=""><button class="btn btn-sm " ng-click="addToCart()"> Add to cart </button></a>
-						<button ng-if="product.isExclusive" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
-						<label ng-if="product.isExclusive">This product is available for customization.</label>
+						<button ng-if="product.isCustomizable" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
+						<label ng-if="product.isCustomizable">This product is available for customization.</label>
 						<div>
 						<span>Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="">Write a review </a></span>
 					</div>
