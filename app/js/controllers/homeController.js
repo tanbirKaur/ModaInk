@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,httpService,storageService) {
+app.controller('HomeController', function($scope,$rootScope,$state,$stateParams, $auth,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.email;
 	$scope.password;
@@ -25,6 +25,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         $scope.shoppingcartItemCount = 0;
         $state.go("/");
     }
+
+    $scope.authLogin= function (provider) {
+		$auth.authenticate(provider).then(function(response) {
+			alert(JSON.stringify(response));
+        }).catch(function(response) {
+            alert(JSON.stringify(response));
+		});
+    };
 
 	$scope.getUserDetails = function () {
 		httpService.callHttp("GET","users/me",{},{},{},$scope.onGetUserDetailsSuccess,$scope.onGetUserDetailsFailure);

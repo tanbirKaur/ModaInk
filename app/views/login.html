@@ -22,7 +22,7 @@
 	    </div>
 
 	    <div class="login-fb-gm col-md-6">
-	    	<a ><button id="fbLogin">
+	    	<a ><button id="fbLogin" ng-click="authLogin('facebook')">
 	    		<!--TODO  for now linked to customize to show the flow to the customer -->
 		    	<span>
 		    	<i class="icon-facebook"></i>
@@ -30,7 +30,7 @@
 		    	</span>
 	    	</button></a>
 
-	    	<button id="gPlusLogin">
+	    	<button id="gPlusLogin" ng-click="authLogin('google')">
 		    	<span>
 		    	<i class="icon-google"></i>
 		    		GOOGLE

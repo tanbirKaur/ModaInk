@@ -1,4 +1,4 @@
-var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter"]);
+var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter",'satellizer']);
 window.app == app;
 window.apiUrl = "http://modaink.com/api";
  app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localStorageServiceProvider){
@@ -130,8 +130,19 @@ window.apiUrl = "http://modaink.com/api";
 			url:"/sizechart",
 			templateUrl : "views/sizeChart.html"
 		});
+		$authProvider.google({
+			clientId: '349370840250-b7hb3fl263h9gu35e63l7idaufn0rbki.apps.googleusercontent.com',
+            redirectUri: window.location.origin,
+            scope: ['profile', 'email'],
+			responseType:'token'
+		});
+		$authProvider.facebook({
+            clientId: '130378890809499',
+            scope: ['email'],
+			responseType:'token'
+		});
 
-		// ;
+     // ;
 		$urlRouterProvider.otherwise("/");
     	$locationProvider.html5Mode(true);
     	localStorageServiceProvider.setPrefix('modaink')
