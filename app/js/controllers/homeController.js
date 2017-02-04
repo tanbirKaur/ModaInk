@@ -18,6 +18,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		httpService.login(loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure);
 	};
 
+	$scope.logout = function () {
+		storageService.removeAll();
+        $rootScope.userLoggedIn = false;
+        $scope.shoppingcartItems = [];
+        $scope.shoppingcartItemCount = 0;
+        $state.go("/");
+    }
+
 	$scope.getUserDetails = function () {
 		httpService.callHttp("GET","users/me",{},{},{},$scope.onGetUserDetailsSuccess,$scope.onGetUserDetailsFailure);
 	};
@@ -268,6 +276,10 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.getDesigners();
 		$scope.getCategories();
 		$scope.getProducts($scope.filterParams);
+		if(storageService.get("accessToken")){
+            $rootScope.userLoggedIn = true;
+            $scope.getUserDetails();
+        }
 	}
 
     $scope.hasImaget = function (designer) {

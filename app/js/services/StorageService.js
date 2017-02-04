@@ -14,7 +14,12 @@ app.factory('storageService', function(localStorageService) {
 		callStorageMethod("remove",key);
 	}
 
-	//save locally instead of storage
+    storageService.removeAll = function () {
+        localStorage.clear();
+        localStorageService.clearAll();
+    };
+
+    //save locally instead of storage
     storageService.getLocal = function (key) {
         return localInfo[key];
     }
