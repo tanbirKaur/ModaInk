@@ -26,8 +26,8 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
         return prev+parseFloat(next.product.discountPrice);
     },0);
 
-    $scope.subTotal = 0;
+    $scope.subTotal = $scope.totalPrice-$scope.totalDiscount;
     $scope.vatPrice = 0;
     $scope.deliveryCharges = 0;
-    $scope.payableAmount = 0;
+    $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
 });
