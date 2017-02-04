@@ -5,6 +5,20 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.products = storageService.get("products");
     $scope.designer = {};
 
+    $scope.getShoppingCartItems= function () {
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcart/items ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
+    };
+
+    $scope.onGetShoppingCartItemsSuccess = function (response) {
+        $scope.$emit("refreshCart",response);
+    };
+
+    $scope.onGetShoppingCartItemsFailure = function () {
+        console.log('onGetShoppingCartItemsFailure');
+        $scope.shoppingcartItems = [];
+        $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+    };
+
     $scope.registerDesignerRequest = function (designerInfo) {
         var designerRequest = {
             "firstName": designerInfo.firstName,
@@ -34,6 +48,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
             $compile(successTemplate)({title:'Add Item To Cart',message:'Item Added Successfully!'},function (elem, scope) {
                 elem.modal('show');
             });
+            $scope.getShoppingCartItems();
         },function (failure) {
             alert(failure.data.message);
         });

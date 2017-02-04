@@ -128,10 +128,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.onGetShoppingCartItemsSuccess = function (response) {
-		$scope.shoppingcartItems = response.data;
+        updateCart(response);
+	};
+
+	$scope.$on('refreshCart',function (event,args) {
+		updateCart(args);
+    });
+
+	var updateCart = function (res) {
+        $scope.shoppingcartItems = res.data;
         $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
         storageService.setLocal("cartItems",$scope.shoppingcartItems);
-	};
+    };
 
     $scope.onGetShoppingCartItemsFailure = function () {
 		console.log('onGetShoppingCartItemsFailure');
