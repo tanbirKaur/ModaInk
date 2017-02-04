@@ -97,7 +97,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 				alert(response.data.message);
 			}
 		};
-		hideModal("loginModal");
 	};
 
 	$scope.onGetUserDetailsSuccess = function (response) {
