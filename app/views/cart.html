@@ -40,28 +40,28 @@
 			<div class="prod-set">
 				<div ng-repeat="cartItem in cartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
-						<a href="product-details/{{cartItem.item.product.id}}/{{cartItem.item.product.designer.id}}" >
-							<img src="http://assets.myntassets.com/h_128,q_100,w_96/v1/assets/images/1345907/2016/7/28/11469692725940-Roadster-Olive-Green-T-shirt-4481469692720722-1.jpg" alt="image of Roadster Olive Green T-shirt" width="96" height="128">
+						<a href="product-details/{{cartItem.product.id}}/{{cartItem.product.designer.id}}" >
+							<img ng-src="{{cartItem.product.previewImage}}" alt="{{cartItem.product.productName}}" width="96" height="128">
 						</a>
 					</div>
 					<div class="col2">
 						<div class="prod-name">
-							<a href="">{{cartItem.item.product.name}}</a>
-							<span style="float: right; padding-right: 10%">Rs. {{cartItem.item.price-cartItem.item.discountPrice}}</span>
+							<a href="">{{cartItem.product.productName}}</a>
+							<span style="float: right; padding-right: 10%">Rs. {{cartItem.product.price-cartItem.product.discountPrice}}</span>
 						</div>
 						<div class="size/qty">
-							<div ng-repeat="variant in cartItem.item.variantValues">
+							<div ng-repeat="variant in cartItem.product.variantValues">
 								<span >{{variant.variant.name}}: {{variant.description}}</span>
 							</div>
-							<span style="padding-left: 10%">Qty: {{cartItem.item.quantity}}</span>
-							<span style="float: right; padding-right: 10%"> <span>({{(cartItem.item.discountPrice/cartItem.item.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.item.price}}</span> </span>
+							<span style="padding-left: 10%">Qty: {{cartItem.product.quantity}}</span>
+							<span style="float: right; padding-right: 10%"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
 						</div>
 						<div class="designer" style="padding-top: 2%">
-							<span >Sold By: {{cartItem.item.product.designer.firstName}} {{cartItem.item.product.designer.lastName}}</span>
+							<span >Sold By: {{cartItem.product.designer.firstName}} {{cartItem.product.designer.lastName}}</span>
 						</div>
 						<div class="edit">
 							<a href=""> <i class="icon-pencil"></i>Edit Item</a>
-							<a href="" ng-click="addItemToWishList(cartItem.item.product.id)"> <i class="icon-heart-empty-fa"></i>Save for later</a>
+							<a href="" ng-click="addItemToWishList(cartItem.product.id)"> <i class="icon-heart-empty-fa"></i>Save for later</a>
 							<a href="" style="float: right;"><i class="icon-cancel"></i> Remove</a>
 						</div>
 					</div>

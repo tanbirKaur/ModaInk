@@ -28,14 +28,14 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.addItemToCart = function(id){
-        var itemInfo = {item: {id: id}};
+        var itemInfo = {productId:id};
         httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcart/items",{},{},itemInfo,function (response) {
             var successTemplate = angular.element("#cartAddSuccess");
             $compile(successTemplate)({title:'Add Item To Cart',message:'Item Added Successfully!'},function (elem, scope) {
                 elem.modal('show');
             });
         },function (failure) {
-            alert("ERR! couldn't add item to cart");
+            alert(failure.data.message);
         });
     };
 

@@ -6,7 +6,7 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     if (!$scope.cartItems) $scope.cartItems = [];
 
     $scope.addItemToWishList= function (id) {
-        var data = {"item":{"id":id}};
+        var data = {"productId":id};
         httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlist/items ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
     }
 
@@ -20,15 +20,12 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
 
     //Controller function calls
     $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.item.price-next.item.discountPrice);
+        return prev+parseFloat(next.product.price-next.product.discountPrice);
     },0);
     $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.item.discountPrice);
+        return prev+parseFloat(next.product.discountPrice);
     },0);
 
-    //temporary fix for NaN
-    if(isNaN($scope.totalPrice)) $scope.totalPrice = 0;
-    if(isNaN($scope.totalDiscount)) $scope.totalDiscount= 0;
     $scope.subTotal = 0;
     $scope.vatPrice = 0;
     $scope.deliveryCharges = 0;
