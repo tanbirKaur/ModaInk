@@ -3184,7 +3184,7 @@ a.mfn-link-6:before {
 	background: #ddd;
 }
 #Top_bar .search_wrapper {
-	background: #c8a75e;
+	background: rgba(140, 140, 140, 0.33);
 }
 
 #Subheader .title {

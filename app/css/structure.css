@@ -1383,7 +1383,10 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
     border-style: solid;
     border-color: rgba(255,255,255,.08) !important;
     font-size: 15px;
+    color: #000;
 }
+
+
 
 #Top_bar .search_wrapper input[type="text"]:focus {
     background-color: transparent !important;
@@ -1405,7 +1408,6 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 #Top_bar .search_wrapper .icon_close {
     right: 18px;
     color: #fff;
-    opacity: .3;
     filter: alpha(opacity=30);
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
