@@ -40,10 +40,10 @@
 			</div>
 			<div class="row">
 			<div id="existing_address">
-				<div ng-repeat="address in addresses" class="col-lg-6 col-sm-12 savedAdddress">
+				<div ng-repeat="address in addresses track by address.id" class="col-lg-6 col-sm-12 savedAdddress">
 					<div class="billing-left radio_btn_wrapper">
-            			<label for="billing:use_for_shipping_yes" >
-			            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" ng-model="selectedAddress"  ng-value="$index" title="Ship to this address" style="display: inline-flex;">
+            			<label for="billing:use_for_shipping_yes{{address.id}}" >
+			            <input type="radio" ng-click="selectedAddress=address.id" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes{{address.id}}"  ng-value="address.id" title="Ship to this address" style="display: inline-flex;">
 			            <span style="display: block; font-weight: bold">{{address.type}}</span>
 			            <span style="display: block; font-weight: bold; padding: 3% 0%;">{{address.fullName}}</span>
 			            <span style="display: block; ">{{address.line1}} , {{address.line2}}</span>
@@ -55,30 +55,15 @@
 				</div>
 			</div>
 			</div>
-			<h3> NEW BILLING ADDRESS</h3>
-			<div ng-include src="'views/add-new-address-partial.html'"></div>
-			<div class="row">
-				<div class="col-lg-5 col-sm-12 ">
-					<div class="billing-left radio_btn_wrapper">
-            			<label for="billing:use_for_shipping_yes" >
-			            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1" checked="checked" title="Ship to this address" " style="display: inline-flex;">
-			            <span style="display: inline-flex;">SHIP TO THIS ADDRESS</span> </label>
-			        </div>
-				</div>
-				<div class="col-lg-5 col-sm-12">
-					<div class="billing-left radio_btn_wrapper">
-            			<label for="billing:use_for_shipping_no" >
-			            <input type="radio" name="billing[use_for_shipping_no]" id="billing:use_for_shipping_no" value="1" title="Ship to this address" style="display: inline-flex;">
-			            <span style="display: inline-flex;">SHIP TO OTHER ADDRESS</span> </label>
-			        </div>
-				</div>
+			<div ng-click="showAddAddress?showAddAddress=false:showAddAddress=true"><span class="fa fa-2x fa-plus-circle" aria-hidden="true"></span></div>
+			<div ng-if="showAddAddress">
+				<h3> NEW BILLING ADDRESS</h3>
+				<div ng-include src="'views/add-new-address-partial.html'"></div>
 			</div>
-
 			<div class="row">
 				<div class="col-lg-4 col-sm-12 ">
 				</div>
 				<div class="col-lg-4 col-sm-12">
-					
 				</div>
 				<div>
 					<div class="desktop_version button_wrap" id="billing-buttons-container">

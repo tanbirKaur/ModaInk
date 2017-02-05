@@ -9,70 +9,92 @@
 			<div class="row">
 				<div class="col-lg-5 col-sm-12 ">
 					<div id="user_name" class="billing-left">
-	        			<label for="billing:firstname" class="required">First Name</label>
-			            <input type="text" id="billing:firstname" name="billing[firstname]" value="" title="First Name" class="input-text required-entry validation-passed" placeholder="FIRST NAME">
+	        			<label for="billing:fullname" class="required">Full Name</label>
+			            <input type="text" id="billing:fullname" ng-model="newAddress.fullName" name="billing[firstname]" value="" title="Full Name" class="input-text required-entry validation-passed" placeholder="FULL NAME">
 			    	</div>
 				</div>
-				<div class="col-lg-5 col-sm-12">
-					<div id="user_last_name" class="billing-right">
-	        			<label for="billing:lastName" class="required">Last Name</label>
-			            <input type="text" id="billing:lastName" name="billing[lastName]" value="" title="Last Name" class="input-text required-entry validation-passed" placeholder="Last Name">
-			    	</div>
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="email" class="billing-left">
+						<label for="billing:email" class="required">Email Address (Not saved)</label>
+						<input type="text" id="billing:email" name="billing[email]" value="" title="Email Address" class="input-text required-entry validation-passed">
+					</div>
 				</div>
 			</div>
 			
 			<div class="row">
-				<div class="col-lg-5 col-sm-12 ">
-					<div id="email" class="billing-left">
-	        			<label for="billing:email" class="required">Email Address</label>
-			            <input type="text" id="billing:email" name="billing[email]" value="" title="Email Address" class="input-text required-entry validation-passed">
-			    	</div>
-				</div>
 				<div class="col-lg-5 col-sm-12">
 					<div id="telephone" class="billing-right">
 	        			<label for="billing:telephone" class="required">Telephone</label>
 	        			<select name="countryCode" id="countryCode" style="width: 19%; display: inline-flex;">
                       <option value="91">IN</option></select>
-			            <input type="text" id="billing:telephone" name="billing[telephone]" value="+91" title="Telephone" class="input-text required-entry validation-passed" placeholder="Telephone" style="width: 79%; display: inline-flex;">
-			    	</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-10 col-sm-12 ">
-					<div id="address" class="billing-left">
-	        			<label for="billing:address" class="required">Address</label>
-			            <textarea type="text" id="billing:address" name="billing[address]" value="" title="Address" class="input-text required-entry validation-passed"></textarea>
-			    	</div>
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="col-lg-5 col-sm-12 ">
-					<div id="country" class="billing-left">
-	        			<label for="billing:country" class="required">Country</label>
-			            <select name="countryCode" id="countryCode" >
-                      <option value="India">INDIA</option></select>
+			            <input type="text" ng-model="newAddress.mobile" id="billing:telephone" name="billing[telephone]" value="+91" title="Telephone" class="input-text required-entry validation-passed" placeholder="Telephone" style="width: 79%; display: inline-flex;">
 			    	</div>
 				</div>
 				<div class="col-lg-5 col-sm-12">
 					<div id="zip" class="billing-right">
-	        			<label for="billing:zip" class="required">Zip/Postal Code</label>
-			            <input type="text" id="billing:zip" name="billing[zip]"  title="zip" class="input-text required-entry validation-passed">
+						<label for="billing:zip" class="required">Zip/Postal Code</label>
+						<input type="text" ng-model="newAddress.pincode" id="billing:zip" name="billing[zip]"  title="zip" class="input-text required-entry validation-passed">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="line1" class="billing-left">
+	        			<label for="billing:line1" class="required">Line 1</label>
+			            <input type="text" ng-model="newAddress.line1" id="billing:line1" name="billing[line1]" value="" title="Address Line 1" class="input-text required-entry validation-passed">
+			    	</div>
+				</div>
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="line2" class="billing-left">
+						<label for="billing:line2" class="required">Line 2</label>
+						<input type="text" ng-model="newAddress.line2" id="billing:line2" name="billing[line2]" value="" title="Address Line 2" class="input-text required-entry validation-passed">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="landmark" class="billing-left">
+						<label for="billing:landmark" class="required">Landmark</label>
+						<input type="text" ng-model="newAddress.landmark" id="billing:landmark" name="billing[line1]" value="" title="Landmark" class="input-text required-entry validation-passed">
+					</div>
+				</div>
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="country" class="billing-left">
+	        			<label for=country class="required">Country</label>
+						<select ng-options="country for country in countries" ng-model="newAddress.country"></select>
 			    	</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5 col-sm-12 ">
 					<div id="state" class="billing-left">
-	        			<label for="billing:state" class="required">State/Province</label>
-			            <input type="text" id="billing:state" name="billing[state]" value="" title="State/Proince" class="input-text required-entry validation-passed">
-			    	</div>
+						<label for="billing:state" class="required">State/Province</label>
+						<input type="text" ng-model="newAddress.state" id="billing:state" name="billing[state]" value="" title="State/Proince" class="input-text required-entry validation-passed">
+					</div>
 				</div>
 				<div class="col-lg-5 col-sm-12">
 					<div id="city" class="billing-right">
 	        			<label for="billing:city" class="required">City</label>
-	        			
-			            <input type="text" id="billing:city" name="billing[city]" title="City" class="input-text required-entry validation-passed" >
+			            <input type="text" ng-model="newAddress.city" id="billing:city" name="billing[city]" title="City" class="input-text required-entry validation-passed" >
 			    	</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-sm-12">
+					<div id="type" class="billing-right">
+						<label for="billing:type" class="required">Type</label>
+						<select id="billing:type" name="billing[type]" title="Type" ng-options="type for type in addressTypes" ng-model="newAddress.type"></select>
+					</div>
+				</div>
+				<div class="col-lg-5 col-sm-12">
+					<div id="default" class="billing-right">
+						<label for="billing:default" class="required">Mark Default</label>
+						<input type="checkbox" ng-model="newAddress.isDefault" id="billing:default" name="billing[default]" title="Default" class="input-text required-entry validation-passed" >
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-sm-12 ">
+					<button ng-click="addNewAddress()" type="button" class="button"><span>Add</span></button>
 				</div>
 			</div>

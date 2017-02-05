@@ -2,6 +2,11 @@ var app = window.app;
 app.controller('UserProfileController', function($scope,httpService,storageService) {
     $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
+    $scope.newAddress = {};
+    $scope.countries = ['India'];
+    $scope.addressTypes = ['Home','Office'];
+    $scope.selectedAddress = 0;
+
 
     if (!$scope.cartItems) $scope.cartItems = [];
 
@@ -13,9 +18,18 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     $scope.getUserAddresses= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
             $scope.addresses = response.data;
-            $scope.selectedAddress = 0;
         },function (err) {
             console.log('failed: getUserAddresses');
+        });
+    }
+
+    $scope.addNewAddress= function () {
+
+        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/addresses",{},{},$scope.newAddress,function (response) {
+            $scope.showAddAddress = false
+            $scope.getUserAddresses();
+        },function (err) {
+            alert(err.data.message)
         });
     }
 
