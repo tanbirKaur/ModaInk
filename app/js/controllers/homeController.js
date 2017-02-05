@@ -23,6 +23,8 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         $rootScope.userLoggedIn = false;
         $scope.shoppingcartItems = [];
         $scope.shoppingcartItemCount = 0;
+        $scope.email = '';
+        $scope.password = '';
         $state.go("/");
     }
 
