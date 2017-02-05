@@ -34,7 +34,7 @@ window.apiUrl = "http://modaink.com/api";
 			controller : "HomeController"
 		})
 		.state("products", {
-			url: "/products/:topCategory/:subCategory",
+			url: "/products/:gender/:topCategory?subCategory",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})

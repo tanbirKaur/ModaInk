@@ -116,7 +116,7 @@
                                                         <a class="mfn-megamenu-title" href="/products/women/{{product.name}}"><span>{{product.name}}</span></a>
                                                         <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/products/women/{{subProduct.name}}"><span>{{subProduct.name}}</span></a>
+                                                                <a href="/products/women/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -128,7 +128,7 @@
                                                         <a class="mfn-megamenu-title" href="/products/men/{{product.name}}"><span>{{product.name}}</span></a>
                                                         <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/products/men/{{subProduct.name}}"><span>{{subProduct.name}}</span></a>
+                                                                <a href="/products/men/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>

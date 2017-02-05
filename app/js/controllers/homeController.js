@@ -6,7 +6,8 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.productFilters = [{name:'Exclusive',key:'isExclusive',value:'true'}];
 	$scope.sortOption = {};
 	$scope.filterParams = {};
-	$scope.parentCategory = $stateParams.topCategory;
+	$scope.filterGender = $stateParams.gender;
+    $scope.topCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
 
@@ -279,9 +280,13 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.alertHidden();
 	});
 
-	if ($scope.parentCategory) {
-		$scope.productFilters.push({key:"category",val:$scope.subCategory});
-		applyFilters();
+	if ($scope.filterGender) {
+
+        $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
+        $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
+        if($scope.subCategory){
+            $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
+		}
 	} else {
 		$scope.getDesigners();
 		$scope.getCategories();
