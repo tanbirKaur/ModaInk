@@ -1,8 +1,6 @@
 var app = window.app;
 app.controller('HomeController', function($scope,$rootScope,$state,$stateParams, $auth,httpService,storageService) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
-	$scope.email;
-	$scope.password;
 	$scope.userName = undefined;
 	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = [{name:'Exclusive',key:'isExclusive',value:'true'}];
@@ -11,22 +9,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.parentCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
-
-	// http Methods
-	$scope.login = function () {
-		var loginInfo = { "email": $scope.email,"password": $scope.password };
-		httpService.login(loginInfo,$scope.onLoginSuccess,$scope.onLoginFailure);
-	};
-
-	$scope.logout = function () {
-		storageService.removeAll();
-        $rootScope.userLoggedIn = false;
-        $scope.shoppingcartItems = [];
-        $scope.shoppingcartItemCount = 0;
-        $scope.email = '';
-        $scope.password = '';
-        $state.go("/");
-    }
 
     $scope.authLogin= function (provider) {
 		$auth.authenticate(provider).then(function(response) {
@@ -94,7 +76,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	// http Success and Failure Methods
-	$scope.onLoginSuccess = function (response) {
+	$scope.$on("loginSuccess",function (event,response) {
 		var userCreated = response.statusText == "Created";
 		if (userCreated) {
 			$rootScope.userLoggedIn = true;
@@ -105,8 +87,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             storageService.set("accessToken",response.data.accessToken);
             $scope.getUserDetails();
 		}
-	};
-	$scope.onLoginFailure = function (response) {
+	});
+
+    $scope.$on("loginFailure",function (event,response) {
         $rootScope.userLoggedIn = false;
 		$scope.alertHidden = function () {
 			if (!response.data) {
@@ -115,9 +98,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 				alert(response.data.message);
 			}
 		};
-	};
+	});
 
-	$scope.onGetUserDetailsSuccess = function (response) {
+    $scope.logout = function () {
+        storageService.removeAll();
+        $rootScope.userLoggedIn = false;
+        $scope.shoppingcartItems = [];
+        $scope.shoppingcartItemCount = 0;
+        $scope.$broadcast('logout');
+        $state.go("/");
+    };
+
+    $scope.onGetUserDetailsSuccess = function (response) {
         $scope.userDetails = response.data;
         $rootScope.userDetails = $scope.userDetails;
         storageService.set("userDetails",$scope.userDetails);
