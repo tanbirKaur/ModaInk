@@ -6,7 +6,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.designer = {};
 
     $scope.getShoppingCartItems= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcart/items ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
     };
 
     $scope.onGetShoppingCartItemsSuccess = function (response) {
@@ -41,9 +41,16 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         httpService.callHttp("POST","designers",{},{},designerRequest,$scope.onDesignerRequestSuccess,$scope.onDesignerRequestFailure,true);
     };
 
-    $scope.addItemToCart = function(id){
-        var itemInfo = {productId:id};
-        httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcart/items",{},{},itemInfo,function (response) {
+
+    $scope.setSku = function (sku,$event) {
+        $scope.productSku = sku;
+        var $this = $($event.currentTarget).parent();
+        $this.addClass("sku-select").siblings().removeClass("sku-select");
+    };
+
+    $scope.addItemToCart = function(){
+        var itemInfo = {skuId: $scope.productSku,quantity: 1};
+        httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcartItems",{},{},itemInfo,function (response) {
             var successTemplate = angular.element("#cartAddSuccess");
             $compile(successTemplate)({title:'Add Item To Cart',message:'Item Added Successfully!'},function (elem, scope) {
                 elem.modal('show');
@@ -56,7 +63,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
     $scope.addToCart = function () {
         if($rootScope.userLoggedIn){
-            $scope.addItemToCart(parseInt(productId));
+            $scope.addItemToCart();
         } else {
             showModal("loginModal");
         }

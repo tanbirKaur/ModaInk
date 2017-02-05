@@ -12,7 +12,7 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
 
     $scope.addItemToWishList= function (id) {
         var data = {"productId":id};
-        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlist/items ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
+        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
     }
 
     $scope.getUserAddresses= function () {

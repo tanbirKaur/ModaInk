@@ -16,7 +16,7 @@
 		                <input style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
 		                <input style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
 
-		                <button class="btn btn-sm" ng-click="login()">LOG IN</button>
+		                <button class="btn btn-sm" ng-click="login(email,password)">LOG IN</button>
 		        </form>
 		    </div>                     
 	    </div>

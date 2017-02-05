@@ -13,9 +13,15 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
     $scope.authLogin= function (provider) {
 		$auth.authenticate(provider).then(function(response) {
-			alert(JSON.stringify(response));
+			var socialLoginInfo = {network:provider,socialToken:response.access_token};
+            httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
+                $scope.$emit("loginSuccess",response);
+            },function (err) {
+                $scope.$emit("loginFailure",response);
+            });
         }).catch(function(response) {
-            alert(JSON.stringify(response));
+        	console.log(response);
+            $scope.$emit("loginFailure",response);
 		});
     };
 
@@ -24,7 +30,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getShoppingCartItems= function () {
-		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcart/items ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
+		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
 	};
 
 	$scope.signUp = function () {
@@ -78,16 +84,13 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
 	// http Success and Failure Methods
 	$scope.$on("loginSuccess",function (event,response) {
-		var userCreated = response.statusText == "Created";
-		if (userCreated) {
-			$rootScope.userLoggedIn = true;
-			$scope.alertHidden = function () {
-				alert("Login Successful!");
-			};
-			hideModal("loginModal");
-            storageService.set("accessToken",response.data.accessToken);
-            $scope.getUserDetails();
-		}
+		$rootScope.userLoggedIn = true;
+		$scope.alertHidden = function () {
+			alert("Login Successful!");
+		};
+		hideModal("loginModal");
+		storageService.set("accessToken",response.data.accessToken);
+		$scope.getUserDetails();
 	});
 
     $scope.$on("loginFailure",function (event,response) {

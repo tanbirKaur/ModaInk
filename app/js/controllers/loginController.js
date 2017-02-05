@@ -3,11 +3,13 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
     var token = $location.search().token;
     var email = $location.search().email;
     var baererType = $location.search().bearerType;
+    $scope.email = '';
+    $scope.password = '';
 
 
     // http Methods
-    $scope.login = function () {
-        var loginInfo = { "email": $scope.email,"password": $scope.password };
+    $scope.login = function (email, password) {
+        var loginInfo = { "email": email,"password": password };
         httpService.login(loginInfo,function (response) {
             $scope.$emit('loginSuccess',response);
         },function (response) {

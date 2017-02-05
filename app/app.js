@@ -11,7 +11,6 @@ window.apiUrl = "http://modaink.com/api";
 		.state("madeToOrder",{ 	
 			url : '/madeToOrder',
 			templateUrl:"views/made-to-order.html",
-			// controller : "loginController"
 		})
 		.state("customization",{ 	
 			url : '/customization',
@@ -131,6 +130,8 @@ window.apiUrl = "http://modaink.com/api";
 			url:"/sizechart",
 			templateUrl : "views/sizeChart.html"
 		});
+
+		$authProvider.httpInterceptor = false;
 		$authProvider.google({
 			clientId: '349370840250-b7hb3fl263h9gu35e63l7idaufn0rbki.apps.googleusercontent.com',
             redirectUri: window.location.origin,
