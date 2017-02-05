@@ -1,7 +1,7 @@
 var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter",'satellizer']);
 window.app == app;
 window.apiUrl = "http://modaink.com/api";
- app.config(function($locationProvider, $stateProvider, $urlRouterProvider,localStorageServiceProvider){
+ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $authProvider,localStorageServiceProvider){
 	$stateProvider
 		.state("index", {
 			url: "/",
@@ -66,7 +66,8 @@ window.apiUrl = "http://modaink.com/api";
 		})
 		.state("billing-details", {
 			url:"/checkout/billing-details",
-			templateUrl : "views/billing-details.html"
+			templateUrl : "views/billing-details.html",
+			controller:'UserProfileController'
 		})
 		.state("payment-method", {
 			url:"/checkout/payment",

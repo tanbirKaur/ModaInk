@@ -10,6 +10,15 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
         httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlist/items ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
     }
 
+    $scope.getUserAddresses= function () {
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
+            $scope.addresses = response.data;
+            $scope.selectedAddress = 0;
+        },function (err) {
+            console.log('failed: getUserAddresses');
+        });
+    }
+
     $scope.onAddItemToWishListSuccess = function (response) {
         alert(response.data.message);
     }
@@ -30,4 +39,6 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     $scope.vatPrice = 0;
     $scope.deliveryCharges = 0;
     $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
+
+    $scope.getUserAddresses();
 });

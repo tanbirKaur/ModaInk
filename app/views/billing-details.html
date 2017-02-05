@@ -40,16 +40,16 @@
 			</div>
 			<div class="row">
 			<div id="existing_address">
-				<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 savedAdddress">
+				<div ng-repeat="address in addresses" class="col-lg-6 col-sm-12 savedAdddress">
 					<div class="billing-left radio_btn_wrapper">
             			<label for="billing:use_for_shipping_yes" >
-			            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1" checked="checked" title="Ship to this address" " style="display: inline-flex;">
-			            <span style="display: block; font-weight: bold">type</span>
-			            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
-			            <span style="display: block; ">line1 , line2</span>
-			            <span style="display: block; ">landmark</span>
-			            <span style="display: block; ">city - pincode</span>
-			            <span style="display: block; ">Mobile:  mobile</span>
+			            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" ng-model="selectedAddress"  ng-value="$index" title="Ship to this address" style="display: inline-flex;">
+			            <span style="display: block; font-weight: bold">{{address.type}}</span>
+			            <span style="display: block; font-weight: bold; padding: 3% 0%;">{{address.fullName}}</span>
+			            <span style="display: block; ">{{address.line1}} , {{address.line2}}</span>
+			            <span style="display: block; ">{{address.landmark}}</span>
+			            <span style="display: block; ">{{address.city}} - {{address.pincode}}</span>
+			            <span style="display: block; ">Mobile:  {{address.mobile}}</span>
 			            </label>
 			        </div>
 				</div>
