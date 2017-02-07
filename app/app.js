@@ -95,7 +95,8 @@ window.apiUrl = "http://dev.modaink.com/api";
 		})
 		.state("my-profile", {
 			url:"/myProfile",
-			templateUrl : "views/user-profile.html"
+			templateUrl : "views/user-profile.html",
+			controller: "UserProfileController"
 		})
 		.state("become-seller", {
 			url:"/becomeSeller",

@@ -44,11 +44,11 @@
 						    	</div>
 
 						    	<div class="col-md-4">
-						    		<label> User.firstName</label>
-						    		<label> User.lastName</label>
-						    		<label> User.E-mail Id </label>
-						    		<label> User.MobileNumber </label>
-						    		<label> User.Date of Birth </label>
+						    		<label> {{userDetails.firstName}} </label>
+						    		<label> {{userDetails.lastName}} </label>
+						    		<label> {{userDetails.email}} </label>
+						    		<label> {{userDetails.mobile}} </label>
+						    		<label> {{userDetails.dateOfBirth}} </label>
 
 						    	</div>
 					    		
@@ -70,17 +70,16 @@
 								        <div class="panel-body">
 									        <div class="row">
 												<div id="existing_address">
-													<div ng-repeat="n in [1,2,3]" class="col-lg-6 col-sm-12 savedAdddress ">
-									            			<a href=""><i class="fa fa-times" style="display: inline-flex; font-size: 16px;"></i></a>
-												            <span style="display: inline-flex; font-weight: bold">type</span>
-												            <span style="display: block; font-weight: bold; padding: 3% 0%;">fullName</span> 
-												            <span style="display: block; ">line1 , line2</span>
-												            <span style="display: block; ">landmark</span>
-												            <span style="display: block; ">city - pincode</span>
-												            <span style="display: block; ">Mobile:  mobile</span>
+													<div ng-repeat="address in addresses" class="col-lg-6 col-sm-12 savedAdddress ">
+									            			<a href="" ng-click="removeAddress(address.id)"><i class="fa fa-times" style="display: inline-flex; font-size: 16px;"></i></a>
+												            <span style="display: inline-flex; font-weight: bold">{{address.type}}</span>
+												            <span style="display: block; font-weight: bold; padding: 3% 0%;">{{address.fullName}}</span>
+												            <span style="display: block; ">{{address.line1}} , {{address.line2}}</span>
+												            <span style="display: block; ">{{address.landmark}}</span>
+												            <span style="display: block; ">{{address.city}} - {{address.pincode}}</span>
+												            <span style="display: block; ">Mobile:  {{address.mobile}}</span>
 													</div>
 												</div>
-																		
 									        </div>
 									    </div>
 						  			</div>
