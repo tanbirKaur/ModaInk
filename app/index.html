@@ -104,44 +104,44 @@
                                     <nav id="menu">
                                         <ul id="menu-main-menu" class="menu">
                                             <li id="menu-item-2450" class=" menu-item-type-taxonomy">
-                                                <a href="/products"><span>EXCLUSIVE</span></a>
+                                                <a href="/#/products"><span>EXCLUSIVE</span></a>
                                             </li>
                                             <li id="menu-item-2401" class="menu-item-type-taxonomy ">
-                                                <a href="/designers"><span>DESIGNERS</span></a>
+                                                <a href="/#/designers"><span>DESIGNERS</span></a>
                                             </li>
                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/women"><span>WOMEN</span></a>
+                                                <a href="/#/women"><span>WOMEN</span></a>
                                                 <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
                                                     <li ng-repeat="product in womenProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/products/women/{{product.name}}"><span>{{product.name}}</span></a>
+                                                        <a class="mfn-megamenu-title" href="/#/products/women/{{product.name}}"><span>{{product.name}}</span></a>
                                                         <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/products/women/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
+                                                                <a href="/#/products/women/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/men"><span>MEN</span></a>
+                                                <a href="/#/men"><span>MEN</span></a>
                                                 <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
                                                     <li ng-repeat="product in menProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/products/men/{{product.name}}"><span>{{product.name}}</span></a>
+                                                        <a class="mfn-megamenu-title" href="/#/products/men/{{product.name}}"><span>{{product.name}}</span></a>
                                                         <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories">
                                                             <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/products/men/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
+                                                                <a href="/#/products/men/{{product.name}}?subCategory={{subProduct.name}}"><span>{{subProduct.name}}</span></a>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="/accessories"><span>ACCESSORIES</span></a>
+                                                <a href="/#/accessories"><span>ACCESSORIES</span></a>
                                             </li>
                                             <li>
-                                                <a href="/footwear"><span>FOOTWEAR</span></a>
+                                                <a href="/#/footwear"><span>FOOTWEAR</span></a>
                                             </li>
                                             <li>
-                                                <a href="/customization"><span>CUSTOMIZATION</span></a>
+                                                <a href="/#/customization"><span>CUSTOMIZATION</span></a>
                                             </li>
                                             <li>
                                             <li class="dropdown header_buttons">
@@ -160,14 +160,14 @@
                                                     </div>
                                                     <div ng-show="userLoggedIn">
                                                         <li class="divider"></li>
-                                                        <li ><a href="/myProfile">{{userName}}({{userDetails.email}})</a></li>
+                                                        <li ><a href="/#/myProfile">{{userName}}({{userDetails.email}})</a></li>
                                                         <li class="divider"></li>
-                                                        <li ><a href="/myProfile#myOrders">My Orders</a></li>
-                                                        <li ><a href="/myProfile#wishlist">My wishlist</a></li>
-                                                        <li ><a href="/myProfile#addresBook">Saved addresses</a></li>
-                                                        <li ><a href="/myProfile#rewards">User badges</a></li>
+                                                        <li ><a href="/#/myProfile#myOrders">My Orders</a></li>
+                                                        <li ><a href="/#/myProfile#wishlist">My wishlist</a></li>
+                                                        <li ><a href="/#/myProfile#addresBook">Saved addresses</a></li>
+                                                        <li ><a href="/#/myProfile#rewards">User badges</a></li>
                                                         <li class="divider"></li>
-                                                        <li ><a href="/myProfile/edit">Edit Profile</a></li>
+                                                        <li ><a href="/#/myProfile/edit">Edit Profile</a></li>
                                                         <li ><a href="" ng-click="logout()">Logout</a></li>
                                                     </div>
                                                   </ul>

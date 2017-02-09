@@ -12,7 +12,7 @@
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
 		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
 		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
-			<a class="stepper__step stepper__step--active" href="/checkout/cart" style="width: 25%;">
+			<a class="stepper__step stepper__step--active" href="/#/checkout/cart" style="width: 25%;">
 				<span class="stepper__step-badge">1</span>
 				<span class="stepper__step-title">Bag</span>
 			</a>
@@ -40,7 +40,7 @@
 			<div class="prod-set">
 				<div ng-repeat="cartItem in cartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
-						<a href="product-details/{{cartItem.product.id}}/{{cartItem.product.designer.id}}" >
+						<a href="/#/product-details/{{cartItem.product.id}}/{{cartItem.product.designer.id}}" >
 							<img ng-src="{{cartItem.product.previewImage}}" alt="{{cartItem.product.productName}}" width="96" height="128">
 						</a>
 					</div>
@@ -106,7 +106,7 @@
 
 				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{payableAmount}}</span></div>
 				<div class="place-order">
-				<a href="/checkout/billing-details"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
+				<a href="/#/checkout/billing-details"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>
 </div>
             </div>

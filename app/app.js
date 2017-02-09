@@ -146,8 +146,8 @@ window.apiUrl = "http://dev.modaink.com/api";
 		});
 
      // ;
+	 $locationProvider.hashPrefix('');
 		$urlRouterProvider.otherwise("/");
-    	$locationProvider.html5Mode(true);
     	localStorageServiceProvider.setPrefix('modaink')
     	.setStorageType('sessionStorage');
 });

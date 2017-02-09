@@ -4,6 +4,8 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     var designerId = $stateParams.designerId;
     $scope.products = storageService.get("products");
     $scope.designer = {};
+    $scope.productId = productId;
+    $scope.designerId = designerId;
 
     $scope.getShoppingCartItems= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
