@@ -13,9 +13,8 @@
         <div class="login-form ng-scope col-md-6">
 		    <div class="panel-body">
 		        <form id="loginform" role="form">
-		                <input style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
-		                <input style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
-
+		                <input style="height:30px;" id="loginUsername" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">
+		                <input style="height:30px;" id="loginPassword" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
 		                <button class="btn btn-sm" ng-click="login(email,password)">LOG IN</button>
 		        </form>
 		    </div>                     
@@ -76,23 +75,22 @@
 			    	</span>
 		    	</button>
     	
-		        <form id="registerform" role="form" >
-		       <span style="margin-left: 16%;">OR USING EMAIL</span> 	
-		                <input style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">                                        
-		                <input style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
-
-		                <input style="height:30px;" id="contact-number" type="text" min="1000000000" max="9999999999" ng-model="contactNumber" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern"name="contact_number" placeholder="Mobile Number" required="">
-
-		                <button class="btn btn-md" ng-click="signUp()" style="width: 60%">Sign Up</button>
-		        </form>
+			<form name="registration" id="registerform" role="form" novalidate>
+				<span style="margin-left: 16%;">OR USING EMAIL</span>
+				<input name="email" style="height:30px;" id="login-username" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">
+				<i><div class="text-danger" ng-show="registration.email.$touched && registration.email.$error.required">* Email is required</div></i>
+				<i><div class="text-danger" ng-show="registration.email.$touched && !registration.email.$valid">* Invalid email address. Valid e-mail can contain only latin letters, numbers, '@' and '.</div></i>
+				<input name="password" style="height:30px;" id="login-password" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
+				<i><div class="text-danger" ng-show="registration.password.$touched &&registration.password.$error.required">* Password is required</div></i>
+				<input name="mobile" style="height:30px;" id="contact-number" type="text" min="1000000000" max="9999999999" ng-model="contactNumber" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern"name="contact_number" minlength="10" maxlength="10" placeholder="Mobile Number" required="">
+				<i><div class="text-danger" ng-show="registration.password.$touched && registration.mobile.$error.required">* Mobile Number is required</div></i>
+				<i><div class="text-danger" ng-show="registration.password.$touched && (registration.mobile.$error.minlength || registration.mobile.$error.maxlength)">* Mobile Number Should be 10 digit long</div></i>
+				<input ng-disabled="!registration.$valid" type="submit" value="Sign Up" class="btn btn-md" ng-click="signUp(email,contactNumber,password,registration.$valid)" style="width: 60%"/>
+			</form>
 	    </div>
-
-	    
-
-	    
       </div>
       <div class="profile-links">
-	  	<span style="float: right;">Already a member? <a data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login!</a>
+		  <span style="float: right;">Already a member? <a data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login!</a></span>
       </div>
      
     </div>

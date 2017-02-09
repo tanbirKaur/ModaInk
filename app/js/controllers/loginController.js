@@ -17,6 +17,29 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
         });
     };
 
+    $scope.signUp = function (email, mobile, password, isValid) {
+        if (!isValid) return;
+        var signUpInfo = { "email": email,"password": password ,"mobile":mobile};
+        httpService.callHttp("POST","users",{},{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
+    };
+
+    $scope.onSignUpSuccess = function (response) {
+        $scope.alertHidden = function () {
+            var userCreated = response.statusText == "Created";
+            if (userCreated) {
+                alert("Sign Up Successful!");
+            }
+        };
+        hideModal("registerModal");
+    };
+    $scope.onSignUpFailure = function (response) {
+        if (!response.data) {
+            alert("Oops something went wrong. Login failed!");
+        } else {
+            alert(response.data.message);
+        }
+    };
+
     $scope.$on("logout",function () {
         $scope.email = '';
         $scope.password = '';

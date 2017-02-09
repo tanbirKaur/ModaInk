@@ -33,11 +33,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
 	};
 
-	$scope.signUp = function () {
-		var signUpInfo = { "email": $scope.email,"password": $scope.password ,"mobile":$scope.contactNumber};
-		httpService.callHttp("POST","users",{},{},signUpInfo,$scope.onSignUpSuccess,$scope.onSignUpFailure,true);
-	};
-
 	$scope.getDesigners = function () {
 		httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
 	};
@@ -142,23 +137,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     $scope.onGetShoppingCartItemsFailure = function () {
 		console.log('onGetShoppingCartItemsFailure');
 		storageService.set("cartItems",	$scope.shoppingcartItems);
-	};
-
-	$scope.onSignUpSuccess = function (response) {
-		$scope.alertHidden = function () {
-			var userCreated = response.statusText == "Created";
-			if (userCreated) {
-				alert("Sign Up Successful!");
-			}
-		};
-		hideModal("registerModal");
-	};
-	$scope.onSignUpFailure = function (response) {
-		if (!response.data) {
-			alert("Oops something went wrong. Login failed!");
-		} else {
-			alert(response.data.message);
-		}
 	};
 
 	$scope.onGetDesignersSuccess = function (response) {
