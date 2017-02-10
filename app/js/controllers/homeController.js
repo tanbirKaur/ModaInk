@@ -283,7 +283,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		if(storageService.get("accessToken")){
             $rootScope.userLoggedIn = true;
             $scope.getUserDetails();
-        }
+        } else {
+			$scope.shoppingcartItems = storageService.get('guestCartItems');
+			if(!$scope.shoppingcartItems) $scope.shoppingcartItems = [];
+            $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+		}
 	}
 
     $scope.hasImaget = function (designer) {
