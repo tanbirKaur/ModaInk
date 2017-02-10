@@ -38,7 +38,7 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     }
 
     $scope.onAddItemToWishListFailure = function (response) {
-        console.log('onAddItemToWishListFailure',response);
+        alert(response.data.message);
     }
 
     //Controller function calls
