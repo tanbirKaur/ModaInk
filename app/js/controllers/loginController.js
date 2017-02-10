@@ -31,16 +31,18 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
     $scope.onSignUpSuccess = function (response) {
         var userCreated = response.statusText == "Created";
         if (userCreated) {
-            alert("Sign Up Successful!");
+            $scope.message = "You have been successfully signed up!"
+            showModal("loginSuccess")
         }
         hideModal("registerModal");
     };
     $scope.onSignUpFailure = function (response) {
         if (!response.data) {
-            alert("Oops something went wrong. Login failed!");
+            $scope.message = "Oops something went wrong. Login failed!"
         } else {
-            alert(response.data.message);
+            $scope.message = response.data.message;
         }
+        showModal("loginFailure")
     };
 
     $scope.$on("logout",function () {
