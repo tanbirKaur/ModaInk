@@ -16,8 +16,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			var socialLoginInfo = {network:provider,socialToken:response.access_token};
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
                 $scope.$emit("loginSuccess",response);
+                $scope.message = "Login Successful"
+                showModal('loginSuccess')
+                hideModal('loginModal')
             },function (err) {
                 $scope.$emit("loginFailure",response);
+                $scope.message = response.data.message;
+                showModal('loginFailure')
+                hideModal('loginModal')
             });
         }).catch(function(response) {
         	console.log(response);

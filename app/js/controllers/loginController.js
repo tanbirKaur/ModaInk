@@ -12,8 +12,13 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
         var loginInfo = { "email": email,"password": password };
         httpService.login(loginInfo,function (response) {
             $scope.$emit('loginSuccess',response);
+            $scope.message = "Login Successful"
+            showModal('loginSuccess')
+            hideModal('loginModal')
         },function (response) {
             $scope.$emit('loginFailure',response);
+            $scope.message = response.data.message;
+            showModal('loginFailure')
         });
     };
 
@@ -24,12 +29,10 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
     };
 
     $scope.onSignUpSuccess = function (response) {
-        $scope.alertHidden = function () {
-            var userCreated = response.statusText == "Created";
-            if (userCreated) {
-                alert("Sign Up Successful!");
-            }
-        };
+        var userCreated = response.statusText == "Created";
+        if (userCreated) {
+            alert("Sign Up Successful!");
+        }
         hideModal("registerModal");
     };
     $scope.onSignUpFailure = function (response) {
@@ -54,5 +57,12 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
         },function (res) {
             alert('i should fail, but lets fill further info for now!')
         })
+    };
+
+    var hideModal = function(modal) {
+        return angular.element('#'+modal).modal('hide');
+    };
+    var showModal = function(modal) {
+        return angular.element('#'+modal).modal('show');
     };
 });
