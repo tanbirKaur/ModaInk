@@ -3,13 +3,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.userName = undefined;
 	$scope.shoppingcartItemCount = 0;
-	$scope.productFilters = [{name:'Exclusive',key:'isExclusive',value:'true'}];
+	$scope.productFilters = [];
 	$scope.sortOption = {};
 	$scope.filterParams = {};
 	$scope.filterGender = $stateParams.gender;
     $scope.topCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
+	if($stateParams.exclusive) $scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
 
     $scope.authLogin= function (provider) {
 		$auth.authenticate(provider).then(function(response) {
