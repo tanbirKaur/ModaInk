@@ -12,9 +12,10 @@
 
 		<div id="firstmenu" class="menu">
 			<ul>
-				<!--<li class="cat" id="advertisingl"><a href="#advertisinga">Made To Order</a></li>-->
-				<li class="cat active" id="customl"><a href="/#/designer-details/{{designerDetails.id}}#custom">Customized Collection</a></li>
-				<li class="cat active" id="shop"><a href="/#/designers/{{designerDetails.id}}/product">Shop Now</a></li>
+                <!--has to only show customizable products for designer. If no products then this link is hidden-->
+				<li class="cat active" id="customl"><a href="/#/products">Customized Collection</a></li>
+                <!--Has to show all products of designer-->
+				<li class="cat active" id="shop"><a href="/#/products">Shop Now</a></li>
 			</ul>
 		</div>
 				<div id="about" class="fotos">
@@ -25,45 +26,51 @@
 							<p style="font-size: 16px;">{{designerDetails.description}}</p>
 
 						</li>
-					<li class="three designerProfileImage" ><img  src="{{designerDetails.avatarUrl}}"></li>
+					<li class="three designerProfileImage"><img  src="{{designerDetails.avatarUrl}}"></li>
 					</ul>
 				</div>
 		
-				<!--<div id="advertisinga" class="fotos">-->
-					<!--<ul>-->
-					<!--<li class=" three"><img alt="Judith Kroeher" src="images/Products/lahenga-1-custom.jpg"></li>-->
-					<!--<li class=" three"><img alt="Judith Kroeher" src="images/Products/3-custom.jpg"></li>-->
-					<!--<li class="four"><img alt="Judith Kroeher" src="images/Products/lahenga-2-custom.jpg"></li>-->
-					<!---->
-					<!--<li class=" two topone">-->
-						<!--<div class="infos">-->
-							<!--<h3>Chancellery</h3>-->
-							<!--<p><strong>Photographer</strong> <span class="who">Peter Wattendorff</span></p>-->
-							<!--<p><strong>Clients</strong> <span class="who">Kiermeier Haselier Grosse Rechtsanwälte Steuerberater Partnerschaft</span></p>-->
-						<!--</div>-->
-					<!--</li>-->
-					<!--</ul>-->
-				<!--</div>-->
-				
-				<div id="custom" class="fotos">
-					<ul>
-					<li class="three roomone designerProfileImage" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
-					<li class="one toptwo designerCollectionImageSmall"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
-					<li class="two">
-						<div class="infos">
-							<h3>Rococo Tomorrow</h3>
-							<p><strong>Photographer</strong> <span class="who">Grit Siwonia</span></p>
-							<p><strong>Model</strong> <span class="who">Katrin Reinecke</span></p>
+				<div id="advertisinga" class="fotos ">
+					<ul class="row">
+
+
+						<div class="col-md-offset-2 col-md-3 toptwo" ng-if="designerDetails.brand.portfolioImages[0].url">
+
+							<li class=" infos">
+								<p>{{designerDetails.brand.portfolioImages[0].description}}</p>
+							</li>
+							<li class=" one  designerCollectionImageSmall">
+								<img   alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[0].url}}"/>
+							</li>
 						</div>
-					</li>	
-					
-					<li class=" three break designerProfileImage"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
-					<li class="toptwo one roomone designerCollectionImageSmall"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
-					<li class=" topone two roomone">
+						<li class=" col-md-4 designerProfileImage" ng-if="designerDetails.brand.portfolioImages[0].url"><img alt="Judith Kroeher" src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
+
+						<li class="four" ng-if="designerDetails.brand.portfolioImages[1].url"><img alt="Judith Kroeher" src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
+
+					<li class=" topone two " ng-if="designerDetails.brand.portfolioImages[1].url">
 						<div class="infos">
-							<h3>Flourish Biedermeier</h3>
-							<p><strong>Photographer</strong> <span class="who">Juliane Meyer</span></p>
-							<p><strong>Model</strong> <span class="who">Elisa Flehmer</span></p>
+							<p>{{designerDetails.brand.portfolioImages[1].description}}</p>
+						</div>
+					</li>
+					</ul>
+				</div>
+				
+				<div id="custom" class="fotos" ng-if="designerDetails.brand.portfolioImages[2].url">
+					<ul>
+					<li class="three roomone designerProfileImage" ng-if="designerDetails.brand.portfolioImages[2].url" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
+
+						<li class="one toptwo designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[2].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
+					<li class="two" ng-if="designerDetails.brand.portfolioImages[2].url">
+						<div class="infos">
+							<p>{{designerDetails.brand.portfolioImages[2].description}}</p>
+						</div>
+					</li>
+					
+					<li class=" three break designerProfileImage" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
+					<li class="toptwo one roomone designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
+					<li class="two roomone" ng-if="designerDetails.brand.portfolioImages[3].url">
+						<div class="infos">
+							<p>{{designerDetails.brand.portfolioImages[3].description}}</p>
 						</div>
 					</li>
 					
