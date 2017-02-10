@@ -434,7 +434,7 @@ li[data-colorhex='white'] {
 div#about {
     background-color: #ddd;
 }
-div.fotos {
+div.fotos , div.profilefotos {
     z-index: 1;
     overflow: auto;
     clear: both;
@@ -444,13 +444,17 @@ div.fotos {
     margin-right: auto;
     margin-left: auto;
 }
-div.fotos ul {
+div.fotos ul, div.profilefotos ul {
     max-width: 1455px;
     margin: auto;
     overflow: auto;
 }
 div.fotos li {
     margin: 1.5%;
+    float: left;
+}
+
+div.profilefotos li {
     float: left;
 }
 .two {
@@ -463,10 +467,10 @@ div.fotos li {
 .three {
     width: 47%;
 }
-div.fotos li.topone, .topone {
+div.fotos li.topone, .topone , div.profilefotos li.topone, .topone  {
     margin-top: 15%;
 }
-div.fotos img {
+div.fotos img, div.profilefotos img {
     border-radius: 3px;
     box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
     width: 100%;
