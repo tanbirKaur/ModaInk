@@ -58,7 +58,7 @@
       </div>
       <div class="modal-body">
         <div class="registration-form ng-scope">
-		    	<button id="fbRegister">
+		    	<button id="fbRegister" ng-click="authLogin('facebook')">
 
 			    	<span>
 			    	<i class="icon-facebook"></i>
@@ -67,7 +67,7 @@
 		    	</button>
 
 				OR &nbsp;
-		    	<button id="gPlusRegister">
+		    	<button id="gPlusRegister" ng-click="authLogin('google')">
 			    	<span>
 			    	<i class="icon-google"></i>
 			    		GOOGLE

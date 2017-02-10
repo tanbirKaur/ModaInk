@@ -90,6 +90,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			alert("Login Successful!");
 		};
 		hideModal("loginModal");
+        hideModal("registerModal");
 		storageService.set("accessToken",response.data.accessToken);
 		$scope.getUserDetails();
 	});
