@@ -63,11 +63,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.openMyCart = function () {
-		if($rootScope.userLoggedIn){
-			$state.go("cart");
-		} else {
-			showModal("loginModal");
-		}
+		$state.go("cart");
     };
 
 	//Product filters and sort
@@ -106,6 +102,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			}
 		};
 	});
+
+    $scope.$on("updateCartDetails",function (event,response) {
+        $scope.shoppingcartItems = response.cartItems;
+        $scope.shoppingcartItemCount = response.cartCount;
+    });
 
     $scope.logout = function () {
         storageService.removeAll();
@@ -270,7 +271,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	});
 
 	if ($scope.filterGender) {
-
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
         $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
         if($scope.subCategory){

@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('UserProfileController', function($scope,httpService,storageService) {
+app.controller('UserProfileController', function($scope,$rootScope,httpService,storageService) {
     $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
     $scope.newAddress = {};
@@ -7,13 +7,13 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
     $scope.addressTypes = ['Home','Office'];
     $scope.selectedAddress = 0;
 
-
     if (!$scope.cartItems) $scope.cartItems = [];
+    if (!$rootScope.userLoggedIn) $scope.cartItems = storageService.get('guestCartItems');
 
     $scope.addItemToWishList= function (id) {
         var data = {"productId":id};
         httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
-    }
+    };
 
     $scope.getUserAddresses= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
@@ -21,12 +21,11 @@ app.controller('UserProfileController', function($scope,httpService,storageServi
         },function (err) {
             console.log('failed: getUserAddresses');
         });
-    }
+    };
 
     $scope.addNewAddress= function () {
-
         httpService.callHttp("POST","users/"+$scope.userDetails.id+"/addresses",{},{},$scope.newAddress,function (response) {
-            $scope.showAddAddress = false
+            $scope.showAddAddress = false;
             $scope.getUserAddresses();
         },function (err) {
             alert(err.data.message)

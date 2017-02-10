@@ -4,7 +4,7 @@
 					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
 						<li class="chosen" ng-repeat="productFilter in productFilters">
-							<a title="Remove filter" ng-click="removeFilter(productFilter) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.name}}</a>
+							<a ng-hide="productFilter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(productFilter) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.name}}</a>
 						</li>
 					</ul>
 				</aside>

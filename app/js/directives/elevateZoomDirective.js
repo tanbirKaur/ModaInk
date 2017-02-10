@@ -36,7 +36,8 @@ angular.module("ModaInk").directive('zoomContainer', function() {
         restrict: 'A',
         link: function(scope, element, attrs) {
             scope.$on('$routeChangeSuccess', function() {
-                var target = element.children('div.zoomContainer').remove();
+                $.removeData($('img'), 'elevateZoom');
+                $('.zoomContainer').remove();
             });
         }
     };

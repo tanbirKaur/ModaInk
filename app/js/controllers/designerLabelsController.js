@@ -46,6 +46,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
     $scope.setSku = function (sku,$event) {
         $scope.productSku = sku;
+        $scope.productSkuMessage = undefined;
         var $this = $($event.currentTarget).parent();
         $this.addClass("sku-select").siblings().removeClass("sku-select");
     };
@@ -54,22 +55,39 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         var itemInfo = {skuId: $scope.productSku,quantity: 1};
         httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcartItems",{},{},itemInfo,function (response) {
             var successTemplate = angular.element("#cartAddSuccess");
-            $compile(successTemplate)({title:'Add Item To Cart',message:'Item Added Successfully!'},function (elem, scope) {
+            $compile(successTemplate)({title:'Add Item To Bag',message:'Item Added Successfully!'},function (elem, scope) {
                 elem.modal('show');
             });
             $scope.getShoppingCartItems();
         },function (failure) {
-            var successTemplate = angular.element("#cartAddFailure");
             $scope.error =  failure.data.message;
             showModal("cartAddFailure");
         });
     };
 
-    $scope.addToCart = function () {
+    $scope.addToCart = function (product) {
         if($rootScope.userLoggedIn){
             $scope.addItemToCart();
         } else {
-            showModal("loginModal");
+            if(!$scope.productSku){
+                $scope.productSkuMessage = 'Select product size first';
+                return;
+            }
+            var itemInfo = {skuId: $scope.productSku,quantity: 1};
+            var guestItems = storageService.get('guestCartItems');
+            if(!guestItems) guestItems = [];
+            var guestInfo = storageService.get('guestCartInfo');
+            if(!guestInfo) guestInfo = [];
+            guestItems.push(product);
+            guestInfo.push(itemInfo);
+            storageService.set('guestCartItems',guestItems);
+            storageService.set('guestCartInfo',guestInfo);
+            $scope.$emit('updateCartDetails',{cartItems:guestItems,cartCount:guestInfo.length});
+            $scope.shoppingcartItemCount = guestInfo.length;
+            $compile(angular.element("#cartAddSuccess"))({title:'Add Item To Bag',message:'Item Added Successfully!'},function (elem, scope) {
+                elem.modal('show');
+            });
+
         }
     };
 

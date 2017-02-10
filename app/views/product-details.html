@@ -54,9 +54,10 @@
 								<a style="cursor:pointer; text-transform: uppercase" ng-click="setSku(sku.skuId,$event);" ng-class="{'disabled':sku.isOutOfStock}"> {{sku.size}} </a>
 							</li>
 						</ul>
+                        <div class="text-danger">{{productSkuMessage}}</div>
 					</div>
 					<div class="purchase">
-                        <a href=""><button class="btn btn-sm " ng-click="addToCart()"> Add to Bag </button></a>
+                        <a href=""><button class="btn btn-sm " ng-click="addToCart(product)"> Add to Bag </button></a>
 						<button ng-if="product.isCustomizable" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
 						<label ng-if="product.isCustomizable">This product is available for customization.</label>
 						<div>
