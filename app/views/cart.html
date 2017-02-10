@@ -53,7 +53,7 @@
 							<div ng-repeat="variant in cartItem.product.variantValues">
 								<span >{{variant.variant.name}}: {{variant.description}}</span>
 							</div>
-							<span style="padding-left: 10%">Qty: {{cartItem.quantity}}</span>
+							<span >Qty: {{cartItem.quantity}}</span>
 							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.discountPrice!=0"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
 						</div>
 						<div class="designer" style="padding-top: 2%">

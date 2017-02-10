@@ -59,7 +59,9 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
             });
             $scope.getShoppingCartItems();
         },function (failure) {
-            alert(failure.data.message);
+            var successTemplate = angular.element("#cartAddFailure");
+            $scope.error =  failure.data.message;
+            showModal("cartAddFailure");
         });
     };
 
