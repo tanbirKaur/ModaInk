@@ -52,6 +52,7 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
     $scope.vatPrice = 0;
     $scope.deliveryCharges = 0;
     $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
-
-    $scope.getUserAddresses();
+    if($rootScope.userLoggedIn){
+        $scope.getUserAddresses();
+    }
 });

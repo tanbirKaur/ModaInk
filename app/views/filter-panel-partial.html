@@ -21,7 +21,7 @@
 							<div class="filter_title"> {{facet_val.replace('_facet','')}} </div>
 							<ul>
 								<li class="input-group" ng-repeat="(name,val) in facet_key ">
-							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter('category',subCategory.name,subCategory.checked) || addFilter('category',subCategory.name)" aria-label="...">
+							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter({key:'subCategories',name:subCategory.name,val:subCategory.name}) || addFilter(subCategory.name,'subCategories',subCategory.name)" aria-label="...">
 							        <label>{{name}}</label>
 							        <span class="num">({{val}})</span>
 							    </li>

@@ -73,17 +73,12 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.productSkuMessage = 'Select product size first';
                 return;
             }
-            var itemInfo = {skuId: $scope.productSku,quantity: 1};
+            var itemInfo = {sku: {sizeVariantValue:$scope.productSku},quantity: 1,product:product};
             var guestItems = storageService.get('guestCartItems');
             if(!guestItems) guestItems = [];
-            var guestInfo = storageService.get('guestCartInfo');
-            if(!guestInfo) guestInfo = [];
-            guestItems.push(product);
-            guestInfo.push(itemInfo);
+            guestItems.push(itemInfo);
             storageService.set('guestCartItems',guestItems);
-            storageService.set('guestCartInfo',guestInfo);
-            $scope.$emit('updateCartDetails',{cartItems:guestItems,cartCount:guestInfo.length});
-            $scope.shoppingcartItemCount = guestInfo.length;
+            $scope.$emit('updateCartDetails',{cartItems:guestItems});
             $compile(angular.element("#cartAddSuccess"))({title:'Add Item To Bag',message:'Item Added Successfully!'},function (elem, scope) {
                 elem.modal('show');
             });

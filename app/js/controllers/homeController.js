@@ -105,7 +105,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
     $scope.$on("updateCartDetails",function (event,response) {
         $scope.shoppingcartItems = response.cartItems;
-        $scope.shoppingcartItemCount = response.cartCount;
+        $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
     });
 
     $scope.logout = function () {
