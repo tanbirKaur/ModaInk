@@ -12,8 +12,24 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
 
     $scope.addItemToWishList= function (id) {
         var data = {"productId":id};
-        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems ",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
+        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems",{},{},data,$scope.onAddItemToWishListSuccess,$scope.onAddItemToWishListFailure);
     };
+
+    $scope.removeItemFromWishList= function (id) {
+        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
+            $scope.getShoppingCartItems();
+        },function (response) {
+            alert(response.data.message);
+        });
+    };
+
+    $scope.getShoppingCartItems= function () {
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},function (response) {
+            $scope.cartItems = response.data;
+            $scope.$emit('refreshCart',response);
+        },function (response) { /* DO NOTHING */});
+    };
+
 
     $scope.getUserAddresses= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
@@ -66,5 +82,8 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
     $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
     if($rootScope.userLoggedIn){
         $scope.getUserAddresses();
+        if($scope.cartItems.length == 0){
+            $scope.getShoppingCartItems()
+        }
     }
 });

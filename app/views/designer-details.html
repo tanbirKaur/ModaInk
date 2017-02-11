@@ -12,69 +12,67 @@
 
 		<div id="firstmenu" class="menu">
 			<ul>
-                <!--has to only show customizable products for designer. If no products then this link is hidden-->
 				<li class="cat active" id="customl"><a ng-click="showBrandProducts(designerDetails.brand.name)">Customized Collection</a></li>
-                <!--Has to show all products of designer-->
 				<li class="cat active" id="shop"><a ng-click="showBrandProducts(designerDetails.brand.name)">Shop Now</a></li>
 			</ul>
 		</div>
-				<div id="about" class="profilefotos ">
-					<ul class="row">
-						<li class="col-md-3" >
-						<h2 style="padding-bottom: 30%">About</h2>
-							<p style="font-size: 16px;">{{designerDetails.description}}</p>
-						</li>
-					<li class="col-md-3 col-md-offset-0 col-lg-offset-2 designerProfileImage"><img  src="{{designerDetails.avatarUrl}}"></li>
-					</ul>
-				</div>
-		
-				<div id="advertisinga" class="fotos ">
-					<ul class="row">
+		<div id="about" class="profilefotos ">
+			<ul class="row">
+				<li class="col-md-3" >
+				<h2 style="padding-bottom: 30%">About</h2>
+					<p style="font-size: 16px;">{{designerDetails.description}}</p>
+				</li>
+			<li class="col-md-3 col-md-offset-0 col-lg-offset-2 designerProfileImage"><img  src="{{designerDetails.avatarUrl}}"></li>
+			</ul>
+		</div>
+
+		<div id="advertisinga" class="fotos ">
+			<ul class="row">
 
 
-						<div class="col-md-offset-2 col-md-3 toptwo" ng-if="designerDetails.brand.portfolioImages[0].url">
+				<div class="col-md-offset-2 col-md-3 toptwo" ng-if="designerDetails.brand.portfolioImages[0].url">
 
-							<li class=" infos">
-								<p>{{designerDetails.brand.portfolioImages[0].description}}</p>
-							</li>
-							<li class=" one  designerCollectionImageSmall">
-								<img   alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"/>
-							</li>
-						</div>
-						<li class=" col-md-4 designerProfileImage" ng-if="designerDetails.brand.portfolioImages[0].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
-
-						<li class="four" ng-if="designerDetails.brand.portfolioImages[1].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
-
-					<li class=" topone two " ng-if="designerDetails.brand.portfolioImages[1].url">
-						<div class="infos">
-							<p>{{designerDetails.brand.portfolioImages[1].description}}</p>
-						</div>
+					<li class=" infos">
+						<p>{{designerDetails.brand.portfolioImages[0].description}}</p>
 					</li>
-					</ul>
-				</div>
-				
-				<div id="custom" class="fotos" ng-if="designerDetails.brand.portfolioImages[2].url">
-					<ul>
-					<li class="three roomone designerProfileImage" ng-if="designerDetails.brand.portfolioImages[2].url" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
-
-						<li class="one toptwo designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[2].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
-					<li class="two" ng-if="designerDetails.brand.portfolioImages[2].url">
-						<div class="infos">
-							<p>{{designerDetails.brand.portfolioImages[2].description}}</p>
-						</div>
+					<li class=" one  designerCollectionImageSmall">
+						<img   alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"/>
 					</li>
-					
-					<li class=" three break designerProfileImage" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
-					<li class="toptwo one roomone designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
-					<li class="two roomone" ng-if="designerDetails.brand.portfolioImages[3].url">
-						<div class="infos">
-							<p>{{designerDetails.brand.portfolioImages[3].description}}</p>
-						</div>
-					</li>
-					
-
-					</ul>
 				</div>
+				<li class=" col-md-4 designerProfileImage" ng-if="designerDetails.brand.portfolioImages[0].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
+
+				<li class="four" ng-if="designerDetails.brand.portfolioImages[1].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
+
+			<li class=" topone two " ng-if="designerDetails.brand.portfolioImages[1].url">
+				<div class="infos">
+					<p>{{designerDetails.brand.portfolioImages[1].description}}</p>
+				</div>
+			</li>
+			</ul>
+		</div>
+
+		<div id="custom" class="fotos" ng-if="designerDetails.brand.portfolioImages[2].url">
+			<ul>
+			<li class="three roomone designerProfileImage" ng-if="designerDetails.brand.portfolioImages[2].url" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
+
+				<li class="one toptwo designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[2].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
+			<li class="two" ng-if="designerDetails.brand.portfolioImages[2].url">
+				<div class="infos">
+					<p>{{designerDetails.brand.portfolioImages[2].description}}</p>
+				</div>
+			</li>
+
+			<li class=" three break designerProfileImage" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
+			<li class="toptwo one roomone designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
+			<li class="two roomone" ng-if="designerDetails.brand.portfolioImages[3].url">
+				<div class="infos">
+					<p>{{designerDetails.brand.portfolioImages[3].description}}</p>
+				</div>
+			</li>
+
+
+			</ul>
+		</div>
 		</div>
 		
 	</div>
