@@ -28,7 +28,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		})
 
 		.state("/", {
-			url: "/products?exclusive",
+			url: "/products?exclusive&brand",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})

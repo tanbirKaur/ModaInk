@@ -1,14 +1,13 @@
 var app = window.app;
-app.controller('DesignerDetailsController', function($scope,$stateParams, httpService) {
+app.controller('DesignerDetailsController', function($scope,$window,$stateParams, httpService) {
     // http Methods
     $scope.getDesignerDetails = function (designerId) {
         httpService.callHttp("GET", "designers/" + designerId + "/publicInfo", {}, {}, {}, $scope.onGetDesignerDetailsSuccess, $scope.onGetDesignerDetailsFailure, false);
     }
 
-    // $scope.getDesignerProducts = function (designerId) {
-    //     var params = {designerId : designerId};
-    //     httpService.callHttp("GET","products",params,{},{},$scope.onGetDesignerProductsSuccess,$scope.onGetDesignerProductsFailure,true);
-    // }
+    $scope.showBrandProducts = function (brand) {
+        $window.location.href ='/#/products?brand='+encodeURIComponent(brand);
+    };
 
     // http Success and Failure Methods
     $scope.onGetDesignerDetailsSuccess = function (response) {
@@ -16,7 +15,6 @@ app.controller('DesignerDetailsController', function($scope,$stateParams, httpSe
         if (designerDetailsFound) {
             $scope.designerDetails = response.data;
         }
-        ;
     }
     $scope.onGetDesignerDetailsFailure = function (response) {
         console.log("onGetDesignerDetailsFailure", response);

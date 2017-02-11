@@ -11,6 +11,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.subCategory = $stateParams.subCategory;
 	$scope.alertHidden = function(){};
 	if($stateParams.exclusive) $scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
+	if($stateParams.brand) $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand})
 
     $scope.authLogin= function (provider) {
 		$auth.authenticate(provider).then(function(response) {
