@@ -215,6 +215,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             if (filterIsPresent) {
                 $scope.productFilters.splice(filterIndex,1);
                 console.log('Filter Removed');
+                applyFilters();
                 return true;
             }
         }

@@ -22,7 +22,7 @@
 							<div class="filter_title"> {{facetName}} </div>
 							<ul>
 								<li class="input-group" ng-repeat="(name,val) in facet_key ">
-							        <input type="checkbox" ng-model="subCategory.checked" ng-change="addFilter(name,getFilterKey(facetName),name)" aria-label="...">
+							        <input type="checkbox" ng-model="subCategory" ng-change="addFilter(name,getFilterKey(facetName),name)" aria-label="...">
 							        <label>{{name}}</label>
 							        <span class="num">({{val}})</span>
 							    </li>
