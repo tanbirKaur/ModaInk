@@ -231,8 +231,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		return '';
     }
 
+    $scope.shouldShowResetFilters = function () {
+    	if($stateParams.exclusive){
+    		return $scope.productFilters.length > 1;
+		}
+		return $scope.productFilters.length > 0;
+    }
+
 	$scope.resetFilters = function(){
 		$scope.productFilters = [];
+        if($stateParams.exclusive){
+        	$scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
+        }
 		applyFilters();
 	}
 
