@@ -177,15 +177,32 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		console.log('onGetCategoryFailure');
 	}
 
+	$scope.getFilterKey = function (name) {
+        var filterKeyNames = {
+            'prices':'price',
+            'categories':'masterCategory',
+            'subCategories':'subCategories',
+            'brands':'brandName',
+            'colours':'colours',
+            'sizes':'sizes'
+        };
+        return filterKeyNames[name];
+    };
+
 	//Web View Methods
 	$scope.addFilter = function(name,key,val){
 		var filter = {name:name,key:key,value:val};
 		console.log('Adding Filter:',filter.name);
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
-		if (!alreadyAddedFilter) {
-			$scope.productFilters.push(filter);
-			console.log('Filter Added');
-		}
+		if (alreadyAddedFilter) {
+            $scope.productFilters = $scope.productFilters.filter(function(name){
+            	return !angular.equals(filter,name);
+            });
+            console.log('Filter Removed');
+		} else {
+            $scope.productFilters.push(filter);
+            console.log('Filter Added');
+        }
 		applyFilters();
 	};
 
@@ -197,61 +214,30 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             if (filterIsPresent) {
                 $scope.productFilters.splice(filterIndex,1);
                 console.log('Filter Removed');
-                break;
+                return true;
             }
         }
         applyFilters();
-        return true;
+        return false;
     }
 
-
-    $scope.resetCheckBoxForCategoryFilter = function (val) {
-		$scope.productCategories.forEach(function (category) {
-			category.subCategories = category.subCategories.map(function (subCategory) {	
-				if (subCategory.name == val) {
-					subCategory.checked = false;
-				}
-				return subCategory;
-			});
-		});
-	}
+    $scope.isFilterApplied = function (name) {
+		for(var index in $scope.productFilters){
+			if($scope.productFilters[index].name == name){
+				return true;
+			}
+		}
+		return '';
+    }
 
 	$scope.resetFilters = function(){
 		$scope.productFilters = [];
 		applyFilters();
 	}
 
-	$scope.productCountForCategory = function(category){
-		return filterProducts($scope.allProducts,"category.name",category).length;
-	}
-
 	//custom methods
 	var applyFilters = function(){
 	    $scope.getProducts($scope.filterParams);
-	};
-
-	var filterProducts = function(products,filterKey,value){
-		return products.filter(function (product) {
-			var keyLevel = 0;
-			var obj = product;
-			if (filterKey == 'category') {
-				var keyName = 'category';
-				while(obj[keyName]){
-					obj = obj[keyName];
-					if (obj.name == value) {
-						return true;
-					}
-					if (obj) {
-						keyName = 'subcategory';
-					}
-				}
-			} else if (filterKey == 'gender') {
-				obj = obj.category[filterKey];
-			}else {
-				obj = obj[filterKey];
-			}
-			return obj == value;
-		});
 	};
 
     var filteredProductsCategory = function(gender){ 

@@ -4,7 +4,7 @@
 					<span class="filter_title_not_collapswable" style="display: inline;">Active Filters </span><a ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
 						<li class="chosen" ng-repeat="productFilter in productFilters">
-							<a ng-hide="productFilter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(productFilter) && resetCheckBoxForCategoryFilter(productFilter.val)" href="">{{productFilter.name}}</a>
+							<a ng-hide="productFilter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(productFilter)" href="">{{productFilter.name}}</a>
 						</li>
 					</ul>
 				</aside>
@@ -17,11 +17,11 @@
 					</aside>
 					<aside class = "widget woocommerce">
 						<h4> CATEGORIES </h4>
-						<div ng-repeat="(facet_val,facet_key) in allProductInfo.facets ">
-							<div class="filter_title"> {{facet_val.replace('_facet','')}} </div>
+						<div ng-repeat="(facet_val,facet_key) in allProductInfo.facets" ng-init="facetName=facet_val.replace('_facet','')">
+							<div class="filter_title"> {{facetName}} </div>
 							<ul>
 								<li class="input-group" ng-repeat="(name,val) in facet_key ">
-							        <input type="checkbox" ng-model="subCategory.checked" ng-change="removeFilter({key:'subCategories',name:subCategory.name,val:subCategory.name}) || addFilter(subCategory.name,'subCategories',subCategory.name)" aria-label="...">
+							        <input type="checkbox" ng-model="subCategory.checked" ng-change="addFilter(name,getFilterKey(facetName),name)" aria-label="...">
 							        <label>{{name}}</label>
 							        <span class="num">({{val}})</span>
 							    </li>
