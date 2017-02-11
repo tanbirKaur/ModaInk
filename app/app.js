@@ -130,6 +130,10 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("sizeChart", {
 			url:"/sizechart",
 			templateUrl : "views/sizeChart.html"
+		})
+		.state("orderConfirmation", {
+			url:"/orderConfirmation",
+			templateUrl : "views/order-confirmation.html"
 		});
 
 		$authProvider.httpInterceptor = false;

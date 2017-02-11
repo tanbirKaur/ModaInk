@@ -7572,3 +7572,28 @@ body {
 #Content .gallery:not(.gallery-columns-1) .gallery-item {
     width: 50%;
 }}
+
+
+.orderConfirmation {
+    min-height: 250px;
+    border: 1px solid #181818;
+    width: 50%;
+    margin: auto;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
+
+.orderConfirmation #left{
+    padding-left: 5% ;
+    padding-right: 2% ;
+    border-right: 1px solid rgba(0,0,0,.08);
+}
+.orderConfirmation a:hover{
+    color: #c0a16b;
+    cursor: pointer;
+}
+
+.orderConfirmation h3, h5 {
+    text-align: center;
+
+}

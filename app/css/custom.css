@@ -850,6 +850,9 @@ div.fotos li.roomone {
     float: right;
 }
 
+#right label{
+    display: block;
+}
 .order-summary-span {
     float: none;
     padding: 0;
@@ -1499,3 +1502,4 @@ object-fit: cover;
     width: 600px !important;
     height: 500px !important;
 }
+
