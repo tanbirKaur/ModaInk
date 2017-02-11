@@ -1503,3 +1503,27 @@ object-fit: cover;
     height: 500px !important;
 }
 
+
+.review-header-top {
+    background-color: #c8a75e;
+    width: auto;
+    height: 80px;
+}
+.review-header-top button{
+    margin-top: 14px !important;
+}
+
+.review-header-top .text {
+    color: #000;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-top: 3%;
+}
+
+.review-header-top .userimg {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+

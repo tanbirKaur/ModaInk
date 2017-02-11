@@ -61,7 +61,7 @@
 						<button ng-if="product.isCustomizable" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
 						<label ng-if="product.isCustomizable">This product is available for customization.</label>
 						<div>
-						<span>Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="">Write a review </a></span>
+						<span>Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="" data-toggle="modal" data-target="#reviewModal">Write a review </a></span>
 					</div>
 
 					</div>
@@ -273,5 +273,27 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p>{{error}}</p>
             </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header review-header-top">
+                    <img src="images/user7-128x128.jpg"  class="userimg">
+                    <label class="text">User.name</label>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <label aria-hidden="true" class="text">&times;</label>
+                    </button>
+
+            </div>
+            <div class="modal-body">
+                <textarea style="width: 100%" rows="5" placeholder="Write a Review..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Submit Reviews</button>
+            </div>
+        </div>
     </div>
 </div>
