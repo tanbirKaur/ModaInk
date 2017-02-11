@@ -9,6 +9,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.filterGender = $stateParams.gender;
     $scope.topCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
+    $scope.isCustomizable = $stateParams.isCustomizable;
 	$scope.alertHidden = function(){};
 	if($stateParams.exclusive) $scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
 	if($stateParams.brand) $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand})
@@ -267,7 +268,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	angular.element('#loginModal').on('hidden.bs.modal', function () {
 		$scope.alertHidden();
 	});
-
+    if($scope.isCustomizable){
+        $scope.addFilter('Customized', "isCustomizable", $scope.isCustomizable);
+    }
 	if ($scope.filterGender) {
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
         $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);

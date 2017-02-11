@@ -5,8 +5,12 @@ app.controller('DesignerDetailsController', function($scope,$window,$stateParams
         httpService.callHttp("GET", "designers/" + designerId + "/publicInfo", {}, {}, {}, $scope.onGetDesignerDetailsSuccess, $scope.onGetDesignerDetailsFailure, false);
     }
 
-    $scope.showBrandProducts = function (brand) {
-        $window.location.href ='/#/products?brand='+encodeURIComponent(brand);
+    $scope.showBrandProducts = function (brand,customized) {
+        var productsUrl = '/#/products?brand='+encodeURIComponent(brand);
+        if (customized){
+            productsUrl = '/#/products?'+customized+'=true';;
+        }
+        $window.location.href = productsUrl;
     };
 
     // http Success and Failure Methods
