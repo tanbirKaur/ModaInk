@@ -108,6 +108,19 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.changeImage = function (image) {
         $scope.previewImage = image;
     }
+
+    $scope.fbShare = function (product) {
+            FB.ui({
+                method: 'feed',
+                name: product.productName + " ["+ product.brandName +"]",
+                picture : product.images[0].url,
+                link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId ,
+                caption: 'Modaink | www.modaink.com',
+                description: product.productDescription,
+                message: "Checkout this design"
+            });
+
+    }
     //custom methods
     var findProductById = function (id) {
         return $scope.products.find(function(product){
