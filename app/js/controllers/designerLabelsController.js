@@ -138,15 +138,23 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.fbShare = function (product) {
             FB.ui({
                 method: 'feed',
-                name: product.productName + " ["+ product.brandName +"]",
+                name: product.productName + " ["+ product.price +"]",
                 picture : product.images[0].url,
                 link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId ,
                 caption: 'Modaink | www.modaink.com',
-                description: product.productDescription,
+                description: "["+ product.brandName +"] " + product.productDescription,
                 message: "Checkout this design"
             });
 
     }
+
+    $scope.range = function(n) {
+        var count = new Array();
+        for (i = 1 ; i <=n ; i++) {
+            count.push(i);
+        }
+        return count;
+    };
     //custom methods
     var findProductById = function (id) {
         return $scope.products.find(function(product){
