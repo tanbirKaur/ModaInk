@@ -31,8 +31,20 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
         },true);
     }
 
+    httpService.getProductReviews = function (productId,successCallback,failureCallback) {
+        httpService.callHttp("GET","products/"+productId+"/reviews",{},{},{},function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"getProductReviews");
+        },true);
+    }
 
-
-
+    httpService.addNewReview = function (productId,review,successCallback,failureCallback) {
+        httpService.callHttp("POST","products/"+productId+"/reviews",{},{},review,function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"getProductReviews");
+        });
+    }
     return httpService;
  }]);

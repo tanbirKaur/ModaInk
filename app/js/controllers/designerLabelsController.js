@@ -6,6 +6,8 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.designer = {};
     $scope.productId = productId;
     $scope.designerId = designerId;
+    $scope.reviews = [];
+    $scope.newReview = {rating:0};
 
     $scope.getShoppingCartItems= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
@@ -43,6 +45,30 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         httpService.callHttp("POST","designers",{},{},designerRequest,$scope.onDesignerRequestSuccess,$scope.onDesignerRequestFailure,true);
     };
 
+    $scope.updateRating = function (rating) {
+        $scope.newReview.rating = rating;
+    };
+
+    $scope.addNewReview = function () {
+        if(!$rootScope.userLoggedIn){
+            hideModal("reviewModal");
+            showModal("loginModal");
+        } else {
+            httpService.addNewReview(productId,{
+                title: $scope.newReview.title,
+                description: $scope.newReview.review,
+                rating: $scope.newReview.rating,
+                userId: storageService.get('userDetails').id
+            },function (response) {
+                $scope.reviews.push(response.data);
+                hideModal("reviewModal");
+                $scope.newReview = {rating:0};
+            },function (err) {
+                $scope.newReview = {rating:0};
+                console.log(err.data.message);
+            })
+        }
+    };
 
     $scope.setSku = function (sku,$event) {
         $scope.productSku = sku;
@@ -127,7 +153,9 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
             return product.id == id;
         });
     }
-
+    var hideModal = function(modal) {
+        return angular.element('#'+modal).modal('hide');
+    };
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');
     };
@@ -137,6 +165,11 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         $scope.previewImage = $scope.product.previewImage;
         if(!$scope.product.images) $scope.product.images = [];
         $scope.product.images.push({url:$scope.product.previewImage});
+        httpService.getProductReviews(productId,function (response) {
+            $scope.reviews = response.data;
+        },function (err) {
+            console.log(err.data.message);
+        });
     };
 
 });

@@ -7,6 +7,9 @@
 						<li class="chosen" ng-repeat="productFilter in productFilters">
 							<a ng-hide="productFilter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(productFilter)" href="">{{productFilter.name}}</a>
 						</li>
+						<li class="chosen" ng-repeat="fitlterName in Object.keys(searchQuery)">
+							<a ng-hide="fitlterName=='isExclusive'" title="Remove filter" ng-click="removeFilter(fitlterName)" href="">{{searchQuery[fitlterName]}}</a>
+						</li>
 					</ul>
 				</aside>
 				<aside class="basic_categorization widget woocommerce">

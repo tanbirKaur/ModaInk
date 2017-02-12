@@ -81,11 +81,11 @@
       	<ul class="menu-advanced ">
             <li class="active"><a ng-href="/#/product-details/{{productId}}/{{designerId}}#how-to" data-toggle="nav-tabs" > More Information</a></li>
             <li><a ng-href="/#/product-details/{{productId}}/{{designerId}}#features" data-toggle="pill">Specifications</a></li>
-            <li><a ng-href="/#/product-details/{{productId}}/{{designerId}}#source" data-toggle="pill">Reviews (0)</a></li>
+            <li><a ng-href="/#/product-details/{{productId}}/{{designerId}}#source" data-toggle="pill">Reviews ({{reviews.length}})</a></li>
         </ul>
 
       <div class="tab-content responsive hidden-xs hidden-sm">
-        <div class="tab-pane active" id="how-to">
+        <div ng-show="reviews.length == 0" class="tab-pane active" id="how-to">
 		 <p class="tab-text">No reviews yet, be the first one to review..</p>
         </div>
         <div class="tab-pane" id="features" ng-repeat="feature in product.features">
@@ -95,17 +95,11 @@
 		  <div class="response">
 						<div class="media response-info" ng-repeat="review in reviews">
 							<div class="media-left response-text-left">
-								<a href="#">
-									<img class="media-object" ng-src="review.userImage" alt="">
-								</a>
-								<h5><a href="#">{{review.userName}}</a></h5>
+                                <p><b>{{review.title}}</b></p>
 							</div>
 							<div class="media-body response-text-right">
-								<p>{{review.reviewText}}</p>
-								<ul>
-									<li>{{review.reviewDate}}</li>
-									<li><a href="">Reply</a></li>
-								</ul>
+								<span>{{review.description}}</span><br/>
+                                <span>{{review.createdAt | date:'MMM dd,yyyy'}}</span>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -282,18 +276,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header review-header-top">
-                    <img src="images/user7-128x128.jpg"  class="userimg">
-                    <label class="text">User.name</label>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <label aria-hidden="true" class="text">&times;</label>
-                    </button>
-
+                <img src="images/user7-128x128.jpg"  class="userimg">
+                <label class="text">User.name</label>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <label aria-hidden="true" class="text">&times;</label>
+                </button>
             </div>
             <div class="modal-body">
-                <textarea style="width: 100%" rows="5" placeholder="Write a Review..."></textarea>
+                <label for="reviewTitle">Review Title</label>
+                <input id="reviewTitle" ng-model="newReview.title" type="text" class="form-control">
+                <textarea ng-model="newReview.review" style="width: 100%" rows="5" placeholder="Write a Review..."></textarea>
+                <div rating rating-value="newReview.rating" max="5" on-rating-selected="updateRating(rating)"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary">Submit Reviews</button>
+                <button type="button" ng-click="addNewReview()" class="btn btn-secondary">Submit Reviews</button>
             </div>
         </div>
     </div>

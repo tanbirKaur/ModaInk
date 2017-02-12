@@ -4,6 +4,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.userName = undefined;
 	$scope.shoppingcartItemCount = 0;
 	$scope.productFilters = [];
+    $scope.searchQuery = {};
 	$scope.sortOption = {};
 	$scope.filterParams = {};
 	$scope.filterGender = $stateParams.gender;
@@ -11,7 +12,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.subCategory = $stateParams.subCategory;
     $scope.isCustomizable = $stateParams.isCustomizable;
 	$scope.alertHidden = function(){};
-	if($stateParams.exclusive) $scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
+	if($stateParams.exclusive) $scope.searchQuery.isExclusive = true;
 	if($stateParams.brand) $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand})
 
     $scope.authLogin= function (provider) {
@@ -54,6 +55,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.getProducts = function (params) {
 		if (!params) params = {offset:0,limit:30};
 		var filterInfo = {filters:[],sortBy:[]};
+		filterInfo.query = $scope.searchQuery;
 		Object.keys($scope.sortOption).forEach(function(key){
 			filterInfo.sortBy.push({sortAttribute:key,sortOrder:$scope.sortOption[key]});
 		});
@@ -64,7 +66,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
                 filterInfo.filters.push({filterName:filter.key,filterMatch:filter.value});
 			}
         });
-		httpService.callHttp("POST","products/searchService",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
+		httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
 
 	$scope.openMyCart = function () {
@@ -197,6 +199,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	//Web View Methods
 	$scope.addFilter = function(name,key,val){
 		var filter = {name:name,key:key,value:val};
+		if(key=='gender' || key == 'masterCategory'){
+			$scope.searchQuery[key] = val;
+			applyFilters();
+			return;
+		}
 		console.log('Adding Filter:',filter.name);
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
 		if (alreadyAddedFilter) {
@@ -237,17 +244,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     }
 
     $scope.shouldShowResetFilters = function () {
-    	if($stateParams.exclusive){
-    		return $scope.productFilters.length > 1;
-		}
 		return $scope.productFilters.length > 0;
     }
 
 	$scope.resetFilters = function(){
-        $scope.productFilters.length = 1;//keep exclusive filter
-        if(!$stateParams.exclusive){
-            $scope.productFilters.length = 0;
-        }
+		$scope.productFilters.length = 0;
 		applyFilters();
 	}
 
@@ -272,7 +273,8 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.alertHidden();
 	});
     if($scope.isCustomizable){
-        $scope.addFilter('Customized', "isCustomizable", $scope.isCustomizable);
+    	$scope.searchQuery.isCustomizable = $scope.isCustomizable;
+    	applyFilters();
     }
 	if ($scope.filterGender) {
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);

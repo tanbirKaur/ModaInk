@@ -6,6 +6,11 @@ angular.module("ModaInk").directive('ngElevateZoom', function() {
                 linkElevateZoom(newVal);
             });
 
+            scope.$on('$routeChangeSuccess', function() {
+                $.removeData($('img'), 'elevateZoom');
+                $('.zoomContainer').remove();
+            });
+
             function linkElevateZoom(newImage){
                 if (!newImage) return;
                 element.attr('data-zoom-image',newImage);
@@ -28,17 +33,6 @@ angular.module("ModaInk").directive('ngElevateZoom', function() {
                     zoomWindowHeight:400
                 });
             }
-        }
-    };
-});
-angular.module("ModaInk").directive('zoomContainer', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            scope.$on('$routeChangeSuccess', function() {
-                $.removeData($('img'), 'elevateZoom');
-                $('.zoomContainer').remove();
-            });
         }
     };
 });
