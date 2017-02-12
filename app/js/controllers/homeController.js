@@ -53,13 +53,16 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
 	$scope.getProducts = function (params) {
 		if (!params) params = {offset:0,limit:30};
-		params = {};
 		var filterInfo = {filters:[],sortBy:[]};
 		Object.keys($scope.sortOption).forEach(function(key){
 			filterInfo.sortBy.push({sortAttribute:key,sortOrder:$scope.sortOption[key]});
 		});
 		$scope.productFilters.forEach(function (filter) {
-            filterInfo.filters.push({filterName:filter.key,filterMatch:filter.value});
+			if(filter.key == 'price'){
+                filterInfo.filters.push({filterName:filter.key,filterRange:{gte: filter.value.split('-')[0], lte: filter.value.split('-')[1]}});
+			} else {
+                filterInfo.filters.push({filterName:filter.key,filterMatch:filter.value});
+			}
         });
 		httpService.callHttp("POST","products/searchService",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
@@ -241,9 +244,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     }
 
 	$scope.resetFilters = function(){
-		$scope.productFilters = [];
-        if($stateParams.exclusive){
-        	$scope.productFilters.push({name:'Exclusive',key:'isExclusive',value:'true'});
+        $scope.productFilters.length = 1;//keep exclusive filter
+        if(!$stateParams.exclusive){
+            $scope.productFilters.length = 0;
         }
 		applyFilters();
 	}
