@@ -55,7 +55,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
-			url : "/product-details/:productId/:designerId", 
+			url : "/product-detafils/:productId/:designerId",
 			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {
@@ -66,11 +66,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("billing-details", {
 			url:"/checkout/billing-details",
 			templateUrl : "views/billing-details.html",
-			controller:'UserProfileController'
-		})
-		.state("payment-method", {
-			url:"/checkout/payment",
-			templateUrl : "views/payment-method.html"
+            controller:'PaymentsController'
 		})
 		.state("login", {
 			url: "/login",

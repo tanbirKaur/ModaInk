@@ -46,5 +46,22 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
             redirectCallback(response,httpFailed,failureCallback,"getProductReviews");
         });
     }
+
+    httpService.createOrder = function (orderInfo,successCallback,failureCallback) {
+        httpService.callHttp("POST","orders",{},{},orderInfo,function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"createOrder");
+        });
+    }
+
+    httpService.getPaymentUrl = function (orderId,successCallback,failureCallback) {
+        httpService.callHttp("POST","orders/"+orderId+"/makePaymentURL",{},{},{},function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"createOrder");
+        });
+    }
+
     return httpService;
  }]);
