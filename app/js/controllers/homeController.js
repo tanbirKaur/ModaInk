@@ -21,13 +21,25 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
                 $scope.$emit("loginSuccess",response);
                 $scope.message = "Login Successful"
-                showModal('loginSuccess')
+                if($rootScope.addReview){
+                    showModal('reviewModal')
+                }
+                else {
+                    showModal('loginSuccess')
+                }
                 hideModal('loginModal')
+
             },function (err) {
                 $scope.$emit("loginFailure",response);
-                $scope.message = response.data.message;
+                if(response.data){
+                    $scope.message = response.data.message;
+
+                }
+                else{
+                    $scope.message = "OOPS!! Something went wrong. Please try again";
+
+                }
                 showModal('loginFailure')
-                hideModal('loginModal')
             });
         }).catch(function(response) {
         	console.log(response);

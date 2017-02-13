@@ -283,8 +283,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header review-header-top">
-                <img ng-src="{{userDetails.avtarUrl}}"  class="userimg">
-                <label class="text">{{userDetails.firstName}}</label>
+                <img ng-src="userDetails.avtarUrl"  class="userimg">
+                <label class="text">Hi, {{userDetails.firstName}} please provide your review.</label>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <label aria-hidden="true" class="text">&times;</label>
                 </button>
@@ -296,6 +296,15 @@
             <div class="modal-footer">
                 <button type="button" ng-click="addNewReview()" class="btn btn-secondary">Submit Reviews</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="addReviewSuccess" class="modal fade" role="dialog">
+    <div class="modal-dialog " role="document">
+        <div class="modal-body alert alert-success">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p>Thank you! Your review is submitted.</p>
         </div>
     </div>
 </div>

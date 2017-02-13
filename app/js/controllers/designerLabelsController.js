@@ -8,6 +8,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.designerId = designerId;
     $scope.reviews = [];
     $scope.newReview = {rating:0};
+    $rootScope.addReview = false;
 
     $scope.getShoppingCartItems= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
@@ -53,6 +54,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         if(!$rootScope.userLoggedIn){
             hideModal("reviewModal");
             showModal("loginModal");
+            $rootScope.addReview = true;
         } else {
             httpService.addNewReview(productId,{
                 title: $scope.newReview.title,
@@ -63,6 +65,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.reviews.push(response.data);
                 hideModal("reviewModal");
                 $scope.newReview = {rating:0};
+                showModal("addReviewSuccess");
             },function (err) {
                 $scope.newReview = {rating:0};
                 console.log(err.data.message);
