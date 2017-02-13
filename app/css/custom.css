@@ -1589,6 +1589,297 @@ ul.rating {
     margin: 0% 10%;
 }
 
+.teamContainer{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.teamContainer:before, .teamContainer:after {
+    content: " ";
+    display: table;
+}
+
+.teamContainer:after {
+    clear: both;
+}
+
+@media (min-width: 768px) {
+    .teamContainer {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .teamContainer {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .teamContainer {
+        width: 1170px;
+    }
+}
+
+.block-title {
+    margin-bottom: 48px;
+}
+.text-center {
+    text-align: center;
+}
+.padding-top {
+    padding-top: 24px !important;
+}
+
+
+.teammate-1 .thumbnail {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+    background-color: transparent !important;
+     border: none !important;
+}
+.teammate-1,
+.teammate-2 {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 48px auto;
+    cursor: default;
+}
+
+
+.teammate-1 .thumbnail-static,
+.teammate-2 .thumbnail-static {
+    position: relative;
+    border-radius: 50%;
+    background-color: #2895f1;
+    margin-bottom: 24px;
+}
+
+.teammate-1 .thumbnail-static h4,
+.teammate-2 .thumbnail-static h4 {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.teammate-1 p {
+    color: #666;
+    margin-bottom: 0;
+}
+
+.teammate-1 .teammate-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.teammate-1 .thumbnail {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+}
+
+.teammate-1 .thumbnail .flipper {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+}
+
+.teammate-1 .thumbnail .flipper .front {
+    position: relative;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.teammate-1 .thumbnail .flipper .front > img {
+    border-radius: 50%;
+}
+
+.teammate-1 .thumbnail .flipper .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    border: 2px solid #1bdb68;
+    padding: 24px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.teammate-1 .thumbnail .flipper .back p {
+    margin-bottom: 24px;
+}
+
+.teammate-1:hover .thumbnail .flipper {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.ie .teammate-1 .thumbnail .flipper .front, .ie .teammate-1 .thumbnail .flipper .back {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    -webkit-backface-visibility: visible;
+    -moz-backface-visibility: visible;
+    backface-visibility: visible;
+}
+
+.ie .teammate-1 .thumbnail .flipper .back {
+    z-index: 5;
+    background-color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.ie .teammate-1:hover .thumbnail .flipper {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+.ie .teammate-1:hover .thumbnail .flipper .back {
+    visibility: visible;
+    opacity: 1;
+}
+
+.teammate-2 .thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.teammate-2 .thumbnail > img {
+    border-radius: 50%;
+    opacity: 1;
+    -webkit-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+.teammate-2 .teammate-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.teammate-2 .teammate-position {
+    display: block;
+    color: #2895f1;
+    margin-bottom: 16px;
+}
+
+.teammate-2 p {
+    font-size: 18px;
+    color: #666;
+}
+
+.teammate-2 .social-bar {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    left: 0;
+    bottom: 24px;
+    text-align: center;
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    -moz-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    -o-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    -o-transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.teammate-2:hover .thumbnail > img {
+    border-radius: 0%;
+    opacity: .1;
+}
+
+.teammate-2:hover .social-bar {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+}
+.text-center .social-bar a {
+    margin-left: 1px;
+    margin-right: 1px;
+}
+.social-bar a {
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0;
+    margin-right: 2px;
+    margin-bottom: 6px;
+    border: none;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.sb-skype {
+    color: #00aff0;
+    background-color: rgba(0,175,240,0.1);
+}
+.sb-facebook {
+    color: #3b5998;
+    background-color: rgba(59,89,152,0.1);
+}
+
 
 
 
