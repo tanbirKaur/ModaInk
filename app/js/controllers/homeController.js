@@ -220,28 +220,23 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			applyFilters();
 			return;
 		}
-		console.log('Adding Filter:',filter.name);
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
 		if (alreadyAddedFilter) {
             $scope.productFilters = $scope.productFilters.filter(function(name){
             	return !angular.equals(filter,name);
             });
-            console.log('Filter Removed');
 		} else {
             $scope.productFilters.push(filter);
-            console.log('Filter Added');
         }
 		applyFilters();
 	};
 
     $scope.removeFilter = function (filter) {
-        console.log('Removing Filter:',filter.name);
         for (var filterIndex = 0; filterIndex < $scope.productFilters.length; filterIndex++) {
             var existingFilter = $scope.productFilters[filterIndex];
             var filterIsPresent = angular.equals(filter,existingFilter);
             if (filterIsPresent) {
                 $scope.productFilters.splice(filterIndex,1);
-                console.log('Filter Removed');
                 applyFilters();
                 return true;
             }
