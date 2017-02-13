@@ -55,7 +55,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
-			url : "/product-detafils/:productId/:designerId",
+			url : "/product-details/:productId/:designerId",
 			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {

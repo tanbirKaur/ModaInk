@@ -850,7 +850,7 @@ div.fotos li.roomone {
     float: right;
 }
 
-#right label{
+.orderConfirmation #right label{
     display: block;
 }
 .order-summary-span {
