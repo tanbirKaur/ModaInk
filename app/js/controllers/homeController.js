@@ -61,7 +61,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		});
 		$scope.productFilters.forEach(function (filter) {
 			if(filter.key == 'price'){
-                filterInfo.filters.push({filterName:filter.key,filterRange:{gte: filter.value.split('-')[0], lte: filter.value.split('-')[1]}});
+				var minPrice = filter.value.split('-')[0];
+                var maxPrice = filter.value.split('-')[1];
+                minPrice = minPrice.replace('*',0);
+                maxPrice = maxPrice.replace('*',1000000);
+                filterInfo.filters.push({filterName:filter.key,filterRange:{gte: minPrice, lte: maxPrice}});
 			} else {
                 filterInfo.filters.push({filterName:filter.key,filterMatch:filter.value});
 			}
