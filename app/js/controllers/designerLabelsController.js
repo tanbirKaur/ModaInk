@@ -141,7 +141,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.fbShare = function (product) {
             FB.ui({
                 method: 'feed',
-                name: product.productName + " ["+ product.price +"]",
+                name: product.productName + " [ Rs. "+ product.price +"]",
                 picture : product.images[0].url,
                 link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId ,
                 caption: 'Modaink | www.modaink.com',
