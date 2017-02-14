@@ -11,8 +11,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     $scope.topCategory = $stateParams.topCategory;
 	$scope.subCategory = $stateParams.subCategory;
     $scope.isCustomizable = $stateParams.isCustomizable;
+    $scope.queryFilters = [];
 	$scope.alertHidden = function(){};
-	if($stateParams.exclusive) $scope.searchQuery.isExclusive = true;
+	if($stateParams.exclusive){
+        $scope.searchQuery.isExclusive = true;
+	}
 	if($stateParams.brand) $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand})
 
     $scope.authLogin= function (provider) {
@@ -213,10 +216,22 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     };
 
 	//Web View Methods
-	$scope.addFilter = function(name,key,val){
+	$scope.addFilter = function(name,key,val,checked){
 		var filter = {name:name,key:key,value:val};
 		if(key=='gender' || key == 'masterCategory'){
 			$scope.searchQuery[key] = val;
+			var filterUpdated = false;
+			$scope.queryFilters = $scope.queryFilters.map(function (queryFilter) {
+				if(queryFilter.key == key){
+					filterUpdated = true;
+					queryFilter.name = name;
+					queryFilter.val = val;
+				}
+				return queryFilter;
+			});
+			if(!filterUpdated){
+				$scope.queryFilters.push({name:name,key:key});
+			}
 			applyFilters();
 			return;
 		}
@@ -232,6 +247,20 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
     $scope.removeFilter = function (filter) {
+        console.log('Removing Filter:',filter.name);
+        if (filter.key == 'gender' || filter.key == 'masterCategory'){
+            for (var filterIndex = 0; filterIndex < $scope.queryFilters.length; filterIndex++) {
+                var existingFilter = $scope.queryFilters[filterIndex];
+                var filterIsPresent = angular.equals(filter,existingFilter);
+                if (filterIsPresent) {
+                	delete $scope.searchQuery[filter.key];
+                    $scope.queryFilters.splice(filterIndex,1);
+                    console.log('Filter Removed');
+                    applyFilters();
+                    return true;
+                }
+            }
+		}
         for (var filterIndex = 0; filterIndex < $scope.productFilters.length; filterIndex++) {
             var existingFilter = $scope.productFilters[filterIndex];
             var filterIsPresent = angular.equals(filter,existingFilter);
@@ -255,10 +284,23 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     }
 
     $scope.shouldShowResetFilters = function () {
-		return $scope.productFilters.length > 0;
+        var shouldShowResetFilters = $scope.queryFilters.length > 0;
+    	shouldShowResetFilters = shouldShowResetFilters || $scope.productFilters.length > 0;
+		return shouldShowResetFilters;
     }
 
-	$scope.resetFilters = function(){
+    $scope.resetGender = function () {
+        delete $scope.searchQuery['gender'];
+        $scope.queryFilters = $scope.queryFilters.filter(function (filter) {
+			return filter.key != 'gender';
+        });
+        applyFilters();
+    };
+
+    $scope.resetFilters = function(){
+    	delete $scope.searchQuery['gender'];
+        delete $scope.searchQuery['masterCategory'];
+    	$scope.queryFilters.length = 0;
 		$scope.productFilters.length = 0;
 		applyFilters();
 	}
