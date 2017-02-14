@@ -5,13 +5,16 @@
 					<a ng-show="shouldShowResetFilters()" ng-click="resetFilters()" style="font-size: x-small; float: right;">RESET ALL</a>
 					<ul>
 						<li class="chosen" ng-repeat="productFilter in productFilters">
-							<a ng-hide="productFilter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(productFilter)" href="">{{productFilter.name}}</a>
+							<a title="Remove filter" ng-click="removeFilter(productFilter)" href="">{{productFilter.name}}</a>
+						</li>
+						<li class="chosen" ng-repeat="filter in queryFilters">
+							<a ng-hide="filter.key=='isExclusive'" title="Remove filter" ng-click="removeFilter(filter)" href="">{{filter.name}}</a>
 						</li>
 					</ul>
 				</aside>
 				<aside class="basic_categorization widget woocommerce">
 						<ul>
-							<li ><a href="" ng-click="addFilter('men products','gender','men');addFilter('women products','gender','women')" >All</a></li>
+							<li ><a href="" ng-click="resetGender()" >All</a></li>
 							<li><a href="" ng-click="addFilter('men products','gender','men')" >Men</a></li>
 							<li><a href="" ng-click="addFilter('women products','gender','women')" >Women</a></li>
 						</ul>
@@ -29,17 +32,6 @@
 						    </ul>
 						</div>
 					</aside>
-					<!--<aside class = "widget woocommerce" style="height: 120px;">-->
-						<!--<div class="filter_title"> colour </div>-->
-						<!--<div>-->
-						<!--<ul>-->
-							<!--<li ng-repeat="(color,count) in allProductInfo.facets.colours_facet" data-hint="{{color}}" data-filter="colour_family_list" data-option="{{color}}" style="background:{{color}};" class="option hint&#45;&#45;top color">-->
-								<!--<label title="{{color}}">-->
-									<!--<input type="checkbox" data-filter="colour_family_list" data-option="{{color}}" class="checkbox">-->
-								<!--</label>-->
-							<!--</li>-->
-						<!--</ul>-->
-						<!--</div>-->
-					<!--</aside>-->
+
 				</div>
 			</div>

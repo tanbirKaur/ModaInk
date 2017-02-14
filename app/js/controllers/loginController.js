@@ -13,11 +13,25 @@ app.controller('LoginController', function($scope,$rootScope,httpService,storage
         httpService.login(loginInfo,function (response) {
             $scope.$emit('loginSuccess',response);
             $scope.message = "Login Successful"
-            showModal('loginSuccess')
+
+            if($rootScope.addReview){
+                showModal('reviewModal')
+            }
+            else {
+                showModal('loginSuccess')
+            }
             hideModal('loginModal')
+
         },function (response) {
             $scope.$emit('loginFailure',response);
-            $scope.message = response.data.message;
+            if(response.data){
+                $scope.message = response.data.message;
+
+            }
+            else{
+                $scope.message = "OOPS!! Something went wrong. Please try again";
+
+            }
             showModal('loginFailure')
         });
     };

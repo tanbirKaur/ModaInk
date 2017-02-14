@@ -1,11 +1,7 @@
 var app = window.app;
-app.controller('UserProfileController', function($scope,$rootScope,httpService,storageService) {
+app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService) {
     $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
-    $scope.newAddress = {};
-    $scope.countries = ['India'];
-    $scope.addressTypes = ['Home','Office'];
-    $scope.selectedAddress = 0;
 
     if (!$scope.cartItems) $scope.cartItems = [];
     if (!$rootScope.userLoggedIn) $scope.cartItems = storageService.get('guestCartItems');
@@ -30,24 +26,6 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
         },function (response) { /* DO NOTHING */});
     };
 
-
-    $scope.getUserAddresses= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
-            $scope.addresses = response.data;
-        },function (err) {
-            console.log('failed: getUserAddresses');
-        });
-    };
-
-    $scope.addNewAddress= function () {
-        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/addresses",{},{},$scope.newAddress,function (response) {
-            $scope.showAddAddress = false;
-            $scope.getUserAddresses();
-        },function (err) {
-            alert(err.data.message)
-        });
-    }
-
     $scope.onAddItemToWishListSuccess = function (response) {
         alert(response.data.message);
     }
@@ -58,7 +36,7 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
 
     $scope.moveToCheckout = function () {
         if($rootScope.userLoggedIn){
-            $scope.go('billing-details')
+            $state.go('billing-details')
         } else {
             showModal('loginModal');
         }
@@ -81,7 +59,6 @@ app.controller('UserProfileController', function($scope,$rootScope,httpService,s
     $scope.deliveryCharges = 0;
     $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
     if($rootScope.userLoggedIn){
-        $scope.getUserAddresses();
         if($scope.cartItems.length == 0){
             $scope.getShoppingCartItems()
         }
