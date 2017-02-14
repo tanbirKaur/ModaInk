@@ -74,6 +74,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		Object.keys($scope.sortOption).forEach(function(key){
 			filterInfo.sortBy.push({sortAttribute:key,sortOrder:$scope.sortOption[key]});
 		});
+		var filters = {};
 		$scope.productFilters.forEach(function (filter) {
 			if(filter.key == 'price'){
 				var minPrice = filter.value.split('-')[0];
@@ -82,8 +83,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
                 maxPrice = maxPrice.replace('*',1000000);
                 filterInfo.filters.push({filterName:filter.key,filterRange:{gte: minPrice, lte: maxPrice}});
 			} else {
-                filterInfo.filters.push({filterName:filter.key,filterMatch:filter.value});
+                var filterVals = filters[filter.key];
+                if (!filterVals)filterVals = [];
+                filterVals.push(filter.value);
+                filters[filter.key] = filterVals;
 			}
+        });
+		Object.keys(filters).forEach(function (filterName) {
+			filterInfo.filters.push({filterName:filterName,filterTerms:filters[filterName]});
         });
 		httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
