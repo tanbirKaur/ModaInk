@@ -229,7 +229,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			$scope.searchQuery[key] = val;
 			var filterUpdated = false;
 			$scope.queryFilters = $scope.queryFilters.map(function (queryFilter) {
-				if(queryFilter.key == key){
+				if(queryFilter.key == 'gender'){
 					filterUpdated = true;
 					queryFilter.name = name;
 					queryFilter.val = val;
@@ -237,7 +237,14 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 				return queryFilter;
 			});
 			if(!filterUpdated){
-				$scope.queryFilters.push({name:name,key:key});
+				if(checked){
+                    $scope.queryFilters.push({name:name,key:key});
+				} else {
+                    delete $scope.searchQuery[key];
+                    $scope.queryFilters = $scope.queryFilters.filter(function (aFilter) {
+                    	return aFilter.name != name;
+                    });
+				}
 			}
 			applyFilters();
 			return;
