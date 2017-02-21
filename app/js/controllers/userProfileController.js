@@ -42,6 +42,17 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         }
     };
 
+    $scope.getUserAddresses= function () {
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
+            $scope.addresses = response.data;
+            if ($scope.addresses.length > 0){
+                $scope.selectedAddress = $scope.addresses[0].id;
+            }
+        },function (err) {
+            console.log('failed: getUserAddresses');
+        });
+    };
+
     //Controller function calls
     $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
         return prev+parseFloat(next.product.price-next.product.discountPrice);
@@ -63,4 +74,6 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             $scope.getShoppingCartItems()
         }
     }
+
+    $scope.getUserAddresses()
 });
