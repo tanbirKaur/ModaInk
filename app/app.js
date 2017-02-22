@@ -90,7 +90,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 			templateUrl : "views/dimond-designers.html"
 		})
 		.state("my-profile", {
-			url:"/myProfile",
+			url:"/myProfile/:param",
 			templateUrl : "views/user-profile.html",
 			controller: "UserProfileController"
 		})

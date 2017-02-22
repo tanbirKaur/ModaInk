@@ -148,7 +148,7 @@
                                             <li>
                                             <li class="dropdown header_buttons">
 
-                                                  <a id="profile_button" href="#" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
+                                                  <a id="profile_button" href="" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
                                                   <ul class="dropdown-menu">
                                                     <div ng-hide="userLoggedIn">
                                                         <li><a>Your Account</a></li>
@@ -161,15 +161,15 @@
                                                         </li>
                                                     </div>
                                                     <div ng-show="userLoggedIn">
-                                                        <li ><a href="/#/myProfile">{{userName}}</a></li>
-                                                        <li ><a href="/#/myProfile">{{userDetails.email}}</a></li>
+                                                        <li ><a href="/#/myProfile/accountInformation">{{userName}}</a></li>
+                                                        <li ><a href="/#/myProfile/accountInformation">{{userDetails.email}}</a></li>
                                                         <li class="divider"></li>
-                                                        <li ><a href="/#/myProfile#myOrders">My Orders</a></li>
-                                                        <li ><a href="/#/myProfile#wishlist">My wishlist</a></li>
-                                                        <li ><a href="/#/myProfile#addresBook">Saved addresses</a></li>
-                                                        <li ><a href="/#/myProfile#rewards">User badges</a></li>
+                                                        <li ><a href="/#/myProfile/myOrders">My Orders</a></li>
+                                                        <li ><a href="/#/myProfile/wishlist">My wishlist</a></li>
+                                                        <li ><a href="/#/myProfile/addresBook">Saved addresses</a></li>
+                                                        <li ><a href="/#/myProfile/rewards">User badges</a></li>
                                                         <li class="divider"></li>
-                                                        <li ><a href="/#/myProfile/edit">Edit Profile</a></li>
+                                                        <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
                                                         <li ><a href="" ng-click="logout()">Logout</a></li>
                                                     </div>
                                                   </ul>

@@ -1,7 +1,10 @@
 var app = window.app;
-app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService) {
+app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService,$stateParams) {
     $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
+
+    $scope.param = $stateParams.param;
+
 
 
     if (!$scope.cartItems) $scope.cartItems = [];
