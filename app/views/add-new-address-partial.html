@@ -13,10 +13,11 @@
 			            <input type="text" id="billing:fullname" ng-model="newAddress.fullName" name="billing[firstname]" value="" title="Full Name" class="input-text required-entry validation-passed" placeholder="FULL NAME">
 			    	</div>
 				</div>
-				<div class="col-lg-5 col-sm-12 ">
-					<div id="email" class="billing-left">
-						<label for="billing:email" class="required">Email Address (Not saved)</label>
-						<input type="text" id="billing:email" name="billing[email]" value="" title="Email Address" class="input-text required-entry validation-passed">
+
+				<div class="col-lg-5 col-sm-12">
+					<div id="type" class="billing-right">
+						<label for="billing:type" >Type</label>
+						<select id="billing:type" name="billing[type]" title="Type" ng-options="type for type in addressTypes" ng-model="newAddress.type"></select>
 					</div>
 				</div>
 			</div>
@@ -46,24 +47,25 @@
 				</div>
 				<div class="col-lg-5 col-sm-12 ">
 					<div id="line2" class="billing-left">
-						<label for="billing:line2" class="required">Line 2</label>
-						<input type="text" ng-model="newAddress.line2" id="billing:line2" name="billing[line2]" value="" title="Address Line 2" class="input-text required-entry validation-passed">
+						<label for="billing:line2">Line 2</label>
+						<input type="text" ng-model="newAddress.line2" id="billing:line2" name="billing[line2]" value="" title="Address Line 2" class="input-text  validation-passed">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-5 col-sm-12 ">
 					<div id="landmark" class="billing-left">
-						<label for="billing:landmark" class="required">Landmark</label>
-						<input type="text" ng-model="newAddress.landmark" id="billing:landmark" name="billing[line1]" value="" title="Landmark" class="input-text required-entry validation-passed">
+						<label for="billing:landmark" >Landmark</label>
+						<input type="text" ng-model="newAddress.landmark" id="billing:landmark" name="billing[line1]" value="" title="Landmark" class="input-text  validation-passed">
 					</div>
 				</div>
-				<div class="col-lg-5 col-sm-12 ">
-					<div id="country" class="billing-left">
-	        			<label for=country class="required">Country</label>
-						<select ng-options="country for country in countries" ng-model="newAddress.country"></select>
-			    	</div>
+				<div class="col-lg-5 col-sm-12">
+					<div id="city" class="billing-right">
+						<label for="billing:city" class="required">City</label>
+						<input type="text" ng-model="newAddress.city" id="billing:city" name="billing[city]" title="City" class="input-text required-entry validation-passed" >
+					</div>
 				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-lg-5 col-sm-12 ">
@@ -72,26 +74,14 @@
 						<input type="text" ng-model="newAddress.state" id="billing:state" name="billing[state]" value="" title="State/Proince" class="input-text required-entry validation-passed">
 					</div>
 				</div>
-				<div class="col-lg-5 col-sm-12">
-					<div id="city" class="billing-right">
-	        			<label for="billing:city" class="required">City</label>
-			            <input type="text" ng-model="newAddress.city" id="billing:city" name="billing[city]" title="City" class="input-text required-entry validation-passed" >
-			    	</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-5 col-sm-12">
-					<div id="type" class="billing-right">
-						<label for="billing:type" class="required">Type</label>
-						<select id="billing:type" name="billing[type]" title="Type" ng-options="type for type in addressTypes" ng-model="newAddress.type"></select>
+
+				<div class="col-lg-5 col-sm-12 ">
+					<div id="country" class="billing-left">
+						<label for=country class="required">Country</label>
+						<select ng-options="country for country in countries" ng-model="newAddress.country"></select>
 					</div>
 				</div>
-				<div class="col-lg-5 col-sm-12">
-					<div id="default" class="billing-right">
-						<label for="billing:default" class="required">Mark Default</label>
-						<input type="checkbox" ng-model="newAddress.isDefault" id="billing:default" name="billing[default]" title="Default" class="input-text required-entry validation-passed" >
-					</div>
-				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-lg-4 col-sm-12 ">
