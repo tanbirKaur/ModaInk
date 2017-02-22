@@ -1586,7 +1586,14 @@ ul.rating {
 }
 
 .reviews-tabs, .similar-items  {
-    margin: 0% 10%;
+    margin: 3% 10%;
+}
+
+.reviews-tabs {
+    border: 1px solid #D1CFCF;
+    margin-bottom: 5%;
+    overflow: hidden;
+
 }
 
 .teamContainer{

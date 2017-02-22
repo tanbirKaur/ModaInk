@@ -199,6 +199,15 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         console.log("onGetProductsFailure:",response);
     }
 
+
+    $scope.showReviews = function () {
+
+        $('html,body').animate({
+                scrollTop: $(".reviews-tabs").offset().top -100},
+            'slow');
+
+    }
+
     //custom methods
     var findProductById = function (id) {
         return $scope.products.find(function(product){

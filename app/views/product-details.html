@@ -61,7 +61,8 @@
 						<button ng-if="product.isCustomizable" class="btn btn-sm " data-toggle="modal" data-target="#loginModal">customize now <i class="icon-right-open"></i></button>
 						<label ng-if="product.isCustomizable">This product is available for customization.</label>
 						<div style="margin: 3%">
-						<span>Reviews &nbsp;&nbsp; </span> <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="" data-toggle="modal" data-target="#reviewModal">Write a review </a></span>
+						<span><a id="reviewLink" ng-click="showReviews()" href="" >Reviews({{reviews.length}})</a></span>
+                        <span style="font-weight: bold;"> |  &nbsp;&nbsp; <a href="" data-toggle="modal" data-target="#reviewModal">Write a review </a></span>
 					</div>
 
 					</div>
@@ -77,50 +78,14 @@
 				<hr>
 		</div>
 				<!---728x90--->
-        <div class="reviews-tabs">
-            <ul class="menu-advanced ">
-                <li class="active"><a ng-href="/#/product-details/{{productId}}/{{designerId}}#moreInfo"> More Information</a></li>
-                <li><a ng-href="/#/product-details/{{productId}}/{{designerId}}#features" data-toggle="pill">Specifications</a></li>
-                <li><a ng-href="/#/product-details/{{productId}}/{{designerId}}#reviews" data-toggle="pill">Reviews ({{reviews.length}})</a></li>
-            </ul>
 
-      <div class="tab-content responsive hidden-xs hidden-sm" id="moreInfo">
-            <div ng-show="reviews.length == 0" class="tab-pane active" id="how-to">
-             <p class="tab-text">No reviews yet, be the first one to review..</p>
-            </div>
-            <div class="tab-pane" id="features" ng-repeat="feature in product.features">
-              <p class="tab-text">{{feature}}</p>
-            </div>
-            <div class="tab-pane" id="reviews">
-              <div class="response">
-                  <div class="comment-box col-md-5 " ng-repeat="review in reviews">
-                      <div class="reviewUserImg"><img src="{{review.user.avtarUrl}}"  class="reviewUserImg"></div>
 
-                      <span class="a">
-
-                          <span ng-if="review.user.firstName" class="mailbox-read-time">{{review.user.firstName}}</span>
-                          <span ng-if="!review.user.firstName" class="mailbox-read-time">Annoymus User</span>
-                         <span class="mailbox-read-time">{{review.createdAt | date:'dd MMM yyyy'}}</span>
-                      </span>
-                      <div class="comment-star">
-                          <i ng-repeat="n in range(review.rating)" class="fa fa-star" style="color: #c0a16b;"></i>
-                      </div>
-                      <span class= " comment">
-                          {{review.description}} </span>
-
-                  </div>
-
-                </div>
-            </div>
-
-        </div>
-        </div>
 
 
 
 
         <div class="similar-items">
-			 <div class="column one column_fancy_heading ">
+			 <div ng-if="similarProducts.length > 1" class="column one column_fancy_heading ">
                 <div class="fancy_heading fancy_heading_arrows">
                     <!-- Animated area -->
                     <div class="animate" data-anim-type="zoomIn">
@@ -129,7 +94,7 @@
                 </div>
             </div>
                                     <!-- One full width row-->
-            <div class="column one column_shop_slider ">
+            <div ng-if="similarProducts.length > 1" class="column one column_shop_slider ">
                 <div class="shop_slider">
                     <div class="blog_slider_header">
                         <a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>
@@ -153,7 +118,7 @@
             </div>
         </div>
 
-                <div class="column one column_fancy_heading ">
+                <div ng-if="sameBrandProducts.length > 1" class="column one column_fancy_heading ">
                         <div class="fancy_heading fancy_heading_arrows">
                             <!-- Animated area -->
                             <div class="animate" data-anim-type="zoomIn">
@@ -162,7 +127,7 @@
                         </div>
                 </div>
                                         <!-- One full width row-->
-                <div class="column one column_shop_slider ">
+                <div ng-if="sameBrandProducts.length > 1" class="column one column_shop_slider ">
                     <div class="shop_slider">
                         <ul class="shop_slider_ul">
                             <li ng-repeat="product in sameBrandProducts" ng-if="product.id != productId">
@@ -184,7 +149,33 @@
                 </div>
 			</div>
 		</div>
-	</div>
+
+    <div  class="reviews-tabs " >
+        <div ng-show="reviews.length == 0" class="tab-pane active" id="how-to">
+            <h5>No reviews yet, be the first one to review..</h5>
+        </div>
+
+        <div ng-show="reviews.length > 0" class="response">
+            <h5 style="padding: 3%">Reviews ({{reviews.length}})</h5>
+            <div class="comment-box col-md-5 " ng-repeat="review in reviews">
+                <div class="reviewUserImg"><img src="{{review.user.avtarUrl}}"  class="reviewUserImg"></div>
+                <span class="a">
+                          <span ng-if="review.user.firstName" class="mailbox-read-time">{{review.user.firstName}}</span>
+                          <span ng-if="!review.user.firstName" class="mailbox-read-time">Annoymus User</span>
+                         <span class="mailbox-read-time">{{review.createdAt | date:'dd MMM yyyy'}}</span>
+                      </span>
+                <div class="comment-star">
+                    <i ng-repeat="n in range(review.rating)" class="fa fa-star" style="color: #c0a16b;"></i>
+                </div>
+                <span class= " comment">{{review.description}} </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 </div>
 
 <div id="cartAddSuccess" class="modal fade" role="dialog">
