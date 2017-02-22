@@ -3,24 +3,34 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
 
+
     if (!$scope.cartItems) $scope.cartItems = [];
     if (!$rootScope.userLoggedIn) $scope.cartItems = storageService.get('guestCartItems');
 
     $scope.addItemToWishList= function (id,cartItemId) {
         var data = {"productId":id};
-        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems",{},{},data,function () {
-            $scope.removeItemFromBag(cartItemId);
-            alert('Item added to your wishlist');
-        },function (response) {
-            alert(response.data.message);
-        });
+        if($rootScope.userLoggedIn){
+            httpService.callHttp("POST","users/"+$scope.userDetails.id+"/wishlistItems",{},{},data,function () {
+                $scope.removeItemFromBag(cartItemId);
+                $scope.message = 'Item added to your wishlist';
+                showModal('moveProductSuccess');
+            },function (response) {
+                $scope.message = response.data.message;
+                showModal('moveProductFailure');
+            });
+        }
+        else {
+            showModal('loginModal')
+        }
+
     };
 
     $scope.removeItemFromBag= function (id) {
         httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
             $scope.getShoppingCartItems();
         },function (response) {
-            alert(response.data.message);
+            $scope.message = response.data.message;
+            showModal('moveProductFailure');
         });
     };
 

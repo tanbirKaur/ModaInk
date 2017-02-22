@@ -107,6 +107,27 @@
 				<a ng-click="moveToCheckout()"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>
 </div>
-            </div>
+
+	<div id="moveProductSuccess" class="modal fade" role="dialog">
+		<div class="modal-dialog " role="document">
+			<div class="modal-body alert alert-success">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>{{message}}</p>
+			</div>
+		</div>
+	</div>
+	<div id="moveProductFailure" class="modal fade" role="dialog">
+		<div class="modal-dialog " role="document">
+			<div class="modal-body alert alert-danger">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>{{message}}</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
 
 		</div>
+
+

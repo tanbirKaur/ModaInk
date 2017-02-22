@@ -23,7 +23,7 @@ app.controller('PaymentsController', function($scope,$state,$rootScope,$window,h
             $scope.showAddAddress = false;
             $scope.getUserAddresses();
         },function (err) {
-            alert(err.data.message)
+            console.log(err.data.message);
         });
     };
 
