@@ -93,11 +93,13 @@
             </div>
             <div class="tab-pane" id="reviews">
               <div class="response">
-                  <div class="comment-box col-md-5" ng-repeat="review in reviews">
-                      <img src="images/user7-128x128.jpg"  class="reviewUserImg">
+                  <div class="comment-box col-md-5 " ng-repeat="review in reviews">
+                      <div class="reviewUserImg"><img src="{{review.user.avtarUrl}}"  class="reviewUserImg"></div>
 
                       <span class="a">
-                          <span class="mailbox-read-time">Alexander</span>
+
+                          <span ng-if="review.user.firstName" class="mailbox-read-time">{{review.user.firstName}}</span>
+                          <span ng-if="!review.user.firstName" class="mailbox-read-time">Annoymus User</span>
                          <span class="mailbox-read-time">{{review.createdAt | date:'dd MMM yyyy'}}</span>
                       </span>
                       <div class="comment-star">
@@ -117,145 +119,70 @@
 
 
 
-        <!--<div class="similar-items">-->
-			 <!--<div class="column one column_fancy_heading ">-->
-                                        <!--<div class="fancy_heading fancy_heading_arrows">-->
-                                            <!--&lt;!&ndash; Animated area &ndash;&gt;-->
-                                            <!--<div class="animate" data-anim-type="zoomIn">-->
-                                                <!--<h2 class="title"><i class="icon-right-dir"></i>You may also like<i class="icon-left-dir"></i></h2>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash; One full width row&ndash;&gt;-->
-                                    <!--<div class="column one column_shop_slider ">-->
-                                        <!--<div class="shop_slider">-->
-                                            <!--<div class="blog_slider_header">-->
-                                                <!--<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>-->
-                                            <!--</div>-->
-                                            <!--<ul class="shop_slider_ul">-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
+        <div class="similar-items">
+			 <div class="column one column_fancy_heading ">
+                <div class="fancy_heading fancy_heading_arrows">
+                    <!-- Animated area -->
+                    <div class="animate" data-anim-type="zoomIn">
+                        <h2 class="title"><i class="icon-right-dir"></i>You may also like<i class="icon-left-dir"></i></h2>
+                    </div>
+                </div>
+            </div>
+                                    <!-- One full width row-->
+            <div class="column one column_shop_slider ">
+                <div class="shop_slider">
+                    <div class="blog_slider_header">
+                        <a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>
+                    </div>
+                    <ul class="shop_slider_ul">
+                    <li ng-repeat="product in similarProducts" ng-if="product.id != productId">
+                        <div class="item_wrapper">
+                            <div class="image_frame">
+                                <div class="image_wrapper">
+                                    <div class="mask"></div><img ng-src={{product.previewImage}} class="scale-with-grid wp-post-image" alt="home_store_product1" />
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <h4><a href="/#/product-details/{{product.id}}/{{designerId}}">{{product.productName}}</a></h4><span class="price"><span class="amount">Rs. {{product.price}}</span></span>
+                            </div>
+                        </div>
+                    </li>
 
+                    </ul>
+                <div class="slider_pagination"></div>
+            </div>
+        </div>
 
-                <!--</ul>-->
-                                            <!--<div class="slider_pagination"></div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                <div class="column one column_fancy_heading ">
+                        <div class="fancy_heading fancy_heading_arrows">
+                            <!-- Animated area -->
+                            <div class="animate" data-anim-type="zoomIn">
+                                <h2 class="title"><i class="icon-right-dir"></i>More from {{product.brandName}}<i class="icon-left-dir"></i></h2>
+                            </div>
+                        </div>
+                </div>
+                                        <!-- One full width row-->
+                <div class="column one column_shop_slider ">
+                    <div class="shop_slider">
+                        <ul class="shop_slider_ul">
+                            <li ng-repeat="product in sameBrandProducts" ng-if="product.id != productId">
+                            <div class="item_wrapper">
+                                <div class="image_frame">
+                                    <div class="image_wrapper">
+                                            <div class="mask"></div><img ng-src={{product.previewImage}} class="scale-with-grid wp-post-image" alt="home_store_product1" />
+                                    </div>
+                                </div>
+                                <div class="desc">
+                                    <h4><a href="/#/product-details/{{product.id}}/{{designerId}}">{{product.productName}}</a></h4><span class="price"><span class="amount">Rs. {{product.price}}</span></span>
+                                </div>
+                            </div>
+                            </li>
 
-                                <!--<div class="column one column_fancy_heading ">-->
-                                        <!--<div class="fancy_heading fancy_heading_arrows">-->
-                                            <!--&lt;!&ndash; Animated area &ndash;&gt;-->
-                                            <!--<div class="animate" data-anim-type="zoomIn">-->
-                                                <!--<h2 class="title"><i class="icon-right-dir"></i>More from {{product.brandName}}<i class="icon-left-dir"></i></h2>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash; One full width row&ndash;&gt;-->
-                                    <!--<div class="column one column_shop_slider ">-->
-                                        <!--<div class="shop_slider">-->
-                                            <!--<div class="blog_slider_header">-->
-                                                <!--<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>-->
-                                            <!--</div>-->
-                                            <!--<ul class="shop_slider_ul">-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                        <!--<div class="item_wrapper">-->
-                            <!--<div class="image_frame">-->
-                                <!--<div class="image_wrapper">-->
-                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="desc">-->
-                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                <!--</ul>-->
-                        <!--<div class="slider_pagination"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-			<!--</div>-->
+                        </ul>
+                        <div class="slider_pagination"></div>
+                    </div>
+                </div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -283,7 +210,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header review-header-top">
-                <img ng-src="userDetails.avtarUrl"  class="userimg">
+                <img ng-src="{{userDetails.avtarUrl}}"  class="userimg">
                 <label class="text">Hi, {{userDetails.firstName}} please provide your review.</label>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <label aria-hidden="true" class="text">&times;</label>

@@ -158,6 +158,47 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         }
         return count;
     };
+
+    $scope.getProductsOfSameBrand = function () {
+        params = {offset:0,limit:4};
+
+        var filterInfo = {
+            "filters": [
+                {
+                    "filterName": "brandName",
+                    "filterTerms": [$scope.product.brandName]
+                }
+            ]
+        }
+        httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsOfSameBSuccess,$scope.onGetProductsFailure);
+    };
+
+    $scope.getSimilarProducts = function () {
+        params = {offset:0,limit:4};
+        var filterInfo = {
+            "filters": [
+                {
+                    "filterName": "subCategories",
+                    "filterTerms": [$scope.product.subCategories[0]]
+                }
+            ]
+        }
+        httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetSimilarProductsSuccess,$scope.onGetProductsFailure);
+    };
+
+    $scope.onGetProductsOfSameBSuccess = function (response) {
+        $scope.sameBrandProductInfo = response.data;
+        $scope.sameBrandProducts = response.data.products;
+    };
+    $scope.onGetSimilarProductsSuccess = function (response) {
+        $scope.similarProductInfo = response.data;
+        $scope.similarProducts = response.data.products;
+    };
+
+    $scope.onGetProductsFailure = function (response) {
+        console.log("onGetProductsFailure:",response);
+    }
+
     //custom methods
     var findProductById = function (id) {
         return $scope.products.find(function(product){
@@ -181,6 +222,10 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         },function (err) {
             console.log(err.data.message);
         });
+        $scope.getProductsOfSameBrand();
+        $scope.getSimilarProducts();
     };
+
+
 
 });
