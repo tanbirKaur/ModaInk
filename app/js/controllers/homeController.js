@@ -17,6 +17,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	if($stateParams.exclusive){
         $scope.searchQuery.isExclusive = true;
 	}
+    if($stateParams.isDiscounted){
+        $scope.searchQuery.isDiscounted = true;
+    }
 	if($stateParams.brand){
         $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand});
         $scope.filterChecks['brandName']=true;
@@ -99,6 +102,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
 
+    // $scope.getDiscountedProducts = function () {
+    //     if (!params) params = {offset:0,limit:30};
+    //     var filterInfo = {}
+    //     filterInfo.query = {"isDiscounted": "true"}
+    //     httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetDiscountedProductsSuccess,$scope.onGetProductsFailure);
+    //
+    // }
+    //
+    // $scope.onGetDiscountedProductsSuccess = function () {
+    //         $scope.discountedProducts = response.data.products;
+    //         storageService.set("products",$scope.discountedProducts);
+    // }
 	$scope.openMyCart = function () {
 		$state.go("cart");
     };
