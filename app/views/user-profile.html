@@ -36,11 +36,16 @@
 						    	</div>
 
 						    	<div class="col-md-4">
-						    		<label> {{userDetails.firstName}} </label>
-						    		<label> {{userDetails.lastName}} </label>
-						    		<label> {{userDetails.email}} </label>
-						    		<label> {{userDetails.mobile}} </label>
-						    		<label> {{userDetails.dateOfBirth}} </label>
+									<label ng-if="userDetails.firstName"> {{userDetails.firstName}} </label>
+									<label ng-if="!userDetails.firstName"> -- </label>
+									<label ng-if="userDetails.lastName"> {{userDetails.lastName}} </label>
+									<label ng-if="!userDetails.lastName"> -- </label>
+									<label ng-if="userDetails.email"> {{userDetails.email}} </label>
+									<label ng-if="!userDetails.email"> -- </label>
+									<label ng-if="userDetails.mobile"> {{userDetails.mobile}} </label>
+									<label ng-if="!userDetails.mobile"> -- </label>
+									<label ng-if="userDetails.dateOfBirth"> {{userDetails.dateOfBirth}} </label>
+									<label ng-if="!userDetails.dateOfBirth"> -- </label>
 
 						    	</div>
 					    		
