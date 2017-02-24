@@ -25,6 +25,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("footwear",{ 
 			url : '/footwear',
 			templateUrl:"views/footwear.html",
+            controller : "HomeController"
 		})
 
 		.state("/", {
@@ -75,15 +76,18 @@ window.apiUrl = "http://dev.modaink.com/api";
 		})
 		.state("women", {
 			url:"/women",
-			templateUrl : "views/women.html"
+			templateUrl : "views/women.html",
+            controller : "HomeController"
 		})
 		.state("men", {
 			url:"/men",
-			templateUrl : "views/men.html"
+			templateUrl : "views/men.html",
+            controller : "HomeController"
 		})
 		.state("accessories", {
 			url:"/accessories",
-			templateUrl : "views/accessories.html"
+			templateUrl : "views/accessories.html",
+            controller : "HomeController"
 		})
 		.state("diamond-designers", {
 			url:"/diamond-designers",
