@@ -16,15 +16,7 @@
 			  <li role="presentation" ng-class="{active : param=='wishlist'}">
 			  	<a data-toggle="tab"  href="/myProfile#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
 			  </li>
-			  <!--<li role="presentation" >-->
-			  	<!--<a data-toggle="tab"  href="/myProfile#message"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;Messages</a>-->
-			  <!--</li>-->
-			  <!--<li role="presentation" >-->
-			  	<!--<a data-toggle="tab"  href="/myProfile#measurement"><i class="fa fa-scissors"></i>&nbsp;&nbsp;My Measurements</a>-->
-			  <!--</li>-->
-			  <!--<li role="presentation" ng-class="{active : param=='rewards'}">-->
-			  	<!--<a data-toggle="tab"  href="/myProfile#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>-->
-			  <!--</li>-->
+
 			</ul>
 
 			
@@ -104,18 +96,7 @@
 				    </div>
 
 		    		<div id="myOrders" class="tab-pane fade" ng-class="{'active in' : param=='myOrders'}">
-		    			<ul class="nav nav-tabs nav-justified" style=" padding-top: 5%;">
-							
-						    <li role="presentation" class="active">
-						  		<a href="/myProfile#ongoingOrder" data-toggle="tab">Ongoing Orders</a>
-					  		</li>
-						    <li role="presentation">
-						    	<a href="/myProfile#pastOrder" data-toggle="tab">Past Orders</a>
-					    	</li>
-					    	<li role="presentation" >
-						  		<a href="/myProfile#exchangeReturns" data-toggle="tab">Exchange and Returns</a>
-							</li>
-						</ul>
+
 						<div ng-include src="'views/orders.html'" ng-controller="UserProfileController"></div>
 		    		</div>
 
@@ -148,41 +129,7 @@
 								</div>
 		    		</div>
 
-		    		<!--<div id="message" class="tab-pane fade">-->
-			    		<!--<div class="message" ng-repeat= "n in [1,2,3,4,5]">-->
-                      		<!--<div class="pull-left">-->
-                        		<!--<img src="images/user7-128x128.jpg" class="img-circle" alt="User Image">-->
-                      		<!--</div>-->
-                      		<!--<h4>-->
-                        		<!--Designer 1-->
-                        		<!--<small style="float: right;"><i class="fa fa-clock-o"></i> 5 mins</small>-->
-                      		<!--</h4>-->
-                      		<!--<hr/>-->
-                      		<!--<p>Why not buy a new awesome dress?</p>-->
-                      		<!--<button onclick="setVisibility(reply,block)"><i class="fa fa-reply"></i></button>-->
-                      		<!--<button><i class="fa fa-trash"></i></button>-->
-	                    <!--</div> -->
 
-	                    <!--<div id="reply" class="reply" style="display: block;">-->
-	                    	<!--<textarea>hi i would like to reply to you</textarea>-->
-	                    	<!--<div class="send-reply">-->
-		                    	<!--<button class="round-tab" style="margin-left: 40%;">-->
-	                                <!--<i class="fa fa-check"></i>-->
-	                            <!--</button>-->
-	                            <!--<button class="round-tab" onclick="setVisibility(reply,none)" style="margin-left: 50%;">-->
-	                                <!--<i class="fa fa-times"></i>-->
-	                            <!--</button>-->
-	                        <!--</div>-->
-	                    <!--</div>-->
-		    		<!--</div>-->
-
-		    		<!--<div id="measurement" class="tab-pane fade">-->
-		    			<!--my measurements for customization and made to order goes here-->
-		    		<!--</div>-->
-
-		    		<!--<div id="rewards" class="tab-pane fade" ng-class="{'active in': param =='rewards'}">-->
-		    			<!--my points goes here-->
-		    		<!--</div>-->
 
 	    		</div>
 			</div>
