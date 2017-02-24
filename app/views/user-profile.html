@@ -138,8 +138,8 @@
 												<h4><a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}">{{item.product.productName}}</a></h4>
 												<div >
 												<span class="price"><span class="amount">Rs. {{item.product.price}}</span></span>
-												<a href=""> <i class="fa fa-shopping-bag"></i>Move to Bag</a>
-												<a href="" style="float: right;"> <i class="fa fa-trash-o"></i></a>
+												<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}" ng-click="addToBag(item)"> <i class="fa fa-shopping-bag"></i>Move to Bag</a>
+												<a href="" ng-click="removeItemFromWishlist(item.id)" style="float: right;"> <i class="fa fa-trash-o"></i></a>
 												</div>
 											</div>
 

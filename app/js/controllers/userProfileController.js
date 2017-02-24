@@ -38,9 +38,22 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         });
     };
 
+    $scope.removeItemFromWishlist= function (id) {
+        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/wishlistItems/"+id,{},{},{},function (response) {
+            $scope.getWishlistItems();
+            $scope.message = 'Item removed from your wishlist';
+            showModal('addAddressSuccessModal');
+        },function (response) {
+            $scope.message = response.data.message;
+            showModal('moveProductFailure');
+        });
+    };
+
     $scope.removeItemFromBag= function (id) {
         httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
             $scope.getShoppingCartItems();
+            $scope.message = 'Item removed from your bag';
+            showModal('moveProductSuccess');
         },function (response) {
             $scope.message = response.data.message;
             showModal('moveProductFailure');
@@ -82,6 +95,17 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             console.log(err.data.message);
         });
     };
+    
+    $scope.removeAddress = function (addressId) {
+        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/addresses/"+addressId,{},{},{},function (response) {
+            $scope.getUserAddresses();
+            $scope.message = 'Address removed from your account';
+            showModal('addAddressSuccessModal');
+        },function (response) {
+            $scope.message = response.data.message;
+            showModal('moveProductFailure');
+        });
+    }
 
 
     $scope.getUserOrders = function () {

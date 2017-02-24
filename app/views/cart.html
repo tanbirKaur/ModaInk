@@ -49,13 +49,14 @@
 							<a href="">{{cartItem.product.productName}}</a>
 							<span style="float: right; padding-right: 10%">Rs. {{cartItem.product.price-cartItem.product.discountPrice}}</span>
 						</div>
+						<div class="designer" style="padding-top: 2%">
+							<span >Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
+						</div>
 						<div class="size/qty">
-							<div ng-repeat="variant in cartItem.product.variantValues">
-								<span >{{variant.variant.name}}: {{variant.description}}</span>
-							</div>
 							<span >Qty: <input type="number" min="1" max="5" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
 							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.discountPrice!=0"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
 						</div>
+
 						<div class="designer" style="padding-top: 2%">
 							<span >Sold By: {{cartItem.product.brandName}}</span>
 						</div>
