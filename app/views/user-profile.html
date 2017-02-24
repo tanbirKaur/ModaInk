@@ -16,15 +16,15 @@
 			  <li role="presentation" ng-class="{active : param=='wishlist'}">
 			  	<a data-toggle="tab"  href="/myProfile#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
 			  </li>
-			  <li role="presentation" >
-			  	<a data-toggle="tab"  href="/myProfile#message"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;Messages</a>
-			  </li>
-			  <li role="presentation" >
-			  	<a data-toggle="tab"  href="/myProfile#measurement"><i class="fa fa-scissors"></i>&nbsp;&nbsp;My Measurements</a>
-			  </li>
-			  <li role="presentation" ng-class="{active : param=='rewards'}">
-			  	<a data-toggle="tab"  href="/myProfile#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>
-			  </li>
+			  <!--<li role="presentation" >-->
+			  	<!--<a data-toggle="tab"  href="/myProfile#message"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;Messages</a>-->
+			  <!--</li>-->
+			  <!--<li role="presentation" >-->
+			  	<!--<a data-toggle="tab"  href="/myProfile#measurement"><i class="fa fa-scissors"></i>&nbsp;&nbsp;My Measurements</a>-->
+			  <!--</li>-->
+			  <!--<li role="presentation" ng-class="{active : param=='rewards'}">-->
+			  	<!--<a data-toggle="tab"  href="/myProfile#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>-->
+			  <!--</li>-->
 			</ul>
 
 			
@@ -122,18 +122,22 @@
 		    		<div id="wishlist" class="tab-pane fade woocommerce woocommerce-content" ng-class="{'active in' : param=='wishlist'}">
 		    			<div class="products_wrapper ">
 									<ul class="products ">
-										<li class="product" ng-repeat="product in products">
+										<li class="product" ng-repeat="item in wishlistItems">
 											<div class="image_frame" >
 												<div class="image_wrapper">
-													<a href="/#/product-details/{{product.id}}/{{product.designer.id}}"><div class="mask"></div><img ng-src="{{product[0].url}}" title="{{product.description}}" alt="{{product.description}}"></a>
+													<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}">
+														<div class="mask">
+														<img ng-src="{{item.product.previewImage}}" title="{{item.product.productDescription}}" alt="{{item.product.productDescription}}">
+														</div>
+													</a>
 												</div>
-												<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
-												<a href="/#/product-details/{{product.id}}/{{product.designer.id}}"></a>
+												<span ng-if="item.product.isExclusive" class="onsale"><i class="icon-star"></i></span>
+												<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}"></a>
 											</div>
 											<div class="desc">
-												<h4><a href="/#/product-details/{{product.id}}/{{product.designer.id}}">{{product.name}}</a></h4>
+												<h4><a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}">{{item.product.productName}}</a></h4>
 												<div >
-												<span class="price"><span class="amount">Rs. {{product.skus[0].price}}</span></span>
+												<span class="price"><span class="amount">Rs. {{item.product.price}}</span></span>
 												<a href=""> <i class="fa fa-shopping-bag"></i>Move to Bag</a>
 												<a href="" style="float: right;"> <i class="fa fa-trash-o"></i></a>
 												</div>
@@ -144,45 +148,53 @@
 								</div>
 		    		</div>
 
-		    		<div id="message" class="tab-pane fade">
-			    		<div class="message" ng-repeat= "n in [1,2,3,4,5]">
-                      		<div class="pull-left">
-                        		<img src="images/user7-128x128.jpg" class="img-circle" alt="User Image">
-                      		</div>
-                      		<h4>
-                        		Designer 1
-                        		<small style="float: right;"><i class="fa fa-clock-o"></i> 5 mins</small>
-                      		</h4>
-                      		<hr/>
-                      		<p>Why not buy a new awesome dress?</p>
-                      		<button onclick="setVisibility(reply,block)"><i class="fa fa-reply"></i></button>
-                      		<button><i class="fa fa-trash"></i></button>
-	                    </div> 
+		    		<!--<div id="message" class="tab-pane fade">-->
+			    		<!--<div class="message" ng-repeat= "n in [1,2,3,4,5]">-->
+                      		<!--<div class="pull-left">-->
+                        		<!--<img src="images/user7-128x128.jpg" class="img-circle" alt="User Image">-->
+                      		<!--</div>-->
+                      		<!--<h4>-->
+                        		<!--Designer 1-->
+                        		<!--<small style="float: right;"><i class="fa fa-clock-o"></i> 5 mins</small>-->
+                      		<!--</h4>-->
+                      		<!--<hr/>-->
+                      		<!--<p>Why not buy a new awesome dress?</p>-->
+                      		<!--<button onclick="setVisibility(reply,block)"><i class="fa fa-reply"></i></button>-->
+                      		<!--<button><i class="fa fa-trash"></i></button>-->
+	                    <!--</div> -->
 
-	                    <div id="reply" class="reply" style="display: block;">
-	                    	<textarea>hi i would like to reply to you</textarea>
-	                    	<div class="send-reply">
-		                    	<button class="round-tab" style="margin-left: 40%;">
-	                                <i class="fa fa-check"></i>
-	                            </button>
-	                            <button class="round-tab" onclick="setVisibility(reply,none)" style="margin-left: 50%;">
-	                                <i class="fa fa-times"></i>
-	                            </button>
-	                        </div>
-	                    </div>
-		    		</div>
+	                    <!--<div id="reply" class="reply" style="display: block;">-->
+	                    	<!--<textarea>hi i would like to reply to you</textarea>-->
+	                    	<!--<div class="send-reply">-->
+		                    	<!--<button class="round-tab" style="margin-left: 40%;">-->
+	                                <!--<i class="fa fa-check"></i>-->
+	                            <!--</button>-->
+	                            <!--<button class="round-tab" onclick="setVisibility(reply,none)" style="margin-left: 50%;">-->
+	                                <!--<i class="fa fa-times"></i>-->
+	                            <!--</button>-->
+	                        <!--</div>-->
+	                    <!--</div>-->
+		    		<!--</div>-->
 
-		    		<div id="measurement" class="tab-pane fade">
-		    			my measurements for customization and made to order goes here
-		    		</div>
+		    		<!--<div id="measurement" class="tab-pane fade">-->
+		    			<!--my measurements for customization and made to order goes here-->
+		    		<!--</div>-->
 
-		    		<div id="rewards" class="tab-pane fade" ng-class="{'active in': param =='rewards'}">
-		    			my points goes here
-		    		</div>
+		    		<!--<div id="rewards" class="tab-pane fade" ng-class="{'active in': param =='rewards'}">-->
+		    			<!--my points goes here-->
+		    		<!--</div>-->
 
 	    		</div>
 			</div>
 	    </div>
+		<div id="addAddressSuccessModal" class="modal fade" role="dialog">
+			<div class="modal-dialog " role="document">
+				<div class="modal-body alert alert-success">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<p>{{message}}</p>
+				</div>
+			</div>
+		</div>
     </div>
 </div>
 
