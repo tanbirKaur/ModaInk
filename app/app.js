@@ -28,7 +28,7 @@ window.apiUrl = "http://modaink.com/api";
 		})
 
 		.state("/", {
-			url: "/products?exclusive&brand&isCustomizable",
+			url: "/products?exclusive&brand&isCustomizable&isDiscounted",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
@@ -90,7 +90,7 @@ window.apiUrl = "http://modaink.com/api";
 			templateUrl : "views/dimond-designers.html"
 		})
 		.state("my-profile", {
-			url:"/myProfile",
+			url:"/myProfile/:param",
 			templateUrl : "views/user-profile.html",
 			controller: "UserProfileController"
 		})

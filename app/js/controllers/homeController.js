@@ -3,6 +3,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.userName = undefined;
 	$scope.shoppingcartItemCount = 0;
+	$scope.filterChecks = {};
 	$scope.productFilters = [];
     $scope.searchQuery = {};
 	$scope.sortOption = {};
@@ -16,14 +17,20 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	if($stateParams.exclusive){
         $scope.searchQuery.isExclusive = true;
 	}
-	if($stateParams.brand) $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand})
+    if($stateParams.isDiscounted){
+        $scope.searchQuery.isDiscounted = true;
+    }
+	if($stateParams.brand){
+        $scope.productFilters.push({name:$stateParams.brand,key:'brandName',value:$stateParams.brand});
+        $scope.filterChecks['brandName']=true;
+	}
 
     $scope.authLogin= function (provider) {
 		$auth.authenticate(provider).then(function(response) {
 			var socialLoginInfo = {network:provider,socialToken:response.access_token};
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
                 $scope.$emit("loginSuccess",response);
-                $scope.message = "Login Successful"
+                $scope.message = "Login Successful";
                 if($rootScope.addReview){
                     showModal('reviewModal')
                 }
@@ -95,6 +102,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
 
+    // $scope.getDiscountedProducts = function () {
+    //     if (!params) params = {offset:0,limit:30};
+    //     var filterInfo = {}
+    //     filterInfo.query = {"isDiscounted": "true"}
+    //     httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetDiscountedProductsSuccess,$scope.onGetProductsFailure);
+    //
+    // }
+    //
+    // $scope.onGetDiscountedProductsSuccess = function () {
+    //         $scope.discountedProducts = response.data.products;
+    //         storageService.set("products",$scope.discountedProducts);
+    // }
 	$scope.openMyCart = function () {
 		$state.go("cart");
     };
@@ -229,7 +248,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 			$scope.searchQuery[key] = val;
 			var filterUpdated = false;
 			$scope.queryFilters = $scope.queryFilters.map(function (queryFilter) {
-				if(queryFilter.key == key){
+				if(queryFilter.key == 'gender'){
 					filterUpdated = true;
 					queryFilter.name = name;
 					queryFilter.val = val;
@@ -237,7 +256,16 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 				return queryFilter;
 			});
 			if(!filterUpdated){
-				$scope.queryFilters.push({name:name,key:key});
+				if(checked || checked == undefined){
+                    $scope.queryFilters.push({name:name,key:key});
+                    $scope.filterChecks[val] = true;
+				} else {
+                    $scope.filterChecks[val] = false;
+                    delete $scope.searchQuery[key];
+                    $scope.queryFilters = $scope.queryFilters.filter(function (aFilter) {
+                    	return aFilter.name != name;
+                    });
+				}
 			}
 			applyFilters();
 			return;
@@ -245,15 +273,20 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		var alreadyAddedFilter = $scope.productFilters.contains(filter);
 		if (alreadyAddedFilter) {
             $scope.productFilters = $scope.productFilters.filter(function(name){
+            	if(angular.equals(filter,name)){
+            		$scope.filterChecks[filter.name] = false;
+				}
             	return !angular.equals(filter,name);
             });
 		} else {
+            $scope.filterChecks[filter.name] = true;
             $scope.productFilters.push(filter);
         }
 		applyFilters();
 	};
 
     $scope.removeFilter = function (filter) {
+        $scope.filterChecks[filter.name] = false;
         console.log('Removing Filter:',filter.name);
         if (filter.key == 'gender' || filter.key == 'masterCategory'){
             for (var filterIndex = 0; filterIndex < $scope.queryFilters.length; filterIndex++) {
@@ -279,25 +312,18 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         }
         applyFilters();
         return false;
-    }
-
-    $scope.isFilterApplied = function (name) {
-		for(var index in $scope.productFilters){
-			if($scope.productFilters[index].name == name){
-				return true;
-			}
-		}
-		return '';
-    }
+    };
 
     $scope.shouldShowResetFilters = function () {
         var shouldShowResetFilters = $scope.queryFilters.length > 0;
     	shouldShowResetFilters = shouldShowResetFilters || $scope.productFilters.length > 0;
 		return shouldShowResetFilters;
-    }
+    };
 
     $scope.resetGender = function () {
         delete $scope.searchQuery['gender'];
+        $scope.filterChecks['men'] = false;
+        $scope.filterChecks['women'] = false;
         $scope.queryFilters = $scope.queryFilters.filter(function (filter) {
 			return filter.key != 'gender';
         });
@@ -309,8 +335,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         delete $scope.searchQuery['masterCategory'];
     	$scope.queryFilters.length = 0;
 		$scope.productFilters.length = 0;
+        $scope.filterChecks = {};
 		applyFilters();
-	}
+	};
 
 	//custom methods
 	var applyFilters = function(){
@@ -337,10 +364,13 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     	applyFilters();
     }
 	if ($scope.filterGender) {
+        $scope.filterChecks[$scope.filterGender]=true;
+        $scope.filterChecks[$scope.topCategory]=true;
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
         $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
         if($scope.subCategory){
             $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
+            $scope.filterChecks[$scope.subCategory]=true;
 		}
 	} else {
 		$scope.getDesigners();

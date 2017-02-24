@@ -53,16 +53,17 @@
 							<div ng-repeat="variant in cartItem.product.variantValues">
 								<span >{{variant.variant.name}}: {{variant.description}}</span>
 							</div>
-							<span >Qty: {{cartItem.quantity}}</span>
+							<span >Qty: <input type="number" min="1" max="5" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
 							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.discountPrice!=0"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
 						</div>
 						<div class="designer" style="padding-top: 2%">
 							<span >Sold By: {{cartItem.product.brandName}}</span>
 						</div>
 						<div class="edit">
-							<a href=""> <i class="icon-pencil"></i>Edit Item</a>
-							<a href="" ng-click="addItemToWishList(cartItem.product.id)"> <i class="icon-heart-empty-fa"></i>Save for later</a>
-							<a href="" ng-click="removeItemFromWishList(cartItem.id)" style="float: right;"><i class="icon-cancel"></i> Remove</a>
+							<a ng-show="editMode" href="" ng-click="editMode=false"><i class="icon-pencil"></i>Save Edit</a>
+							<a ng-hide="editMode" href="" ng-click="editMode=true"><i class="icon-pencil"></i>Edit Item</a>
+							<a href="" ng-click="addItemToWishList(cartItem.product.id,cartItem.id)"> <i class="icon-heart-empty-fa"></i>Save for later</a>
+							<a href="" ng-click="removeItemFromBag(cartItem.id)" style="float: right;"><i class="icon-cancel"></i> Remove</a>
 						</div>
 					</div>
 				</div>
@@ -106,6 +107,27 @@
 				<a ng-click="moveToCheckout()"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>
 </div>
-            </div>
+
+	<div id="moveProductSuccess" class="modal fade" role="dialog">
+		<div class="modal-dialog " role="document">
+			<div class="modal-body alert alert-success">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>{{message}}</p>
+			</div>
+		</div>
+	</div>
+	<div id="moveProductFailure" class="modal fade" role="dialog">
+		<div class="modal-dialog " role="document">
+			<div class="modal-body alert alert-danger">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<p>{{message}}</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+
 
 		</div>
+
+

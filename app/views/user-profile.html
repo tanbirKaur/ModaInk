@@ -4,25 +4,25 @@
 	    <div class="row user-profile-actions">
 
 	    	<ul class="nav nav-pills nav-stacked col-md-4">
-			  <li role="presentation" class="active">
-			  	<a data-toggle="tab" href="/myProfile#accountInformation"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Account Information</a>
+			  <li role="presentation" ng-class="{active : param=='accountInformation'}">
+			  	<a data-toggle="tab" href="/myProfile#accountInformation" ><i class="fa fa-user-o"></i>&nbsp;&nbsp;Account Information</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" ng-class="{active : param=='addresBook'}">
 			  	<a data-toggle="tab" href="/myProfile#addresBook"><i class="fa fa-address-book-o"></i>&nbsp;&nbsp;Address book</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" ng-class="{active : param=='myOrders'}">
 			  	<a data-toggle="tab"  href="/myProfile#myOrders"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;My Orders</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" ng-class="{active : param=='wishlist'}">
 			  	<a data-toggle="tab"  href="/myProfile#wishlist"><i class="fa fa-heart-o"></i>&nbsp;&nbsp;My Wishlist</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" >
 			  	<a data-toggle="tab"  href="/myProfile#message"><i class="fa fa-comments-o"></i>&nbsp;&nbsp;Messages</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" >
 			  	<a data-toggle="tab"  href="/myProfile#measurement"><i class="fa fa-scissors"></i>&nbsp;&nbsp;My Measurements</a>
 			  </li>
-			  <li role="presentation">
+			  <li role="presentation" ng-class="{active : param=='rewards'}">
 			  	<a data-toggle="tab"  href="/myProfile#rewards"><i class="fa fa-gift"></i>&nbsp;&nbsp;Rewards and Badges</a>
 			  </li>
 			</ul>
@@ -31,7 +31,7 @@
 
 			<div class="col-md-8 profile-details-section">
 				<div class="tab-content">
-		    		<div id="accountInformation" class="tab-pane fade in active">
+		    		<div id="accountInformation" class="tab-pane fade in " ng-class="{active : param=='accountInformation'}">
 			    		<h4 class="profile-title"><i class="fa fa-user-o"></i>&nbsp;&nbsp;ACCOUNT INFORMATION</h4>
 			    		<hr/>
 					    	<div class="row userDetails">
@@ -55,7 +55,7 @@
 					    	</div>
 			    	</div>
 
-		    		<div id="addresBook" class="tab-pane fade">
+		    		<div id="addresBook" class="tab-pane fade" ng-class="{'active in' : param=='addresBook'}">
 		    			<div class = "container" style="padding-top: 5%;">
 						  	<div class="panel-group" id="accordion">
 						  		<div class="panel panel-default">
@@ -96,12 +96,6 @@
 								    	<div class="panel-body">
 									    	<div ng-include src="'views/add-new-address-partial.html'">
 									    	</div>
-								    		<div>
-												<div class="desktop_version button_wrap" id="add-billing-address-container">
-								                	<button type="button" class="button btn-sm"><span style="font-size: 16px;">Cancel</span></button>
-											        <a href="/#/checkout/payment"><button type="submit" class="button btn-sm"><span style="font-size: 16px;">Save</span></button></a>
-										     	</div>
-											</div>
 							    		</div>
 								    </div>
 							    </div>
@@ -109,7 +103,7 @@
 					    </div>
 				    </div>
 
-		    		<div id="myOrders" class="tab-pane fade">
+		    		<div id="myOrders" class="tab-pane fade" ng-class="{'active in' : param=='myOrders'}">
 		    			<ul class="nav nav-tabs nav-justified" style=" padding-top: 5%;">
 							
 						    <li role="presentation" class="active">
@@ -122,10 +116,10 @@
 						  		<a href="/myProfile#exchangeReturns" data-toggle="tab">Exchange and Returns</a>
 							</li>
 						</ul>
-						<div ng-include src="'views/orders.html'"></div>
+						<div ng-include src="'views/orders.html'" ng-controller="UserProfileController"></div>
 		    		</div>
 
-		    		<div id="wishlist" class="tab-pane fade woocommerce woocommerce-content">
+		    		<div id="wishlist" class="tab-pane fade woocommerce woocommerce-content" ng-class="{'active in' : param=='wishlist'}">
 		    			<div class="products_wrapper ">
 									<ul class="products ">
 										<li class="product" ng-repeat="product in products">
@@ -182,7 +176,7 @@
 		    			my measurements for customization and made to order goes here
 		    		</div>
 
-		    		<div id="rewards" class="tab-pane fade">
+		    		<div id="rewards" class="tab-pane fade" ng-class="{'active in': param =='rewards'}">
 		    			my points goes here
 		    		</div>
 

@@ -1586,7 +1586,14 @@ ul.rating {
 }
 
 .reviews-tabs, .similar-items  {
-    margin: 0% 10%;
+    margin: 3% 10%;
+}
+
+.reviews-tabs {
+    border: 1px solid #D1CFCF;
+    margin-bottom: 5%;
+    overflow: hidden;
+
 }
 
 .teamContainer{
@@ -1880,7 +1887,17 @@ ul.rating {
     background-color: rgba(59,89,152,0.1);
 }
 
+.cart_edit {
+    width: 50px !important;
+    display: inline !important;
+    padding: 0px !important;
+    text-align: center !important;
+    border: none !important;
+}
 
+.cart_editing {
+    border: 1px solid grey !important;
+}
 
 
 
