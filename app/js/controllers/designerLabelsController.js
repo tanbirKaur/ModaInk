@@ -160,7 +160,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.getProductsOfSameBrand = function () {
-        params = {offset:0,limit:4};
+        params = {offset:0,limit:5};
 
         var filterInfo = {
             "filters": [
@@ -174,7 +174,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.getSimilarProducts = function () {
-        params = {offset:0,limit:4};
+        params = {offset:0,limit:5};
         var filterInfo = {
             "filters": [
                 {

@@ -58,9 +58,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     }
 
     $scope.updateProduct = function(){
-        Object.keys($scope.skus).forEach(function(skuName){
-            $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
-        });
+
         $scope.newProduct.skus = $scope.newProduct.skus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
