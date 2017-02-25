@@ -76,7 +76,7 @@
               </div>
 
               <div class="form-group">
-                <label>Details</label>
+                <label>Description</label>
                 <textarea required ng-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" placeholder="Enter Product Details" rows="3"></textarea>
               </div>
 
@@ -100,6 +100,12 @@
                                 <input ng-model="sku.quantity" type="number" class="form-control" placeholder="Quantity" required >
                             </div>
                         </div>
+                        <div ng-repeat="sku in newProduct.skus">
+                            <div class="input-group addSize" >
+                                <input ng-model="sku.sizeVariantValue" type="text" class="form-control" placeholder="Size type" required>
+                                <input ng-model="sku.quantity" type="number" class="form-control" placeholder="Quantity" required >
+                            </div>
+                        </div>
                     </div>
 
                       <div class="col-md-2"></div>
@@ -113,7 +119,7 @@
 
               <div class="form-group">
                 <label>Specification</label>
-                <textarea ns-model="newProduct.description" ng-readonly="mode=='v'" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
+                <textarea ns-model="newProduct.specifications" ng-readonly="mode=='v'" class="form-control" rows="4" id="productSpecification" placeholder="Product Specification to be included here."></textarea>
               </div>
 
               <div class="row" >
