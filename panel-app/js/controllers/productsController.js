@@ -58,6 +58,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     }
 
     $scope.updateProduct = function(){
+        Object.keys($scope.skus).forEach(function(skuName){
+            $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
+        });
         $scope.newProduct.skus = $scope.newProduct.skus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
@@ -106,7 +109,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         httpService.createProduct($scope.newProduct,function(res){
             $('#addProductSuccess').modal();
         }, function (res) {
-            $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
+            $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
             $('#addProductFailure').modal();
         });
     }
