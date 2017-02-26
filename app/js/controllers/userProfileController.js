@@ -86,6 +86,14 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         }
     };
 
+    $scope.updateQuantity = function (id,qty) {
+        httpService.updateBagItemQuantity(id,qty,$scope.userDetails.id,function (res) {
+            /* SUCCESS:DO NOTHING*/
+        },function (res) {
+            console.log('Could not update price');
+        })
+    }
+
     $scope.getUserAddresses= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
             $scope.addresses = response.data;
