@@ -7,9 +7,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     $scope.param = $stateParams.param;
     $scope.cartInfo = {shoppingcartItems:[]};
 
-
-
-    if (!$rootScope.userLoggedIn) {
+    var updatePricingDetails = function () {
         $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems'),shoppingcartCharges:{}};
         $scope.cartInfo.shoppingcartCharges.itemsAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
             return prev+(next.product.price*next.quantity);
@@ -18,11 +16,21 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             return prev+next.product.discountPrice;
         },0);
         $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsAmount-$scope.cartInfo.shoppingcartCharges.itemsDiscountAmount;
-        $scope.cartInfo.shoppingcartCharges.taxAmount = 0.15*$scope.cartInfo.shoppingcartCharges.itemsTotalAmount;
         $scope.cartInfo.shoppingcartCharges.shippingAmount = 0;
+        $scope.cartInfo.shoppingcartCharges.taxAmount = 100;
         $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
-                                                          $scope.cartInfo.shoppingcartCharges.shippingAmount +
-                                                          $scope.cartInfo.shoppingcartCharges.taxAmount
+            $scope.cartInfo.shoppingcartCharges.shippingAmount +
+            $scope.cartInfo.shoppingcartCharges.taxAmount;
+        if($scope.cartInfo.shoppingcartCharges.totalAmount > 2000){
+            $scope.cartInfo.shoppingcartCharges.taxAmount = 0;
+            $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
+                $scope.cartInfo.shoppingcartCharges.shippingAmount +
+                $scope.cartInfo.shoppingcartCharges.taxAmount;
+        }
+    }
+
+    if (!$rootScope.userLoggedIn) {
+        updatePricingDetails();
     };
 
     $scope.addItemToWishList= function (id,cartItemId) {
@@ -80,6 +88,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
                 cartItems:$scope.cartInfo.shoppingcartItems
             });
             storageService.set('guestCartItems',$scope.cartInfo.shoppingcartItems);
+            updatePricingDetails();
         }
     };
 
