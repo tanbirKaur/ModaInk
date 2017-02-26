@@ -64,7 +64,7 @@
 							<a ng-show="editMode" href="" ng-click="editMode=false"><i class="icon-pencil"></i>Save Edit</a>
 							<a ng-hide="editMode" href="" ng-click="editMode=true"><i class="icon-pencil"></i>Edit Item</a>
 							<a href="" ng-click="addItemToWishList(cartItem.product.id,cartItem.id)"> <i class="icon-heart-empty-fa"></i>Save for later</a>
-							<a href="" ng-click="removeItemFromBag(cartItem.id)" style="float: right;"><i class="icon-cancel"></i> Remove</a>
+							<a href="" ng-click="removeItemFromBag(cartItem.id,cartItem.product.id)" style="float: right;"><i class="icon-cancel"></i> Remove</a>
 						</div>
 					</div>
 				</div>

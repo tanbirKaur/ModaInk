@@ -49,15 +49,26 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         });
     };
 
-    $scope.removeItemFromBag= function (id) {
-        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
-            $scope.getShoppingCartItems();
-            $scope.message = 'Item removed from your bag';
-            showModal('moveProductSuccess');
-        },function (response) {
-            $scope.message = response.data.message;
-            showModal('moveProductFailure');
-        });
+    $scope.removeItemFromBag= function (id,productId) {
+        if($rootScope.userLoggedIn){
+            httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
+                $scope.getShoppingCartItems();
+                $scope.message = 'Item removed from your bag';
+                showModal('moveProductSuccess');
+            },function (response) {
+                $scope.message = response.data.message;
+                showModal('moveProductFailure');
+            });
+        } else {
+            $scope.cartItems = $scope.cartItems.filter(function (cartItem) {
+                return cartItem.product.id != productId;
+            });
+            $rootScope.$broadcast("updateCartDetails",{
+                cartItems:$scope.cartItems,
+            });
+            updateCheckoutDetails();
+            storageService.set('guestCartItems',$scope.cartItems);
+        }
     };
 
     $scope.getShoppingCartItems= function () {
@@ -116,22 +127,25 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         });
     }
 
-    //Controller function calls
-    $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.product.price-next.product.discountPrice);
-    },0);
-    $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.product.discountPrice);
-    },0);
+    var updateCheckoutDetails = function () {
+        $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
+            return prev+parseFloat(next.product.price-next.product.discountPrice);
+        },0);
+        $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
+            return prev+parseFloat(next.product.discountPrice);
+        },0);
 
+        $scope.subTotal = $scope.totalPrice-$scope.totalDiscount;
+        $scope.vatPrice = 0;
+        $scope.deliveryCharges = 0;
+        $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
+    }
+    //Controller function calls
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');
     };
 
-    $scope.subTotal = $scope.totalPrice-$scope.totalDiscount;
-    $scope.vatPrice = 0;
-    $scope.deliveryCharges = 0;
-    $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
+    updateCheckoutDetails();
     if($rootScope.userLoggedIn){
         if($scope.cartItems.length > 0){
             $scope.getShoppingCartItems()
