@@ -1,57 +1,60 @@
 
 <div id="Content" ng-controller="HomeController" class=" woocommerce woocommerce-page with_aside aside_left without_headers">
-		<div class="content_wrapper clearfix">
+	<div class="content_wrapper clearfix">
 
-			<!-- .sections_group -->
-			<div class="sections_group">
-				<div class="section">
-					<div class="section_wrapper clearfix">
-						<div class="items_group clearfix">
-							<!-- One full width row-->
-		<div class="column one woocommerce-content">
+		<!-- .sections_group -->
+		<div class="sections_group">
+			<div class="section">
+				<div class="section_wrapper clearfix">
+					<div class="items_group clearfix">
+						<!-- One full width row-->
+						<div class="column one woocommerce-content">
 
-								<div class="shop-filters">
-									<p class="woocommerce-result-count">
-										Showing all {{products.length}} results
-									</p>
-									<form class="woocommerce-ordering" method="get">
-										<ul class="sort widget woocommerce">
-											<li><label>Sort:</label></li>
-											<li><a href="" ng-click="sortBy('price')">Price</a></li>
-											<li><a href="" ng-click="sortBy('discountPrice')">Discount</a></li>
-										</ul>
-									</form>
-								</div>
-								<div class="products_wrapper ">
-									<ul class="products ">
-										<li class="product" ng-repeat="product in products track by $index">
-											<div class="image_frame" >
-												<div class="image_wrapper">
-													<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"><div class="mask"></div><img ng-src="{{product.previewImage}}" title="{{product.productDescription}}" alt="{{product.productDescription}}"></a>
-												</div>
-												<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
-												<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"></a>
+							<div class="shop-filters">
+								<p class="woocommerce-result-count">
+									Showing all {{products.length}} results
+								</p>
+								<form class="woocommerce-ordering" method="get">
+									<ul class="sort widget woocommerce">
+										<li><label>Sort:</label></li>
+										<li><a href="" ng-click="sortBy('price')">Price</a></li>
+										<li><a href="" ng-click="sortBy('discountPrice')">Discount</a></li>
+									</ul>
+								</form>
+							</div>
+							<div class="products_wrapper ">
+								<ul class="products ">
+									<li class="product" ng-repeat="product in products track by $index">
+										<div class="image_frame" >
+											<div class="image_wrapper">
+												<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"><div class="mask"></div><img ng-src="{{product.previewImage}}" title="{{product.productDescription}}" alt="{{product.productDescription}}"></a>
 											</div>
-											<div class="desc">
-												<h4><a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top">{{product.productName}}</a></h4>
-												<div >
+											<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
+											<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"></a>
+										</div>
+										<div class="desc">
+											<h4><a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top">{{product.productName}}</a></h4>
+											<div >
 												<span class="price"><span class="amount">Rs. {{product.price}}</span></span>
 												<span ng-if="product.discountPrice!=0">Discount: {{product.discountPrice}}</span>
-												</div>
 											</div>
+										</div>
 
-										</li>
-									</ul>
-								</div>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
+				</div>
+				<div class="section">
+					<button class="btn btn-flat btn-sm center-block">Show More</button>
 				</div>
 			</div>
 		</div>
-	</div>
 
-			<!-- .four-columns - sidebar -->
-			<!-- Sidebar area-->
-		 <div ng-include src="'views/filter-panel-partial.html'"></div>
-		</div>
+		<!-- .four-columns - sidebar -->
+		<!-- Sidebar area-->
+		<div ng-include src="'views/filter-panel-partial.html'"></div>
 	</div>
+</div>
 </div><!-- #Wrapper -->
