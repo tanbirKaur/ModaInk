@@ -10,8 +10,19 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
 
 
     if (!$rootScope.userLoggedIn) {
-        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems')};
-        //TODO prepare price checkout info
+        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems'),shoppingcartCharges:{}};
+        $scope.cartInfo.shoppingcartCharges.itemsAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            return prev+(next.product.price*next.quantity);
+        },0);
+        $scope.cartInfo.shoppingcartCharges.itemsDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            return prev+next.product.discountPrice;
+        },0);
+        $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsAmount-$scope.cartInfo.shoppingcartCharges.itemsDiscountAmount;
+        $scope.cartInfo.shoppingcartCharges.taxAmount = 0.15*$scope.cartInfo.shoppingcartCharges.itemsTotalAmount;
+        $scope.cartInfo.shoppingcartCharges.shippingAmount = 0;
+        $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
+                                                          $scope.cartInfo.shoppingcartCharges.shippingAmount +
+                                                          $scope.cartInfo.shoppingcartCharges.taxAmount
     };
 
     $scope.addItemToWishList= function (id,cartItemId) {
@@ -73,8 +84,9 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     };
 
     $scope.getStockQuantityForProductSku = function (sku, allSkus) {
+        var skuId = sku.id?sku.id:sku.skuId;
         return (allSkus.filter(function (productSku) {
-            return productSku.skuId == sku.id;
+            return productSku.skuId == skuId;
         })[0]).inStockQuantity;
     };
 
