@@ -63,5 +63,14 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
         });
     }
 
+    httpService.updateBagItemQuantity = function (bagItemId,qty,userId,successCallback,failureCallback) {
+        var quantity = {quantity:qty};
+        httpService.callHttp("PUT","users/"+userId+"/shoppingcartItems/"+bagItemId,{},{},quantity,function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"updateBagItemQuantity");
+        });
+    };
+
     return httpService;
  }]);

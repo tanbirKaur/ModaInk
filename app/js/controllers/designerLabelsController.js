@@ -95,14 +95,18 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.addToCart = function (product) {
+        if(!$scope.productSku){
+            $scope.productSkuMessage = 'Select product size first';
+            return;
+        }
         if($rootScope.userLoggedIn){
             $scope.addItemToCart();
         } else {
-            if(!$scope.productSku){
-                $scope.productSkuMessage = 'Select product size first';
-                return;
-            }
-            var itemInfo = {sku: {sizeVariantValue:$scope.productSku},quantity: 1,product:product};
+            var productSku = product.allSkus.filter(function (sku) {
+                return sku.skuId == $scope.productSku;
+            })[0];
+            var itemInfo = {sku: productSku,quantity: 1,product:product};
+            itemInfo.sku.sizeVariantValue = itemInfo.sku.size;
             var guestItems = storageService.get('guestCartItems');
             if(!guestItems) guestItems = [];
             guestItems.push(itemInfo);

@@ -1,16 +1,37 @@
 var app = window.app;
 app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService,$stateParams) {
-    $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
     $scope.newAddress = {};
     $scope.countries = ['India'];
     $scope.addressTypes = ['Home','Office'];
     $scope.param = $stateParams.param;
+    $scope.cartInfo = {shoppingcartItems:[]};
 
+    var updatePricingDetails = function () {
+        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems'),shoppingcartCharges:{}};
+        $scope.cartInfo.shoppingcartCharges.itemsAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            return prev+(next.product.price*next.quantity);
+        },0);
+        $scope.cartInfo.shoppingcartCharges.itemsDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            return prev+next.product.discountPrice;
+        },0);
+        $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsAmount-$scope.cartInfo.shoppingcartCharges.itemsDiscountAmount;
+        $scope.cartInfo.shoppingcartCharges.shippingAmount = 0;
+        $scope.cartInfo.shoppingcartCharges.taxAmount = 100;
+        $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
+            $scope.cartInfo.shoppingcartCharges.shippingAmount +
+            $scope.cartInfo.shoppingcartCharges.taxAmount;
+        if($scope.cartInfo.shoppingcartCharges.totalAmount > 2000){
+            $scope.cartInfo.shoppingcartCharges.taxAmount = 0;
+            $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
+                $scope.cartInfo.shoppingcartCharges.shippingAmount +
+                $scope.cartInfo.shoppingcartCharges.taxAmount;
+        }
+    }
 
-
-    if (!$scope.cartItems) $scope.cartItems = [];
-    if (!$rootScope.userLoggedIn) $scope.cartItems = storageService.get('guestCartItems');
+    if (!$rootScope.userLoggedIn) {
+        updatePricingDetails();
+    };
 
     $scope.addItemToWishList= function (id,cartItemId) {
         var data = {"productId":id};
@@ -49,21 +70,39 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         });
     };
 
-    $scope.removeItemFromBag= function (id) {
-        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
-            $scope.getShoppingCartItems();
-            $scope.message = 'Item removed from your bag';
-            showModal('moveProductSuccess');
-        },function (response) {
-            $scope.message = response.data.message;
-            showModal('moveProductFailure');
-        });
+    $scope.removeItemFromBag= function (id,productId) {
+        if($rootScope.userLoggedIn){
+            httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/shoppingcartItems/"+id,{},{},{},function (response) {
+                $scope.getShoppingCartItems();
+                $scope.message = 'Item removed from your bag';
+                showModal('moveProductSuccess');
+            },function (response) {
+                $scope.message = response.data.message;
+                showModal('moveProductFailure');
+            });
+        } else {
+            $scope.cartInfo.shoppingcartItems = $scope.cartInfo.shoppingcartItems.filter(function (cartItem) {
+                return cartItem.product.id != productId;
+            });
+            $rootScope.$broadcast("updateCartDetails",{
+                cartItems:$scope.cartInfo.shoppingcartItems
+            });
+            storageService.set('guestCartItems',$scope.cartInfo.shoppingcartItems);
+            updatePricingDetails();
+        }
+    };
+
+    $scope.getStockQuantityForProductSku = function (sku, allSkus) {
+        var skuId = sku.id?sku.id:sku.skuId;
+        return (allSkus.filter(function (productSku) {
+            return productSku.skuId == skuId;
+        })[0]).inStockQuantity;
     };
 
     $scope.getShoppingCartItems= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},function (response) {
-            $scope.cartItems = response.data;
-            $scope.$emit('refreshCart',response);
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},function (response) {
+            $scope.cartInfo = response.data;
+            $scope.$emit('refreshCart',{data:$scope.cartInfo.shoppingcartItems});
         },function (response) { /* DO NOTHING */});
     };
 
@@ -74,6 +113,14 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             showModal('loginModal');
         }
     };
+
+    $scope.updateQuantity = function (id,qty) {
+        httpService.updateBagItemQuantity(id,qty,$scope.userDetails.id,function (res) {
+            $scope.getShoppingCartItems();
+        },function (res) {
+            console.log('Could not update price');
+        })
+    }
 
     $scope.getUserAddresses= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
@@ -115,27 +162,13 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             console.log('failed: getUserOrders');
         });
     }
-
     //Controller function calls
-    $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.product.price-next.product.discountPrice);
-    },0);
-    $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
-        return prev+parseFloat(next.product.discountPrice);
-    },0);
-
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');
     };
 
-    $scope.subTotal = $scope.totalPrice-$scope.totalDiscount;
-    $scope.vatPrice = 0;
-    $scope.deliveryCharges = 0;
-    $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
     if($rootScope.userLoggedIn){
-        if($scope.cartItems.length > 0){
-            $scope.getShoppingCartItems()
-        }
+        $scope.getShoppingCartItems()
     }
     if ($scope.userDetails){
         $scope.getUserAddresses()
