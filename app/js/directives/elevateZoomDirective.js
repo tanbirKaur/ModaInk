@@ -7,9 +7,8 @@ angular.module("ModaInk").directive('ngElevateZoom', function($rootScope) {
             });
             $rootScope.$on('$stateChangeStart',
                 function(event, toState, toParams, fromState, fromParams){
-                    $('#zoomContainer').remove();
-                    $('#gallery-preview').removeData('elevateZoom');
-                    $('#gallery-preview').removeData('zoomImage');
+                    $.removeData($('#gallery-preview'), 'elevateZoom');
+                    $('.zoomContainer').remove();
                 }
             )
             scope.$on('$routeChangeSuccess', function() {
