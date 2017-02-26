@@ -1,11 +1,17 @@
-angular.module("ModaInk").directive('ngElevateZoom', function() {
+angular.module("ModaInk").directive('ngElevateZoom', function($rootScope) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
             attrs.$observe('zoomImage',function(newVal){
                 linkElevateZoom(newVal);
             });
-
+            $rootScope.$on('$stateChangeStart',
+                function(event, toState, toParams, fromState, fromParams){
+                    $('#zoomContainer').remove();
+                    $('#gallery-preview').removeData('elevateZoom');
+                    $('#gallery-preview').removeData('zoomImage');
+                }
+            )
             scope.$on('$routeChangeSuccess', function() {
                 $.removeData($('img'), 'elevateZoom');
                 $('.zoomContainer').remove();
