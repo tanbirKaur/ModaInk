@@ -363,15 +363,17 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     	$scope.searchQuery.isCustomizable = $scope.isCustomizable;
     	applyFilters();
     }
+    if ($scope.topCategory){
+        $scope.filterChecks[$scope.topCategory]=true;
+        $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
+	}
+    if($scope.subCategory){
+        $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
+        $scope.filterChecks[$scope.subCategory]=true;
+    }
 	if ($scope.filterGender) {
         $scope.filterChecks[$scope.filterGender]=true;
-        $scope.filterChecks[$scope.topCategory]=true;
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
-        $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
-        if($scope.subCategory){
-            $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
-            $scope.filterChecks[$scope.subCategory]=true;
-		}
 	} else {
 		$scope.getDesigners();
 		$scope.getCategories();
