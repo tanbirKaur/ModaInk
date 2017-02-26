@@ -1,16 +1,18 @@
 var app = window.app;
 app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService,$stateParams) {
-    $scope.cartItems = storageService.getLocal("cartItems");
     $scope.userDetails = storageService.get("userDetails");
     $scope.newAddress = {};
     $scope.countries = ['India'];
     $scope.addressTypes = ['Home','Office'];
     $scope.param = $stateParams.param;
+    $scope.cartInfo = {shoppingcartItems:[]};
 
 
 
-    if (!$scope.cartItems) $scope.cartItems = [];
-    if (!$rootScope.userLoggedIn) $scope.cartItems = storageService.get('guestCartItems');
+    if (!$rootScope.userLoggedIn) {
+        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems')};
+        //TODO prepare price checkout info
+    };
 
     $scope.addItemToWishList= function (id,cartItemId) {
         var data = {"productId":id};
@@ -60,21 +62,26 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
                 showModal('moveProductFailure');
             });
         } else {
-            $scope.cartItems = $scope.cartItems.filter(function (cartItem) {
+            $scope.cartInfo.shoppingcartItems = $scope.cartInfo.shoppingcartItems.filter(function (cartItem) {
                 return cartItem.product.id != productId;
             });
             $rootScope.$broadcast("updateCartDetails",{
-                cartItems:$scope.cartItems,
+                cartItems:$scope.cartInfo.shoppingcartItems
             });
-            updateCheckoutDetails();
-            storageService.set('guestCartItems',$scope.cartItems);
+            storageService.set('guestCartItems',$scope.cartInfo.shoppingcartItems);
         }
     };
 
+    $scope.getStockQuantityForProductSku = function (sku, allSkus) {
+        return (allSkus.filter(function (productSku) {
+            return productSku.skuId == sku.id;
+        })[0]).inStockQuantity;
+    };
+
     $scope.getShoppingCartItems= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},function (response) {
-            $scope.cartItems = response.data;
-            $scope.$emit('refreshCart',response);
+        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},function (response) {
+            $scope.cartInfo = response.data;
+            $scope.$emit('refreshCart',{data:$scope.cartInfo.shoppingcartItems});
         },function (response) { /* DO NOTHING */});
     };
 
@@ -88,7 +95,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
 
     $scope.updateQuantity = function (id,qty) {
         httpService.updateBagItemQuantity(id,qty,$scope.userDetails.id,function (res) {
-            /* SUCCESS:DO NOTHING*/
+            $scope.getShoppingCartItems();
         },function (res) {
             console.log('Could not update price');
         })
@@ -134,30 +141,13 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             console.log('failed: getUserOrders');
         });
     }
-
-    var updateCheckoutDetails = function () {
-        $scope.totalPrice = $scope.cartItems.reduce(function (prev,next) {
-            return prev+parseFloat(next.product.price-next.product.discountPrice);
-        },0);
-        $scope.totalDiscount = $scope.cartItems.reduce(function (prev,next) {
-            return prev+parseFloat(next.product.discountPrice);
-        },0);
-
-        $scope.subTotal = $scope.totalPrice-$scope.totalDiscount;
-        $scope.vatPrice = 0;
-        $scope.deliveryCharges = 0;
-        $scope.payableAmount = $scope.subTotal-$scope.vatPrice-$scope.deliveryCharges;
-    }
     //Controller function calls
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');
     };
 
-    updateCheckoutDetails();
     if($rootScope.userLoggedIn){
-        if($scope.cartItems.length > 0){
-            $scope.getShoppingCartItems()
-        }
+        $scope.getShoppingCartItems()
     }
     if ($scope.userDetails){
         $scope.getUserAddresses()

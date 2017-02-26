@@ -1,14 +1,14 @@
 <div ng-controller="UserProfileController" id="Content" class="without_headers"  style="min-height: 250px;">
 	<div class="content_wrapper clearfix" style="margin-left: 15%; margin-right: 15%; margin-bottom: 10%;">
 
-		<div ng-show = "cartItems.length == 0">
+		<div ng-show = "cartInfo.shoppingcartItems.length == 0">
 			<h3>You have 0 items in your cart.</h3>
 			<hr/>
 			<div class="continue-shopping">
 				<a href="/"><button id="continue-shopping" class="alt-action" >Continue Shopping <i class="icon-cart"></i></button></a>
 			</div>
 		</div>
-	<nav ng-if="cartItems.length > 0" class="stepper">
+	<nav ng-if="cartInfo.shoppingcartItems.length > 0" class="stepper">
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
 		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
 		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
@@ -32,13 +32,13 @@
 
 	</nav>
 
-		<div  ng-if="cartItems.length > 0 " id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
-			<h4 style="display: inline-block;n">My Shopping Bag ({{cartItems.length}} item)</h4>
-			<h4 style="float: right;"> Total: {{totalPrice}}</h4>	
+		<div  ng-if="cartInfo.shoppingcartItems.length > 0 " id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
+			<h4 style="display: inline-block;n">My Shopping Bag ({{cartInfo.shoppingcartItems.length}} item)</h4>
+			<h4 style="float: right;"> Total: {{cartInfo.shoppingcartCharges.itemsAmount}}</h4>
 			<hr>
 
 			<div class="prod-set">
-				<div ng-repeat="cartItem in cartItems" class="b-white row prod-item br-b-grey">
+				<div ng-repeat="cartItem in cartInfo.shoppingcartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
 						<a href="/#/product-details/{{cartItem.product.id}}/{{cartItem.product.designer.id}}" >
 							<img ng-src="{{cartItem.product.previewImage}}" alt="{{cartItem.product.productName}}" width="96" height="128">
@@ -53,7 +53,7 @@
 							<span >Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
 						</div>
 						<div class="size/qty">
-							<span >Qty: <input type="number" min="1" max="5" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
+							<span >Qty: <input type="number" min="1" max="{{getStockQuantityForProductSku(cartItem.sku,cartItem.product.allSkus)}}" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
 							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.discountPrice!=0"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
 						</div>
 
@@ -75,35 +75,35 @@
 			
 		</div>
 
-		<div ng-if="cartItems.length > 0" id="right">
+		<div ng-if="cartInfo.shoppingcartItems.length > 0" id="right">
 
 				<div  style="margin-left: : 10px;">PRICE DETAILS</div>
 
 				<div class="order-summary-span ">
 					<div>
 	              		<label>Bag Total</label>
-	              		<span>Rs. {{totalPrice}} </span>
+	              		<span>Rs. {{cartInfo.shoppingcartCharges.itemsAmount}} </span>
               		</div>
               		<div>
 	              		<label>Bag Discount</label>
-	              		<span class="value greenrupees c-green">Rs. {{totalDiscount}}</span>
+	              		<span class="value greenrupees c-green">Rs. {{cartInfo.shoppingcartCharges.itemsDiscountAmount}}</span>
               		</div>
               		<div class="sub-total">
 	              		<label>Sub Total</label>
-	              		<span class="item-total red">Rs. {{subTotal}}</span>
+	              		<span class="item-total red">Rs. {{cartInfo.shoppingcartCharges.itemsTotalAmount}}</span>
               		</div>
               		<div class="vat">
 	              		<label>Estimated VAT/CST<div class="vathint"></div></label>
-	              		<span class="vat-fee">Rs. {{vatPrice}}</span>
+	              		<span class="vat-fee">Rs. {{cartInfo.shoppingcartCharges.taxAmount}}</span>
               		</div>
 
           			<div class="shipping">
           				<label>Delivery Charges</label>
-  						<span class="shipping-fee red"><span class="shipping-charge">Rs. {{deliveryCharges}}</span></span>
+  						<span class="shipping-fee red"><span class="shipping-charge">Rs. {{cartInfo.shoppingcartCharges.shippingAmount}}</span></span>
 					</div>
 				</div>
 
-				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{payableAmount}}</span></div>
+				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{cartInfo.shoppingcartCharges.totalAmount}}</span></div>
 				<div class="place-order">
 				<a ng-click="moveToCheckout()"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>

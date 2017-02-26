@@ -192,7 +192,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	var updateCart = function (res) {
         $scope.shoppingcartItems = res.data;
         $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
-        storageService.setLocal("cartItems",$scope.shoppingcartItems);
     };
 
     $scope.onGetShoppingCartItemsFailure = function () {
@@ -367,9 +366,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         $scope.filterChecks[$scope.topCategory]=true;
         $scope.addFilter($scope.topCategory, "masterCategory", $scope.topCategory);
 	}
-    if($scope.subCategory){
-        $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
-        $scope.filterChecks[$scope.subCategory]=true;
+	if ($scope.subCategory){
+        if($scope.subCategory){
+            $scope.addFilter($scope.subCategory, "subCategories", $scope.subCategory);
+            $scope.filterChecks[$scope.subCategory]=true;
+        }
     }
 	if ($scope.filterGender) {
         $scope.filterChecks[$scope.filterGender]=true;
