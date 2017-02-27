@@ -166,7 +166,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.getProductsOfSameBrand = function () {
-        params = {offset:0,limit:5};
+        params = {offset:0,limit:10};
 
         var filterInfo = {
             "filters": [
@@ -180,7 +180,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     };
 
     $scope.getSimilarProducts = function () {
-        params = {offset:0,limit:5};
+        params = {offset:0,limit:10};
         var filterInfo = {
             "filters": [
                 {
@@ -195,7 +195,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.onGetProductsOfSameBSuccess = function (response) {
         $scope.sameBrandProductInfo = response.data;
         
-        var sameBrandProducts = response.data.products;
+        var sameBrandProducts = response.data.products.reverse();
 
         sameBrandProducts.forEach(function (product) {
             if(product.id != $scope.product.id && $scope.sameBrandProducts.length<4){

@@ -14,6 +14,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     $scope.isCustomizable = $stateParams.isCustomizable;
     $scope.queryFilters = [];
     $scope.products =[];
+    var shouldShowMoreProducts = false;
 	$scope.alertHidden = function(){};
 	if($stateParams.exclusive){
         $scope.searchQuery.isExclusive = true;
@@ -105,6 +106,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
 
     $scope.showMoreProducts = function () {
+        $scope.shouldShowMoreProducts = true;
     	var params = {offset:$scope.products.length,limit:28};
 		$scope.getProducts(params);
     }
@@ -207,12 +209,16 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.allProductInfo = response.data;
 		$scope.allProducts = response.data.products;
         var products = response.data.products;
-
-        products.forEach(function (product) {
+        if($scope.shouldShowMoreProducts){
+            products.forEach(function (product) {
                 $scope.products.push(product);
-        })
+            })
+        }else{
+            $scope.products = products;
+        }
 		// applyFilters();
 		storageService.set("products",$scope.products);
+        $scope.shouldShowMoreProducts = false;
 	};
 
 	$scope.onGetProductsFailure = function (response) {
