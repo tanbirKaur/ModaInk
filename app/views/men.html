@@ -85,147 +85,78 @@
         	
         </div>
 
-         <div class="column one column_fancy_heading ">
-	        <div class="fancy_heading fancy_heading_arrows">
-	            <!-- Animated area -->
-	            <div class="animate" data-anim-type="zoomIn">
-	                <h2 class="title"><i class="icon-right-dir"></i>Trending<i class="icon-left-dir"></i></h2>
-                    <a href="/#/products" target="_top"><h6>Show All</h6></a>
-	            </div>
-	        </div>
-	    </div>
+         <!--<div class="column one column_fancy_heading " >-->
+	        <!--<div class="fancy_heading fancy_heading_arrows">-->
+	            <!--&lt;!&ndash; Animated area &ndash;&gt;-->
+	            <!--<div class="animate" data-anim-type="zoomIn">-->
+	                <!--<h2 class="title"><i class="icon-right-dir"></i>Trending<i class="icon-left-dir"></i></h2>-->
+                    <!--<a href="/#/products/men/" target="_top"><h6>Show All</h6></a>-->
+	            <!--</div>-->
+	        <!--</div>-->
+	    <!--</div>-->
                                     <!-- One full width row-->
-        <div class="column one column_shop_slider ">
-            <div class="shop_slider">
-                <div class="blog_slider_header">
-                    <a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>
-                </div>
-                <ul class="shop_slider_ul">
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    
-                   
-                </ul>
-                <div class="slider_pagination"></div>
-            </div>
-        </div>
+        <!--<div class="column one column_shop_slider " style="margin-left: 5%">-->
+            <!--<div class="shop_slider">-->
+                <!--<div class="blog_slider_header">-->
+                    <!--<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>-->
+                <!--</div>-->
+                <!--<ul class="shop_slider_ul">-->
+                    <!--<li class="product-trending" ng-repeat="product in products| filter:{gender:'men'} |limitTo:5">-->
+                        <!--<div class="item_wrapper">-->
+                            <!--<div class="image_frame">-->
+                                <!--<div class="image_wrapper">-->
+                                    <!--<div class="mask"></div><img ng-src="{{product.previewImage}}" class="scale-with-grid wp-post-image"  title="{{product.productDescription}}" alt="{{product.productDescription}}" />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="desc">-->
+                                <!--<h4><a href="/#/product-details/{{product.id}}/{{product.designerId}}">{{product.productName}}</a></h4><span class="price"><span class="amount">Rs. {{product.price}}</span></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
 
-        <div class="column one column_fancy_heading ">
-	        <div class="fancy_heading fancy_heading_arrows">
-	            <!-- Animated area -->
-	            <div class="animate" data-anim-type="zoomIn">
-	                <h2 class="title"><i class="icon-right-dir"></i>Best Seller<i class="icon-left-dir"></i></h2>
-                     <a href=""><h6>Show All</h6></a>
-	            </div>
-	        </div>
-	    </div>
-                                    <!-- One full width row-->
-        <div class="column one column_shop_slider ">
-            <div class="shop_slider">
-                <div class="blog_slider_header">
-                    <a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>
-                </div>
-                <ul class="shop_slider_ul">
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item_wrapper">
-                            <div class="image_frame">
-                                <div class="image_wrapper">
-                                        <div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>
-                            </div>
-                        </div>
-                    </li>
-                    
-                   
-                </ul>
-                <div class="slider_pagination"></div>
-            </div>
-        </div>
+
+
+                <!--</ul>-->
+
+                <!--<div class="slider_pagination"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="column one column_fancy_heading ">-->
+	        <!--<div class="fancy_heading fancy_heading_arrows">-->
+	            <!--&lt;!&ndash; Animated area &ndash;&gt;-->
+	            <!--<div class="animate" data-anim-type="zoomIn">-->
+	                <!--<h2 class="title"><i class="icon-right-dir"></i>Best Seller<i class="icon-left-dir"></i></h2>-->
+                     <!--<a href=""><h6>Show All</h6></a>-->
+	            <!--</div>-->
+	        <!--</div>-->
+	    <!--</div>-->
+                                    <!--&lt;!&ndash; One full width row&ndash;&gt;-->
+        <!--<div class="column one column_shop_slider ">-->
+            <!--<div class="shop_slider">-->
+                <!--<div class="blog_slider_header">-->
+                    <!--<a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>-->
+                <!--</div>-->
+                <!--<ul class="shop_slider_ul">-->
+                    <!--<li>-->
+                        <!--<div class="item_wrapper">-->
+                            <!--<div class="image_frame">-->
+                                <!--<div class="image_wrapper">-->
+                                        <!--<div class="mask"></div><img src="images/home_store_product1-300x300.jpg" class="scale-with-grid wp-post-image" alt="home_store_product1" />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="desc">-->
+                                <!--<h4><a href="content/shop/product-woo-album-1.html">Woo Album #1</a></h4><span class="price"><span class="amount">Rs. 900</span></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                   <!---->
+                    <!---->
+                   <!---->
+                <!--</ul>-->
+                <!--<div class="slider_pagination"></div>-->
+            <!--</div>-->
+        <!--</div>-->
 
          <div> 
             <a href="/#/products?isDiscounted=true"><img src="images/discount.png"></a>

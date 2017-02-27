@@ -1898,6 +1898,9 @@ ul.rating {
 .cart_editing {
     border: 1px solid grey !important;
 }
+.product-trending{
+    width: 260px !important;
+}
 
 
 
