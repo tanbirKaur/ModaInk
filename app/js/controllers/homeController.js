@@ -192,6 +192,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	var updateCart = function (res) {
         $scope.shoppingcartItems = res.data;
         $scope.shoppingcartItemCount = $scope.shoppingcartItems.length;
+        storageService.setLocal("cartItems",$scope.shoppingcartItems);
     };
 
     $scope.onGetShoppingCartItemsFailure = function () {
