@@ -46,8 +46,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="section">
-					<button class="btn btn-flat btn-sm center-block">Show More</button>
+				<div class="section" ng-if="products.length > 0">
+					<button ng-click="showMoreProducts()" class="btn btn-flat btn-sm center-block">Show More</button>
+				</div>
+				<div class="section" ng-if="products.length == 0">
+					<h3>OOPS!! We dont have any product of your search.</h3>
 				</div>
 			</div>
 		</div>

@@ -13,6 +13,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.subCategory = $stateParams.subCategory;
     $scope.isCustomizable = $stateParams.isCustomizable;
     $scope.queryFilters = [];
+    $scope.products =[];
 	$scope.alertHidden = function(){};
 	if($stateParams.exclusive){
         $scope.searchQuery.isExclusive = true;
@@ -75,7 +76,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getProducts = function (params) {
-		if (!params) params = {offset:0,limit:30};
+		if (!params) params = {offset:0,limit:28};
 		var filterInfo = {filters:[],sortBy:[]};
 		filterInfo.query = $scope.searchQuery;
 		Object.keys($scope.sortOption).forEach(function(key){
@@ -102,18 +103,13 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
 	};
 
-    // $scope.getDiscountedProducts = function () {
-    //     if (!params) params = {offset:0,limit:30};
-    //     var filterInfo = {}
-    //     filterInfo.query = {"isDiscounted": "true"}
-    //     httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},filterInfo,$scope.onGetDiscountedProductsSuccess,$scope.onGetProductsFailure);
-    //
-    // }
-    //
-    // $scope.onGetDiscountedProductsSuccess = function () {
-    //         $scope.discountedProducts = response.data.products;
-    //         storageService.set("products",$scope.discountedProducts);
-    // }
+
+    $scope.showMoreProducts = function () {
+    	var params = {offset:$scope.products.length,limit:28};
+		$scope.getProducts(params);
+    }
+
+
 	$scope.openMyCart = function () {
 		$state.go("cart");
     };
@@ -210,7 +206,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.onGetProductsSuccess = function (response) {
 		$scope.allProductInfo = response.data;
 		$scope.allProducts = response.data.products;
-		$scope.products = response.data.products;
+        var products = response.data.products;
+
+        products.forEach(function (product) {
+                $scope.products.push(product);
+        })
 		// applyFilters();
 		storageService.set("products",$scope.products);
 	};
@@ -379,7 +379,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	} else {
 		$scope.getDesigners();
 		$scope.getCategories();
-		$scope.getProducts($scope.filterParams);
+		$scope.getProducts();
 		if(storageService.get("accessToken")){
             $rootScope.userLoggedIn = true;
             $scope.getUserDetails();
