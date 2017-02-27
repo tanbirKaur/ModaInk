@@ -9,6 +9,8 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.reviews = [];
     $scope.newReview = {rating:0};
     $rootScope.addReview = false;
+    $scope.sameBrandProducts = [];
+    $scope.similarProducts = [];
 
     $scope.getShoppingCartItems= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
@@ -192,11 +194,24 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
     $scope.onGetProductsOfSameBSuccess = function (response) {
         $scope.sameBrandProductInfo = response.data;
-        $scope.sameBrandProducts = response.data.products;
+        
+        var sameBrandProducts = response.data.products;
+
+        sameBrandProducts.forEach(function (product) {
+            if(product.id != $scope.product.id && $scope.sameBrandProducts.length<4){
+                $scope.sameBrandProducts.push(product);
+            }
+        })
     };
     $scope.onGetSimilarProductsSuccess = function (response) {
         $scope.similarProductInfo = response.data;
-        $scope.similarProducts = response.data.products;
+        var similarProducts = response.data.products;
+
+        similarProducts.forEach(function (product) {
+            if(product.id != $scope.product.id && $scope.similarProducts.length<4){
+                $scope.similarProducts.push(product);
+            }
+        })
     };
 
     $scope.onGetProductsFailure = function (response) {

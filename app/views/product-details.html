@@ -100,7 +100,7 @@
                         <a class="button button_js slider_prev" href="#"><span class="button_icon"><i class="icon-left-open-big"></i></span></a><a class="button button_js slider_next" href="#"><span class="button_icon"><i class="icon-right-open-big"></i></span></a>
                     </div>
                     <ul class="shop_slider_ul">
-                    <li ng-repeat="product in similarProducts" ng-if="product.id != productId">
+                    <li ng-repeat="product in similarProducts" >
                         <div class="item_wrapper">
                             <div class="image_frame">
                                 <div class="image_wrapper">
@@ -130,7 +130,7 @@
                 <div ng-if="sameBrandProducts.length > 1" class="column one column_shop_slider ">
                     <div class="shop_slider">
                         <ul class="shop_slider_ul">
-                            <li ng-repeat="product in sameBrandProducts" ng-if="product.id != productId">
+                            <li ng-repeat="product in sameBrandProducts " >
                             <div class="item_wrapper">
                                 <div class="image_frame">
                                     <div class="image_wrapper">
