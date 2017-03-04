@@ -34,7 +34,7 @@
 
 		<div  ng-if="cartInfo.shoppingcartItems.length > 0 " id="left" style=" padding-right: 5%; border-right: 1px solid rgba(0,0,0,.08); " class="col-lg-8">
 			<h4 style="display: inline-block;n">My Shopping Bag ({{cartInfo.shoppingcartItems.length}} item)</h4>
-			<h4 style="float: right;"> Total: {{cartInfo.shoppingcartCharges.itemsAmount}}</h4>
+			<h4 style="float: right;"> Total: {{cartInfo.shoppingcartCharges.itemsAmount | number:2}}</h4>
 			<hr>
 
 			<div class="prod-set">
@@ -47,14 +47,14 @@
 					<div class="col2">
 						<div class="prod-name">
 							<a href="">{{cartItem.product.productName}}</a>
-							<span style="float: right; padding-right: 10%">Rs. {{cartItem.product.price-cartItem.product.discountPrice}}</span>
+							<span style="float: right; padding-right: 10%">Rs. {{cartItem.product.price-cartItem.product.discountPercent}}</span>
 						</div>
 						<div class="designer" style="padding-top: 2%">
 							<span >Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
 						</div>
 						<div class="size/qty">
 							<span >Qty: <input type="number" min="1" max="{{getStockQuantityForProductSku(cartItem.sku,cartItem.product.allSkus)}}" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
-							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.discountPrice!=0"> <span>({{(cartItem.product.discountPrice/cartItem.product.price)*100 | number: 2}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price}}</span> </span>
+							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.isDiscounted"> <span>({{(cartItem.product.discountPercent)}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price+((cartItem.product.price/(100-cartItem.product.discountPercent))*cartItem.product.discountPercent) | number:2}}</span> </span>
 						</div>
 
 						<div class="designer" style="padding-top: 2%">
@@ -82,15 +82,15 @@
 				<div class="order-summary-span ">
 					<div>
 	              		<label>Bag Total</label>
-	              		<span>Rs. {{cartInfo.shoppingcartCharges.itemsAmount}} </span>
+	              		<span>Rs. {{cartInfo.shoppingcartCharges.itemsAmount | number:2}} </span>
               		</div>
               		<div>
 	              		<label>Bag Discount</label>
-	              		<span class="value greenrupees c-green">Rs. {{cartInfo.shoppingcartCharges.itemsDiscountAmount}}</span>
+	              		<span class="value greenrupees c-green">Rs. {{cartInfo.shoppingcartCharges.itemsDiscountAmount | number : 2}}</span>
               		</div>
               		<div class="sub-total">
 	              		<label>Sub Total</label>
-	              		<span class="item-total red">Rs. {{cartInfo.shoppingcartCharges.itemsTotalAmount}}</span>
+	              		<span class="item-total red">Rs. {{cartInfo.shoppingcartCharges.itemsTotalAmount | number : 2}}</span>
               		</div>
               		<div class="vat">
 	              		<label>Estimated VAT/CST<div class="vathint"></div></label>
@@ -103,7 +103,7 @@
 					</div>
 				</div>
 
-				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{cartInfo.shoppingcartCharges.totalAmount}}</span></div>
+				<div class="total-amount fw-600 c-dblue b-white br-b-grey">Order Total<span class="total-rupees fw-600 c-dblue">Rs. {{cartInfo.shoppingcartCharges.totalAmount | number : 2}}</span></div>
 				<div class="place-order">
 				<a ng-click="moveToCheckout()"><button class="btn primary-btn btn-continue m-button clickable " style="margin-left: 15%; margin-top: 13%">PLACE ORDER<span class="proceed-icon"></span></button></a></div>
 			</div>

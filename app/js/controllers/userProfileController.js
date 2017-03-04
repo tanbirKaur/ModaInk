@@ -8,12 +8,16 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     $scope.cartInfo = {shoppingcartItems:[]};
 
     var updatePricingDetails = function () {
-        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems'),shoppingcartCharges:{}};
         $scope.cartInfo.shoppingcartCharges.itemsAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
-            return prev+(next.product.price*next.quantity);
+            var priceExclusiveDiscount = next.product.price+((next.product.price/(100-next.product.discountPercent))*next.product.discountPercent)
+            return prev+(priceExclusiveDiscount*next.quantity);
         },0);
         $scope.cartInfo.shoppingcartCharges.itemsDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
-            return prev+next.product.discountPrice;
+            if (next.product.isDiscounted){
+                var discountAmount = ((next.product.price/(100-next.product.discountPercent))*next.product.discountPercent);
+                return prev+(discountAmount*next.quantity);
+            };
+            return 0;
         },0);
         $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsAmount-$scope.cartInfo.shoppingcartCharges.itemsDiscountAmount;
         $scope.cartInfo.shoppingcartCharges.shippingAmount = 0;
@@ -27,9 +31,10 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
                 $scope.cartInfo.shoppingcartCharges.shippingAmount +
                 $scope.cartInfo.shoppingcartCharges.taxAmount;
         }
-    }
+    };
 
     if (!$rootScope.userLoggedIn) {
+        $scope.cartInfo = {shoppingcartItems:storageService.get('guestCartItems'),shoppingcartCharges:{}};
         updatePricingDetails();
     };
 
@@ -55,7 +60,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/wishlistItems",{},{},{},function (response) {
             $scope.wishlistItems = response.data;
         },function (response) {
-            console.log(reponse)
+            console.log(response)
         });
     };
 
@@ -115,11 +120,15 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     };
 
     $scope.updateQuantity = function (id,qty) {
-        httpService.updateBagItemQuantity(id,qty,$scope.userDetails.id,function (res) {
-            $scope.getShoppingCartItems();
-        },function (res) {
-            console.log('Could not update price');
-        })
+        if ($rootScope.userLoggedIn){
+            httpService.updateBagItemQuantity(id,qty,$scope.userDetails.id,function (res) {
+                $scope.getShoppingCartItems();
+            },function (res) {
+                console.log('Could not update price');
+            })
+        } else {
+            updatePricingDetails();
+        }
     }
 
     $scope.getUserAddresses= function () {
@@ -142,7 +151,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             console.log(err.data.message);
         });
     };
-    
+
     $scope.removeAddress = function (addressId) {
         httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/addresses/"+addressId,{},{},{},function (response) {
             $scope.getUserAddresses();
