@@ -35,7 +35,7 @@ app.controller('PaymentsController', function($scope,$state,$rootScope,$window,h
         };
         $scope.cartItems = storageService.getLocal("cartItems");
         $scope.cartItems.forEach(function (cartItem) {
-            orderInfo.items.push({sku:{id:cartItem.sku.id},quantity:cartItem.quantity});
+            orderInfo.items.push({sku:{id:cartItem.SkuId},quantity:cartItem.quantity});
         });
         httpService.createOrder(orderInfo,function (response) {
             console.log(response);

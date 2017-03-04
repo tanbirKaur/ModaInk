@@ -98,7 +98,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     };
 
     $scope.getStockQuantityForProductSku = function (sku, allSkus) {
-        var skuId = sku.id?sku.id:sku.skuId;
+        var skuId = sku;
         return (allSkus.filter(function (productSku) {
             return productSku.skuId == skuId;
         })[0]).inStockQuantity;
