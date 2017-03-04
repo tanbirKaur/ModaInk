@@ -111,7 +111,17 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
             itemInfo.sku.sizeVariantValue = itemInfo.sku.size;
             var guestItems = storageService.get('guestCartItems');
             if(!guestItems) guestItems = [];
-            guestItems.push(itemInfo);
+            var itemUpdated = false;
+            guestItems = guestItems.map(function (item) {
+                if(item.product.id == itemInfo.product.id && item.sku.skuCode == itemInfo.sku.skuCode){
+                    itemUpdated = true;
+                    item.quantity++;
+                }
+                return item;
+            });
+            if(!itemUpdated) {
+                guestItems.push(itemInfo);
+            }
             storageService.set('guestCartItems',guestItems);
             $scope.$emit('updateCartDetails',{cartItems:guestItems});
             $compile(angular.element("#cartAddSuccess"))({title:'Add Item To Bag',message:'Item Added Successfully!'},function (elem, scope) {
