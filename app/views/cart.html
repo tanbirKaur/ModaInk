@@ -53,7 +53,7 @@
 							<span >Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
 						</div>
 						<div class="size/qty">
-							<span >Qty: <input type="number" min="1" max="{{getStockQuantityForProductSku(cartItem.SkuId,cartItem.product.allSkus)}}" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
+							<span >Qty: <input type="number" min="1" max="{{getStockQuantityForProductSku(cartItem.SkuId,cartItem.product.allSkus)}}" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" onkeydown="return false" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
 							<span style="float: right; padding-right: 10%" ng-if="cartItem.product.isDiscounted"> <span>({{(cartItem.product.discountPercent)}}% OFF) |</span> <span style="color: red; text-decoration: line-through;"> Rs. {{cartItem.product.price+((cartItem.product.price/(100-cartItem.product.discountPercent))*cartItem.product.discountPercent) | number:2}}</span> </span>
 						</div>
 
