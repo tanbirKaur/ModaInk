@@ -29,6 +29,13 @@
 							        <label>{{name}}</label>
 							        <span class="num">({{val}})</span>
 							    </li>
+								<li class="input-group" ng-if="facet_val.toLowerCase()=='prices_facet'">
+									<label>Range: FROM</label>
+									<input type="number" ng-model="minPriceRange" min="0" aria-label="...">
+									<label>TO</label>
+									<input type="number" ng-model="maxPriceRange" min="0" aria-label="...">
+									<button ng-click='addFilter(minPriceRange+"-"+maxPriceRange,getFilterKey(facetName),minPriceRange+"-"+maxPriceRange,subCategory)'>Apply</button>
+								</li>
 						    </ul>
 						</div>
 					</aside>
