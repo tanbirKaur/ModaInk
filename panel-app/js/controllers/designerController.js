@@ -169,6 +169,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 }
             },
         };
+        if(!newDesignerRequest.referrerCode)delete newDesignerRequest.referrerCode;
 
         newDesignerRequest.brand.portfolioImages = [];
         $scope.designerDetails.brand.portfolioImages.forEach(function (image) {

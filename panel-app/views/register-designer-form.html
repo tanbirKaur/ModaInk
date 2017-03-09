@@ -33,7 +33,7 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input id="dateOfBirth" ng-model="designerDetails.dateOfBirth" type="text" class="form-control datepicker" required>
+                  <input date-input id="dateOfBirth" ng-model="designerDetails.dateOfBirth" type="text" class="form-control datepicker" required>
                 </div>
                 </div>
 
@@ -318,6 +318,6 @@
 <script type="text/javascript-lazy">
     $(".datepicker").datepicker({
     endDate:'-18y',
-    format: 'yyyy-mm-ddT00:00:00.000Z',
+    format: 'yyyy-mm-dd',
 });
 </script>
