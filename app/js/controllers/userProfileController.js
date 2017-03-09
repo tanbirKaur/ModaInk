@@ -8,29 +8,28 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     $scope.cartInfo = {shoppingcartItems:[]};
 
     var updatePricingDetails = function () {
-        $scope.cartInfo.shoppingcartCharges.itemsAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
-            var priceExclusiveDiscount = next.product.price+((next.product.price/(100-next.product.discountPercent))*next.product.discountPercent)
+        $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            var priceExclusiveDiscount = next.product.price
             return prev+(priceExclusiveDiscount*next.quantity);
         },0);
-        $scope.cartInfo.shoppingcartCharges.itemsDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
-            if (next.product.isDiscounted){
-                var discountAmount = ((next.product.price/(100-next.product.discountPercent))*next.product.discountPercent);
-                return prev+(discountAmount*next.quantity);
-            };
-            return 0;
+
+        $scope.cartInfo.shoppingcartCharges.itemsTotalDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            var discountAmount = (next.product.price / (1 - next.product.discountPercent/100)) - next.product.price
+            return prev+(discountAmount*next.quantity);
         },0);
-        $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsAmount-$scope.cartInfo.shoppingcartCharges.itemsDiscountAmount;
-        $scope.cartInfo.shoppingcartCharges.shippingAmount = 0;
-        $scope.cartInfo.shoppingcartCharges.taxAmount = 100;
-        $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
-            $scope.cartInfo.shoppingcartCharges.shippingAmount +
-            $scope.cartInfo.shoppingcartCharges.taxAmount;
-        if($scope.cartInfo.shoppingcartCharges.totalAmount > 2000){
-            $scope.cartInfo.shoppingcartCharges.taxAmount = 0;
-            $scope.cartInfo.shoppingcartCharges.totalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount +
-                $scope.cartInfo.shoppingcartCharges.shippingAmount +
-                $scope.cartInfo.shoppingcartCharges.taxAmount;
-        }
+
+        $scope.cartInfo.shoppingcartCharges.itemsTotalAmountExclusiveTax = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            var productPrice = next.product.price * (100/115)
+            return prev+(productPrice*next.quantity);
+        },0);
+
+        $scope.cartInfo.shoppingcartCharges.itemsTotalTaxAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
+            var productTax = next.product.price - (next.product.price * (100/115))
+            return prev+(productTax*next.quantity);
+        },0);
+
+
+        $scope.cartInfo.shoppingcartCharges.shippingAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount > 2000 ? 0 : 100;
     };
 
     if (!$rootScope.userLoggedIn) {
