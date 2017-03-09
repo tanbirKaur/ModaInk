@@ -126,7 +126,7 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
 			});
-		}
+		};
 
        httpService.getUnApprovedChangesProducts = function (successCallback,failureCallback) {
            var params = {isChangesApproved:'null'};
@@ -135,7 +135,7 @@ angular.module('portal-modaink')
            },function (response) {
                redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
            });
-       }
+       };
 
 	    httpService.getRejectedProducts = function (successCallback,failureCallback) {
 		   var params = {isApproved:'false'};
@@ -144,7 +144,7 @@ angular.module('portal-modaink')
 		   },function (response) {
 			   redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
 		   });
-	    }
+	    };
 
 	    httpService.approveProduct = function (id,successCallback,failureCallback) {
 			httpService.callHttp("PUT","products/"+id+"/approve",{},{},{},function (response) {
@@ -208,7 +208,7 @@ angular.module('portal-modaink')
 		   },function (response) {
 			   redirectCallback(response,httpFailed,failureCallback,"updateProduct");
 		   });
-	   }
+	   };
 
 	   httpService.uploadImage = function(type,url,successCallback,failureCallback){
 			var headers = {};
@@ -220,23 +220,35 @@ angular.module('portal-modaink')
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"createProduct");
 			});
-		}
+	   };
 
-		httpService.getProductCategories = function(successCallback,failureCallback){
+	   httpService.getProductCategories = function(successCallback,failureCallback){
 			var params = {includeSubCategories:true};
 			httpService.callHttp("GET","categories",params,{},{},function (response) {
 				redirectCallback(response,emptyFunction,successCallback);
 			},function (response) {
 				redirectCallback(response,httpFailed,failureCallback,"getProductCategories");
 			});
-		}
-           // httpService.callHttp = function (method, resouceName, params, headers, data, successCallback, errorCallback,noAuthentication) {
-       httpService.verifyEmail = function (info,successCallback,failureCallback) {
+	   };
+
+	   httpService.getPayouts = function(from,to,successCallback,failureCallback){
+		   var designerId =  $rootScope.userDetails.id;
+		   var params = {from:from,to:to};
+		   designerId =1;
+		   httpService.callHttp("GET","designers/"+designerId+"/payoutInvoices",params,{},{},function (response) {
+			   redirectCallback(response,emptyFunction,successCallback);
+		   },function (response) {
+			   redirectCallback(response,httpFailed,failureCallback,"getPayouts");
+		   });
+	   };
+
+	   httpService.verifyEmail = function (info,successCallback,failureCallback) {
 		    httpService.callHttp("PUT","designers/verifyEmail",info,{},{},function (response) {
                 redirectCallback(response,emptyFunction,successCallback);
-                       },function (response) {
-                redirectCallback(response,httpFailed,failureCallback,"login");
-                       },true);
-                 }
-		return httpService;
+			},function (response) {
+				redirectCallback(response,httpFailed,failureCallback,"login");
+			},true);
+	   };
+
+	   return httpService;
 	 }]);
