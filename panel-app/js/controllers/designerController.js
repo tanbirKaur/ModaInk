@@ -1,5 +1,6 @@
 var app = window.app;
 app.controller('DesignerController', function($scope,$stateParams,$location, httpService, $state, $rootScope) {
+    $scope.errors = {};
 	//helper methods
 
 	$scope.redirectToViewProduct = function (mode, product) {
@@ -178,30 +179,60 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         httpService.addApprovedDesigner(newDesignerRequest,success,failure);
     }
 
+    $scope.updateImage = function (type) {
+        var imageClick = $scope.imageButtons[type];
+        if(imageClick){
+            imageClick();
+        }
+    };
+
+    $scope.imageButtons = {
+        'avatar':function () { $('#profileImage').trigger('click'); },
+        "brandLogo":function () { $('#brandLogo').trigger('click'); },
+        "image1":function () {
+            startUploadingImage('image1');
+        },
+        "image2":function () {
+            startUploadingImage('image2');
+        },
+        "image3":function () {
+            startUploadingImage('image3');
+        },
+        "image4":function () {
+            startUploadingImage('image4');
+        }
+    };
+
     $scope.uploadImages = function (imageName , id) {
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
-                alert('image uploaded sucessfully');
                 imageDescription = $(id).val();
-                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,imageDescription:imageDescription});
+                if(!$scope.designerDetails) $scope.designerDetails = {brand:{portfolioImages:[]},pickupAddress:{}};
+                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,description:imageDescription});
+                $scope.errors['image'+$scope.designerDetails.brand.portfolioImages.length+'Description'] = '';
+                alert('image uploaded sucessfully');
             }, function (res) {
                 alert('Something went wrong. Please try with some other image')
             })
         })
     }
 
-
     $scope.uploadProfileImage = function (imageName) {
-        httpService.uploadImage('designers',imageName,function(res){
-            var imageUploaded = res.data;
-                alert('image uploaded sucessfully');
+        if(!imageName)return;
+        $scope.$apply(function () {
+            httpService.uploadImage('designers',imageName,function(res){
+                var imageUploaded = res.data;
                 $scope.designerDetails.avatarUrl = imageUploaded[0].fileUrl;
+                alert('image uploaded sucessfully');
             }, function (res) {
-            alert('Something went wrong. Please try a different image')
-        })
-	}
+                alert('Something went wrong. Please try a different image')
+            })
+        });
+	};
+
 	$scope.uploadBrandLogo = function (imageName) {
+        if(!imageName)return;
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
                 alert('image uploaded sucessfully');
@@ -212,13 +243,23 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         })
 	}
 
+	var startUploadingImage = function(name){
+        if($('#'+name+'Description').val()){
+            $('#'+name).trigger('click');
+            $scope.errors[name+'Description']= ''
+        } else {
+            $scope.errors[name+'Description'] = 'Enter image description'
+        }
+    }
 
 	var designerId = $stateParams.id;
 	if (designerId ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
 	} else {
-		$scope.getDesignerDetails($rootScope.userId)
+	    if($rootScope.userId){
+            $scope.getDesignerDetails($rootScope.userId);
+        }
 		$scope.getDesigners();
 	}
     $scope.getDesignerRequests()
