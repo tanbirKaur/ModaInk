@@ -77,10 +77,8 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "returnDays":$scope.newProduct.returnDays
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
-            $('#updateProductSuccess').modal();
             $location.path('/home');
-        },
-        function (response) {
+        },function (response) {
             $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
             if(!$scope.error){
                 $scope.error = response.data.message;

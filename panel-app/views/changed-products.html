@@ -10,8 +10,8 @@
         <div class="box box-widget">
             <div class="box-header with-border">
                 <div class="user-block">
-                    <span class="username" ><a href="">{{product.name}}</a></span>
-                    <span ng-if="isAdmin" class="description" ><a href="/designer-profile/:id">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
+                    <span class="username" ><a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}</a></span>
+                    <span ng-if="isAdmin" class="description" ><a href="/designer-profile/{{product.designer.id}}">{{product.designer.firstName}} {{product.designer.lastName}}</a></span>
                     <span class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</span>
                 </div>
                 <!-- /.user-block -->
