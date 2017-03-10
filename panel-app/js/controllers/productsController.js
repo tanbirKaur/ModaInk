@@ -78,9 +78,13 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
             $('#updateProductSuccess').modal();
+            $location.path('/home');
         },
         function (response) {
             $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
+            if(!$scope.error){
+                $scope.error = response.data.message;
+            }
             $('#updateProductFailed').modal()
         })
     };
@@ -109,6 +113,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
+            if(!$scope.error){
+                $scope.error = response.data.message;
+            }
             $('#addProductFailure').modal();
         });
     }

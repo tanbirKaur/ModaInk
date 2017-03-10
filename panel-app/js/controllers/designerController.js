@@ -87,6 +87,9 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 $('#addDesignerSuccess').modal();
             }, function (response) {
                 $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
+                if(!$scope.error){
+                    $scope.error = response.data.message;
+                }
                 $('#addDesignerFailure').modal();
             })
             return;
