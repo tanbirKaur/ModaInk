@@ -7,12 +7,13 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.newProduct = {skus:[],colours:[],images:[]};
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
+
     }
 
     counter = 0;
     $scope.skus = [];
 
-    if ($scope.mode === 'v') {
+    if ($scope.mode === 'v' || $scope.mode === 've') {
         $scope.colors = $scope.newProduct.colours.map(function (color) {
             return {text:color};
         });
