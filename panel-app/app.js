@@ -96,11 +96,11 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
 
 
     $locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
-        });
-        $urlRouterProvider.otherwise('/home');
-        
+        enabled: true,
+        requireBase: false
+    });
+    $urlRouterProvider.otherwise('/home');
+
 });
 app.directive('script', function() {
     return {
