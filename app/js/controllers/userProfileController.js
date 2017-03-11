@@ -37,6 +37,15 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         updatePricingDetails();
     };
 
+    $scope.addItemToCart = function(product){
+        var itemInfo = {skuId: product.sku.skuId,quantity: product.quantity};
+        httpService.callHttp("POST","users/"+$rootScope.userDetails.id+"/shoppingcartItems",{},{},itemInfo,function () {
+            $scope.userDetails = storageService.get("userDetails");
+            $scope.getShoppingCartItems();
+        });
+    };
+
+
     $scope.addItemToWishList= function (id,cartItemId) {
         var data = {"productId":id};
         if($rootScope.userLoggedIn){
@@ -104,6 +113,9 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
     };
 
     $scope.getShoppingCartItems= function () {
+        if(!$scope.userDetails){
+            $scope.userDetails = storageService.get("userDetails");
+        }
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},function (response) {
             $scope.cartInfo = response.data;
             $scope.$emit('refreshCart',{data:$scope.cartInfo.shoppingcartItems});
@@ -170,6 +182,16 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             console.log('failed: getUserOrders');
         });
     }
+
+    $scope.$on("loginSuccess",function (event,response) {
+        $scope.userDetails = storageService.get("userDetails");
+        $scope.cartInfo.shoppingcartItems = storageService.get('guestCartItems');
+        while($scope.cartInfo.shoppingcartItems.length > 0){
+            var cartItem =$scope.cartInfo.shoppingcartItems.splice(0,1);
+            storageService.set('guestCartItems',$scope.cartInfo.shoppingcartItems);
+            $scope.addItemToCart(cartItem[0])
+        }
+    });
     //Controller function calls
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');

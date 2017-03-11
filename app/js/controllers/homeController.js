@@ -31,6 +31,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$auth.authenticate(provider).then(function(response) {
 			var socialLoginInfo = {network:provider,socialToken:response.access_token};
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
+                $scope.$broadcast('loginSuccess',response);
                 $scope.$emit("loginSuccess",response);
                 $scope.message = "Login Successful";
                 if($rootScope.addReview){
