@@ -1,0 +1,409 @@
+.thumbnail-image{
+    height:150px;
+}
+.list-style{
+   padding:30px!important;
+}
+.list-style ul{
+    margin-bottom:20px;
+}
+.list-style li{
+    font-size: 16px;
+    padding-top: 10px;
+}
+.list-style> .btn-primary{
+    width:20%!important;
+}
+
+.check-box-style{
+    display:inline-block!important;
+}
+.radio-style{
+    float:left;
+    margin-right:30px;
+}
+.radio-style>.checkbox{
+    margin-left: -40px!important;
+}
+.tab4{
+    padding: 30px;
+    font-size: 16px;
+}
+.tab4 >.btn-primary{
+    width:100px;
+}
+.tabs-style li a{
+    padding-left:40px;
+    padding-right:40px;
+}
+.admin-tabs li a{
+    padding-left:280px;
+    padding-right:280px;
+
+}
+.admin-tabs{
+    margin-top:-10px!important;
+}
+
+
+
+
+<!-- chat styling starts -->
+
+.details-panel{
+    height:500px!important;
+    overflow:scroll!important;
+    min-height:500px!important;
+}
+.details-panel>.tab-content{
+    height:100%;
+}
+.tick-box{
+    width:40%!important;
+}
+.tick{
+    padding-bottom: 5px;
+}
+.float-input{
+    float:left;
+}
+.tabs-list li>a{
+    padding-left:40px;
+    padding-right:45px;
+    font-size:16px!important;
+    font-weight: bold!important;
+}
+.chat-section{
+    height:600px;
+    position:fixed;
+
+}
+.window-size{
+    margin-right:-20px!important;
+    margin-left:-60px;
+}
+.chat-window{
+    height:50%;
+    margin-left:-10px;
+    margin-bottom:-30px;
+}
+.display-content{
+    padding-top: 20px;
+
+}
+
+.nav-tabs>li.active {
+    border-top:3px solid #3c8dbc!important;
+}
+
+form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+    width:100%;
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+.top-label{
+    margin-top: 20px;
+}
+.timeline>li>.timeline-item>.timeline-body, .timeline>li>.timeline-item>.timeline-footer {
+    padding: 10px;
+}
+.margin {
+    margin: 10px;
+}
+.tab1 label{
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.tab1 >.form-group{
+    margin-top: 20px !important;
+}
+.tab2 label{
+    font-weight: bold;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.tab2 >.form-group {
+    margin-top: 20px !important;
+}
+.tab-content h3{
+    margin-left: 20px;
+    margin-top: 40px;
+}
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+.box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+    color:black;
+
+}
+.box-header>.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.pad {
+    padding: 10px;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+.images-tab>.form-group{
+    margin-right: 80px;
+}
+.form-group>.popover{
+    width:200px;
+    height:250px;
+
+}
+.tab2 input[type="text"]{
+    width:70px!important;
+}
+.tab2 label{
+    float:left;
+}
+.con{
+    text-align: center;
+}
+.tab2 input[type="checkbox"]{
+    font-size: 20px;
+}
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;
+}
+
+.timeline {
+    position: relative;
+    height: 100px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.events-wrapper {
+    position: relative;
+    height: 100%;
+    margin: 0 40px;
+    overflow: hidden;
+}
+.events {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 49px;
+    height: 2px;
+    background: #dfdfdf;
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
+}
+.filling-line {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #7b9d6f;
+}
+.events a.selected {
+    pointer-events: none;
+}
+.events a {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 15px;
+    color: #383838;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.events a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: -5px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    border: 2px solid #dfdfdf;
+    background-color: #f8f8f8;
+    -webkit-transition: background-color 0.3s, border-color 0.3s;
+    -moz-transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.hide-aside{
+    margin-left: -20px!important;
+    position:relative;
+}
+.do-center{
+    text-align: center;
+}
+.category-men{
+    float:left;
+    margin-right: 20px;
+}
+.category-women{
+    padding-left: 20px;
+    float:left;
+}
+.options{
+    padding-left: 30px;
+}
+.orders div {
+    padding: 0px 2%;
+}
+.orders div {
+    padding: 0px 2%;
+}
+
+          .wizard {
+              margin: 20px auto;
+              background: rgb(255, 255, 255);
+          }
+.wizard > div.wizard-inner {
+               position: relative;
+}
+
+
+.connecting-line {
+    height: 2px;
+    position: absolute;
+    width: 70%;
+    left: 0px;
+    right: 0px;
+    top: 50%;
+    z-index: 1;
+    background: rgb(224, 224, 224);
+    margin: 0px auto;
+}
+.wizard .nav-tabs {
+    position: relative;
+    margin-bottom: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+.nav-tabs > li.active {
+    border-top: 3px solid rgb(60, 141, 188) !important;
+}
+
+          .wizard .nav-tabs > li {
+              width: 20%;
+          }
+
+          .container li {
+              list-style: none;
+          }
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+               color: rgb(85, 85, 85);
+               cursor: default;
+               border-top-color: initial;
+               border-right-color: initial;
+               border-left-color: initial;
+               border-bottom-color: transparent;
+               border-width: 0px;
+               border-style: initial;
+               border-image: initial;
+           }
+
+          .wizard .nav-tabs > li a {
+              width: 70px;
+              height: 70px;
+              margin: 20px auto;
+              border-radius: 100%;
+              padding: 0px;
+          }
+.wizard li.active span.round-tab {
+    background: rgb(255, 255, 255);
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(91, 192, 222);
+    border-image: initial;
+}
+
+          span.round-tab, button.round-tab {
+              width: 70px;
+              height: 70px;
+              line-height: 70px;
+              display: inline-block;
+              z-index: 2;
+              position: absolute;
+              left: 0px;
+              text-align: center;
+              font-size: 25px;
+              border-radius: 100px;
+              background: rgb(255, 255, 255);
+              border-width: 2px;
+              border-style: solid;
+              border-color: rgb(224, 224, 224);
+              border-image: initial;
+          }
+.wizard .nav-tabs > li label {
+    padding-left: 25%;
+    font-size: 14px;
+}
+.round-tab> .glyphicon{
+padding-top: 15px!important;
+}

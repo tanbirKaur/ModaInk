@@ -13,6 +13,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     $scope.isCustomizable = $stateParams.isCustomizable;
     $scope.queryFilters = [];
 	$scope.alertHidden = function(){};
+	$rootScope.madeToOrder = false;
 	if($stateParams.exclusive){
         $scope.searchQuery.isExclusive = true;
 	}

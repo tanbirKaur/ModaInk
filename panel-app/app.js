@@ -1,6 +1,6 @@
 var app = angular.module('portal-modaink', ['ui.router','LocalStorageModule','angular.filter','ngTagsInput']);
 window.app == app;
-window.apiUrl = "http://modaink.com/api";
+window.apiUrl = "http://dev.modaink.com/api";
 app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
@@ -8,6 +8,8 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/products.html',
             controller:'HomeController'
         })
+
+
         .state('orders', {
             url: '/orders',
             templateUrl: '/views/orders.html',
@@ -90,9 +92,21 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl : "views/sizeChart.html",
             controller :"VerifyEmailController"
         })
-
-
-
+        .state('madeToOrder',{
+            url:'/madeToOrder',
+            templateUrl:'/views/made-to-order.html',
+            controller:'MadeToOrderController'
+        })
+        .state("madeToOrderDetail", {
+            url:"/madeToOrder/orderDetails",
+            templateUrl : "/views/made-to-order-chat.html",
+            controller: "MadeToOrderController"
+        })
+        .state("reportIssue", {
+            url:"/reportIssue",
+            templateUrl : "/views/report.html"
+            // controller: "MadeToOrderController"
+        })
 
     $locationProvider.html5Mode({
           enabled: true,

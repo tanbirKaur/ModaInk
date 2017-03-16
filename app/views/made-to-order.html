@@ -8,7 +8,7 @@
                 </div>
 <div id="Content">
     <div class="content_wrapper clearfix">
-
+        <!--<div ng-include src="views/mod-request-order.html" ng-controller="MadeToOrderController"></div>-->
 		<div style="padding: 20px;
                     width: 300px;
                     margin-left: 40%;
@@ -135,7 +135,10 @@
 	                    font-size: 30px;">ENJOY YOUR DRESS</h1>
 	                    <hr/>
 	                    <h3>It arrives at your doorstep, just in time for your event. </h3>
-	                     <a href="" class="btn btn-primary" style="background-color: #181818; font-size: 20px; font-weight: bold;"> ORDER NOW</a>
+	                     <a class="btn btn-primary" style="background-color: #181818; font-size: 20px; font-weight: bold;" data-toggle="modal" data-target="#newRequestModal"> ORDER NOW</a>
+
+                        <a href="/#/madeToOrder/orderDetails-customer" ng-click = "hideHeader()">customer</a>
+
 	                </div>
 
 	               
@@ -145,5 +148,88 @@
                 
             </div>            
         </div>
+    </div>
+</div>
+
+
+<div id="newRequestModal" class="modal fade" role="dialog" data-dismiss="">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header orderPopupTitle">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text">Fill details for Made-To-Order</h4>
+            </div>
+            <div class="modal-body row mid">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Ocassion/ Purpose*</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" required>
+                        </div>
+                        <div class="form-group cat col-md-6">
+                            <label>Product category</label>
+                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
+                              <option selected="selected">Select</option>
+                                <option>Apparel</option>
+                              <option>Accessories</option>
+                              <option>Footwear</option>
+
+                             </select><span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-be3u-container"><span class="select2-selection__rendered" id="select2-be3u-container" title="Alabama"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                        </div>
+
+                <div class="col-md-6 style-option">
+                    <label>Style</label>
+                    <div class="button-group">
+                        <button type="button" class="btn style-dropdown btn-default btn-sm dropdown-toggle" style="border:1px solid #d6d6d6;" data-toggle="dropdown">Select</span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Ethnic</a></li>
+                            <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Western</a></li>
+                            <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Indo-western</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group price-range col-md-6">
+                    <label>Price range</label>
+                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                        <option selected="selected">Select</option>
+                        <option>0 to 5000</option>
+                        <option>5001 to 10000</option>
+                        <option>10001 to 15000</option>
+                        <option>15001 to 20000</option>
+                        <option>More than 20000</option>
+
+                    </select><span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-be3u-container"><span class="select2-selection__rendered" id="select2-be3u-container" title="Alabama"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                </div>
+                        <div class="form-group col-md-12">
+                            <label>Tell me something about the product</label>
+                            <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                        </div>
+                <label class="upload-image-label">Upload reference picture</label>
+
+
+                <input type="file" multiple="" style="" class="file-input"><button class="btn btn-sm upload" data-toggle="modal" data-target="">UPLOAD</button>
+
+
+
+                <a href="" class="btn btn-primary btn-xs center-block" style="background-color: #181818; font-size: 16px; margin-left:20px; margin-right: 20px; font-weight: normal;" data-toggle="modal" data-target="#orderPlaced" data-dismiss="#newRequestModal"> PROCEED</a>
+
+                    </div>
+
+            <div id="orderPlaced" class="modal fade" role="dialog">
+                <div class="modal-dialog " role="document">
+                    <div class="modal-body alert alert-success">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p>SUCCESS!</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        </div>
+
     </div>
 </div>

@@ -36,7 +36,6 @@
     <link rel='stylesheet' id='global-css' href='css/global.css'>
     <link rel='stylesheet' id='style-static' href='css/wrapper.css'>
     <!--<link rel='stylesheet' href='plugin/jquery.modal/stylesheets/jquery.modal.css'>-->
-
     <link rel='stylesheet' id='structure-css' href='css/structure.css'>
     <link rel='stylesheet' id='local-css' href='css/shop.css'>
     <link rel="stylesheet" type="text/css" href="css/fonts/font-awesome/css/font-awesome.min.css">
@@ -49,15 +48,18 @@
     <!-- Revolution Slider -->
     <link rel="stylesheet" href="plugin/rs-plugin/css/settings.css">
     <link rel='stylesheet' id='custom-css' href='css/custom.css'>
-  <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href='css/madeToOrder.css'>
 
+    <script src="js/bootstrap.min.js"></script>
+  <script src="js/ui/request-form-input-file.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script type="text/javascript" src="js/satellizer.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
   <script type="text/javascript" src="js/angular-local-storage.min.js"></script>
   <script type="text/javascript" src="js/angular-filter.min.js"></script>
-
+    <script type='text/javascript' src='http://code.jquery.com/jquery-1.9.1.js'></script>
   <script type="text/javascript" src="app.js"></script>
+
     <!-- Services -->
   <script type="text/javascript" src="js/services/HttpService.js"></script>
   <script type="text/javascript" src="js/services/StorageService.js"></script>
@@ -73,6 +75,7 @@
   <script type="text/javascript" src="js/controllers/userProfileController.js"></script>
   <script type="text/javascript" src="js/controllers/loginController.js"></script>
   <script type="text/javascript" src="js/controllers/paymentsController.js"></script>
+  <script type="text/javascript" src="js/controllers/madeToOrderController.js"></script>
 </head>
 
 <body ng-app="ModaInk" ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
@@ -218,7 +221,7 @@
 
         <!-- #Footer -->
         <!-- Footer-->
-        <div class="footer-blog">
+        <div ng-if="madeToOrder" class="footer-blog">
             <a id="back_to_top" href="#" class="button button_left button_js"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>
             <div ng-include src="'views/footer.html'"></div>
             

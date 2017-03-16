@@ -1,0 +1,46 @@
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login to ModaInk</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="login-form ng-scope col-md-6">
+                    <div class="panel-body">
+                        <form id="loginform" role="form">
+                            <input style="height:30px;" id="loginUsername" type="email" ng-model="email" class="form-control ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="username" value="" placeholder="Email" ng-pattern="/^.+@.+\..+$/" required="">
+                            <input style="height:30px;" id="loginPassword" type="password" ng-model="password" class="form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" name="password" placeholder="Password" required="">
+                            <button class="btn btn-sm" ng-click="login(email,password)">LOG IN</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="login-fb-gm col-md-6">
+                    <a ><button id="fbLogin" ng-click="authLogin('facebook')">
+		    	<span>
+		    	<i class="icon-facebook"></i>
+		    		FACEBOOK
+		    	</span>
+                    </button></a>
+
+                    <button id="gPlusLogin" ng-click="authLogin('google')">
+		    	<span>
+		    	<i class="icon-google"></i>
+		    		GOOGLE
+		    	</span>
+                    </button>
+                </div>
+
+
+            </div>
+            <div class="profile-links">
+                <span style="float: right;">New to ModaInk? <a data-toggle="modal" data-target="#registerModal" data-dismiss="modal">Sign Up here!</a></span>
+            </div>
+
+        </div>
+
+    </div>
+</div>

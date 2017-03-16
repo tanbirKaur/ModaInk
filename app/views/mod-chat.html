@@ -1,0 +1,354 @@
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+<div id="Content" class=" woocommerce woocommerce-page with_aside aside_left ">
+    <div class="content_wrapper clearfix">
+        <div class="row window-size">
+            <div class="col-md-8  details-panel">
+                <div ng-controller="MadeToOrderController">
+                    <ul class="nav nav-tabs tabs-list">
+                        <li ng-class="{'active': activeTab == }"><a href="/#/views/home.html">HOME</a></li>
+                        <li ng-class="{'active': activeTab == 1}"><a href="" ng-click="setActiveTab(1)">REQUIREMENTS</a></li>
+                        <li ng-class="{'active': activeTab == 2}"><a href="" ng-click="setActiveTab(2)">IMAGES</a></li>
+                        <li ng-class="{'active': activeTab == 3}"><a href="" ng-click="setActiveTab(3)">MEASUREMENT</a></li>
+
+                        <li ng-class="{'active': activeTab == 4}"><a href="" ng-click="setActiveTab(4)">PAYMENT</a></li>
+                        <li ng-class="{'active': activeTab == 5}"><a href="" ng-click="setActiveTab(5)">DELIVERY</a></li>
+
+                    </ul>
+
+                    <div class="tab-content">
+                        <div ng-class="{'tab-pane active':activeTab === 1,'tab-pane':activeTab !==1 }" class="tab1">
+                            <div class="col-md-12">
+                                <h3>Hey, enter your details !</h3>
+                                <div class="form-group top-label">
+                                    <label for="exampleInputEmail1" class="col-md-4">OCASSION/ PURPOSE:</label>
+                                    <input type="email" class="form-control content" id="exampleInputEmail1" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">DETAILS:</label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">FABRIC DETAILS:</label>
+                                        <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">ADDITIONAL DETAILS:</label>
+                                        <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="col-md-3">TOTAL PRICE:</label>
+                                    <input type="email" class="form-control content" style="width:400px;" id="" placeholder="wait for the designer to assess your request">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary center-block">CONFIRM</button>
+                            </div>
+
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 3,'tab-pane':activeTab !==3 }" class="tab2">
+                            <div class="form-group top-label col-md-4 ">
+                                <label for="exampleInputEmail1" style="">SHOULDER <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Measure across your upper back from the tip of one shoulder to the tip of the other. Stand tall with your chin parallel to the floor and your shoulders back – try not to hunch!"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="" >
+                            </div>
+                            <div class="form-group top-label col-md-4 ">
+                                <label for="exampleInputEmail1" style="">CHEST<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="With your arms relaxed at your sides, measure above the bust at the armpits, keeping the tape parallel to the floor. Circle the tape around your back over your shoulder blades. Be sure to go all the way around your body"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4 ">
+                                <label for="exampleInputEmail1" style="">BUST<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Wearing your bra and with your arms relaxed at your sides, measure the fullest part of your bust, keeping the tape parallel to the floor, under the armpit and around your back at about the same location as the middle of your bra-line"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">UNDER BUST<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Measure all the way around your torso immediately beneath your bust"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">WAIST <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Measure around the narrowest part of your torso at your natural waistline. To find your natural waistline, bend to one side. There will usually be a crease where you bend. Often it is just below your ribcage: that's your natural waistline. (Don't worry if this seems higher than where you actually wear your pants and jeans.Keep the tape measure parallel to the floor as you measure all the way around your torso"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">HIPS<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Standing with your heels together, measure around your body at the broadest part of your hips.This will include the fullest part of your backside too and should be just about where your legs meets your torso (this is approximately 8 below natural waistline"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="" disabled>
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">UPPER ARM<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="(Place the tape measure around the widest part of your upper arm, your bicep. Then bend your arm slightly at the elbow. This measurement ensures you’ll be able to bend your arms in the sleeves and fit your arms through the armholes of the item"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">HEIGHT  <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Standing with your feet slightly apart and your back to a wall, measure straight from the floor to the top of your head"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="" disabled>
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">BRA CUP SIZE<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Be sure to check the tag on your favorite bra for your bra and cup size"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">INSEAM<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Wearing pants that fit well, measure from the crotch seam to the bottom of the leg"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">RISE <i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="(From Crotch to your waist – normally where the waistband for your pants are
+                                "></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">ARM LENGTH<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="Bend your elbow 90 degrees and place your hand on your hip. Hold the tape at the center back of your neck. Measure around your shoulder to your elbow and down to your wrist. The total length is your arm length
+                               "></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+                            </div>
+                            <div class="form-group top-label col-md-4">
+                                <label for="exampleInputEmail1" class="">CENTER BACK<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title="From your back of your neck to your waist"></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+
+                            </div>
+                            <div class="form-group top-label col-md-5">
+                                <label for="exampleInputEmail1" class="">ADDITIONAL MEASUREMENTS<i class="fa fa-fw fa-question-circle" data-toggle="tooltip" title=""></i>:</label>
+                                <input type="text" class="form-control content" id="exampleInputEmail1" placeholder="">
+
+                            </div>
+
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 4,'tab-pane':activeTab !==4 }">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>PAYMENT</th>
+                                    <th>AMOUNT</th>
+                                    <th>STATUS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>John</td>
+                                    <td class="col-md-3">3000</td>
+                                    <td>Completed</td>
+                                </tr>
+                                <tr>
+                                    <td>Mary</td>
+                                    <td class="col-md-3">2000</td>
+                                    <td><button type="submit" class="btn btn-primary center-block">Proceed to Payment</button></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 5,'tab-pane':activeTab !==5 }">
+                            <h3>The order is on the way !</h3>
+
+                            <div class="wizard exchange">
+                                <div class="wizard-inner">
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs icon" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a role="tab" title="Order Confirmed">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+                                            </a>
+                                            <label>Order confirmed</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Collection">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+                                            </a>
+                                            <label>Payment confirmed</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Received">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+
+                                            </a>
+                                            <label>Order shipped</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Received">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+
+                                            </a>
+                                            <label>Order delivered</label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 2,'tab-pane':activeTab !==2 }">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs tabs-list">
+
+                                    <li ng-class="{'active': activeTabb == 1}"><a href="" ng-click="setActiveTabb(1)">SEND</a></li>
+                                    <li ng-class="{'active': activeTabb == 2}"><a href="" ng-click="setActiveTabb(2)">RECEIVED</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div ng-class="{'tab-pane active':activeTabb === 1,'tab-pane':activeTabb !==1 }" class="tab1">
+                                        <h3>Upload yours:</h3>
+                                        <div class="row input-file-option images-tab">
+                                            <div class="form-group col-md-2 " name="imageGroup">
+
+                                                <div class="col-md-12" style="border: 1px solid; min-height: 100px; max-height: 20">
+                                                    <img class="img-responsive" alt="Product Picture">
+                                                </div>
+                                                <input file-model="image" type="file" id="image" class="fileUpload" required="">
+
+                                                <button class="upload-button" ng-click="uploadImages(image , '#imageDescription')"> Upload </button>
+                                            </div>
+
+                                            <div class="form-group col-md-2" name="imageGroup">
+
+                                                <div class="col-md-12" style="border: 1px solid; min-height: 100px; max-height: 20">
+                                                    <img class="img-responsive" alt="Product Picture">
+                                                </div>
+                                                <input file-model="image" type="file" id="image" class="fileUpload" required="">
+
+                                                <button class="upload-button" ng-click="uploadImages(image , '#imageDescription')"> Upload</button>
+                                            </div>
+
+
+                                            <div class="form-group col-md-2 " name="imageGroup">
+
+                                                <div class="col-md-12" style="border: 1px solid; min-height: 100px; max-height: 20">
+                                                    <img class="img-responsive" alt="Product Picture">
+                                                </div>
+                                                <input file-model="image" type="file" id="image" class="fileUpload" required="">
+
+                                                <button class="upload-button" ng-click="uploadImages(image , '#imageDescription')"> Upload </button>
+                                            </div>
+
+                                            <div class="form-group col-md-2 " name="imageGroup">
+
+                                                <div class="col-md-12" style="border: 1px solid; min-height: 100px; max-height: 20">
+                                                    <img class="img-responsive" alt="Product Picture">
+                                                </div>
+                                                <input file-model="image" type="file" id="image" class="fileUpload" required="">
+
+                                                <button class="upload-button" ng-click="uploadImages(image , '#imageDescription')"> Upload </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-class="{'tab-pane active':activeTabb === 2,'tab-pane':activeTabb !==2 }" class="tab1">
+                                <h3>Check out the reference sketches:</h3>
+                                <div class="timeline-body col-md-offset-1">
+                                    <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="box box-primary direct-chat direct-chat-primary chat-window">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+                        <span class="pull-left">Write to your customer here !</span>
+                        <div class="box-tools pull-right">
+
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+                                <i class="fa fa-comments"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body chat-section">
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="http://cdn.hloom.com/images/pp/csresume/customer-service-resume.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    Is this template really for free? That's unbelievable!
+                                </div>
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="http://d99fa377690fbe76cfc6-0e08cb38a0192791815015a4504f7804.r32.cf2.rackcdn.com/images/customer_care.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                        <!-- Contacts are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="http://cdn.lebenslaufgestalten.de/images/pp/resume/rocket-girl.png" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                            <span class="contacts-list-name">
+                              Count Dracula
+                              <small class="contacts-list-date pull-right">2/28/2015</small>
+                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                            </ul>
+                            <!-- /.contatcts-list -->
+                        </div>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                      </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

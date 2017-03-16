@@ -11,6 +11,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("madeToOrder",{ 	
 			url : '/madeToOrder',
 			templateUrl:"views/made-to-order.html",
+            controller: "MadeToOrderController"
 		})
 		.state("customization",{ 	
 			url : '/customization',
@@ -130,7 +131,24 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("orderConfirmation", {
 			url:"/orderConfirmation",
 			templateUrl : "views/order-confirmation.html"
-		});
+		})
+		 .state("madeToOrderRequest", {
+		 	url:"/madeToOrder-newOrder",
+		 	templateUrl : "views/mod-request-order.html",
+		 	controller: "MadeToOrderController"
+		})
+
+		.state("madeToOrderDetail", {
+					url:"/madeToOrder/orderDetails",
+					templateUrl : "views/made-to-order-chat.html",
+					controller: "MadeToOrderController"
+		})
+        .state("madeToOrderDetailCustomer", {
+            url:"/madeToOrder/orderDetails-customer",
+            templateUrl : "views/mod-chat.html",
+            controller: "MadeToOrderController"
+        });
+
 
 		$authProvider.httpInterceptor = false;
 		$authProvider.google({
@@ -240,6 +258,8 @@ function testAPI() {
             'Thanks for logging in, ' + response.name + '!';
     });
 }
+
+
 
 
 

@@ -1,0 +1,452 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+    <div  class="nav-tabs-custom ">
+        <ul class="nav nav-tabs tabs-list tabs-style">
+
+            <li ng-class="{'active': activeTab == 1}"><a href="" ng-click="setActiveTab(1)" target="_parent">New</a></li>
+            <li ng-class="{'active': activeTab == 2}"><a href="" ng-click="setActiveTab(2)">Past</a></li>
+            <li ng-class="{'active': activeTab == 3}"><a href="" ng-click="setActiveTab(3)">How it works</a></li>
+            <li ng-class="{'active': activeTab == 5}"><a href="" ng-click="setActiveTab(5)">Orders</a></li>
+            <li ng-class="{'active': activeTab == 6}"><a href="" ng-click="setActiveTab(6)">Designers</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div ng-class="{'tab-pane active':activeTab === 1,'tab-pane':activeTab !==1 }" class="tab1">
+                <div class="row">
+                <div class="col-md-3" style="padding-top: 40px;">
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                       <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-b.jpg" class="col-md-4 thumbnail-image" >
+                        <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-a.jpg" class="col-md-4 thumbnail-image">
+                        <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-c.jpg" class="col-md-4 thumbnail-image">
+                        <h3 class="profile-username text-center">Nina Mcintire</h3>
+                        <iframe style="width:200px!important;" class="col-md-offset-3"  src="http://free.timeanddate.com/countdown/i5m8xqwt/n176/cf12/cm0/cu4/ct0/cs0/ca0/co0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw256/szh108/iso2017-03-06T00:00:00" allowTransparency="true" frameborder="0" width="101" height="27"></iframe>
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Ocassion</b> <a class="pull-right">Wedding</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Category</b> <a class="pull-right">indian</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Other details</b> <a class="pull-right"data-toggle="modal" data-target="#details">View</a>
+                            </li>
+                        </ul>
+                        <div id="details" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Other details</h4>
+                            </div>
+                            <div class="modal-body">
+                                <label>Style</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="western">
+                                <label>Price Range</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0 to 5000">
+                                <label>About the product</label>
+                                <textarea class="form-control" rows="4" placeholder=""></textarea>
+                                <label>Reference picture</label>
+                                <div class="timeline-body">
+                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                        <a href="/madeToOrder/orderDetails" class="btn btn-primary btn-block" ng-click="hideSidebar()"><b>ACCEPT</b></a>
+                    </div>
+                </div>
+                    <!-- /.box-body -->
+                </div>
+                    <div class="col-md-3" style="padding-top: 40px;">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+
+                                    <img src="https://umexpert.um.edu.my/Avatar/no-image-found.jpg" class="thumbnail-image col-md-11"  style="opacity:0.2;" >
+
+
+                                <h3 class="profile-username text-center">Ruchi Chopra</h3>
+                                <iframe style="width:200px!important;" class="col-md-offset-3"  src="http://free.timeanddate.com/countdown/i5m8xqwt/n176/cf12/cm0/cu4/ct0/cs0/ca0/co0/cr0/ss0/cac000/cpc000/pcfff/tcfff/fs100/szw256/szh108/iso2017-03-06T00:00:00" allowTransparency="true" frameborder="0" width="101" height="27"></iframe>
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Ocassion</b> <a class="pull-right">Wedding</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Category</b> <a class="pull-right">indian</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Other details</b> <a class="pull-right"data-toggle="modal" data-target="#details">View</a>
+                                    </li>
+                                </ul>
+                                <div id="details" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Other details</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>Style</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="western">
+                                                <label>Price Range</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0 to 5000">
+                                                <label>About the product</label>
+                                                <textarea class="form-control" rows="4" placeholder=""></textarea>
+                                                <label>Reference picture</label>
+                                                <div class="timeline-body">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/madeToOrder/orderDetails" class="btn btn-primary btn-block" ng-click="hideSidebar()"><b>ACCEPT</b></a>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                </div>
+                </div>
+            </div>
+            <div ng-class="{'tab-pane active':activeTab === 2,'tab-pane':activeTab !==2 }" class="tab1">
+                <div class="row">
+                    <div class="col-md-3" style="padding-top: 40px;">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+                                <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-b.jpg" class="col-md-4 thumbnail-image" >
+                                <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-a.jpg" class="col-md-4 thumbnail-image">
+                                <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-c.jpg" class="col-md-4 thumbnail-image">
+                                <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Ocassion</b> <a class="pull-right">Wedding</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Category</b> <a class="pull-right">Apparel</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Other details</b> <a class="pull-right" data-toggle="modal" data-target="#pastorders">View</a>
+                                    </li>
+
+                                </ul>
+                                <div id="pastorders" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Other details</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label>Style</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="western">
+                                                <label>Price Range</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="0 to 5000">
+                                                <label>About the product</label>
+                                                <textarea class="form-control" rows="4" placeholder=""></textarea>
+                                                <label>Reference picture</label>
+                                                <div class="timeline-body">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                    <img src="http://placehold.it/100x100" alt="..." class="margin">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <a href="/madeToOrder/orderDetails" class="btn btn-primary btn-block" ng-click="hideSidebar()"><b>ACCEPT</b></a>
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-class="{'tab-pane active':activeTab === 3,'tab-pane':activeTab !==3 }" class="list-style">
+                <ul>
+                    <li> Check the Made – To – Order Job Board from your Designer Panel</li>
+                    <li> Select the job that you want to fulfill.</li>
+                   <li> Accept the job you selected and reply the customer with the initial design sketches and a price quote within the time stipulated time remaining for the order. (Note: A standard customer order stay actives for a max 24 hours, you will have to reply within 24 hours to the customer. Also take customer budget in consideration for mentioning the price quote)
+                   </li><li>Interact directly with the customer to finalize the design within next 3 days.</li>
+                    <li>  Ask the necessary measurements for the product from customer through measurement section within the made-to-order section.</li>
+                    <li> Ask the customer to confirm the design and measurement by making the total of 75% payment of the price you confirmed.</li>
+                    <li>Send the snapshot of the completed product within next 2 weeks to the customer and ask for the remaining 25% of the payment.</li>
+                    <li>Perform a quality check, package the product and inform the ModaInk Team for product pick up.</li>
+                    <li>Our shipping partner will come and pick up the product within 24 hours.</li>
+                    <li>You receive your payment in the next payment cycle.</li>
+
+                </ul>
+                <a href="#" class="btn btn-primary btn-block center-block" data-toggle="modal" data-target="#myModal"><b>APPLY TO MADE TO ORDER</b></a>
+
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Apply to Made To Order</h4>
+                            </div>
+                            <div class="modal-body">
+                            <label class="">What product categories are you interested in Made – To – Order – </label>
+                            <div class="category-men">
+                                <div class="checkbox" >
+                                    <label>
+                                        <input type="checkbox">
+                                        Men
+                                    </label>
+                                </div>
+                                <div class="options">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        Apparel
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        Acessories
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        Footwear
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                                <div class="category-women">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        Women
+                                    </label>
+                                </div>
+                                    <div class="options">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            Apparel
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            Acessories
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">
+                                            Footwear
+                                        </label>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+                                <label class="">Do you agree with the our terms and conditions for made to order? –  </label>
+                                <div class="checkbox">
+                                <label>
+                                <input type="checkbox">
+                                Agree <a href="">T&C for Made To Order</a>
+                                </label>
+                                </div>
+
+                            <label class="">A security deposit of Rs. 5000 will be kept with ModaInk from your next payment. Do you agree ?</label>
+                                <div class="checkbox">
+                                    <label>
+                                    <input type="checkbox">
+                                    Agree
+                                    </label>
+                                </div>
+
+                            <a href="" class="btn btn-primary btn-block center-block"><b>SUBMIT</b></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-class="{'tab-pane active':activeTab === 5,'tab-pane':activeTab !==5 }" class="tab1">
+                <div ng-controller="MadeToOrderController" class="nav-tabs-custom">
+                    <ul class="nav nav-tabs tabs-list">
+                        <li ng-class="{'active': activeTab == 1}"><a href="" ng-click="setActiveTab(1)" target="_parent">Ongoing</a></li>
+                        <li ng-class="{'active': activeTab == 2}"><a href="" ng-click="setActiveTab(2)">Completed</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div ng-class="{'tab-pane active':activeTab === 1,'tab-pane':activeTab !==1 }" class="tab1">
+                            <div class="row">
+                            <div class="col-md-3">
+                                <div class="box box-primary">
+                                    <div class="box-body box-profile">
+                                        <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-b.jpg" class="col-md-4 thumbnail-image" >
+                                        <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-a.jpg" class="col-md-4 thumbnail-image">
+                                        <img src="http://d1edghokb2tzip.cloudfront.net/media/catalog/product/cache/1/image/350x525/9df78eab33525d08d6e5fb8d27136e95/m/y/mydc03011703-c.jpg" class="col-md-4 thumbnail-image">
+                                        <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+                                        <ul class="list-group list-group-unbordered">
+                                            <li class="list-group-item">
+                                                <b>Ocassion</b> <a class="pull-right">Wedding</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Fabric details</b> <a class="pull-right">Silk</a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <b>Other details</b> <a class="pull-right">View</a>
+                                            </li>
+                                        </ul>
+
+                                        <a href="/madeToOrder/orderDetails" class="btn btn-primary btn-block"><b>ACCEPT</b></a>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-class="{'tab-pane active':activeTab === 6,'tab-pane':activeTab !==6 }" class="tab1">
+                <div ng-controller="MadeToOrderController" class="nav-tabs-custom">
+                    <ul class="nav nav-tabs tabs-list">
+                        <li ng-class="{'active': activeTab == 1}"><a href="" ng-click="setActiveTab(1)" target="_parent">Active</a></li>
+                        <li ng-class="{'active': activeTab == 2}"><a href="" ng-click="setActiveTab(2)">New requests</a></li>
+                    </ul>
+                    <div class="tab-content">
+                    <div ng-class="{'tab-pane active':activeTab === 1,'tab-pane':activeTab !==1 }" class="tab1">
+                        <div ng-controller="MadeToOrderController" class="nav-tabs-custom">
+                            <div class="row">
+                            <div  class="col-md-4 ng-scope">
+                                <div class="box remove-box-top">
+                                    <div class="box-body text-center no-padding">
+                                        <div class="bg-teal" style="padding: 3px;">
+                                            <img ng-src="https://dev-modaink-assets.s3.amazonaws.com/designers/cjFDZzk2RERsMTA5MDYxMjJfNTk2NjIxNTQwNDY3ODE4Xzc2MjkwNDU2NTQ3MDY1NDQxMDhfbg.jpg" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;" src="https://dev-modaink-assets.s3.amazonaws.com/designers/cjFDZzk2RERsMTA5MDYxMjJfNTk2NjIxNTQwNDY3ODE4Xzc2MjkwNDU2NTQ3MDY1NDQxMDhfbg.jpg">
+                                            <p class="ng-binding">
+                                                aman  - Basic<br>
+                                                <small class="ng-binding">Member since: </small>
+                                            </p>
+                                        </div>
+                                        <div class="row" style="border-bottom: 1px solid #f4f4f4;">
+
+                                            <div class="col-md-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">2</h5>
+                                                    <span class="description-text">TYPE</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+
+                                            <div class="col-md-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">14</h5>
+                                                    <span class="description-text">PRODUCTS</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+
+                                            <div class="col-md-4 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">7</h5>
+                                                    <span class="description-text">SALES</span>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" style="margin: 3%;">
+                                            <a href="/designer-profile/35"><div class="col-md-4 btn btn-default ">Profile</div></a>
+                                            <a href="/addProduct?designerId=35&amp;mode=c"><div class="col-md-4 btn btn-default text-center">Products</div></a>
+                                            <a href="/designer-profile/35#products"><div class="col-md-4 btn btn-default text-center">Collections</div></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div ng-class="{'tab-pane active':activeTab === 2,'tab-pane':activeTab !==2 }" class="tab1">
+                        <div ng-controller="MadeToOrderController" class="nav-tabs-custom">
+                            <div class="row">
+                            <div class="col-md-4 ng-scope">
+                                <div class="box remove-box-top">
+                                    <div class="box-body text-center no-padding">
+                                        <div class="bg-teal" style="padding: 3px;">
+                                            <img ng-src="https://dev-modaink-assets.s3.amazonaws.com/designers/cjFDZzk2RERsMTA5MDYxMjJfNTk2NjIxNTQwNDY3ODE4Xzc2MjkwNDU2NTQ3MDY1NDQxMDhfbg.jpg" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;" src="https://dev-modaink-assets.s3.amazonaws.com/designers/cjFDZzk2RERsMTA5MDYxMjJfNTk2NjIxNTQwNDY3ODE4Xzc2MjkwNDU2NTQ3MDY1NDQxMDhfbg.jpg">
+                                            <p class="ng-binding">
+                                                aman  - Basic<br>
+                                                <small class="ng-binding"> </small>
+                                            </p>
+                                        </div>
+                                        <div class="row" style="border-bottom: 1px solid #f4f4f4;">
+
+                                            <div class="col-md-6 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">CATEGORY</h5>
+                                                    <p class="description-text">Women</p>
+
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+
+                                            <div class="col-md-6 border-right">
+                                                <div class="description-block">
+                                                    <h5 class="description-header">TYPE</h5>
+                                                    <p class="description-text" style="margin-bottom: -3px;">Footwear</p>
+                                                    <a class="description-text" data-toggle="tooltip" title="acessories">more</a>
+                                                </div>
+                                                <!-- /.description-block -->
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" style="margin: 3%;">
+                                            <a href="/addProduct?designerId=35&amp;mode=c"><div class="col-md-4 btn btn-default text-center">Profile</div></a>
+                                            <a href="/addProduct?designerId=35&amp;mode=c"><div class="col-md-4 btn btn-default btn-success text-center">Accept</div></a>
+                                            <a href="/designer-profile/35#products"><div class="col-md-4 pull-right btn btn-default btn-danger text-center">Reject</div></a>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

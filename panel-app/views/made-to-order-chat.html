@@ -1,0 +1,435 @@
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+
+    });
+
+</script>
+
+<div class="content-wrapper hide-aside" style="height:550px!important;" >
+    <!-- Content Header (Page header) -->
+    <section class="content-header no-padding">
+        <div class="row window-size">
+            <div class="col-md-8 details-panel" style=" ">
+                <div ng-controller="MadeToOrderController">
+                    <ul class="nav nav-tabs tabs-list">
+
+                        <li ng-class="{'active': activeTab == 1}"><a href="" ng-click="setActiveTab(1)">REQUIREMENTS</a></li>
+                        <li ng-class="{'active': activeTab == 2}"><a href="" ng-click="setActiveTab(2)">IMAGES</a></li>
+                        <li ng-class="{'active': activeTab == 3}"><a href="" ng-click="setActiveTab(3)">MEASUREMENTS</a></li>
+                        <li ng-class="{'active': activeTab == 4}"><a href="" ng-click="setActiveTab(4)">PAYMENT</a></li>
+                        <li ng-class="{'active': activeTab == 5}"><a href="" ng-click="setActiveTab(5)">DELIVERY</a></li>
+
+                    </ul>
+
+                    <div class="tab-content">
+                        <div ng-class="{'tab-pane active':activeTab === 1,'tab-pane':activeTab !==1 }" class="tab1">
+                            <div class="col-md-12" style="padding-left: 40px;">
+                                <h3>Hey designer, new assignment !</h3>
+                                <div class="form-group top-label">
+                                    <label for="exampleInputEmail1" class="col-md-4">OCASSION/ PURPOSE:</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Marriage">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">DETAILS:</label>
+                                        <textarea class="form-control" rows="3" placeholder="I need a red color lehnga"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">FABRIC DETAILS:</label>
+                                        <textarea class="form-control" rows="4" placeholder="Silk"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label style="text-align: left;">ADDITIONAL DETAILS:</label>
+                                        <textarea class="form-control" rows="4" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="col-md-3">TOTAL PRICE:</label>
+                                    <input type="email" class="form-control " id="exampleInputEmail1" placeholder=" tell the User">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary center-block">CONFIRM</button>
+                            </div>
+
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 3,'tab-pane':activeTab !==3 }" class="tab2">
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-one" id="fancy-checkbox-one" autocomplete="off" />
+                                <div class="[ btn-group ] ">
+                                    <label for="fancy-checkbox-one" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-one" class="[ btn btn-default active ] float-input">
+                                        Shoulder
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="user">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-two" id="fancy-checkbox-two" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-two" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-two" class="[ btn btn-default active ] float-input">
+                                        Chest
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-three" id="fancy-checkbox-three" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-three" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-three" class="[ btn btn-default active ] float-input">
+                                        Bust
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-four" id="fancy-checkbox-four" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-four" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-four" class="[ btn btn-default active ] float-input">
+                                        Under bust
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-five" id="fancy-checkbox-five" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-five" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-five" class="[ btn btn-default active ] float-input">
+                                        Waist
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-six" id="fancy-checkbox-six" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-six" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-six" class="[ btn btn-default active ] float-input">
+                                        Hips
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-seven" id="fancy-checkbox-seven" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-seven" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-seven" class="[ btn btn-default active ] float-input">
+                                        Upper arm
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-eight" id="fancy-checkbox-eight" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-eight" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-eight" class="[ btn btn-default active ] float-input">
+                                        Height
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-nine" id="fancy-checkbox-nine" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-nine" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-nine" class="[ btn btn-default active ] float-input">
+                                        Bra cup size
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-ten" id="fancy-checkbox-ten" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-ten" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-ten" class="[ btn btn-default active ] float-input">
+                                        Inseam
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-eleven" id="fancy-checkbox-eleven" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-eleven" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-eleven" class="[ btn btn-default active ] float-input">
+                                        Rise
+                                    </label>
+                                    <input type="email" class="form-control tick-box " id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-twelve" id="fancy-checkbox-twelve" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-twelve" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-twelve" class="[ btn btn-default active ] float-input">
+                                        Arm length
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-6">
+                                <input type="checkbox" name="fancy-checkbox-thirteen" id="fancy-checkbox-thirteen" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-thirteen" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-thirteen" class="[ btn btn-default active ] float-input">
+                                        Center back
+                                    </label>
+                                    <input type="email" class="form-control tick-box" id="exampleInputEmail1" placeholder="User">
+                                </div>
+                            </div>
+                            <div class="[ form-group ] col-md-7">
+                                <input type="checkbox" name="fancy-checkbox-fourteen" id="fancy-checkbox-fourteen" autocomplete="off" />
+                                <div class="[ btn-group ]">
+                                    <label for="fancy-checkbox-fourteen" class="[ btn btn-primary ]">
+                                        <span class="[ glyphicon glyphicon-ok ] tick"></span>
+                                        <span> </span>
+                                    </label>
+                                    <label for="fancy-checkbox-fourteen" class="[ btn btn-default active ]">
+                                        Additonal measurements
+                                    </label>
+                                    <textarea class="form-control" rows="4" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 4,'tab-pane':activeTab !==4 }">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="do-center">PAYMENT</th>
+                                    <th class="do-center">AMOUNT</th>
+                                    <th class="do-center">STATUS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="do-center">John</td>
+                                    <td class="col-md-4"><input type="text" class="form-control con" id="exampleInputEmail1" placeholder="3000"></td>
+                                    <td><button type="submit" class="btn btn-primary center-block">Ask for payment</button></td>
+                                </tr>
+                                <tr>
+                                    <td class="do-center">Mary</td>
+                                    <td class="col-md-4"><input type="text" class="form-control con" id="exampleInputEmail1" placeholder="2000"></td>
+                                    <td class="do-center">Pending</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 5,'tab-pane':activeTab !==5 }">
+                            <h3>The order is on the way !</h3>
+                            <div class="wizard exchange">
+                                <div class="wizard-inner">
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a role="tab" title="Order Confirmed">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+                                            </a>
+                                            <label>Order confirmed</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Collection">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+                                            </a>
+                                            <label>Payment confirmed</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Received">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+
+                                            </a>
+                                            <label>Order shipped</label>
+                                        </li>
+                                        <li role="presentation" class="disabled">
+                                            <a role="tab" title="Received">
+				                            <span class="round-tab">
+				                                <i class="glyphicon glyphicon-ok"></i>
+				                            </span>
+
+                                            </a>
+                                            <label>Order delivered</label>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-class="{'tab-pane active':activeTab === 2,'tab-pane':activeTab !==2 }">
+                            <div class="col-md-12">
+
+                                <ul class="nav nav-tabs tabs-list">
+
+                                    <li ng-class="{'active': activeTabb == 1}"><a href="" ng-click="setActiveTabb(1)">SEND</a></li>
+                                    <li ng-class="{'active': activeTabb == 2}"><a href="" ng-click="setActiveTabb(2)">RECEIVED</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div ng-class="" lass="{'tab-pane active':activeTabb === 1,'tab-pane':activeTabb !==1 }" class="tab1">
+                                        <h3>Upload yours:</h3>
+                                        <input type="file" class="multi with-preview" multiple/>
+
+                                    </div>
+                                    <div ng-class="{'tab-pane active':activeTabb === 2,'tab-pane':activeTabb !==2 }" class="tab1">
+                                        <h3>Check out the reference sketches:</h3>
+                                        <div class="timeline-body col-md-offset-1">
+                                            <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                            <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                            <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                            <img src="http://placehold.it/150x180" alt="..." class="margin">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-4 chat-window">
+                <div class="box box-primary direct-chat direct-chat-primary ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"></h3>
+                        <span class="pull-left">Write to your customer here !</span>
+                        <div class="box-tools pull-right">
+
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body chat-section">
+                        <!-- Conversations are loaded here -->
+                        <div class="direct-chat-messages">
+                            <!-- Message. Default to the left -->
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="http://cdn.hloom.com/images/pp/csresume/customer-service-resume.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    Is this template really for free? That's unbelievable!
+                                </div>
+                            </div>
+                            <!-- /.direct-chat-msg -->
+
+                            <!-- Message to the right -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <!-- /.direct-chat-info -->
+                                <img class="direct-chat-img" src="http://d99fa377690fbe76cfc6-0e08cb38a0192791815015a4504f7804.r32.cf2.rackcdn.com/images/customer_care.png" alt="Message User Image"><!-- /.direct-chat-img -->
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                                <!-- /.direct-chat-text -->
+                            </div>
+                            <!-- /.direct-chat-msg -->
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                        <!-- Contacts are loaded here -->
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="http://cdn.lebenslaufgestalten.de/images/pp/resume/rocket-girl.png" alt="User Image">
+
+                                        <div class="contacts-list-info">
+                            <span class="contacts-list-name">
+                              Count Dracula
+                              <small class="contacts-list-date pull-right">2/28/2015</small>
+                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                        </div>
+                                        <!-- /.contacts-list-info -->
+                                    </a>
+                                </li>
+                                <!-- End Contact Item -->
+                            </ul>
+                            <!-- /.contatcts-list -->
+                        </div>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                      </span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

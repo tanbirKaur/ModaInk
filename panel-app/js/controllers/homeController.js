@@ -65,7 +65,7 @@ app.controller('HomeController', function($scope,$rootScope,$location,$state, ht
 
     $rootScope.userLoggedIn = storageService.get('accessToken');
     $rootScope.isAdmin = storageService.get("isAdmin");
-
+    $rootScope.showSidePanel = true;
     if (!$rootScope.userLoggedIn) {
         $location.path("/login");
     } else {
