@@ -25,17 +25,22 @@
 							<div class="filter_title"> {{facetName}} </div>
 							<ul>
 								<li class="input-group" ng-repeat="(name,val) in facet_key ">
-							        <input type="checkbox" ng-model="filterChecks[name]" ng-change="addFilter(name,getFilterKey(facetName),name,subCategory)" aria-label="...">
-							        <label>{{name}}</label>
+							        <input type="checkbox" ng-model="filterChecks[name]" ng-change="addFilter(name,getFilterKey(facetName),name,subCategory)" ng-init="name = name.replace('-*', '% and above')" aria-label="...">
+							        <label>{{name}} </label>
 							        <span class="num">({{val}})</span>
 							    </li>
 								<li class="input-group" ng-if="facet_val.toLowerCase()=='prices_facet'">
-									<label>Range: FROM</label>
-									<input type="number" ng-model="minPriceRange" min="0" aria-label="...">
-									<label>TO</label>
-									<input type="number" ng-model="maxPriceRange" min="0" aria-label="...">
-									<button ng-click='addFilter(minPriceRange+"-"+maxPriceRange,getFilterKey(facetName),minPriceRange+"-"+maxPriceRange,subCategory)'>Apply</button>
+									<span>Choose Custom range</span>
+									<a class="btn btn-sm"ng-click='addFilter(minPriceRange+"-"+maxPriceRange,getFilterKey(facetName),minPriceRange+"-"+maxPriceRange,subCategory)'>Apply</a>
+
+									<input type="number" ng-model="minPriceRange" min="0" aria-label="..." placeholder="Min" style="    width: 40%;
+
+    padding: 0;    display: inline-flex;"> -
+									<input type="number" ng-model="maxPriceRange" min="0" aria-label="..." placeholder="Max" style="    width: 40%;
+
+    padding: 0;    display: inline-flex;">
 								</li>
+
 						    </ul>
 						</div>
 					</aside>
