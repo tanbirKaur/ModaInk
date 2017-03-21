@@ -53,7 +53,8 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
         })
         .state('payouts',{
             url: '/payouts',
-            templateUrl: '/views/payouts.html'
+            templateUrl: '/views/payouts.html',
+            controller: 'PayoutsController'
         })
         .state('login',{
             url: '/login',
@@ -95,37 +96,37 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
 
 
     $locationProvider.html5Mode({
-          enabled: true,
-          requireBase: false
-        });
-        $urlRouterProvider.otherwise('/home');
-        
+        enabled: true,
+        requireBase: false
+    });
+    $urlRouterProvider.otherwise('/home');
+
 });
 app.directive('script', function() {
     return {
-      restrict: 'E',
-      scope: false,
-      link: function(scope, elem, attr) {
-        if (attr.type=='text/javascript-lazy') {
-          var code = elem.text();
-          var f = new Function(code);
-          f();
+        restrict: 'E',
+        scope: false,
+        link: function(scope, elem, attr) {
+            if (attr.type=='text/javascript-lazy') {
+                var code = elem.text();
+                var f = new Function(code);
+                f();
+            }
         }
-      }
     };
-  });
+});
 app.directive('fileModel', ['$parse', function ($parse) {
-            return {
-               restrict: 'A',
-               link: function(scope, element, attrs) {
-                  var model = $parse(attrs.fileModel);
-                  var modelSetter = model.assign;
-                  
-                  element.bind('change', function(){
-                     scope.$apply(function(){
-                        modelSetter(scope, element[0].files[0]);
-                     });
-                  });
-               }
-            };
-         }]);
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);

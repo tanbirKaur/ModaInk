@@ -1,33 +1,30 @@
- 
-			            <!-- /.box-header -->
-			            <div class="box-body">
-			              <table id="tablePayouts" class="table table-bordered table-striped">
-			                <thead>
-			                <tr>
-			                  <th>Receipt ID</th>
-			                  <th>Designer ID(Admin)</th>
-			                  <th>Designer Name(Admin)</th>
-			                  <th>Month</th>
-			                  <th>Payment Date</th>
-			                  <th>Method</th>
-			                  <th>Amount</th>
-			                  <th>Payout details</th>
-			                </tr>
-			                </thead>
-			                <tbody>
 
-			                </tbody>
-			              </table>
-			            </div>
-			          
-
+<!-- /.box-header -->
+<div class="box-body">
+	<table id="tablePayouts" class="table table-bordered table-striped">
+		<thead>
+		<tr>
+			<th>Receipt ID</th>
+			<th>Month</th>
+			<th>Order Item</th>
+			<th ng-show="isAdmin">Designer ID</th>
+			<th ng-show="isAdmin">Designer Name</th>
+			<th>Amount</th>
+			<th>Quantity</th>
+			<th>Payment Date</th>
+			<th>Paid</th>
+		</tr>
+		</thead>
+	</table>
+</div>
 <script type="text/javascript-lazy">
-  $("#tablePayouts").DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
+		window.payoutTable = $("#tablePayouts").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+
 </script>

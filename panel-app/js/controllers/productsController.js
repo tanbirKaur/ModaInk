@@ -7,12 +7,13 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.newProduct = {skus:[],colours:[],images:[]};
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
+
     }
 
     counter = 0;
     $scope.skus = [];
 
-    if ($scope.mode === 'v') {
+    if ($scope.mode === 'v' || $scope.mode === 've') {
         $scope.colors = $scope.newProduct.colours.map(function (color) {
             return {text:color};
         });
@@ -76,10 +77,12 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "returnDays":$scope.newProduct.returnDays
         };
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
-            $('#updateProductSuccess').modal();
-        },
-        function (response) {
+            $location.path('/home');
+        },function (response) {
             $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
+            if(!$scope.error){
+                $scope.error = response.data.message;
+            }
             $('#updateProductFailed').modal()
         })
     };
@@ -108,6 +111,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
+            if(!$scope.error){
+                $scope.error = response.data.message;
+            }
             $('#addProductFailure').modal();
         });
     }
