@@ -177,7 +177,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 
         newDesignerRequest.brand.portfolioImages = [];
         $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
-            newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.imageDescription});
+            newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.description});
         });
         httpService.addApprovedDesigner(newDesignerRequest,success,failure);
     }
