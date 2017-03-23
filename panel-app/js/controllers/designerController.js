@@ -128,7 +128,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             };
             brandDetails.portfolioImages = [];
             $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
-				brandDetails.portfolioImages.push({url:image.url,description:image.imageDescription});
+				brandDetails.portfolioImages.push({url:image.url,description:image.description});
             });
 			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
 				$location.path('/waiting-for-approval');
