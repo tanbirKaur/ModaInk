@@ -137,6 +137,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     }
     $scope.onDesignerRequestFailure = function (response) {
         console.log(response);
+        $scope.error = response.data.message
         $('#failure').show();
         $('#registrationButtons').addClass('displayNone');
     }

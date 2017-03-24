@@ -35,7 +35,7 @@
 
                 <div class="form-group col-md-1"></div>
                 <div class="form-group full-width col-md-5 ">
-                  <label for="referrerCode">Refferer Code</label>
+                  <label for="referrerCode">Referal Code (optional)</label>
                   <input ng-model="designer.referrerCode" type="text" class="form-control" >
                 </div>
 
@@ -117,12 +117,8 @@
       </div>
 
       <div id="failure" class="alert alert-danger alert-dismissable" data-dismiss="alert"  role="alert" style="text-align: center; display: none" >
-          <h4 class="modal-title">OOPS something went wrong!!</h4>
-          <p>These can be the reasons for failure</p>
-          <p>The Pin code and Mobile number should be in digits.</p>
-          <p>It is mandatory to choose a designer type.</p>
-          <p>The email id is already registered.</p>
-          <p>Or Something went wrong with the server</p>
+          <h4 class="modal-title">{{error}}</h4>
+
           <a href="#" target="_top"><button class="btn" data-dismiss="alert" ng-click="removeClass()">OK</button></a>
       </div>
 
