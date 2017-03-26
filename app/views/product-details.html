@@ -36,7 +36,8 @@
 							<li class="selected">
 							<a title="color" class="swatchanchor" style="background:{{product.colours[0]}}" ></a>
 							<span style="font-weight: bold;">
-                            <a>{{product.colours[0]}} & {{product.colours[1]}}</a>
+                            <a ng-if="product.colours.length > 1">{{product.colours[0]}} & {{product.colours[1]}}</a>
+                            <a ng-if="product.colours.length == 1">{{product.colours[0]}}</a>
 							</span>
 
 							</li>
