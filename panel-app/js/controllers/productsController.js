@@ -70,7 +70,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         var productUpdates = {
             "description": $scope.newProduct.description,
             "price": $scope.newProduct.price,
-            "discountPrice": $scope.newProduct.discountPrice,
+            "discountPercent": $scope.newProduct.discountPercent,
             "images": $scope.newProduct.images,
             "skus": $scope.newProduct.skus,
             "shippingDays":$scope.newProduct.shippingDays,
@@ -100,8 +100,6 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             return alert(!$scope.categoryIdx?"Please select category":"Please select sub category");
         }
         $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
-        $scope.newProduct.discountPrice = 0;
-        $scope.newProduct.isExclusive = true;
         if($scope.designerId){
             $scope.newProduct.designer = {id:$scope.designerId};
         } else
