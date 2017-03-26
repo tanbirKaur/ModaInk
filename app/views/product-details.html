@@ -33,10 +33,10 @@
 
 					<div>
 						<ul class="swatches Color">
-							<li class="selected" ng-repeat="color in product.colours">
-							<a title="color" class="swatchanchor" style="background:{{color}}" ></a>
+							<li class="selected">
+							<a title="color" class="swatchanchor" style="background:{{product.colours[0]}}" ></a>
 							<span style="font-weight: bold;">
-                            <a>{{color}}</a>
+                            <a>{{product.colours[0]}} & {{product.colours[1]}}</a>
 							</span>
 
 							</li>
