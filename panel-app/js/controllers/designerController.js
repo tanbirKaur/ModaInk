@@ -18,7 +18,11 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 	}
 
 	$scope.getDesignerProducts = function(designerId){
-		httpService.getProducts(designerId,$scope.onGetDesignerProductsSuccess)
+		httpService.getProductsOfDesigner(designerId,$scope.onGetDesignerProductsSuccess)
+	}
+
+	$scope.getDesignerUnapprovedProducts = function(designerId){
+		httpService.getUnApprovedProductsOfDesigner(designerId,$scope.onGetDesignerUnapprovedProductsSuccess)
 	}
 
     $scope.getDesignerRequests = function(){
@@ -72,14 +76,15 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 	$scope.onGetDesignerProductsSuccess = function (response) {
 		var designersFound = response.status == 200;
 		if (designersFound) {
-			var designers = response.data;
-			// map designers to alphabets
-			$scope.designerList = designers.map(function(designer){
-				designer.alphabet = designer.firstName[0];
-				return designer;
-			});
+			$scope.products = response.data;
 		};
+	}
 
+	$scope.onGetDesignerUnapprovedProductsSuccess = function (response) {
+		var designersFound = response.status == 200;
+		if (designersFound) {
+			$scope.unApprovedProducts = response.data;
+		};
 	}
 	$scope.submitForApproval = function () {
 	    if($rootScope.isAdmin){
@@ -259,6 +264,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 	if (designerId ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
+		$scope.getDesignerUnapprovedProducts(designerId);
 	} else {
 	    if($rootScope.userId){
             $scope.getDesignerDetails($rootScope.userId);

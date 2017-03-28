@@ -119,9 +119,29 @@ angular.module('portal-modaink')
             });
         }
 
+        httpService.getProductsOfDesigner = function (designerId,successCallback,failureCallback) {
+            var url =  "designers/"+designerId+'/products';
+            var params = {isApproved:true};
+            httpService.callHttp("GET",url,params,{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"getProducts");
+            });
+        }
+
         httpService.getUnApprovedProducts = function (successCallback,failureCallback) {
             var params = {isApproved:'null'};
             httpService.callHttp("GET","products",params,{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
+            });
+        };
+
+        httpService.getUnApprovedProductsOfDesigner = function (designerId,successCallback,failureCallback) {
+            var url =  "designers/"+designerId+'/products';
+            var params = {isApproved:'null'};
+            httpService.callHttp("GET",url,params,{},{},function (response) {
                 redirectCallback(response,emptyFunction,successCallback);
             },function (response) {
                 redirectCallback(response,httpFailed,failureCallback,"getUnApprovedProducts");
