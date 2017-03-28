@@ -237,8 +237,12 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         var designersFound = response.status == 200;
         if (designersFound) {
             $scope.designerList = response.data;
+            $scope.designerList = $scope.designerList.map(function (designer) {
+                designer.alphabet = designer.firstName[0];
+                return designer;
+            });
         }
-    }
+    };
 
     $scope.onGetDesignerProductsSuccess = function (response) {
         var designersFound = response.status == 200;

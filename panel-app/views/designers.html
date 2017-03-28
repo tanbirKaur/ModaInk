@@ -41,8 +41,8 @@
                             <li class="alpha">{{designerGroup.$key}}</li>
                             <hr>
                             <div class="col-md-12">
-                                    <li ng-repeat="designer in designerGroup">
-                                          <a href="/designer-details/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
+                                    <li ng-repeat="designer in designerGroup" style="text-transform: capitalize">
+                                          <a href="/designer-profile/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
                                       </li>
                                 </div>
                         </ul>

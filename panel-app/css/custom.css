@@ -115,3 +115,31 @@
 div[name=imageGroup] .img-responsive {
     height: 180px !important;
 }
+
+.alphabet-list {
+    list-style: none;
+    display: flex;
+
+}
+
+.alphabet-list li {
+    margin: 1%;
+    text-transform: capitalize;
+}
+
+.designer-listing{
+    text-transform: capitalize;
+
+    list-style: none;
+
+
+}
+.alpha {
+    text-align: center;
+    font-size: 22px;
+}
+
+.alphabets{
+    list-style: none;
+
+}
