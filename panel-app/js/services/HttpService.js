@@ -105,7 +105,7 @@ angular.module('portal-modaink')
             httpService.callHttp("GET","designers/"+designerId+"/brand",{},{},{},function (response) {
                 redirectCallback(response,emptyFunction,successCallback);
             },function (response) {
-                redirectCallback(response,httpFailed,failureCallback,"updateDesignerBrandDetails");
+                redirectCallback(response,httpFailed,failureCallback,"getDesignerBrandDetails");
             });
         }
 
