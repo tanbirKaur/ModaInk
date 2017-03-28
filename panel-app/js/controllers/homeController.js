@@ -12,6 +12,11 @@ app.controller('HomeController', function($scope,$rootScope,$location,$state, ht
     $scope.onGetDesignerProductsSuccess = function (response) {
         if (response.status == 200) {
             $scope.products = response.data;
+            $scope.products = $scope.products.map(function (product) {
+                product.alphabet = product.designer.firstName[0];
+                product.designer = product.designer.firstName+product.designer.lastName;
+                return product;
+            });
         }
     };
 

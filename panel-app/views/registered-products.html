@@ -1,5 +1,38 @@
  <div class="row">
-                  <div ng-repeat="product in products" ng-if="product.isApproved" class="col-md-5" >
+
+
+   <div class="pull-right">
+     <a href="" ng-click="listView = true"><i class="fa fa-list search-bar"></i></a>
+     <a href="" ng-click="listView = false"><i class="fa fa-th-large search-bar"></i></a>
+   </div>
+
+   <div ng-show="listView" class="col-md-12">
+     <div class="col-md-12">
+       <ul class="alphabet-list">
+         <li ng-repeat="productGroup in products | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+           <a ng-href="#{{productGroup.$key}}">{{productGroup.$key}}</a>
+         </li>
+       </ul>
+       <hr>
+     </div>
+
+
+     <ul class="alphabets">
+
+       <li ng-repeat="productGroup in products | filterBy:['name']:designerSearch | groupBy:'designer' | toArray:true | orderBy:'$key'">
+         <ul class="designer-listing" id="{{productGroup.$key[0]}}">
+           <li class="alpha">By - {{productGroup.$key}}</li>
+           <hr>
+           <div class="col-md-12">
+             <li ng-repeat="product in productGroup | orderBy:'name'" >
+               <a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}</a>
+             </li>
+           </div>
+         </ul>
+       </li>
+     </ul>
+   </div>
+                  <div ng-repeat="product in products" ng-if="product.isApproved" ng-hide="listView" class="col-md-5" >
                     <!-- Box Comment -->
                     <div class="box box-widget" style="    border-bottom: solid;">
                       <div class="box-header with-border">
