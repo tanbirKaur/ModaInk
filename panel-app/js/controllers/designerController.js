@@ -3,6 +3,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     $scope.errors = {};
     $scope.designerDetails = {};
     $scope.designerBrandDetails ={};
+    $scope.editMode= false;
 
     $scope.approveDesigner = function (designerId) {
         httpService.approveDesigner(designerId,function(response){
@@ -16,19 +17,8 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         });
     };
 
-	$scope.submitForApproval = function () {
-        if($rootScope.isAdmin){
-            $scope.addDesignerAsAdmin(function (response) {
-                $('#addDesignerSuccess').modal();
-            }, function (response) {
-                $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
-                if(!$scope.error){
-                    $scope.error = response.data.message;
-                }
-                $('#addDesignerFailure').modal();
-            })
-            return;
-        }
+	$scope.updateDetails = function () {
+
 		var designerDetails = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
@@ -40,39 +30,43 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         }
         httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
             var brandDetails = {
-                email: $scope.designerDetails.brand.email,
-                logoUrl: $scope.designerDetails.brand.logoUrl,
-                TINumber: $scope.designerDetails.brand.TINumber,
-                IECNumber: $scope.designerDetails.brand.IECNumber,
-                bankName: $scope.designerDetails.brand.bankName,
-                bankBranch: $scope.designerDetails.brand.bankBranch,
-                bankIFSCode: $scope.designerDetails.brand.bankIFSCode,
-                bankAccountName: $scope.designerDetails.brand.bankAccountName,
-                bankAccountNumber: $scope.designerDetails.brand.bankAccountNumber,
+                email: $scope.designerBrandDetails.email,
+                logoUrl: $scope.designerBrandDetails.logoUrl,
+                TINumber: $scope.designerBrandDetails.TINumber,
+                IECNumber: $scope.designerBrandDetails.IECNumber,
+                bankName: $scope.designerBrandDetails.bankName,
+                bankBranch: $scope.designerBrandDetails.bankBranch,
+                bankIFSCode: $scope.designerBrandDetails.bankIFSCode,
+                bankAccountName: $scope.designerBrandDetails.bankAccountName,
+                bankAccountNumber: $scope.designerBrandDetails.bankAccountNumber,
                 pickupAddress: {
-	                fullName: $scope.designerDetails.brand.pickupAddress.fullName,
-                    mobile: $scope.designerDetails.brand.pickupAddress.mobile,
-                    line1: $scope.designerDetails.brand.pickupAddress.line1,
-                    line2: $scope.designerDetails.brand.pickupAddress.line2,
-                    landmark: $scope.designerDetails.brand.pickupAddress.landmark,
+	                fullName: $scope.designerBrandDetails.pickupAddress.fullName,
+                    mobile: $scope.designerBrandDetails.pickupAddress.mobile,
+                    line1: $scope.designerBrandDetails.pickupAddress.line1,
+                    line2: $scope.designerBrandDetails.pickupAddress.line2,
+                    landmark: $scope.designerBrandDetails.pickupAddress.landmark,
                     pincode: $scope.designerDetails.pincode,
-                    city: $scope.designerDetails.brand.pickupAddress.city,
-                    state: $scope.designerDetails.brand.pickupAddress.state,
-                    country: $scope.designerDetails.brand.pickupAddress.country
+                    city: $scope.designerBrandDetails.pickupAddress.city,
+                    state: $scope.designerBrandDetails.pickupAddress.state,
+                    country: $scope.designerBrandDetails.pickupAddress.country
 				}
             };
             brandDetails.portfolioImages = [];
-            $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
+            $scope.designerBrandDetails.portfolioImages.forEach(function (image) {
 				brandDetails.portfolioImages.push({url:image.url,description:image.description});
             });
 			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
-				$location.path('/waiting-for-approval');
+				if (!$rootScope.isAdmin){
+
+                    $location.path('/waiting-for-approval');
+                }
+                $location.path('/designer-profile/{{designerDetails.id}}')
             })
         },function (res) {
 			alert('Update failed! try again');
         });
     };
-	$scope.addDesignerAsAdmin = function (success, failure) {
+	$scope.addDesignerAsAdmin = function () {
         var newDesignerRequest = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
@@ -113,7 +107,12 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         $scope.designerBrandDetails.portfolioImages.forEach(function (image) {
             newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.description});
         });
-        httpService.addApprovedDesigner(newDesignerRequest,success,failure);
+        httpService.addApprovedDesigner(newDesignerRequest,function () {
+                $('#addDesignerSuccess').modal();
+            }, function (response) {
+                $scope.error = response.data.message;
+                $('#addDesignerFailure').modal();
+            })
     }
 
 
@@ -143,7 +142,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                     $scope.designerBrandDetails.portfolioImages = [];
                 $scope.designerBrandDetails.portfolioImages.push({url:image.fileUrl,description:imageDescription});
                 $scope.errors['image'+$scope.designerBrandDetails.portfolioImages.length+'Description'] = '';
-                alert('image uploaded sucessfully');
+
             }, function (res) {
                 alert('Something went wrong. Please try with some other image')
             })
@@ -156,7 +155,6 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             httpService.uploadImage('designers',imageName,function(res){
                 var imageUploaded = res.data;
                 $scope.designerDetails.avatarUrl = imageUploaded[0].fileUrl;
-                alert('image uploaded sucessfully');
             }, function (res) {
                 alert('Something went wrong. Please try a different image')
             })
@@ -167,7 +165,6 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         if(!imageName)return;
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
-            alert('image uploaded sucessfully');
             $scope.designerBrandDetails.logoUrl = imageUploaded[0].fileUrl;
         }, function (res) {
             alert('Something went wrong. Please try a different image')
@@ -223,6 +220,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         var designerDetailsFound = response.status == 200;
         if (designerDetailsFound) {
             $scope.designerDetails = response.data;
+            $scope.editMode = true;
         };
     }
 
@@ -277,16 +275,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         }
     }
 
-	var designerId = $stateParams.id;
+	var designerId = $stateParams.id || $rootScope.userId;
 	if (designerId ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
 		$scope.getDesignerUnapprovedProducts(designerId);
 		$scope.getDesignerBrandDetails(designerId)
 	} else {
-	    if($rootScope.userId){
-            $scope.getDesignerDetails($rootScope.userId);
-        }
 		$scope.getDesigners();
 	}
     $scope.getDesignerRequests()

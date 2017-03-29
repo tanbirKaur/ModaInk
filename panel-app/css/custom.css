@@ -113,7 +113,17 @@
 }
 
 div[name=imageGroup] .img-responsive {
-    height: 180px !important;
+    max-height: 180px !important;
+    margin: auto;
+    cursor: pointer;
+}
+
+div[name=imageGroup] .placeholder {
+    margin-top: 20%;
+}
+
+div[name=imageGroup] textarea{
+    width: 100%;
 }
 
 .alphabet-list {
