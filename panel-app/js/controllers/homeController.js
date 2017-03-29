@@ -51,7 +51,7 @@ app.controller('HomeController', function($scope,$rootScope,$location,$state, ht
     };
 
     $scope.rejectProduct = function (productId) {
-        httpService.approveProduct(productId,function(response){
+        httpService.rejectProduct(productId,function(response){
             $scope.getUnApprovedProducts();
         });
     };
