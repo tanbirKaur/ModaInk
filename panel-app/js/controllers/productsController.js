@@ -7,11 +7,12 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.newProduct = {skus:[],colours:[],images:[]};
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
+        $scope.skus = $scope.newProduct.skus;
+
 
     }
 
     counter = 0;
-    $scope.skus = [];
 
     if ($scope.mode === 'v' || $scope.mode === 've') {
         $scope.colors = $scope.newProduct.colours.map(function (color) {
@@ -60,13 +61,15 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
 
     $scope.updateProduct = function(){
 
-        $scope.newProduct.skus = $scope.newProduct.skus.map(function (sku) {
+        $scope.newProduct.skus = $scope.skus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
                 quantity:sku.quantity
             };
             return newSku;
         });
+
+
         var productUpdates = {
             "description": $scope.newProduct.description,
             "price": $scope.newProduct.price,
@@ -121,4 +124,8 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         $scope.skuName = "";
         $scope.skuQuantity= "";
     };
+
+    $scope.removeSku = function (index) {
+        $scope.skus.splice(index, 1);
+    }
 });

@@ -96,14 +96,11 @@
                         </div>
                         <div ng-repeat="sku in skus">
                             <div class="input-group addSize" >
-                                <p class="form-control">{{sku.sizeVariantValue +' : '+sku.quantity}}</p>
+                                <p class="form-control">{{sku.sizeVariantValue +' : '+sku.quantity}} <a ng-click="removeSku($index)"><i class="fa fa-times pull-right"></i></a></p>
+
                             </div>
                         </div>
-                        <div ng-repeat="sku in newProduct.skus">
-                            <div class="input-group addSize" >
-                                <p class="form-control">{{sku.sizeVariantValue +' : '+sku.quantity}}</p>
-                            </div>
-                        </div>
+
                     </div>
 
                       <div class="col-md-2"></div>

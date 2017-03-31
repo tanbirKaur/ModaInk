@@ -3,6 +3,8 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     $scope.errors = {};
     $scope.designerDetails = {};
     $scope.designerBrandDetails ={};
+
+
     $scope.editMode= false;
 
     $scope.approveDesigner = function (designerId) {
@@ -22,7 +24,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 		var designerDetails = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
-            dateOfBirth: $scope.designerDetails.dateOfBirth,
+            dateOfBirth: $scope.designerDetails.dateOfBirth != null ? $scope.designerDetails.dateOfBirth  :$( "#dateOfBirth" ).datepicker( "getDate" ).toISOString(),
             mobile: $scope.designerDetails.mobile,
             description: $scope.designerDetails.description,
             type: $scope.designerDetails.type,
@@ -31,9 +33,8 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
             var brandDetails = {
                 email: $scope.designerBrandDetails.email,
-                logoUrl: $scope.designerBrandDetails.logoUrl,
                 TINumber: $scope.designerBrandDetails.TINumber,
-                IECNumber: $scope.designerBrandDetails.IECNumber,
+                IECNumber: !$scope.designerBrandDetails.IECNumber ? '0' : $scope.designerBrandDetails.IECNumber,
                 bankName: $scope.designerBrandDetails.bankName,
                 bankBranch: $scope.designerBrandDetails.bankBranch,
                 bankIFSCode: $scope.designerBrandDetails.bankIFSCode,
@@ -50,20 +51,31 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                     state: $scope.designerBrandDetails.pickupAddress.state,
                     country: $scope.designerBrandDetails.pickupAddress.country
 				}
+
             };
+            if($scope.designerBrandDetails.logoUrl){
+
+                brandDetails.logoUrl = $scope.designerBrandDetails.logoUrl
+            }
             brandDetails.portfolioImages = [];
             $scope.designerBrandDetails.portfolioImages.forEach(function (image) {
 				brandDetails.portfolioImages.push({url:image.url,description:image.description});
             });
 			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
-				if (!$rootScope.isAdmin){
+				if ($rootScope.isAdmin){
+                    $location.path('/designer-profile/{{designerDetails.id}}')
 
-                    $location.path('/waiting-for-approval');
+
                 }
-                $location.path('/designer-profile/{{designerDetails.id}}')
+
+                else{
+                    $location.path('/waiting-for-approval');
+
+                }
             })
-        },function (res) {
-			alert('Update failed! try again');
+        },function (response) {
+            $scope.error = response.data.message;
+            $('#addDesignerFailure').modal();
         });
     };
 	$scope.addDesignerAsAdmin = function () {
@@ -81,8 +93,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 name:$scope.designerBrandDetails.name,
                 email: $scope.designerBrandDetails.email,
                 TINumber: $scope.designerBrandDetails.TINumber,
-                logoUrl: $scope.designerBrandDetails.logoUrl,
-                IECNumber: $scope.designerBrandDetails.IECNumber,
+                IECNumber: !$scope.designerBrandDetails.IECNumber ? '0' : $scope.designerBrandDetails.IECNumber,
                 bankName: $scope.designerBrandDetails.bankName,
                 bankBranch: $scope.designerBrandDetails.bankBranch,
                 bankIFSCode: $scope.designerBrandDetails.bankIFSCode,
@@ -101,6 +112,11 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 }
             },
         };
+
+        if($scope.designerBrandDetails.logoUrl){
+
+            newDesignerRequest.brand.logoUrl = $scope.designerBrandDetails.logoUrl
+        }
         if(!newDesignerRequest.referrerCode)delete newDesignerRequest.referrerCode;
 
         newDesignerRequest.brand.portfolioImages = [];

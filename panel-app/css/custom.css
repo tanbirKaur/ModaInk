@@ -152,3 +152,8 @@ div[name=imageGroup] textarea{
     list-style: none;
 
 }
+
+.addSize {
+    margin-bottom: 6% !important;
+    width: 100%;
+}
