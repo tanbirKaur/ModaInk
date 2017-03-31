@@ -3,6 +3,9 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.email = "";
     $scope.password = "";
     $rootScope.isAdmin = storageService.get("isAdmin");
+    $scope.newPassword = "";
+    $scope.confirmPassword = "";
+
 
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
         storageService.set("isAdmin",newValue);
@@ -13,6 +16,26 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
         storageService.clear();
         $rootScope.userLoggedIn = false;
     };
+
+    $scope.resetPwd = function () {
+        var designerEmail = $rootScope.currentUser.email;
+        var newPassword = {
+            newPassword : $scope.newPassword,
+            confirmPassword : $scope.confirmPassword
+
+        }
+        httpService.resetPwd(designerEmail,newPassword,function(response){
+            $location.path( "/login");
+        });
+
+    }
+
+    $scope.sendResetLink = function () {
+        httpService.sendResetLink($scope.email,function (response) {
+            $location.path( "/reset-pwd/sentLink");
+        })
+    }
+
 
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };

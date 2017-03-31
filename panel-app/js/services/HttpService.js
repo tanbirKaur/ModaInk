@@ -271,5 +271,22 @@ angular.module('portal-modaink')
             },true);
         };
 
+        httpService.resetPwd = function (email,newPassword, successCallback,failureCallback) {
+            httpService.callHttp("PUT","designers/resetPassword",email,{},newPassword,function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"login");
+            },true);
+        };
+
+        httpService.sendResetLink = function (email, successCallback,failureCallback) {
+            var params = {email:email};
+            httpService.callHttp("PUT","designers/forgotPassword",params,{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"sendResetLink");
+            });
+        };
+
         return httpService;
     }]);
