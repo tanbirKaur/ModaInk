@@ -44,12 +44,13 @@ angular.module('portal-modaink')
         }
 
         httpService.getDesigners = function (successCallback,failureCallback) {
-            httpService.callHttp("GET","designers/publicInfo",{},{},{},function (response) {
+            var params = {isApproved:'true'};
+            httpService.callHttp("GET","designers",params,{},{},function (response) {
                 redirectCallback(response,emptyFunction,successCallback);
             },function (response) {
                 redirectCallback(response,httpFailed,failureCallback,"getDesigners");
-            },true);
-        }
+            });
+        };
 
         httpService.getDesignerRequests = function (successCallback,failureCallback) {
             var params = {isApproved:'null'};
