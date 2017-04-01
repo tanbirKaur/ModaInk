@@ -12,7 +12,9 @@
       </h1>
       <h1 ng-if="mode == 've'">
         Update Product
-        <small></small>
+        <small> </small>
+          <button class="btn btn-primary pull-right" ng-if="newProduct.isActive && isAdmin" ng-click="deactiveProduct()">Hide on the main website</button>
+          <button class="btn btn-primary pull-right" ng-if="!newProduct.isActive && isAdmin" ng-click="activeProduct()">Show on the main website</button>
       </h1>
 
     </section>
@@ -544,7 +546,7 @@
                 <div class="modal-content alert-success">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <p>Product {{product.name}} Successfully Added.</p>
+                        <p>{{message}}</p>
 
                     </div>
                 </div><!-- /.modal-content -->

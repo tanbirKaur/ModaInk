@@ -290,5 +290,22 @@ angular.module('portal-modaink')
             });
         };
 
+        httpService.deactiveProduct = function (id, successCallback,failureCallback) {
+
+            httpService.callHttp("PUT","/products/" + id + "/deactivate",{},{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"deactiveProduct");
+            });
+        };
+        httpService.activeProduct = function (id, successCallback,failureCallback) {
+
+            httpService.callHttp("PUT","/products/" + id + "/activate",{},{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"activeProduct");
+            });
+        };
+
         return httpService;
     }]);

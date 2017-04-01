@@ -109,6 +109,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $scope.newProduct.designer = {id:$rootScope.userDetails.id};
 
         httpService.createProduct($scope.newProduct,function(res){
+            $scope.message = "Product" + newProduct.name+ "Successfully Added".
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
@@ -117,6 +118,34 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             }
             $('#addProductFailure').modal();
         });
+    }
+
+    $scope.deactiveProduct = function () {
+
+       httpService.deactiveProduct($scope.newProduct.id,function (res) {
+           $scope.message = "Product Successfully Deactivated. It will no longer be displayed in the website"
+               $('#addProductSuccess').modal();
+
+       },function (res) {
+           if(!$scope.error){
+               $scope.error = response.data.message;
+           }
+           $('#addProductFailure').modal();
+       })
+    }
+
+    $scope.activeProduct = function () {
+
+       httpService.activeProduct($scope.newProduct.id,function (res) {
+           $scope.message = "Product Successfully activated. It will start displaying in the website"
+               $('#addProductSuccess').modal();
+
+       },function (res) {
+           if(!$scope.error){
+               $scope.error = response.data.message;
+           }
+           $('#addProductFailure').modal();
+       })
     }
 
     $scope.addSku = function () {
