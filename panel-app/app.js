@@ -62,7 +62,7 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             controller: 'LoginController'
         })
         .state('reset-pwd',{
-            url: '/resetPassword?token=&email=&bearerType=',
+            url: '/resetPassword?token&email&bearerType',
             templateUrl: '/views/reset-pwd.html',
             controller: 'LoginController'
         })
