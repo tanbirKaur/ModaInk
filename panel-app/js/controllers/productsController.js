@@ -47,16 +47,23 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     });
 
     $scope.uploadImages = function (imageName , descriptionId) {
-        httpService.uploadImage('products',imageName,function(res){
-            var imageUploaded = res.data;
-            imageUploaded.forEach(function(image){
-                alert('image uploaded successfully');
-                description = $(descriptionId).val()
-                $scope.newProduct.images.push({url:image.fileUrl, description: description});
-            }, function (res) {
-                alert('Something went wrong. Please try with some other image')
+        var description = $(descriptionId).val();
+        if(description == ""){
+            $scope.error = "You cannot upload an image without description";
+            $('#addProductFailure').modal();
+        }
+        else {
+            httpService.uploadImage('products', imageName, function (res) {
+                var imageUploaded = res.data;
+                imageUploaded.forEach(function (image) {
+                    description = description;
+                    $scope.newProduct.images.push({url: image.fileUrl, description: description});
+                }, function (res) {
+                    $scope.error = "Something went wrong. Please try with some other image"
+                    $('#addProductFailure').modal();
+                })
             })
-        })
+        }
     }
 
     $scope.updateProduct = function(){
@@ -100,8 +107,10 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
         });
         if(!$scope.categoryIdx || !$scope.subCategoryIdx){
-            return alert(!$scope.categoryIdx?"Please select category":"Please select sub category");
-        }
+            $scope.error = !$scope.categoryIdx ? "Please select category" : "Please select sub category"
+            $('#addProductFailure').modal();
+            }
+
         $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
         if($scope.designerId){
             $scope.newProduct.designer = {id:$scope.designerId};
@@ -156,5 +165,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
 
     $scope.removeSku = function (index) {
         $scope.skus.splice(index, 1);
+    }
+
+    $scope.removeImage = function (index) {
+        $scope.newProduct.images.splice(index,1)
     }
 });
