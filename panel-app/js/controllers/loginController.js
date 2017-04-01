@@ -35,7 +35,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
         else{
             $scope.error = "Passwords do not match. Please make sure both passwords are same";
 
-            $('#Failure').modal();
+            $('#loginFailure').modal();
 
         }
 
