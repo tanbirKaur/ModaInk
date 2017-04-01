@@ -18,15 +18,26 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     };
 
     $scope.resetPwd = function () {
-        var designerEmail = $rootScope.currentUser.email;
-        var newPassword = {
-            newPassword : $scope.newPassword,
-            confirmPassword : $scope.confirmPassword
+        var email = $stateParams.email;
+        var token = $stateParams.token;
+
+        if($scope.newPassword == $scope.confirmPassword) {
+            var newPassword = {
+                newPassword: $scope.newPassword,
+                confirmPassword: $scope.confirmPassword
+
+            }
+
+            httpService.resetPwd(email, token, newPassword, function (response) {
+                $location.path("/login");
+            });
+        }
+        else{
+            $scope.error = "Passwords do not match. Please make sure both passwords are same";
+
+            $('#Failure').modal();
 
         }
-        httpService.resetPwd(designerEmail,newPassword,function(response){
-            $location.path( "/login");
-        });
 
     }
 

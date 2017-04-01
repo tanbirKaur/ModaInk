@@ -271,8 +271,10 @@ angular.module('portal-modaink')
             },true);
         };
 
-        httpService.resetPwd = function (email,newPassword, successCallback,failureCallback) {
-            httpService.callHttp("PUT","designers/resetPassword",email,{},newPassword,function (response) {
+        httpService.resetPwd = function (email,token,newPassword, successCallback,failureCallback) {
+            var params = {email:email, token: token};
+
+            httpService.callHttp("PUT","designers/resetPassword",params,{},newPassword,function (response) {
                 redirectCallback(response,emptyFunction,successCallback);
             },function (response) {
                 redirectCallback(response,httpFailed,failureCallback,"login");
