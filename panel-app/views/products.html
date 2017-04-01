@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="display:flex;">
       <h1>
-        Products &nbsp&nbsp&nbsp&nbsp&nbsp
+        Products
       </h1>
               <a href="/addProduct?mode=c" ng-if="!isAdmin" ><button class="btn btn-primary" ><i class="fa fa-plus"></i> Add product</button></a>
                <div class="col-md-5">
@@ -16,6 +16,7 @@
               <li class="active"><a href="#registered" data-toggle="tab">Live Products</a></li>
               <li><a href="#newRequests" ng-click="getUnApprovedProducts()" data-toggle="tab">New Product Requests</a></li>
               <li><a href="#changeRequests" ng-click="getUnApprovedChangesProducts()" data-toggle="tab">Updated Products Requests</a></li>
+              <li><a href="#inactive" data-toggle="tab">Inactive Products</a></li>
               <li><a href="#rejectedRequests" ng-click="getRejectedProducts()" data-toggle="tab">Not Approved</a></li>
             </ul>
             <div class="tab-content">
@@ -42,6 +43,12 @@
                 <div class="tab-pane" id="rejectedRequests">
 
                     <div ng-include src="'views/rejected-products.html'"></div>
+                    <!-- /.row -->
+                </div>
+
+                <div class="tab-pane" id="inactive">
+
+                    <div ng-include src="'views/inActive-products.html'"></div>
                     <!-- /.row -->
                 </div>
 

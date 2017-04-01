@@ -157,3 +157,11 @@ div[name=imageGroup] textarea{
     margin-bottom: 6% !important;
     width: 100%;
 }
+
+.activeProduct {
+    color: green;
+}
+
+.inactiveProduct {
+    color: red;
+}

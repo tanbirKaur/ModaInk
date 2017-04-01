@@ -1,0 +1,111 @@
+
+<div class="row">
+
+
+    <div class="pull-right">
+        <a href="" ng-click="listView = true"><i class="fa fa-list search-bar"></i></a>
+        <a href="" ng-click="listView = false"><i class="fa fa-th-large search-bar"></i></a>
+    </div>
+
+    <div ng-show="listView" class="col-md-12">
+        <div class="col-md-12">
+            <ul class="alphabet-list">
+                <li ng-repeat="productGroup in products | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                    <a ng-href="#{{productGroup.$key}}">{{productGroup.$key}}</a>
+                </li>
+            </ul>
+            <hr>
+        </div>
+
+
+        <ul class="alphabets">
+
+            <li ng-repeat="productGroup in products | filterBy:['name']:designerSearch | groupBy:'designer' | toArray:true | orderBy:'$key'">
+                <ul class="designer-listing col-md-6" id="{{productGroup.$key[0]}}">
+                    <li class="alpha">By - {{productGroup.$key}} ({{productGroup.length}} Products)</li>
+                    <hr>
+                    <div >
+                        <li ng-repeat="product in productGroup | orderBy:'name'" >
+                            <a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}} </a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div ng-repeat="product in products" ng-if="product.isApproved && !product.isActive" ng-hide="listView" class="col-md-5" >
+        <!-- Box Comment -->
+        <div class="box box-widget" style="    border-bottom: solid;">
+            <div class="box-header with-border">
+                <div class="user-block">
+                    <div class="username btn-box-tool" data-toggle="tooltip" title={{product.name}} >
+                        <a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}
+                        </a>
+                    </div>
+                    <div ng-if="isAdmin"class="description" ><a href="/designer-profile/{{product.designer.id}}">{{product.designer.firstName}} &nbsp; {{product.designer.lastName}}</a></div>
+                    <div class="description ">ID: {{product.productCode}} | Uploaded On - {{product.createdAt | date:'MMM dd, yyyy'}}</div>
+                </div>
+                <!-- /.user-block -->
+                <div class="box-tools">
+
+                    <a href="update-product?mode=ve" ng-click="setProduct('product',product)" type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Edit">
+                        <i class="fa fa-edit"></i></a>
+                    <!--<button ng-if="!isAdmin" type="button" class="btn btn-box-tool" data-toggle="tooltip" data-toggle="modal" data-target="#deleteProduct" title="delete" data-widget="remove" >-->
+                    <!--<i class="fa fa-trash"></i></button> -->
+
+                    <!-- Product to be removed  -->
+                    <!--  <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Delete"><i class="fa fa-times"></i></button> -->
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body product-image" style="padding:0;">
+                <!-- /.user-block -->
+                <div class="row margin-bottom" >
+                    <div ng-repeat="image in product.images">
+                        <div ng-if="$index ==0" class="col-sm-8 col-md-7">
+                            <img class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                        </div>
+                        <!-- /.col -->
+                        <div ng-if="$index == 1 || $index == 2" class="col-sm-4 col-md-3">
+                            <img ng-if="$index == 1" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                            <br>
+                            <img ng-if="$index == 2" class="img-responsive" ng-src="{{image.url}}" alt="Photo">
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <div class="box-footer" style="padding:0;">
+                <div class="row">
+                    <div class="col-sm-6 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">0</h5>
+                            <span class="description-text">SALES</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <div class="description-block">
+                            <h5 class="description-header">{{product.totalInStockQuantity}}</h5>
+                            <span class="description-text">PRODUCTS</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+
+        </div>
+        <!-- /.box -->
+        <!-- /.col -->
+
+
+    </div>
+    <!-- /.col -->
+
+</div>
