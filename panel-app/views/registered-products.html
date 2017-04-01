@@ -20,10 +20,10 @@
      <ul class="alphabets">
 
        <li ng-repeat="productGroup in products | filterBy:['name']:designerSearch | groupBy:'designer' | toArray:true | orderBy:'$key'">
-         <ul class="designer-listing" id="{{productGroup.$key[0]}}">
-           <li class="alpha">By - {{productGroup.$key}}</li>
+         <ul class="designer-listing col-md-6" id="{{productGroup.$key[0]}}">
+           <li class="alpha">By - {{productGroup.$key}} ({{productGroup.length}} Products)</li>
            <hr>
-           <div class="col-md-12">
+           <div >
              <li ng-repeat="product in productGroup | orderBy:'name'" >
                <a href="update-product?mode=ve" ng-click="setProduct('product',product)">{{product.name}}</a>
              </li>
@@ -32,7 +32,7 @@
        </li>
      </ul>
    </div>
-                  <div ng-repeat="product in products" ng-if="product.isApproved" ng-hide="listView" class="col-md-5" >
+                  <div ng-repeat="product in products" ng-if="product.isApproved && product.isActive" ng-hide="listView" class="col-md-5" >
                     <!-- Box Comment -->
                     <div class="box box-widget" style="    border-bottom: solid;">
                       <div class="box-header with-border">
@@ -77,8 +77,8 @@
                         <div class="row">
                           <div class="col-sm-6 border-right">
                             <div class="description-block">
-                              <h5 class="description-header">0</h5>
-                              <span class="description-text">SALES</span>
+                              <h5 class="description-header">{{product.totalSalesAmount}}</h5>
+                              <span class="description-text">SALES (Rs)</span>
                             </div>
                             <!-- /.description-block -->
                           </div>
