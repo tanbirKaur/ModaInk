@@ -13,6 +13,8 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
             return prev+(priceExclusiveDiscount*next.quantity);
         },0);
 
+
+
         $scope.cartInfo.shoppingcartCharges.itemsTotalDiscountAmount = $scope.cartInfo.shoppingcartItems.reduce(function (prev,next) {
             var discountAmount = (next.product.price / (1 - next.product.discountPercent/100)) - next.product.price
             return prev+(discountAmount*next.quantity);
@@ -30,6 +32,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
 
 
         $scope.cartInfo.shoppingcartCharges.shippingAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount > 2000 ? 0 : 100;
+        $scope.cartInfo.shoppingcartCharges.itemsTotalAmount  = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount + $scope.cartInfo.shoppingcartCharges.shippingAmount;
     };
 
     if (!$rootScope.userLoggedIn) {
@@ -118,6 +121,8 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         }
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},function (response) {
             $scope.cartInfo = response.data;
+            $scope.cartInfo.shoppingcartCharges.itemsTotalAmount  = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount + $scope.cartInfo.shoppingcartCharges.shippingAmount;
+
             $scope.$emit('refreshCart',{data:$scope.cartInfo.shoppingcartItems});
         },function (response) { /* DO NOTHING */});
     };
