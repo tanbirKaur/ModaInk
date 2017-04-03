@@ -34,6 +34,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
                 $scope.$broadcast('loginSuccess',response);
                 $scope.$emit("loginSuccess",response);
                 $scope.$emit("refreshCart",response);
+                $state.go($state.current, {}, {reload: true});
                 $scope.message = "Login Successful";
                 if($rootScope.addReview){
                     showModal('reviewModal')
