@@ -71,8 +71,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getDesigners = function () {
-        var params = {offset:0,limit:30};
-		httpService.callHttp("POST","X",params,{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure);
+        httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
 	};
 
 	$scope.getCategories = function () {
