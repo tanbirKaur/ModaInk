@@ -1,6 +1,6 @@
 var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter",'satellizer']);
 window.app == app;
-window.apiUrl = "http://modaink.com/api";
+window.apiUrl = "http://dev.modaink.com/api";
  app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $authProvider,localStorageServiceProvider){
 	$stateProvider
 		.state("index", {
