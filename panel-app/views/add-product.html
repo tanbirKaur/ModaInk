@@ -102,6 +102,16 @@
 
                             </div>
                         </div>
+                        <div ng-repeat="sku in oldSkus">
+                            <div class="input-group addSize" >
+                                <div class="input-group">
+                                    <input type="text" class="form-control" aria-describedby="basic-addon2" ng-model="sku.quantity">
+                                    <span ng-model="sku.sizeVariantValue" class="input-group-addon" id="basic-addon2">{{sku.sizeVariantValue}}</span>
+                                </div>
+
+
+                            </div>
+                        </div>
 
                     </div>
 

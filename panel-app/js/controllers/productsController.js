@@ -8,7 +8,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.skus=[];
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
-        $scope.skus = $scope.newProduct.skus;
+        $scope.oldSkus = $scope.newProduct.skus;
 
 
     }
@@ -69,17 +69,21 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
 
     $scope.updateProduct = function(){
 
-        $scope.newProduct.skus = $scope.skus.map(function (sku) {
+        $scope.newProduct.skus = $scope.oldSkus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
                 quantity:sku.quantity
+
             };
             return newSku;
         });
 
+        $scope.newProduct.skus = $scope.newProduct.skus.concat($scope.skus);
+
 
         var productUpdates = {
             "description": $scope.newProduct.description,
+            "specsDescription": $scope.newProduct.specsDescription,
             "price": $scope.newProduct.price,
             "discountPercent": $scope.newProduct.discountPercent,
             "images": $scope.newProduct.images,
@@ -119,7 +123,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $scope.newProduct.designer = {id:$rootScope.userDetails.id};
 
         httpService.createProduct($scope.newProduct,function(res){
-            $scope.message = "Product" + newProduct.name+ "Successfully Added".
+            $scope.message = "Product" + $scope.newProduct.name+ "Successfully Added".
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
