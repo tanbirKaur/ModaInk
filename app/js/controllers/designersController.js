@@ -5,8 +5,8 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 		httpService.callHttp("GET","designers/"+designerId,{},{},{},$scope.onGetDesignerDetailsSuccess,$scope.onGetDesignerDetailsFailure,true);
 	}
 	$scope.getDesigners = function () {
-        var params = {offset:0,limit:30};
-		httpService.callHttp("POST","designers/searchService/search/filteredSearch",params,{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure);
+
+		httpService.callHttp("POST","designers/searchService/search/filteredSearch",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure);
 	}
 	$scope.getDesignerProducts = function (designerId) {
 		var params = {designerId : designerId};
@@ -27,7 +27,7 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 	$scope.onGetDesignersSuccess = function (response) {
 		var designersFound = response.statusText == "OK";
 		if (designersFound) {
-			var designers = response.data;
+			var designers = response.data.designers;
 			// map designers to alphabets
 			$scope.designerList = designers.map(function(designer){
 				designer.alphabet = designer.firstName[0];
