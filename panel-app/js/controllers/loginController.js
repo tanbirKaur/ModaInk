@@ -60,7 +60,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
             $rootScope.isActive = res.data.isActive;
             $rootScope.isApproved = res.data.isApproved;
 
-            if($scope.isAdmin || ($rootScope.isActive  && $rootScope.isApproved)){
+            if($scope.isAdmin || ($rootScope.isActive  && $rootScope.isApproved) || (!$rootScope.isActive  && $rootScope.isApproved) ){
                 $location.path( "/home");
             }
             else if(!$rootScope.isActive  && !$rootScope.isApproved ){

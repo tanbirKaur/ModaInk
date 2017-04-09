@@ -5,6 +5,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.mode = $location.search().mode;
     $scope.designerId = $location.search().designerId;
     $scope.newProduct = {skus:[],colours:[],images:[]};
+    $scope.skus=[];
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
         $scope.skus = $scope.newProduct.skus;

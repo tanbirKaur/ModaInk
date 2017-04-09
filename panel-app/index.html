@@ -123,7 +123,7 @@
       <!-- Sidebar user panel -->
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" ng-if="userLoggedIn && (isAdmin || (isApproved && isActive))">
+      <ul class="sidebar-menu" ng-if="userLoggedIn && (isAdmin || (isApproved && isActive) || (isApproved && !isActive))">
         
         <li class="active"><a href="/home">Products</a></li>
         <li><a href="/orders">Orders</a></li>
