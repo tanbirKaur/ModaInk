@@ -1,0 +1,129 @@
+<div ng-controller="DesignerController" class="content-wrapper ">
+    <section class="content">
+        <div class="box remove-box-top">
+            <div class="box-header with-border">
+
+                <div class="col-md-2">
+                    <h2 class="box-title" style="font-size: 26px;">All Designers  </h2>
+                </div>
+                <div class="col-md-2">
+                    <a href="/register-designer"><div class="btn btn-primary" style="padding: 4px 12px;">Add Designer</div></a>
+                </div>
+
+
+
+
+                <div class="col-md-5">
+                    <input type="text" name="search" class="form-control search-bar" placeholder="search...">
+                </div>
+                <div class="pull-right">
+                    <a href="" ng-click="listView = true"><i class="fa fa-list search-bar"></i></a>
+                    <a href="" ng-click="listView = false"><i class="fa fa-th-large search-bar"></i></a>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div ng-show="listView" class="col-md-12">
+                    <div class="col-md-12">
+                        <ul class="alphabet-list">
+                            <li ng-repeat="designerGroup in deactivatedDesigners | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                                <a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+
+
+                    <ul class="alphabets">
+
+                        <li ng-repeat="designerGroup in deactivatedDesigners | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                            <ul class="designer-listing" id="{{designerGroup.$key}}">
+                                <li class="alpha">{{designerGroup.$key}}</li>
+                                <hr>
+                                <div class="col-md-12">
+                                    <li ng-repeat="designer in designerGroup" style="text-transform: capitalize">
+                                        <a href="/designer-profile/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Switch to list view and grid view using angular JS -->
+
+                <div class="col-md-12" ng-hide="listView">
+                    <!-- Designer Card-->
+
+
+
+                    <div ng-repeat="designer in deactivatedDesigners"  class="col-md-4">
+                        <div class="box remove-box-top">
+                            <div class="box-body text-center no-padding" >
+                                <div class="bg-teal" style="padding: 3px;">
+                                    <img ng-src="{{designer.avatarUrl}}" class="img-circle designerImage" alt="User Image" >
+                                    <p>
+                                        {{designer.firstName}} {{designer.lastname}} - {{designer.badge.name}}<br>
+                                        <small>Member since: {{designer.createdAt | date : "MMM, yyyy"}}</small>
+                                    </p>
+                                </div>
+                                <div class="row" style="border-bottom: 1px solid #f4f4f4;">
+
+                                    <div class="col-md-4 border-right">
+                                        <div class="description-block">
+                                            <p style="    text-transform: uppercase;">{{designer.type}}</p>
+
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+
+                                    <div class="col-md-4 border-right">
+                                        <div class="description-block">
+                                            <p>{{designer.totalApprovedProducts}}</p>
+                                            <span class="description-text">PRODUCTS</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+
+                                    <div class="col-md-4 border-right">
+                                        <div class="description-block">
+                                            <p >{{designer.totalSalesAmount}}</p>
+                                            <span class="description-text">SALES(Rs)</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="margin: 3%;">
+                                    <a href="/designer-profile/{{designer.id}}" ><div class="col-md-4 btn btn-default ">Profile</div></a>
+                                    <a href="/addProduct?designerId={{designer.id}}&mode=c"><div class="col-md-4 btn btn-default text-center">Add Product</div></a>
+                                    <a href="/designer-profile/{{designer.id}}#products"><div class="col-md-4 btn btn-default text-center">Collection</div></a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Designer Card-->
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+    </section>
+    <!-- /.content -->
+</div>
+
+
+<!-- Control Sidebar -->
+
+</div>
+<!-- ./wrapper -->
+

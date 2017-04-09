@@ -1616,17 +1616,28 @@ ul.rating {
     .teamContainer {
         width: 750px;
     }
+
+    #register-designer-form {
+        position: inherit;
+    }
+
 }
 
 @media (min-width: 992px) {
     .teamContainer {
         width: 970px;
     }
+    #register-designer-form {
+        position: inherit;
+    }
 }
 
 @media (min-width: 1200px) {
     .teamContainer {
         width: 1170px;
+    }
+    #register-designer-form {
+        position: absolute;
     }
 }
 
@@ -1901,6 +1912,22 @@ ul.rating {
 .product-trending{
     width: 260px !important;
 }
+
+
+.vendor-flow {
+    position: relative;
+}
+
+#register-designer-form {
+    top: 82%;
+    background-color: #000000;
+    opacity: 0.8;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding-left: 6%;
+    padding-top: 3%;
+}
+
 
 
 

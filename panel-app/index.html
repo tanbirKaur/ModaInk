@@ -70,7 +70,7 @@
 
   <header class="main-header">
    <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="" class="logo">
       <img style="height:40px;" src="images/logo-white.png">
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -123,12 +123,13 @@
       <!-- Sidebar user panel -->
       
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" ng-if="userLoggedIn && (isAdmin || (isApproved && isActive))">
+      <ul class="sidebar-menu" ng-if="userLoggedIn && (isAdmin || (isApproved && isActive) || (isApproved && !isActive))">
         
         <li class="active"><a href="/home">Products</a></li>
         <li><a href="/orders">Orders</a></li>
         <li ng-if="isAdmin"><a href="/designer-requests">New Designer Requests</a></li>
-        <li ng-if="isAdmin"><a href="/designers">Designers</a></li> 
+        <li ng-if="isAdmin"><a href="/designers">Active Designers</a></li>
+        <li ng-if="isAdmin"><a href="/designers-deactivated">Deactivated Designers</a></li>
         <li><a href="/payouts">Payouts</a></li>
 
         <li><a>Invoices</a></li>

@@ -1,36 +1,11 @@
 var app = window.app;
 app.controller('DesignerController', function($scope,$stateParams,$location, httpService, $state, $rootScope) {
     $scope.errors = {};
-	//helper methods
+    $scope.designerDetails = {};
+    $scope.designerBrandDetails ={};
 
-	$scope.redirectToViewProduct = function (mode, product) {
-		$state.go("addProduct",{mode:mode,product:product});
-    }
 
-	// http Methods
-	$scope.getDesignerDetails = function (designerId) {
-		httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess,function (response) {
-            $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
-        });
-	}
-	$scope.getDesigners = function () {
-		httpService.getDesigners($scope.onGetDesignersSuccess);
-	}
-
-	$scope.getDesignerProducts = function(designerId){
-		httpService.getProducts(designerId,$scope.onGetDesignerProductsSuccess)
-	}
-
-    $scope.getDesignerRequests = function(){
-        httpService.getDesignerRequests(function (response) {
-			$scope.unApprovedDesigners = response.data;
-            $scope.unApprovedDesigners.forEach(function (designer) {
-                httpService.getDesignerBrandDetails(designer.id,function (response) {
-					designer.brandDetails = response.data;
-                })
-            });
-        })
-    };
+    $scope.editMode= false;
 
     $scope.approveDesigner = function (designerId) {
         httpService.approveDesigner(designerId,function(response){
@@ -44,101 +19,66 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         });
     };
 
-    // http Success and Failure Methods
-	$scope.onGetDesignerDetailsSuccess = function (response) {
-		var designerDetailsFound = response.status == 200;
-		if (designerDetailsFound) {
-			$scope.designerDetails = response.data;
-			if($scope.designerDetails.brand){
-				if(!$scope.designerDetails.brand.pickupAddress){
-                    $scope.designerDetails.brand.pickupAddress = {}
-				}
-                if(!$scope.designerDetails.brand.portfolioImages){
-                    $scope.designerDetails.brand.portfolioImages = []
-                }
-			} else {
-                $scope.designerDetails.brand = {}
-			}
-		};
-	}
+	$scope.updateDetails = function () {
 
-	$scope.onGetDesignersSuccess = function (response) {
-		var designersFound = response.status == 200;
-		if (designersFound) {
-			$scope.designerList = response.data;
-		}
-	}
-
-	$scope.onGetDesignerProductsSuccess = function (response) {
-		var designersFound = response.status == 200;
-		if (designersFound) {
-			var designers = response.data;
-			// map designers to alphabets
-			$scope.designerList = designers.map(function(designer){
-				designer.alphabet = designer.firstName[0];
-				return designer;
-			});
-		};
-
-	}
-	$scope.submitForApproval = function () {
-	    if($rootScope.isAdmin){
-            $scope.addDesignerAsAdmin(function (response) {
-                $('#addDesignerSuccess').modal();
-            }, function (response) {
-                $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
-                if(!$scope.error){
-                    $scope.error = response.data.message;
-                }
-                $('#addDesignerFailure').modal();
-            })
-            return;
-        }
 		var designerDetails = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
-            dateOfBirth: $scope.designerDetails.dateOfBirth,
+            dateOfBirth: $scope.designerDetails.dateOfBirth != null ? $scope.designerDetails.dateOfBirth  :$( "#dateOfBirth" ).datepicker( "getDate" ).toISOString(),
             mobile: $scope.designerDetails.mobile,
             description: $scope.designerDetails.description,
             type: $scope.designerDetails.type,
             avatarUrl: $scope.designerDetails.avatarUrl
         }
-		httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
+        httpService.updateDesignerDetails($scope.designerDetails.id,designerDetails,function (response) {
             var brandDetails = {
-                email: $scope.designerDetails.brand.email,
-                logoUrl: $scope.designerDetails.brand.logoUrl,
-                TINumber: $scope.designerDetails.brand.TINumber,
-                IECNumber: $scope.designerDetails.brand.IECNumber,
-                bankName: $scope.designerDetails.brand.bankName,
-                bankBranch: $scope.designerDetails.brand.bankBranch,
-                bankIFSCode: $scope.designerDetails.brand.bankIFSCode,
-                bankAccountName: $scope.designerDetails.brand.bankAccountName,
-                bankAccountNumber: $scope.designerDetails.brand.bankAccountNumber,
+                email: $scope.designerBrandDetails.email,
+                TINumber: $scope.designerBrandDetails.TINumber,
+                IECNumber: !$scope.designerBrandDetails.IECNumber ? '0' : $scope.designerBrandDetails.IECNumber,
+                bankName: $scope.designerBrandDetails.bankName,
+                bankBranch: $scope.designerBrandDetails.bankBranch,
+                bankIFSCode: $scope.designerBrandDetails.bankIFSCode,
+                bankAccountName: $scope.designerBrandDetails.bankAccountName,
+                bankAccountNumber: $scope.designerBrandDetails.bankAccountNumber,
                 pickupAddress: {
-	                fullName: $scope.designerDetails.brand.pickupAddress.fullName,
-                    mobile: $scope.designerDetails.brand.pickupAddress.mobile,
-                    line1: $scope.designerDetails.brand.pickupAddress.line1,
-                    line2: $scope.designerDetails.brand.pickupAddress.line2,
-                    landmark: $scope.designerDetails.brand.pickupAddress.landmark,
+	                fullName: $scope.designerBrandDetails.pickupAddress.fullName,
+                    mobile: $scope.designerBrandDetails.pickupAddress.mobile,
+                    line1: $scope.designerBrandDetails.pickupAddress.line1,
+                    line2: $scope.designerBrandDetails.pickupAddress.line2,
+                    landmark: $scope.designerBrandDetails.pickupAddress.landmark,
                     pincode: $scope.designerDetails.pincode,
-                    city: $scope.designerDetails.brand.pickupAddress.city,
-                    state: $scope.designerDetails.brand.pickupAddress.state,
-                    country: $scope.designerDetails.brand.pickupAddress.country
+                    city: $scope.designerBrandDetails.pickupAddress.city,
+                    state: $scope.designerBrandDetails.pickupAddress.state,
+                    country: $scope.designerBrandDetails.pickupAddress.country
 				}
+
             };
+            if($scope.designerBrandDetails.logoUrl){
+
+                brandDetails.logoUrl = $scope.designerBrandDetails.logoUrl
+            }
             brandDetails.portfolioImages = [];
-            $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
+            $scope.designerBrandDetails.portfolioImages.forEach(function (image) {
 				brandDetails.portfolioImages.push({url:image.url,description:image.description});
             });
 			httpService.updateDesignerBrandDetails($scope.designerDetails.id,brandDetails,function (response) {
-				$location.path('/waiting-for-approval');
+				if ($rootScope.isAdmin){
+                    $location.path('/designer-profile/{{designerDetails.id}}')
+
+
+                }
+
+                else{
+                    $location.path('/waiting-for-approval');
+
+                }
             })
-        },function (res) {
-			alert('Update failed! try again');
+        },function (response) {
+            $scope.error = response.data.message;
+            $('#addDesignerFailure').modal();
         });
     };
-
-	$scope.addDesignerAsAdmin = function (success, failure) {
+	$scope.addDesignerAsAdmin = function () {
         var newDesignerRequest = {
             firstName: $scope.designerDetails.firstName,
             lastName: $scope.designerDetails.lastName,
@@ -150,44 +90,47 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             referrerCode: $scope.designerDetails.referrerCode,
             email: $scope.designerDetails.email,
             brand: {
-                name:$scope.designerDetails.brand.name,
-                email: $scope.designerDetails.brand.email,
-                TINumber: $scope.designerDetails.brand.TINumber,
-                logoUrl: $scope.designerDetails.brand.logoUrl,
-                IECNumber: $scope.designerDetails.brand.IECNumber,
-                bankName: $scope.designerDetails.brand.bankName,
-                bankBranch: $scope.designerDetails.brand.bankBranch,
-                bankIFSCode: $scope.designerDetails.brand.bankIFSCode,
-                bankAccountName: $scope.designerDetails.brand.bankAccountName,
-                bankAccountNumber: $scope.designerDetails.brand.bankAccountNumber,
+                name:$scope.designerBrandDetails.name,
+                email: $scope.designerBrandDetails.email,
+                TINumber: $scope.designerBrandDetails.TINumber,
+                IECNumber: !$scope.designerBrandDetails.IECNumber ? '0' : $scope.designerBrandDetails.IECNumber,
+                bankName: $scope.designerBrandDetails.bankName,
+                bankBranch: $scope.designerBrandDetails.bankBranch,
+                bankIFSCode: $scope.designerBrandDetails.bankIFSCode,
+                bankAccountName: $scope.designerBrandDetails.bankAccountName,
+                bankAccountNumber: $scope.designerBrandDetails.bankAccountNumber,
                 pickupAddress: {
-                    fullName: $scope.designerDetails.brand.pickupAddress.fullName,
-                    mobile: $scope.designerDetails.brand.pickupAddress.mobile,
-                    line1: $scope.designerDetails.brand.pickupAddress.line1,
-                    line2: $scope.designerDetails.brand.pickupAddress.line2,
-                    landmark: $scope.designerDetails.brand.pickupAddress.landmark,
-                    pincode: $scope.designerDetails.brand.pickupAddress.pincode,
-                    city: $scope.designerDetails.brand.pickupAddress.city,
-                    state: $scope.designerDetails.brand.pickupAddress.state,
+                    fullName: $scope.designerBrandDetails.pickupAddress.fullName,
+                    mobile: $scope.designerBrandDetails.pickupAddress.mobile,
+                    line1: $scope.designerBrandDetails.pickupAddress.line1,
+                    line2: $scope.designerBrandDetails.pickupAddress.line2,
+                    landmark: $scope.designerBrandDetails.pickupAddress.landmark,
+                    pincode: $scope.designerBrandDetails.pickupAddress.pincode,
+                    city: $scope.designerBrandDetails.pickupAddress.city,
+                    state: $scope.designerBrandDetails.pickupAddress.state,
                     country: "India"
                 }
             },
         };
+
+        if($scope.designerBrandDetails.logoUrl){
+
+            newDesignerRequest.brand.logoUrl = $scope.designerBrandDetails.logoUrl
+        }
         if(!newDesignerRequest.referrerCode)delete newDesignerRequest.referrerCode;
 
         newDesignerRequest.brand.portfolioImages = [];
-        $scope.designerDetails.brand.portfolioImages.forEach(function (image) {
-            newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.imageDescription});
+        $scope.designerBrandDetails.portfolioImages.forEach(function (image) {
+            newDesignerRequest.brand.portfolioImages.push({url:image.url,description:image.description});
         });
-        httpService.addApprovedDesigner(newDesignerRequest,success,failure);
+        httpService.addApprovedDesigner(newDesignerRequest,function () {
+                $('#addDesignerSuccess').modal();
+            }, function (response) {
+                $scope.error = response.data.message;
+                $('#addDesignerFailure').modal();
+            })
     }
 
-    $scope.updateImage = function (type) {
-        var imageClick = $scope.imageButtons[type];
-        if(imageClick){
-            imageClick();
-        }
-    };
 
     $scope.imageButtons = {
         'avatar':function () { $('#profileImage').trigger('click'); },
@@ -211,10 +154,11 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
                 imageDescription = $(id).val();
-                if(!$scope.designerDetails) $scope.designerDetails = {brand:{portfolioImages:[]},pickupAddress:{}};
-                $scope.designerDetails.brand.portfolioImages.push({url:image.fileUrl,description:imageDescription});
-                $scope.errors['image'+$scope.designerDetails.brand.portfolioImages.length+'Description'] = '';
-                alert('image uploaded sucessfully');
+                if(!$scope.designerBrandDetails.portfolioImages)
+                    $scope.designerBrandDetails.portfolioImages = [];
+                $scope.designerBrandDetails.portfolioImages.push({url:image.fileUrl,description:imageDescription});
+                $scope.errors['image'+$scope.designerBrandDetails.portfolioImages.length+'Description'] = '';
+
             }, function (res) {
                 alert('Something went wrong. Please try with some other image')
             })
@@ -227,24 +171,151 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             httpService.uploadImage('designers',imageName,function(res){
                 var imageUploaded = res.data;
                 $scope.designerDetails.avatarUrl = imageUploaded[0].fileUrl;
-                alert('image uploaded sucessfully');
             }, function (res) {
                 alert('Something went wrong. Please try a different image')
             })
         });
-	};
+    };
 
-	$scope.uploadBrandLogo = function (imageName) {
+    $scope.uploadBrandLogo = function (imageName) {
         if(!imageName)return;
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
-                alert('image uploaded sucessfully');
-                $scope.designerDetails.brand.logoUrl = imageUploaded[0].fileUrl;
-            }, function (res) {
+            $scope.designerBrandDetails.logoUrl = imageUploaded[0].fileUrl;
+        }, function (res) {
             alert('Something went wrong. Please try a different image')
 
         })
-	}
+    }
+
+    //helper methods
+
+    $scope.getDesigners = function () {
+        httpService.getDesigners($scope.onGetDesignersSuccess);
+    }
+
+    $scope.redirectToViewProduct = function (mode, product) {
+        $state.go("addProduct",{mode:mode,product:product});
+    }
+
+    // http Methods
+    $scope.getDesignerDetails = function (designerId) {
+        httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess,function (response) {
+            // $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
+        });
+    }
+
+    $scope.getDesignerBrandDetails = function (designerId) {
+        httpService.getDesignerBrandDetails(designerId,$scope.onGetDesignerBrandDetailsSuccess,function (response) {
+            // $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
+        });
+    }
+
+    $scope.getDesignerProducts = function(designerId){
+        httpService.getProductsOfDesigner(designerId,$scope.onGetDesignerProductsSuccess)
+    }
+
+    $scope.getDesignerUnapprovedProducts = function(designerId){
+        httpService.getUnApprovedProductsOfDesigner(designerId,$scope.onGetDesignerUnapprovedProductsSuccess)
+    }
+
+    $scope.getDesignerRequests = function(){
+        httpService.getDesignerRequests(function (response) {
+            $scope.unApprovedDesigners = response.data;
+            $scope.unApprovedDesigners.forEach(function (designer) {
+                httpService.getDesignerBrandDetails(designer.id,function (response) {
+                    designer.brandDetails = response.data;
+                })
+            });
+        })
+    };
+
+    $scope.deactivateDesigner = function () {
+        httpService.deactivateDesigner($stateParams.id,function (res) {
+            $scope.message = "Designer Successfully Deactivated. It will no longer be displayed in the website"
+            $('#successModal').modal();
+        },function (res) {
+            if(!$scope.error){
+                $scope.error = res.data.message;
+            }
+            $('#failureModal').modal();
+        })
+
+    }
+     $scope.activateDesigner = function () {
+            httpService.activateDesigner($stateParams.id,function (res) {
+                $scope.message = "Designer Successfully Activated. It will be displayed in the website now"
+                $('#successModal').modal();
+
+            },function (res) {
+                if(!$scope.error){
+                    $scope.error = res.data.message;
+                }
+                $('#failureModal').modal();
+            })
+
+        }
+
+
+    // http Success and Failure Methods
+    $scope.onGetDesignerDetailsSuccess = function (response) {
+        var designerDetailsFound = response.status == 200;
+        if (designerDetailsFound) {
+            $scope.designerDetails = response.data;
+            $scope.editMode = true;
+        };
+    }
+
+    $scope.onGetDesignerBrandDetailsSuccess = function (response) {
+        var designerDetailsFound = response.status == 200;
+        if (designerDetailsFound) {
+            $scope.designerBrandDetails = response.data;
+        };
+    }
+
+    $scope.onGetDesignersSuccess = function (response) {
+        var designersFound = response.status == 200;
+        if (designersFound) {
+            $scope.designerList = response.data;
+            $scope.designerList = $scope.designerList.map(function (designer) {
+                designer.alphabet = designer.firstName[0];
+                return designer;
+            });
+
+            $scope.activeDesigners = $scope.designerList.filter(function (designer) {
+                return designer.isActive == true;
+            })
+
+            $scope.deactivatedDesigners = $scope.designerList.filter(function (designer) {
+                return designer.isActive == false;
+            })
+        }
+    };
+
+    $scope.onGetDesignerProductsSuccess = function (response) {
+        var designersFound = response.status == 200;
+        if (designersFound) {
+            $scope.products = response.data;
+        };
+    }
+
+    $scope.onGetDesignerUnapprovedProductsSuccess = function (response) {
+        var designersFound = response.status == 200;
+        if (designersFound) {
+            $scope.unApprovedProducts = response.data;
+        };
+    }
+
+
+    $scope.updateImage = function (type) {
+        var imageClick = $scope.imageButtons[type];
+        if(imageClick){
+            imageClick();
+        }
+    };
+    
+
+
 
 	var startUploadingImage = function(name){
         if($('#'+name+'Description').val()){
@@ -255,14 +326,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         }
     }
 
-	var designerId = $stateParams.id;
+	var designerId = $stateParams.id || $rootScope.userId;
 	if (designerId ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
+		$scope.getDesignerUnapprovedProducts(designerId);
+		$scope.getDesignerBrandDetails(designerId)
 	} else {
-	    if($rootScope.userId){
-            $scope.getDesignerDetails($rootScope.userId);
-        }
 		$scope.getDesigners();
 	}
     $scope.getDesignerRequests()

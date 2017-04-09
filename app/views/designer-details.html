@@ -4,7 +4,7 @@
 		<div id="logo" class="menu">
 			<a >
 			<h1>{{designerDetails.brand.name}}</h1>
-			<span>{{designerDetails.firstName}}</span>
+			<span>{{designerDetails.firstName}} {{designerDetails.lastName}}</span>
 			</a>
 		</div>
 
@@ -39,7 +39,7 @@
 						<img   alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"/>
 					</li>
 				</div>
-				<li class=" col-md-4 designerProfileImage" ng-if="designerDetails.brand.portfolioImages[0].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
+				<li class=" col-md-4 designerProfileImage" ng-if="designerDetails.brand.portfolioImages[0].url"><img alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[0].url}}"></li>
 
 				<li class="four" ng-if="designerDetails.brand.portfolioImages[1].url"><img alt="Judith Kroeher" ng-src="{{designerDetails.brand.portfolioImages[1].url}}"></li>
 
@@ -56,7 +56,7 @@
 			<li class="three roomone designerProfileImage" ng-if="designerDetails.brand.portfolioImages[2].url" ><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
 
 				<li class="one toptwo designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[2].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[2].url}}"></li>
-			<li class="two" ng-if="designerDetails.brand.portfolioImages[2].url">
+			<li class="" ng-if="designerDetails.brand.portfolioImages[2].url">
 				<div class="infos">
 					<p>{{designerDetails.brand.portfolioImages[2].description}}</p>
 				</div>
@@ -64,7 +64,7 @@
 
 			<li class=" three break designerProfileImage" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
 			<li class="toptwo one roomone designerCollectionImageSmall" ng-if="designerDetails.brand.portfolioImages[3].url"><img  alt="{{designerDetails.firstName + designerDetails.lastName}}" ng-src="{{designerDetails.brand.portfolioImages[3].url}}"></li>
-			<li class="two roomone" ng-if="designerDetails.brand.portfolioImages[3].url">
+			<li class=" roomone" ng-if="designerDetails.brand.portfolioImages[3].url">
 				<div class="infos">
 					<p>{{designerDetails.brand.portfolioImages[3].description}}</p>
 				</div>

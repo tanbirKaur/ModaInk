@@ -2,7 +2,7 @@ var app = window.app;
 app.controller('DesignerDetailsController', function($scope,$window,$stateParams, httpService) {
     // http Methods
     $scope.getDesignerDetails = function (designerId) {
-        httpService.callHttp("GET", "designers/" + designerId + "/publicInfo", {}, {}, {}, $scope.onGetDesignerDetailsSuccess, $scope.onGetDesignerDetailsFailure, false);
+        httpService.callHttp("GET", "designers/searchService" + designerId , {}, {}, {}, $scope.onGetDesignerDetailsSuccess, $scope.onGetDesignerDetailsFailure, false);
     }
 
     $scope.showBrandProducts = function (brand,customized) {

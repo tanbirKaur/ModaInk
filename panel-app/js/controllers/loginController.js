@@ -3,6 +3,9 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
     $scope.email = "";
     $scope.password = "";
     $rootScope.isAdmin = storageService.get("isAdmin");
+    $scope.newPassword = "";
+    $scope.confirmPassword = "";
+
 
     $scope.$watch("isAdmin",function(newValue, oldValue, scope){
         storageService.set("isAdmin",newValue);
@@ -13,6 +16,37 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
         storageService.clear();
         $rootScope.userLoggedIn = false;
     };
+
+    $scope.resetPwd = function () {
+        var email = $stateParams.email;
+        var token = $stateParams.token;
+
+        if($scope.newPassword == $scope.confirmPassword) {
+            var newPassword = {
+                newPassword: $scope.newPassword,
+                confirmPassword: $scope.confirmPassword
+
+            }
+
+            httpService.resetPwd(email, token, newPassword, function (response) {
+                $location.path("/login");
+            });
+        }
+        else{
+            $scope.error = "Passwords do not match. Please make sure both passwords are same";
+
+            $('#loginFailure').modal();
+
+        }
+
+    }
+
+    $scope.sendResetLink = function () {
+        httpService.sendResetLink($scope.email,function (response) {
+            $location.path( "/reset-pwd/sentLink");
+        })
+    }
+
 
 	$scope.login = function () {
 		var loginInfo = { "email": $scope.email,"password": $scope.password };
@@ -26,7 +60,7 @@ app.controller('LoginController', function($scope,$rootScope,$stateParams,$locat
             $rootScope.isActive = res.data.isActive;
             $rootScope.isApproved = res.data.isApproved;
 
-            if($scope.isAdmin || ($rootScope.isActive  && $rootScope.isApproved)){
+            if($scope.isAdmin || ($rootScope.isActive  && $rootScope.isApproved) || (!$rootScope.isActive  && $rootScope.isApproved) ){
                 $location.path( "/home");
             }
             else if(!$rootScope.isActive  && !$rootScope.isApproved ){

@@ -1,54 +1,39 @@
-<!-- for all designers -->
-
 <div class="content-wrapper ">
-    <!-- Content Header (Page header) -->
-    <section class="content-header no-padding">
-
-    </section>
-
-    <!-- Main content -->
     <section class="content">
 
       <div class="box remove-box-top">
 
-        <!-- /.box-header -->
         <div class="box-body">
 
           <div class="row" ng-repeat="designer in unApprovedDesigners">
 
-            <!-- /.col -->
-            <div class="col-md-6">
-              <!-- Box Comment -->
+            <div class="col-md-5 col-xs-12">
               <div class="box box-widget">
                 <div class="box-header with-border">
-                  <div class="user-block">
-                    <img class="img-circle" ng-src="/images/avtar.png" alt="User Image">
+                  <div class="user-block" >
+                    <img class="img-circle" ng-src="{{designer.avatarUrl}}" alt="User Image" style="margin-right: 5%">
                     <span class="username"><a href="/designer-profile/{{designer.id}}">{{designer.firstName}} {{deigner.lastName}}</a></span>
+                    <span class="">Applied on: {{designer.createdAt | date: format: medium }}</span>
                   </div>
-                  <!-- /.user-block -->
 
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body" style="padding:0;">
-                  <!-- /.user-block -->
                       <div class="row margin-bottom">
                         <div ng-repeat="image in designer.brandDetails.portfolioImages">
                         <div class="col-sm-8">
                           <img class="img-responsive" ng-if="$index == 0" ng-src="{{image.url}}" alt="Photo">
                         </div>
-                        <!-- /.col -->
                         <div class="col-sm-4">
                               <img class="img-responsive" ng-if="$index == 1" ng-src="{{image.url}}" alt="Photo">
                               <br>
                               <img class="img-responsive" ng-if="$index == 2" ng-src="{{image.url}}" alt="Photo">
                         </div>
-                        <!-- /.col -->
                       </div>
-                      <!-- /.row -->
                 </div>
                 <div class="box-footer" style="padding:0;">
                   <div class="row text-center" style="border-bottom: 1px solid #f4f4f4;">
                     <h4 class="description-header">{{designer.type}}</h4>
+                    <p>{{designer.description}}</p>
 
 
                   </div>

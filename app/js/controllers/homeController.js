@@ -33,6 +33,8 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
                 $scope.$broadcast('loginSuccess',response);
                 $scope.$emit("loginSuccess",response);
+                $scope.$emit("refreshCart",response);
+                $state.go($state.current, {}, {reload: true});
                 $scope.message = "Login Successful";
                 if($rootScope.addReview){
                     showModal('reviewModal')
@@ -69,7 +71,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getDesigners = function () {
-		httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+        httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
 	};
 
 	$scope.getCategories = function () {
@@ -186,6 +188,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 
 	$scope.$on('refreshCart',function (event,args) {
 		updateCart(args);
+        // $state.go($state.current, {}, {reload: true});
     });
 
 	var updateCart = function (res) {

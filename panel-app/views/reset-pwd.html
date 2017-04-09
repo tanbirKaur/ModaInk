@@ -6,22 +6,35 @@
 
             <label>Enter new Password</label>
             <div class="form-group has-feedback">
-                <input ng-model="password" type="password" class="form-control" placeholder="New Password">
+                <input ng-model="newPassword" type="password" class="form-control" placeholder="New Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
 
             <label>Confirm Password</label>
         <div class="form-group has-feedback">
-            <input ng-model="password" type="password" class="form-control" placeholder="Confirm Password">
+            <input ng-model="confirmPassword" type="password" class="form-control" placeholder="Confirm Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <!-- /.col -->
         <div>
-            <a href="/login"> <button ng-click="resetPwd()" class="btn btn-primary btn-block btn-flat">RESET PASSWORD</button></a>
+            <a > <button ng-click="resetPwd()" class="btn btn-primary btn-block btn-flat">RESET PASSWORD</button></a>
         </div>
         <!-- /.col -->
 
 
     </div>
+
     <!-- /.login-box-body -->
 </div>
+
+<div id="loginFailure" class="modal fade " tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content alert-danger">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p>{{error}}</p>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

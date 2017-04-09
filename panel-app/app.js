@@ -23,15 +23,15 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/add-product.html',
             controller: 'ProductController',
         })
-        .state('product-requests', {
-            url: '/product-requests',
-            templateUrl: '/views/add-product-requests.html',
-            controller: 'ProductController'
 
-        })
         .state('designers', {
             url: '/designers',
             templateUrl: '/views/designers.html',
+            controller : 'DesignerController'
+        })
+        .state('designers-deactivated', {
+            url: '/designers-deactivated',
+            templateUrl: '/views/designers-deactivated.html',
             controller : 'DesignerController'
         })
         .state('register-designer',{
@@ -62,7 +62,7 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             controller: 'LoginController'
         })
         .state('reset-pwd',{
-            url: '/reset-pwd',
+            url: '/resetPassword?token&email&bearerType',
             templateUrl: '/views/reset-pwd.html',
             controller: 'LoginController'
         })

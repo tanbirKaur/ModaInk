@@ -5,13 +5,15 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.mode = $location.search().mode;
     $scope.designerId = $location.search().designerId;
     $scope.newProduct = {skus:[],colours:[],images:[]};
+    $scope.skus=[];
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
+        $scope.skus = $scope.newProduct.skus;
+
 
     }
 
     counter = 0;
-    $scope.skus = [];
 
     if ($scope.mode === 'v' || $scope.mode === 've') {
         $scope.colors = $scope.newProduct.colours.map(function (color) {
@@ -46,31 +48,40 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     });
 
     $scope.uploadImages = function (imageName , descriptionId) {
-        httpService.uploadImage('products',imageName,function(res){
-            var imageUploaded = res.data;
-            imageUploaded.forEach(function(image){
-                alert('image uploaded successfully');
-                description = $(descriptionId).val()
-                $scope.newProduct.images.push({url:image.fileUrl, description: description});
-            }, function (res) {
-                alert('Something went wrong. Please try with some other image')
+        var description = $(descriptionId).val();
+        if(description == ""){
+            $scope.error = "You cannot upload an image without description";
+            $('#addProductFailure').modal();
+        }
+        else {
+            httpService.uploadImage('products', imageName, function (res) {
+                var imageUploaded = res.data;
+                imageUploaded.forEach(function (image) {
+                    description = description;
+                    $scope.newProduct.images.push({url: image.fileUrl, description: description});
+                }, function (res) {
+                    $scope.error = "Something went wrong. Please try with some other image"
+                    $('#addProductFailure').modal();
+                })
             })
-        })
+        }
     }
 
     $scope.updateProduct = function(){
 
-        $scope.newProduct.skus = $scope.newProduct.skus.map(function (sku) {
+        $scope.newProduct.skus = $scope.skus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
                 quantity:sku.quantity
             };
             return newSku;
         });
+
+
         var productUpdates = {
             "description": $scope.newProduct.description,
             "price": $scope.newProduct.price,
-            "discountPrice": $scope.newProduct.discountPrice,
+            "discountPercent": $scope.newProduct.discountPercent,
             "images": $scope.newProduct.images,
             "skus": $scope.newProduct.skus,
             "shippingDays":$scope.newProduct.shippingDays,
@@ -97,17 +108,18 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $scope.newProduct.skus.push({sizeVariantValue:$scope.skus[skuName].sizeVariantValue,quantity: $scope.skus[skuName].quantity});
         });
         if(!$scope.categoryIdx || !$scope.subCategoryIdx){
-            return alert(!$scope.categoryIdx?"Please select category":"Please select sub category");
-        }
+            $scope.error = !$scope.categoryIdx ? "Please select category" : "Please select sub category"
+            $('#addProductFailure').modal();
+            }
+
         $scope.newProduct.category = $scope.subCategories[$scope.subCategoryIdx];
-        $scope.newProduct.discountPrice = 0;
-        $scope.newProduct.isExclusive = true;
         if($scope.designerId){
             $scope.newProduct.designer = {id:$scope.designerId};
         } else
             $scope.newProduct.designer = {id:$rootScope.userDetails.id};
 
         httpService.createProduct($scope.newProduct,function(res){
+            $scope.message = "Product" + newProduct.name+ "Successfully Added".
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
@@ -118,9 +130,45 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
         });
     }
 
+    $scope.deactiveProduct = function () {
+
+       httpService.deactiveProduct($scope.newProduct.id,function (res) {
+           $scope.message = "Product Successfully Deactivated. It will no longer be displayed in the website"
+               $('#addProductSuccess').modal();
+
+       },function (res) {
+           if(!$scope.error){
+               $scope.error = response.data.message;
+           }
+           $('#addProductFailure').modal();
+       })
+    }
+
+    $scope.activeProduct = function () {
+
+       httpService.activeProduct($scope.newProduct.id,function (res) {
+           $scope.message = "Product Successfully activated. It will start displaying in the website"
+               $('#addProductSuccess').modal();
+
+       },function (res) {
+           if(!$scope.error){
+               $scope.error = response.data.message;
+           }
+           $('#addProductFailure').modal();
+       })
+    }
+
     $scope.addSku = function () {
         $scope.skus.push({sizeVariantValue:$scope.skuName,quantity:$scope.skuQuantity})
         $scope.skuName = "";
         $scope.skuQuantity= "";
     };
+
+    $scope.removeSku = function (index) {
+        $scope.skus.splice(index, 1);
+    }
+
+    $scope.removeImage = function (index) {
+        $scope.newProduct.images.splice(index,1)
+    }
 });

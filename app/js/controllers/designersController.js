@@ -5,7 +5,8 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 		httpService.callHttp("GET","designers/"+designerId,{},{},{},$scope.onGetDesignerDetailsSuccess,$scope.onGetDesignerDetailsFailure,true);
 	}
 	$scope.getDesigners = function () {
-		httpService.callHttp("GET","designers/publicInfo",{},{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure,true);
+        var params = {offset:0,limit:30};
+		httpService.callHttp("POST","designers/searchService/search/filteredSearch",params,{},{},$scope.onGetDesignersSuccess,$scope.onGetDesignersFailure);
 	}
 	$scope.getDesignerProducts = function (designerId) {
 		var params = {designerId : designerId};

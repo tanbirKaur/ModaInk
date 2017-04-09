@@ -12,6 +12,14 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.sameBrandProducts = [];
     $scope.similarProducts = [];
 
+
+    $scope.getProducts = function () {
+        var params = {offset:0,limit:10000};
+        httpService.callHttp("POST","products/searchService/search/filteredSearch",params,{},{},$scope.onGetProductsSuccess,$scope.onGetProductsFailure);
+    };
+
+
+
     $scope.getShoppingCartItems= function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems ",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
     };
@@ -137,6 +145,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     }
     $scope.onDesignerRequestFailure = function (response) {
         console.log(response);
+        $scope.error = response.data.message
         $('#failure').show();
         $('#registrationButtons').addClass('displayNone');
     }
@@ -239,7 +248,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
     //custom methods
     var findProductById = function (id) {
-        return $scope.products.find(function(product){
+        return $scope.allProducts.find(function(product){
             return product.id == id;
         });
     }
@@ -250,7 +259,10 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         return angular.element('#'+modal).modal('show');
     };
 
-    if (productId) {
+
+
+    $scope.onGetProductsSuccess = function (response) {
+        $scope.allProducts = response.data.products;
         $scope.product = findProductById(productId);
         $scope.previewImage = $scope.product.previewImage;
         if(!$scope.product.images) $scope.product.images = [];
@@ -264,6 +276,14 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         $scope.getSimilarProducts();
     };
 
+    $scope.onGetProductsFailure = function (response) {
+        console.log("onGetProductsFailure:",response);
+    }
+
+
+    if (productId) {
+        $scope.getProducts();
+    };
 
 
 });

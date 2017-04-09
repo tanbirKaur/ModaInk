@@ -102,4 +102,66 @@
     width: 100%;
 }
 
+#designerProfileEditPartial .content-wrapper {
+    margin: 0 !important;
+}
 
+.designerImage {
+    align-content: center;
+    height: 100px;
+    width: 100px;
+}
+
+div[name=imageGroup] .img-responsive {
+    max-height: 180px !important;
+    margin: auto;
+    cursor: pointer;
+}
+
+div[name=imageGroup] .placeholder {
+    margin-top: 20%;
+}
+
+div[name=imageGroup] textarea{
+    width: 100%;
+}
+
+.alphabet-list {
+    list-style: none;
+    display: flex;
+
+}
+
+.alphabet-list li {
+    margin: 1%;
+    text-transform: capitalize;
+}
+
+.designer-listing{
+    text-transform: capitalize;
+
+    list-style: none;
+
+
+}
+.alpha {
+    text-align: center;
+}
+
+.alphabets{
+    list-style: none;
+
+}
+
+.addSize {
+    margin-bottom: 6% !important;
+    width: 100%;
+}
+
+.activeProduct {
+    color: green;
+}
+
+.inactiveProduct {
+    color: red;
+}

@@ -26,7 +26,7 @@
             <div ng-show="listView" class="col-md-12">
                 <div class="col-md-12">
                 <ul class="alphabet-list">
-                  <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                  <li ng-repeat="designerGroup in activeDesigners | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
                       <a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>
                   </li>
                 </ul>
@@ -36,13 +36,13 @@
 
                 <ul class="alphabets">
                    
-                        <li ng-repeat="designerGroup in designerList | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                        <li ng-repeat="designerGroup in activeDesigners | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
                           <ul class="designer-listing" id="{{designerGroup.$key}}">
                             <li class="alpha">{{designerGroup.$key}}</li>
                             <hr>
                             <div class="col-md-12">
-                                    <li ng-repeat="designer in designerGroup">
-                                          <a href="/designer-details/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
+                                    <li ng-repeat="designer in designerGroup" style="text-transform: capitalize">
+                                          <a href="/designer-profile/{{designer.id}}">{{designer.firstName}} {{designer.lastName}}</a>
                                       </li>
                                 </div>
                         </ul>
@@ -55,11 +55,13 @@
             <div class="col-md-12" ng-hide="listView">
               <!-- Designer Card-->
 
-              <div ng-repeat="designer in designerList"  class="col-md-4">
+
+
+              <div ng-repeat="designer in activeDesigners"  class="col-md-4">
                 <div class="box remove-box-top">
                   <div class="box-body text-center no-padding" >
                     <div class="bg-teal" style="padding: 3px;">
-                      <img ng-src="{{designer.avatarUrl}}" class="img-circle" alt="User Image" style="align-content: center;max-height: 85px;">
+                      <img ng-src="{{designer.avatarUrl}}" class="img-circle designerImage" alt="User Image" >
                       <p>
                         {{designer.firstName}} {{designer.lastname}} - {{designer.badge.name}}<br>
                         <small>Member since: {{designer.createdAt | date : "MMM, yyyy"}}</small>
@@ -69,15 +71,15 @@
                      
                       <div class="col-md-4 border-right">
                         <div class="description-block">
-                          <h5 class="description-header">2</h5>
-                          <span class="description-text">TYPE</span>
+                          <p style="    text-transform: uppercase;">{{designer.type}}</p>
+
                         </div>
                         <!-- /.description-block -->
                       </div>
 
                       <div class="col-md-4 border-right">
                         <div class="description-block">
-                          <h5 class="description-header">14</h5>
+                          <p>{{designer.totalApprovedProducts}}</p>
                           <span class="description-text">PRODUCTS</span>
                         </div>
                         <!-- /.description-block -->
@@ -85,8 +87,8 @@
 
                       <div class="col-md-4 border-right">
                         <div class="description-block">
-                          <h5 class="description-header">7</h5>
-                          <span class="description-text">SALES</span>
+                          <p >{{designer.totalSalesAmount}}</p>
+                          <span class="description-text">SALES(Rs)</span>
                         </div>
                         <!-- /.description-block -->
                       </div>
@@ -94,7 +96,7 @@
                     </div>
 
                     <div class="row" style="margin: 3%;">
-                        <a href="/designer-profile/{{designer.id}}"><div class="col-md-4 btn btn-default ">Profile</div></a>
+                        <a href="/designer-profile/{{designer.id}}" ><div class="col-md-4 btn btn-default ">Profile</div></a>
                         <a href="/addProduct?designerId={{designer.id}}&mode=c"><div class="col-md-4 btn btn-default text-center">Add Product</div></a>
                         <a href="/designer-profile/{{designer.id}}#products"><div class="col-md-4 btn btn-default text-center">Collection</div></a>
 
@@ -107,15 +109,7 @@
             </div>
         </div>
 
-        <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">»</a></li>
-          </ul>
-        </div>          
+
 
 
       </div>
