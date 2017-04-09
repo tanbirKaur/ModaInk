@@ -230,6 +230,32 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         })
     };
 
+    $scope.deactivateDesigner = function () {
+        httpService.deactivateDesigner($stateParams.id,function (res) {
+            $scope.message = "Designer Successfully Deactivated. It will no longer be displayed in the website"
+            $('#successModal').modal();
+        },function (res) {
+            if(!$scope.error){
+                $scope.error = res.data.message;
+            }
+            $('#failureModal').modal();
+        })
+
+    }
+     $scope.activateDesigner = function () {
+            httpService.activateDesigner($stateParams.id,function (res) {
+                $scope.message = "Designer Successfully Activated. It will be displayed in the website now"
+                $('#successModal').modal();
+
+            },function (res) {
+                if(!$scope.error){
+                    $scope.error = res.data.message;
+                }
+                $('#failureModal').modal();
+            })
+
+        }
+
 
     // http Success and Failure Methods
     $scope.onGetDesignerDetailsSuccess = function (response) {
@@ -255,6 +281,14 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                 designer.alphabet = designer.firstName[0];
                 return designer;
             });
+
+            $scope.activeDesigners = $scope.designerList.filter(function (designer) {
+                return designer.isActive == true;
+            })
+
+            $scope.deactivatedDesigners = $scope.designerList.filter(function (designer) {
+                return designer.isActive == false;
+            })
         }
     };
 
@@ -279,6 +313,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             imageClick();
         }
     };
+    
 
 
 

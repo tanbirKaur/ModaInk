@@ -307,5 +307,24 @@ angular.module('portal-modaink')
             });
         };
 
+        httpService.deactivateDesigner = function (id, successCallback,failureCallback) {
+
+            httpService.callHttp("PUT","/designers/" + id + "/deactivate",{},{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"deactivateDesigner");
+            });
+        };
+
+        httpService.activateDesigner = function (id, successCallback,failureCallback) {
+
+            httpService.callHttp("PUT","/designers/" + id + "/activate",{},{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"activateDesigner");
+            });
+        };
+
+
         return httpService;
     }]);

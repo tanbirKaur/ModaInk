@@ -26,7 +26,7 @@
             <div ng-show="listView" class="col-md-12">
                 <div class="col-md-12">
                 <ul class="alphabet-list">
-                  <li ng-repeat="designerGroup in designerList | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                  <li ng-repeat="designerGroup in activeDesigners | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
                       <a ng-href="#{{designerGroup.$key}}">{{designerGroup.$key}}</a>
                   </li>
                 </ul>
@@ -36,7 +36,7 @@
 
                 <ul class="alphabets">
                    
-                        <li ng-repeat="designerGroup in designerList | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
+                        <li ng-repeat="designerGroup in activeDesigners | filterBy:['firstName','lastName']:designerSearch | groupBy:'alphabet' | toArray:true | orderBy:'$key'">
                           <ul class="designer-listing" id="{{designerGroup.$key}}">
                             <li class="alpha">{{designerGroup.$key}}</li>
                             <hr>
@@ -55,7 +55,9 @@
             <div class="col-md-12" ng-hide="listView">
               <!-- Designer Card-->
 
-              <div ng-repeat="designer in designerList"  class="col-md-4">
+
+
+              <div ng-repeat="designer in activeDesigners"  class="col-md-4">
                 <div class="box remove-box-top">
                   <div class="box-body text-center no-padding" >
                     <div class="bg-teal" style="padding: 3px;">
@@ -107,15 +109,7 @@
             </div>
         </div>
 
-        <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">»</a></li>
-          </ul>
-        </div>          
+
 
 
       </div>
