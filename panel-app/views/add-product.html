@@ -105,11 +105,11 @@
                         <div ng-repeat="sku in oldSkus">
                             <div class="input-group addSize" >
                                 <div class="input-group">
-                                    <input type="text" class="form-control" aria-describedby="basic-addon2" ng-model="sku.quantity">
                                     <span ng-model="sku.sizeVariantValue" class="input-group-addon" id="basic-addon2">{{sku.sizeVariantValue}}</span>
+                                    <input type="text" class="form-control" aria-describedby="basic-addon2" ng-model="sku.quantity">
+                                    <span ng-show="sku.isActive" ng-model="sku.isActive" class="input-group-addon" id="basic-addon3" ><a ng-click="setInactiveSku($index)" href="" >Discontinue</a></span>
+                                    <span ng-hide="sku.isActive" ng-model="sku.isActive" class="input-group-addon" id="basic-addon3" ><a ng-click="setInactiveSku($index)" href="" >Continue</a></span>
                                 </div>
-
-
                             </div>
                         </div>
 
