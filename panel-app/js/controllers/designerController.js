@@ -327,12 +327,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     }
 
 	var designerId = $stateParams.id || $rootScope.userId;
-	if (designerId ) {
+	if (designerId && !$rootScope.isAdmin ) {
 		$scope.getDesignerDetails(designerId);
 		$scope.getDesignerProducts(designerId);
 		$scope.getDesignerUnapprovedProducts(designerId);
 		$scope.getDesignerBrandDetails(designerId)
-	} else {
+	}
+	else {
 		$scope.getDesigners();
 	}
     $scope.getDesignerRequests()
