@@ -8,9 +8,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.skus=[];
     if($scope.mode == 've'){
         $scope.newProduct = storageService.get('product');
-        $scope.skus = $scope.newProduct.skus;
-
-
+        $scope.oldSkus = $scope.newProduct.skus;
     }
 
     counter = 0;
@@ -69,13 +67,17 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
 
     $scope.updateProduct = function(){
 
-        $scope.newProduct.skus = $scope.skus.map(function (sku) {
+        $scope.newProduct.skus = $scope.oldSkus.map(function (sku) {
             var newSku = {
                 id : String(sku.id),
-                quantity:sku.quantity
+                quantity:sku.quantity,
+                isActive:sku.isActive
+
             };
             return newSku;
         });
+
+        $scope.newProduct.skus = $scope.newProduct.skus.concat($scope.skus);
 
 
         var productUpdates = {
@@ -87,8 +89,11 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             "shippingDays":$scope.newProduct.shippingDays,
             "returnDays":$scope.newProduct.returnDays
         };
+        if($scope.newProduct.specsDescription){
+            productUpdates.specsDescription = $scope.newProduct.specsDescription
+        }
         httpService.updateProduct($scope.newProduct.id,productUpdates,function (response) {
-            $location.path('/home');
+            $('#updateProductSuccess').modal();
         },function (response) {
             $scope.error = (response.data.message).match(/[^[\]]+(?=])/g);
             if(!$scope.error){
@@ -119,7 +124,7 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
             $scope.newProduct.designer = {id:$rootScope.userDetails.id};
 
         httpService.createProduct($scope.newProduct,function(res){
-            $scope.message = "Product" + newProduct.name+ "Successfully Added".
+            $scope.message = "Product" + $scope.newProduct.name+ "Successfully Added."
             $('#addProductSuccess').modal();
         }, function (res) {
             $scope.error = (res.data.message).match(/[^[\]]+(?=])/g);
@@ -171,4 +176,9 @@ app.controller('ProductController', function($scope,$rootScope,$location, httpSe
     $scope.removeImage = function (index) {
         $scope.newProduct.images.splice(index,1)
     }
+
+    $scope.setInactiveSku = function (index) {
+        $scope.oldSkus[index].isActive = !$scope.oldSkus[index].isActive ;
+    }
+
 });

@@ -85,7 +85,7 @@
               <a ng-href="/login" ng-click="resetStorage()" class="btn btn-primary btn-flat">Logout</a>
             </div>
           </li>
-          <li  ng-show="!isAdmin && userLoggedIn && ((isActive && isApproved) || isAdmin)" class="dropdown user user-menu">
+          <li  ng-show="!isAdmin && userLoggedIn && ((isActive && isApproved) ||  (isApproved && !isActive) || isAdmin)" class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="images/avtar.png" class="user-image" alt="User Image">
               <span class="hidden-xs">{{currentUser.firstName}} {{currentUser.lastName}}</span>

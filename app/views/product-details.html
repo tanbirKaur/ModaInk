@@ -28,7 +28,23 @@
 							<span class="col-md-4">Rs. {{product.price}}</span>
 						</div>
 						<div class="clearfix"></div>
-						<p>{{product.productDescription}}</p>
+                        <div>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="/#/product-details/#Description" target="_self">Description</a></li>
+                                <li><a data-toggle="tab" href="/#/product-details/#Specification" target="_self">Specification</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="Description" class="tab-pane fade in active">
+                                    <p>{{product.productDescription}}</p>
+                                </div>
+                                <div id="Specification" class="tab-pane fade">
+                                    <p ng-show="product.specsDescription">{{product.specsDescription}}</p>
+                                    <p ng-hide="product.specsDescription">No specification added with this product.</p>
+                                </div>
+                                <p></p>
+                            </div>
+                        </div>
 					</div>
 
 					<div>
