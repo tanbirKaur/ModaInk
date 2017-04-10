@@ -106,6 +106,12 @@ app.controller('cartController', function($scope,$state,$rootScope,httpService,s
             httpService.callHttp("GET", "users/" + $scope.userDetails.id + "/shoppingcartItems/checkout", {}, {}, {}, function (response) {
                 $scope.cartInfo = response.data;
                 $scope.cartInfo.shoppingcartCharges.itemsTotalAmount = $scope.cartInfo.shoppingcartCharges.itemsTotalAmount + $scope.cartInfo.shoppingcartCharges.shippingAmount;
+                $scope.cartInfo.shoppingcartItems.map(function (cartItem) {
+                    cartItem.sizeVariantValue = (cartItem.product.allSkus.filter(function (sku) {
+                        return sku.skuId == cartItem.SkuId;
+                    })[0]).size;
+                    return cartItem;
+                });
                 $rootScope.$broadcast("updateCartDetails",{
                     cartItems:$scope.cartInfo.shoppingcartItems
                 });

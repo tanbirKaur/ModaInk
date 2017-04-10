@@ -50,7 +50,8 @@
 							<span style="float: right; padding-right: 10%">Rs. {{cartItem.product.price}}</span>
 						</div>
 						<div class="designer" style="padding-top: 2%">
-							<span >Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
+							<span ng-if="cartItem.sku.sizeVariantValue">Size: <span style="text-transform: uppercase">{{cartItem.sku.sizeVariantValue}}</span></span>
+							<span ng-if="cartItem.sizeVariantValue">Size: <span style="text-transform: uppercase">{{cartItem.sizeVariantValue}}</span></span>
 						</div>
 						<div class="size/qty">
 							<span >Qty: <input type="number" min="1" max="{{getStockQuantityForProductSku(cartItem.SkuId,cartItem.product.allSkus)}}" ng-change="updateQuantity(cartItem.id,cartItem.quantity)" class="cart_edit" ng-class="{cart_editing:editMode}" onkeydown="return false" ng-model="cartItem.quantity" ng-disabled="!editMode" ng-readonly="!editMode"/></span>
