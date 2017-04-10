@@ -1,10 +1,6 @@
 var app = window.app;
-app.controller('UserProfileController', function($scope,$state,$rootScope,httpService,storageService,$stateParams,$timeout) {
+app.controller('cartController', function($scope,$state,$rootScope,httpService,storageService) {
     $scope.userDetails = storageService.get("userDetails");
-    $scope.newAddress = {};
-    $scope.countries = ['India'];
-    $scope.addressTypes = ['Home','Office'];
-    $scope.param = $stateParams.param;
     $scope.cartInfo = {shoppingcartItems:[]};
 
     var updatePricingDetails = function () {
@@ -45,6 +41,7 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         });
     };
 
+
     $scope.addItemToWishList= function (id,cartItemId) {
         var data = {"productId":id};
         if($rootScope.userLoggedIn){
@@ -56,22 +53,14 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
                 $scope.message = response.data.message;
                 showModal('moveProductFailure');
             });
-        } else {
+        }
+        else {
             showModal('loginModal')
         }
     };
 
-    $scope.getWishlistItems= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/wishlistItems",{},{},{},function (response) {
-            $scope.wishlistItems = response.data;
-        },function (response) {
-            console.log(response)
-        });
-    };
-
     $scope.removeItemFromWishlist= function (id) {
         httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/wishlistItems/"+id,{},{},{},function (response) {
-            $scope.getWishlistItems();
             $scope.message = 'Item removed from your wishlist';
             showModal('addAddressSuccessModal');
         },function (response) {
@@ -151,39 +140,6 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         }
     };
 
-    $scope.getUserAddresses= function () {
-        httpService.callHttp("GET","users/"+$scope.userDetails.id+"/addresses",{},{},{},function (response) {
-            $scope.addresses = response.data;
-            if ($scope.addresses.length > 0){
-                $scope.selectedAddress = $scope.addresses[0].id;
-            }
-        },function (err) {
-            console.log('failed: getUserAddresses');
-        });
-    };
-
-    $scope.addNewAddress= function () {
-        httpService.callHttp("POST","users/"+$scope.userDetails.id+"/addresses",{},{},$scope.newAddress,function (response) {
-            $scope.getUserAddresses();
-            $scope.message = 'New address added succesfully';
-            showModal('addAddressSuccessModal');
-        },function (err) {
-            console.log(err.data.message);
-        });
-    };
-
-    $scope.removeAddress = function (addressId) {
-        httpService.callHttp("DELETE","users/"+$scope.userDetails.id+"/addresses/"+addressId,{},{},{},function (response) {
-            $scope.getUserAddresses();
-            $scope.message = 'Address removed from your account';
-            showModal('addAddressSuccessModal');
-        },function (response) {
-            $scope.message = response.data.message;
-            showModal('moveProductFailure');
-        });
-    };
-
-
     $scope.getUserOrders = function () {
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/orders",{},{},{},function (response) {
             $scope.orders = response.data;
@@ -194,8 +150,27 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
 
     $scope.$on("loginSuccess",function (event,response) {
         $scope.userDetails = storageService.get("userDetails");
+        addNewItemsToCart()
     });
 
+    var addNewItemsToCart = function () {
+        var shoppingcartItems = storageService.get('guestCartItems');
+        if(shoppingcartItems.length > 0){
+            var cartItem =shoppingcartItems.splice(0,1);
+            storageService.set('guestCartItems',shoppingcartItems);
+            if($scope.userDetails){
+                $scope.addItemToCart(cartItem[0])
+            } else {
+                httpService.callHttp("GET","users/me",{},{},{},function (res) {
+                    $scope.userDetails = res.data;
+                    $rootScope.userDetails = $scope.userDetails;
+                    storageService.set("userDetails",$scope.userDetails);
+                    $scope.addItemToCart(cartItem[0])
+                });
+            }
+            addNewItemsToCart();
+        }
+    };
     //Controller function calls
     var showModal = function(modal) {
         return angular.element('#'+modal).modal('show');
@@ -205,8 +180,6 @@ app.controller('UserProfileController', function($scope,$state,$rootScope,httpSe
         $scope.getShoppingCartItems()
     }
     if ($scope.userDetails){
-        $scope.getUserAddresses();
-        $scope.getUserOrders();
-        $scope.getWishlistItems()
+        $scope.getUserOrders()
     }
 });

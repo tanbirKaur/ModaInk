@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('HomeController', function($scope,$rootScope,$state,$stateParams, $auth,httpService,storageService) {
+app.controller('HomeController', function($scope,$rootScope,$state,$stateParams, $auth,httpService,storageService,$timeout) {
 	$scope.homeImageUrl = "images/Home/home_shop_slider.jpg";
 	$scope.userName = undefined;
 	$scope.shoppingcartItemCount = 0;
@@ -33,7 +33,6 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             httpService.callHttp("POST","users/social/authenticate",{},{},socialLoginInfo,function (response) {
                 $scope.$broadcast('loginSuccess',response);
                 $scope.$emit("loginSuccess",response);
-                $scope.$emit("refreshCart",response);
                 $state.go($state.current, {}, {reload: true});
                 $scope.message = "Login Successful";
                 if($rootScope.addReview){
@@ -67,7 +66,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getShoppingCartItems= function () {
-		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
+		httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
 	};
 
 	$scope.getDesigners = function () {
@@ -183,12 +182,11 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.onGetShoppingCartItemsSuccess = function (response) {
-        updateCart(response);
+        updateCart({data:response.data.shoppingcartItems});
 	};
 
 	$scope.$on('refreshCart',function (event,args) {
 		updateCart(args);
-        // $state.go($state.current, {}, {reload: true});
     });
 
 	var updateCart = function (res) {

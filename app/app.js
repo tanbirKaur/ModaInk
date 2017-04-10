@@ -62,7 +62,7 @@ window.apiUrl = "http://dev.modaink.com/api";
 		.state("cart", {
 			url: "/checkout/cart",
 			templateUrl : "views/cart.html",
-			controller : "UserProfileController"
+			controller : "cartController"
 		})
 		.state("billing-details", {
 			url:"/checkout/billing-details",
