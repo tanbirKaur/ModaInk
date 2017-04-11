@@ -1,9 +1,12 @@
 var app = window.app;
-app.controller('DesignerController', function($scope,$stateParams,$location, httpService, $state, $rootScope) {
+app.controller('DesignerController', function($scope,$stateParams,$location, httpService, $state, $rootScope,$filter) {
     $scope.errors = {};
     $scope.designerDetails = {};
     $scope.designerBrandDetails ={};
 
+    $scope.$watch('designerDetails.dateOfBirth', function (newValue) {
+        $scope.designerDetails.dateOfBirth = $filter('date')(newValue, 'yyyy-MM-dd');
+    });
 
     $scope.editMode= false;
 
@@ -202,13 +205,13 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     // http Methods
     $scope.getDesignerDetails = function (designerId) {
         httpService.getDesignerDetails(designerId,$scope.onGetDesignerDetailsSuccess,function (response) {
-            // $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
+            $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
         });
     }
 
     $scope.getDesignerBrandDetails = function (designerId) {
         httpService.getDesignerBrandDetails(designerId,$scope.onGetDesignerBrandDetailsSuccess,function (response) {
-            // $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
+            $scope.designerDetails = {brand:{pickupAddress:{},portfolioImages:[],dateOfBirth:''}};
         });
     }
 
@@ -353,13 +356,12 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     };
 
 	var designerId = $stateParams.id || $rootScope.userId;
-	if (designerId && !$rootScope.isAdmin ) {
-		$scope.getDesignerDetails(designerId);
-		$scope.getDesignerProducts(designerId);
-		$scope.getDesignerUnapprovedProducts(designerId);
-		$scope.getDesignerBrandDetails(designerId)
-	}
-	else {
+    if (designerId ) {
+        $scope.getDesignerDetails(designerId);
+        $scope.getDesignerProducts(designerId);
+        $scope.getDesignerUnapprovedProducts(designerId);
+        $scope.getDesignerBrandDetails(designerId)
+    }else {
 		$scope.getDesigners();
 	}
     $scope.getDesignerRequests()
