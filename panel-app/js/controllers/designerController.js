@@ -24,7 +24,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 
     $scope.updateDesignerDetails = function(){
         var shouldShowApprovalModal = $scope.shouldShowApprovalModal($scope.unEditedBrandDetails,$scope.designerBrandDetails)
-        if(shouldShowApprovalModal.length > 0){
+        if(shouldShowApprovalModal.length > 0 && !rootscope.isAdmin){
             $scope.approvalMessage = shouldShowApprovalModal.join();
             $('#confirmApprovalUpdate').modal('show');
         } else {
@@ -355,8 +355,10 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         }
     };
 
-	var designerId = $stateParams.id || $rootScope.userId;
-    if (designerId ) {
+	var loggedIndesgnerId= !$rootScope.isAdmin ? $rootScope.userId : ""
+
+	var designerId = $stateParams.id || loggedIndesgnerId
+    if (designerId) {
         $scope.getDesignerDetails(designerId);
         $scope.getDesignerProducts(designerId);
         $scope.getDesignerUnapprovedProducts(designerId);
