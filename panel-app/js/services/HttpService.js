@@ -51,6 +51,14 @@ angular.module('portal-modaink')
                 redirectCallback(response,httpFailed,failureCallback,"getDesigners");
             });
         };
+        httpService.getDesignersWithPendingProfileUpadation = function (successCallback,failureCallback) {
+            var params = {isChangesApproved :'false'};
+            httpService.callHttp("GET","designers",params,{},{},function (response) {
+                redirectCallback(response,emptyFunction,successCallback);
+            },function (response) {
+                redirectCallback(response,httpFailed,failureCallback,"getDesigners");
+            });
+        };
 
         httpService.getDesignerRequests = function (successCallback,failureCallback) {
             var params = {isApproved:'null'};

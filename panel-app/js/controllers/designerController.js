@@ -24,7 +24,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
 
     $scope.updateDesignerDetails = function(){
         var shouldShowApprovalModal = $scope.shouldShowApprovalModal($scope.unEditedBrandDetails,$scope.designerBrandDetails)
-        if(shouldShowApprovalModal.length > 0 && !rootscope.isAdmin){
+        if(shouldShowApprovalModal.length > 0 && !$rootScope.isAdmin){
             $scope.approvalMessage = shouldShowApprovalModal.join();
             $('#confirmApprovalUpdate').modal('show');
         } else {
@@ -197,6 +197,9 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
     $scope.getDesigners = function () {
         httpService.getDesigners($scope.onGetDesignersSuccess);
     }
+ $scope.getDesignersWithPendingProfileUpadation = function () {
+        httpService.getDesignersWithPendingProfileUpadation($scope.onGetDesignersWithPendingProfileUpadationSuccess);
+    }
 
     $scope.redirectToViewProduct = function (mode, product) {
         $state.go("addProduct",{mode:mode,product:product});
@@ -287,12 +290,18 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             });
 
             $scope.activeDesigners = $scope.designerList.filter(function (designer) {
-                return designer.isActive == true;
+                return designer.isActive == true ;
             });
 
             $scope.deactivatedDesigners = $scope.designerList.filter(function (designer) {
-                return designer.isActive == false;
+                return designer.isActive == false ;
             })
+        }
+    };
+    $scope.onGetDesignersWithPendingProfileUpadationSuccess = function (response) {
+        var designersFound = response.status == 200;
+        if (designersFound) {
+            $scope.designersWithPendingProfileUpdate = response.data;
         }
     };
 
@@ -365,6 +374,8 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         $scope.getDesignerBrandDetails(designerId)
     }else {
 		$scope.getDesigners();
-	}
+        $scope.getDesignersWithPendingProfileUpadation()
+
+    }
     $scope.getDesignerRequests()
 });

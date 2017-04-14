@@ -34,6 +34,11 @@ app.config(function($stateProvider,$locationProvider, $urlRouterProvider) {
             templateUrl: '/views/designers-deactivated.html',
             controller : 'DesignerController'
         })
+        .state('designers-unapproved', {
+            url: '/designers-unapproved-profiles',
+            templateUrl: '/views/designers-unapproved.html',
+            controller : 'DesignerController'
+        })
         .state('register-designer',{
             url: '/register-designer',
             templateUrl: '/views/register-designer-form.html',
