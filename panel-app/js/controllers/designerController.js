@@ -55,13 +55,16 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                     mobile: $scope.designerBrandDetails.pickupAddress.mobile,
                     line1: $scope.designerBrandDetails.pickupAddress.line1,
                     line2: $scope.designerBrandDetails.pickupAddress.line2,
-                    landmark: $scope.designerBrandDetails.pickupAddress.landmark,
+
                     pincode: $scope.designerDetails.pincode,
                     city: $scope.designerBrandDetails.pickupAddress.city,
                     state: $scope.designerBrandDetails.pickupAddress.state,
                     country: $scope.designerBrandDetails.pickupAddress.country
 				}
             };
+            if($scope.designerBrandDetails.pickupAddress.landmark){
+                brandDetails.pickupAddress.landmark = $scope.designerBrandDetails.pickupAddress.landmark
+            }
             if($scope.designerBrandDetails.logoUrl){
                 brandDetails.logoUrl = $scope.designerBrandDetails.logoUrl
             }
@@ -108,7 +111,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
                     mobile: $scope.designerBrandDetails.pickupAddress.mobile,
                     line1: $scope.designerBrandDetails.pickupAddress.line1,
                     line2: $scope.designerBrandDetails.pickupAddress.line2,
-                    landmark: $scope.designerBrandDetails.pickupAddress.landmark,
+
                     pincode: $scope.designerBrandDetails.pickupAddress.pincode,
                     city: $scope.designerBrandDetails.pickupAddress.city,
                     state: $scope.designerBrandDetails.pickupAddress.state,
@@ -117,6 +120,9 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
             },
         };
 
+        if($scope.designerBrandDetails.pickupAddress.landmark){
+            newDesignerRequest.pickupAddress.landmark = $scope.designerBrandDetails.pickupAddress.landmark
+        }
         if($scope.designerBrandDetails.logoUrl){
 
             newDesignerRequest.brand.logoUrl = $scope.designerBrandDetails.logoUrl
