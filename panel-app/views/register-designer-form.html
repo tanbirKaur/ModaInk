@@ -250,7 +250,7 @@
                             <img ng-show="designerBrandDetails.portfolioImages[0].url" class="img-responsive "  ng-src="{{designerBrandDetails.portfolioImages[0].url}}" alt="Product Picture" >
                             <img ng-hide="designerBrandDetails.portfolioImages[0].url" class="img-responsive placeholder"  src="/images/camera-icon-placeholder.jpg" alt="Product Picture" >
                         </div>
-                        <input file-model="image1" onchange="angular.element(this).scope().uploadImages(image1.files[0] , '#image1Description')" accept="image/*" type="file" id="image1" class="fileUpload" style="display: none!important;" required>
+                        <input file-model="image1" onchange="angular.element(this).scope().uploadImages(image1.files[0] , '#image1Description' ,0 )" accept="image/*" type="file" id="image1" class="fileUpload" style="display: none!important;" required>
                         <textarea id="image1Description" rows="2" required placeholder="Description for image">{{designerBrandDetails.portfolioImages[0].description}}</textarea>
                         <i><div class="text-danger" ng-bind="errors.image1Description"></div></i>
                     </div>
@@ -260,7 +260,7 @@
                             <img ng-hide="designerBrandDetails.portfolioImages[1].url" class="img-responsive placeholder "  src="/images/camera-icon-placeholder.jpg" alt="Product Picture" >
 
                         </div>
-                        <input file-model="image2" onchange="angular.element(this).scope().uploadImages(image2.files[0] , '#image2Description')" accept="image/*" type="file" id="image2" class="fileUpload" style="display: none!important;" required>
+                        <input file-model="image2" onchange="angular.element(this).scope().uploadImages(image2.files[0] , '#image2Description',1)" accept="image/*" type="file" id="image2" class="fileUpload" style="display: none!important;" required>
                         <textarea id="image2Description"  rows="2" required placeholder="Description for image">{{designerBrandDetails.portfolioImages[1].description}}</textarea>
                         <i><div class="text-danger" ng-bind="errors.image2Description"></div></i>
                     </div>
@@ -270,7 +270,7 @@
                             <img ng-hide="designerBrandDetails.portfolioImages[2].url" class="img-responsive placeholder"  src="/images/camera-icon-placeholder.jpg" alt="Product Picture" >
 
                         </div>
-                        <input file-model="image3" accept="image/*" onchange="angular.element(this).scope().uploadImages(image3.files[0] , '#image3Description')" type="file" id="image3" class="fileUpload" style="display: none!important;" required>
+                        <input file-model="image3" accept="image/*" onchange="angular.element(this).scope().uploadImages(image3.files[0] , '#image3Description',2)" type="file" id="image3" class="fileUpload" style="display: none!important;" required>
                         <textarea id="image3Description"  rows="2" required placeholder="Description for image">{{designerBrandDetails.portfolioImages[2].description}}</textarea>
                         <i><div class="text-danger" ng-bind="errors.image3Description"></div></i>
                     </div>
@@ -279,7 +279,7 @@
                             <img class="img-responsive" ng-show="designerBrandDetails.portfolioImages[3].url" ng-src="{{designerBrandDetails.portfolioImages[3].url}}" alt="Product Picture">
                             <img ng-hide="designerBrandDetails.portfolioImages[3].url" class="img-responsive placeholder"  src="/images/camera-icon-placeholder.jpg" alt="Product Picture" >
                         </div>
-                        <input file-model="image4" accept="image/*" onchange="angular.element(this).scope().uploadImages(image4.files[0] , '#image4Description')" type="file" id="image4" class="fileUpload" style="display: none!important;" required>
+                        <input file-model="image4" accept="image/*" onchange="angular.element(this).scope().uploadImages(image4.files[0] , '#image4Description', 3)" type="file" id="image4" class="fileUpload" style="display: none!important;" required>
                         <textarea id="image4Description" rows="2" required placeholder="Description for image">{{designerBrandDetails.portfolioImages[3].description}}</textarea>
                         <i><div class="text-danger" ng-bind="errors.image4Description"></div></i>
                     </div>

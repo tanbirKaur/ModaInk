@@ -159,14 +159,14 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         }
     };
 
-    $scope.uploadImages = function (imageName , id) {
+    $scope.uploadImages = function (imageName , id , index) {
         httpService.uploadImage('designers',imageName,function(res){
             var imageUploaded = res.data;
             imageUploaded.forEach(function(image){
                 imageDescription = $(id).val();
                 if(!$scope.designerBrandDetails.portfolioImages)
                     $scope.designerBrandDetails.portfolioImages = [];
-                $scope.designerBrandDetails.portfolioImages.push({url:image.fileUrl,description:imageDescription});
+                $scope.designerBrandDetails.portfolioImages[index] = {url:image.fileUrl,description:imageDescription};
                 $scope.errors['image'+$scope.designerBrandDetails.portfolioImages.length+'Description'] = '';
 
             }, function (res) {
