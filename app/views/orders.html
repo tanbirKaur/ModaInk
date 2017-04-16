@@ -18,7 +18,7 @@
 				<h5 style="font-weight: bold">Shipment</h5>
 				<div class="row">
 					<div class="col-md-3">
-						<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}" >
+						<a ui-sref="product-details({productId : item.product.id , designerId : item.product.designerId,product_name : $root.prettyUrl(product.styleName)})" >
 							<img ng-src="{{item.product.previewImage}}" alt="{{item.product.productName}}" width="96" height="128">
 						</a>
 					</div>

@@ -4,7 +4,7 @@
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
 		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
 		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
-			<a class="stepper__step stepper__step--active" href="/#/checkout/cart" style="width: 25%;">
+			<a class="stepper__step stepper__step--active" ui-sref="cart" style="width: 25%;">
 				<span class="stepper__step-badge">1</span>
 				<span class="stepper__step-title">Bag</span>
 			</a>
@@ -33,7 +33,7 @@
 				</div>
 				<div>
 					<div class="desktop_version button_wrap billing-buttons-container">
-			        <a href="/#/checkout/cart" ><button type="submit" class="button back_btn alt-action"><span style="font-size: 20px;">Back</span></button></a>
+			        <a ui-sref="cart"  ><button type="submit" class="button back_btn alt-action"><span style="font-size: 20px;">Back</span></button></a>
 			        <a href="" ng-click="makePayment()"><button type="submit" class="button "><span style="font-size: 20px;">Continue</span></button></a>
 			     </div>
 				</div>

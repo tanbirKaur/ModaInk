@@ -62,7 +62,7 @@
 					</div>
 					<div style="padding-top: 30px;">
 						<span style="padding-left: 40px;">Select A Size</span>
-						<span style="float: right;">Not Sure? <a href="/#/sizechart" style="font-size: 15px; text-decoration: underline;" target="_blank"> See Size Chart</a> </span>
+						<span style="float: right;">Not Sure? <a ui-sref="sizeChart"  style="font-size: 15px; text-decoration: underline;" target="_blank"> See Size Chart</a> </span>
 					</div>
 
 					<div class="product-variations">
@@ -118,7 +118,7 @@
                     </div>
                     <ul class="shop_slider_ul">
                     <li ng-repeat="product in similarProducts" >
-                        <a href="/#/product-details/{{product.id}}/{{designerId}}" style="text-decoration: none">
+                        <a ui-sref="product-details({productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
                             <div class="item_wrapper">
                                 <div class="image_frame">
                                     <div class="image_wrapper">
@@ -150,7 +150,7 @@
                     <div class="shop_slider">
                         <ul class="shop_slider_ul">
                             <li ng-repeat="product in sameBrandProducts " >
-                                <a href="/#/product-details/{{product.id}}/{{designerId}}" style="text-decoration: none">
+                                <a ui-sref="product-details({productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
                                     <div class="item_wrapper">
                                         <div class="image_frame">
                                             <div class="image_wrapper">

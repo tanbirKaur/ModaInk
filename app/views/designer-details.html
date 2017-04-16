@@ -12,8 +12,8 @@
 
 		<div id="firstmenu" class="menu">
 			<ul>
-				<li ng-if="designerDetails.hasCustomizableProducts"class="cat active" id="customl"><a ng-click="showBrandProducts(designerDetails.brandName,'isCustomizable')">Customized Collection</a></li>
-				<li class="cat active" id="shop"><a ng-click="showBrandProducts(designerDetails.brandName)">Shop Now</a></li>
+				<li ng-if="designerDetails.hasCustomizableProducts"class="cat active" id="customl"><a ui-sref="/({brand : encodeUrl(designerDetails.brandName),isCustomizable : 'true'})" >Customized Collection</a></li>
+				<li class="cat active" id="shop"><a ui-sref="/({brand : encodeUrl(designerDetails.brandName)})">Shop Now</a></li>
 			</ul>
 		</div>
 		<div id="about" class="profilefotos ">

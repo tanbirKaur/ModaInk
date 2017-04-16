@@ -16,7 +16,7 @@
                       <div style="margin: 50px;font-size: 40px;padding-bottom: 10px;">
                           <label >Featured</label>
                           <label>Designers</label>
-                        <a href="/#/becomeSeller" class="  become-Designer-Button" target="_top"> SELL WITH US </a>
+                        <a ui-sref="become-seller" class="  become-Designer-Button" target="_top"> SELL WITH US </a>
                       </div>
 
                   </div>
@@ -26,7 +26,7 @@
                             <div class="trailer_box">
                                 <!-- Animated area -->
                                 <div class="animate" data-anim-type="fadeInUp">
-                                    <a target="_top" ng-href="/#designer-details/{{designer.id}}"><img class="scale-with-grid" ng-src="{{designer.avatarUrl}}" alt="Fall<br />Winter '13/14" />
+                                    <a target="_top" ui-sref="designer-details({designerId : designer.id,designer_name : $root.prettyUrl(designer.firstName+ '-'+designer.lastName),brand_name : $root.prettyUrl(designer.brandName)})"><img class="scale-with-grid" ng-src="{{designer.avatarUrl}}" alt="Fall<br />Winter '13/14" />
                                         <div class="desc">
                                             <div id = "designer_name" class="line">
                                                 {{designer.brandName}}
@@ -45,7 +45,7 @@
                     <div class="col-xs-12  col-md-6" style="border-bottom: 2px solid #181818; height: 500px; ">
                         <div style="    text-align: center;">
                             <div>
-                                <a href="/#/women" target="_top"><img src="images/Home/women.png" alt=""> </a>
+                                <a ui-sref="women" target="_top"><img src="images/Home/women.png" alt=""> </a>
                             </div>
 
                             <div style="    padding: 20px;
@@ -55,7 +55,7 @@
                                 <h1 style="    font-weight: bolder;
                                 font-size: 40px;">WOMEN</h1>
                                 <hr/>
-                                <a href="/#/women" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="women" target="_top"><h1>SHOP NOW</h1></a>
                             </div>
                         </div>
                     </div>
@@ -69,11 +69,11 @@
                                 <h1 style="    font-weight: bolder;
                                 font-size: 40px;">MEN</h1>
                                 <hr/>
-                                <a href="/#/men" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="men"  target="_top"><h1>SHOP NOW</h1></a>
                             </div>
 
                             <div>
-                                <a href="/#/men" target="_top"><img src="images/Home/men.png" alt=""> </a>
+                                <a ui-sref="men"  target="_top"><img src="images/Home/men.png" alt=""> </a>
                             </div>
                         </div>
 
@@ -91,18 +91,18 @@
                                 <h1 style="    font-weight: bolder;
                                 font-size: 40px;">EXCLUSIVE</h1>
                                 <hr/>
-                                <a href="/#/products?exclusive=true" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="/({exclusive : true})" target="_top"><h1>SHOP NOW</h1></a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-8" style="margin-left: 30px; float: right;" >
                             <div>
-                                <a href="/#/products?exclusive=true" target="_top"><img src="images/Home/exclusive.png" alt=""> </a>
+                                <a ui-sref="/({exclusive : true})"  target="_top"><img src="images/Home/exclusive.png" alt=""> </a>
                             </div>
                         </div>
                 </div>
             <!-- Discount Banner-->
                 <div> 
-                    <a href="/#/products?isDiscounted=true" target="_top"><img src="images/discount.png"></a>
+                    <a ui-sref="/({isDiscounted : true})"  target="_top"><img src="images/discount.png"></a>
                 </div>
 
 
@@ -118,13 +118,13 @@
                                 <h2 style="    font-weight: bolder;
                                 font-size: 34px;">CUSTOMIZATION</h2>
                                 <hr/>
-                                <a href="/#/products?isCustomizable=true" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="/({isCustomizable : true})"  target="_top"><h1>SHOP NOW</h1></a>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-8" style="margin-left: 30px; float: right; height: 600px" >
 
                         <div>
-                            <a href="/#/customization" target="_top"><img src="images/Home/customize.png" alt=""> </a>
+                            <a ui-sref="customization" target="_top"><img src="images/Home/customize.png" alt=""> </a>
                         </div>
                             
                         </div>
@@ -138,7 +138,7 @@
                 <div class="col-xs-12  col-md-6" style="border-bottom: 2px solid #181818; height: 500px; ">
                     <div style="    text-align: center;">
                              <div>
-                                 <a href="/#/accessories" target="_top"><img src="images/Home/accessories.png" alt=""> </a>
+                                 <a ui-sref="accessories"  target="_top"><img src="images/Home/accessories.png" alt=""> </a>
                             </div>
                             
                             <div style="    padding: 20px;
@@ -148,7 +148,7 @@
                                 <h1 style="    font-weight: bolder;
                                 font-size: 40px;">ACCESSORIES</h1>
                                 <hr/>
-                                <a href="/#/accessories" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="accessories"  target="_top"><h1>SHOP NOW</h1></a>
                             </div>
                         </div>
                         </div>  
@@ -162,11 +162,11 @@
                                 <h1 style="    font-weight: bolder;
                                 font-size: 40px;">FOOTWEAR</h1>
                                 <hr/>
-                                <a href="/#/footwear" target="_top"><h1>SHOP NOW</h1></a>
+                                <a ui-sref="footwear"  target="_top"><h1>SHOP NOW</h1></a>
                             </div>
 
                              <div>
-                                 <a href="/#/footwear" target="_top"> <img src="images/Home/footware.png" alt=""> </a>
+                                 <a ui-sref="footwear" target="_top"> <img src="images/Home/footware.png" alt=""> </a>
                             </div>
                         </div>
                     

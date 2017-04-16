@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="no-js lt-ie10 lt-ie9"> <![endif]-->
 <!--[if IE 9]><html class="no-js lt-ie10"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html class="no-js" ng-app="ModaInk">
 <!--<![endif]-->
 
 <head>
@@ -14,13 +14,21 @@
     <meta name="fragment" content="!">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ModaInk</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<title>ModaInk</title>-->
+    <title ng-bind="ngMeta.title"></title>
+    <meta property="og:type" content="{{ngMeta['og:type']}}" />
+    <meta property="og:locale" content="{{ngMeta['og:locale']}}" />
+    <meta name="author" content="{{ngMeta['author']}}" />
+    <meta name="description" content="{{ngMeta.description}}" />
+    <meta name="robots" content="{{ngMeta.robots}}">
+
+
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
 
     <!-- FONTS -->
     <link rel='stylesheet' id='Roboto-css' href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
@@ -30,7 +38,7 @@
 
 
     <!-- CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel='stylesheet' id='global-css' href='css/global.css'>
     <link rel='stylesheet' id='style-static' href='css/wrapper.css'>
@@ -40,10 +48,10 @@
     <link rel='stylesheet' id='local-css' href='css/shop.css'>
     <link rel="stylesheet" type="text/css" href="css/fonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="plugin/daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="plugin/datepicker/datepicker3.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="plugin/iCheck/all.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="plugin/datepicker/datepicker3.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="plugin/iCheck/all.css">
 
     <!-- Revolution Slider -->
     <link rel="stylesheet" href="plugin/rs-plugin/css/settings.css">
@@ -52,221 +60,222 @@
 
     <script src="js/bootstrap.min.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script type="text/javascript" src="js/satellizer.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
-  <script type="text/javascript" src="js/angular-local-storage.min.js"></script>
-  <script type="text/javascript" src="js/angular-filter.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="js/satellizer.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script type="text/javascript" src="js/angular-local-storage.min.js"></script>
+    <script type="text/javascript" src="js/angular-filter.min.js"></script>
 
-  <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <!-- Services -->
-  <script type="text/javascript" src="js/services/HttpService.js"></script>
-  <script type="text/javascript" src="js/services/StorageService.js"></script>
+    <script type="text/javascript" src="js/services/HttpService.js"></script>
+    <script type="text/javascript" src="js/services/StorageService.js"></script>
     <!-- Directives -->
     <script type="text/javascript" src="js/directives/elevateZoomDirective.js"></script>
     <script type="text/javascript" src="js/directives/ratingDirective.js"></script>
     <script type="text/javascript" src="js/directives/inputExtensionDirective.js"></script>
 
     <!-- Controllers -->
-  <script type="text/javascript" src="js/controllers/homeController.js"></script>
-  <script type="text/javascript" src="js/controllers/designersController.js"></script>
-  <script type="text/javascript" src="js/controllers/designerDetailsContoller.js"></script>
-  <script type="text/javascript" src="js/controllers/designerLabelsController.js"></script>
-  <script type="text/javascript" src="js/controllers/userProfileController.js"></script>
-  <script type="text/javascript" src="js/controllers/loginController.js"></script>
-  <script type="text/javascript" src="js/controllers/paymentsController.js"></script>
-  <script type="text/javascript" src="js/controllers/cartController.js"></script>
+    <script type="text/javascript" src="js/controllers/homeController.js"></script>
+    <script type="text/javascript" src="js/controllers/designersController.js"></script>
+    <script type="text/javascript" src="js/controllers/designerDetailsContoller.js"></script>
+    <script type="text/javascript" src="js/controllers/designerLabelsController.js"></script>
+    <script type="text/javascript" src="js/controllers/userProfileController.js"></script>
+    <script type="text/javascript" src="js/controllers/loginController.js"></script>
+    <script type="text/javascript" src="js/controllers/paymentsController.js"></script>
+    <script type="text/javascript" src="js/controllers/cartController.js"></script>
+    <script type="text/javascript" src="js/meta/meta.min.js"></script>
 </head>
 
-<body ng-app="ModaInk" ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
-    <!-- #Wrapper -->
-    <!-- Main Theme Wrapper -->
-    <div id="Wrapper">
+<body  ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
+<!-- #Wrapper -->
+<!-- Main Theme Wrapper -->
+<div id="Wrapper">
 
-        <!-- #Header_bg -->
-        <!-- Header Wrapper -->
-        <div id="Header_wrapper" class="bg-parallax" data-stellar-background-ratio="0.5"s>
+    <!-- #Header_bg -->
+    <!-- Header Wrapper -->
+    <div id="Header_wrapper" class="bg-parallax" data-stellar-background-ratio="0.5"s>
 
-            <!-- #Header -->
-            <!-- Header -->
-            <header id="Header">
-                <!-- Header -  Logo and Menu area -->
-                <div id="Top_bar" class="is-sticky">
+        <!-- #Header -->
+        <!-- Header -->
+        <header id="Header">
+            <!-- Header -  Logo and Menu area -->
+            <div id="Top_bar" class="is-sticky">
 
-                    <div class="container_menu">
-                        <div class="column one">
+                <div class="container_menu">
+                    <div class="column one">
 
-                            <div class="top_bar_left clearfix">
-                                <div class="logo">
-                                    <a id="logo" href="/"><img class="logo-main" src="images/logo.png"/>
-                                    </a>
-                                </div>
-                               
-                                <!-- Main menu-->
-                                <div class="menu_wrapper">
-                                    <nav id="menu">
-                                        <ul id="menu-main-menu" class="menu">
-                                            <li id="menu-item-2450" class=" menu-item-type-taxonomy">
-                                                <a href="/#/products?exclusive=true"><span>EXCLUSIVE</span></a>
-                                            </li>
-                                            <li id="menu-item-2401" class="menu-item-type-taxonomy ">
-                                                <a href="/#/designers"><span>DESIGNERS</span></a>
-                                            </li>
-                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/#/women"><span>WOMEN</span></a>
-                                                <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li ng-repeat="product in womenProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/#/products/women/{{product.name}}"><span>{{product.name}}</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/#/products/women/{{product.name}}?subCategory={{subCat}}"><span>{{subProduct.name}}</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/#/men"><span>MEN</span></a>
-                                                <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li ng-repeat="product in menProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/#/products/men/{{product.name}}"><span>{{product.name}}</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"><span>{{subProduct.name}}</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="/#/accessories"><span>ACCESSORIES</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="/#/footwear"><span>FOOTWEAR</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="/#/customization"><span>CUSTOMIZATION</span></a>
-                                            </li>
-                                            <li>
-                                            <li class="dropdown header_buttons">
-
-                                                  <a id="profile_button" href="" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
-                                                  <ul class="dropdown-menu">
-                                                    <div ng-hide="userLoggedIn">
-                                                        <li><a>Your Account</a></li>
-                                                        <li  class="divider"></li>
-                                                        <li>
-                                                            <div style="margin-left: 10%;">
-                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
-                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
-                                                            </div>
-                                                        </li>
-                                                    </div>
-                                                    <div ng-show="userLoggedIn">
-                                                        <li ><a href="/#/myProfile/accountInformation">{{userName}}</a></li>
-                                                        <li ><a href="/#/myProfile/accountInformation">{{userDetails.email}}</a></li>
-                                                        <li class="divider"></li>
-                                                        <li ><a href="/#/myProfile/myOrders">My Orders</a></li>
-                                                        <li ><a href="/#/myProfile/wishlist">My wishlist</a></li>
-                                                        <li ><a href="/#/myProfile/addresBook">Saved addresses</a></li>
-                                                        <li ><a href="/#/myProfile/rewards">User badges</a></li>
-                                                        <li class="divider"></li>
-                                                        <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
-                                                        <li ><a href="" ng-click="logout()">Logout</a></li>
-                                                    </div>
-                                                  </ul>
-                                            </li>
-                                            
-                                            <li class="header_buttons">
-                                                <a id="search_button" href="#" style="font-size: 18px;"><i class="icon-search"></i></a>
-                                            </li>
-
-                                            <li class="header_buttons">
-                                            <div>
-                                                <a id="header_cart" href="" ng-click="openMyCart()"><i class="fa fa-shopping-bag"></i><span>{{shoppingcartItemCount}}</span></a></div>
-                                            </li>
-                                        </ul>
-
-                                    </nav>
-                                    <a class="responsive-menu-toggle " href="#"><i class="icon-menu"></i></a>
-                                </div>
-
-                        
-                                <!-- Header Searchform area-->
-                                <div class="search_wrapper">
-                                    <!-- #searchform -->
-                                    <form method="get" id="searchform" action="#">
-                                        <i class="icon_search icon-search"></i>
-                                        <a href="#" class="icon_close"><i class="icon-cancel"></i></a>
-                                        <input type="text" class="field" name="s" id="s" placeholder="Enter your search" />
-                                        <input type="submit" class="submit flv_disp_none" value="" />
-                                    </form>
-                                </div>
+                        <div class="top_bar_left clearfix">
+                            <div class="logo">
+                                <a id="logo" ui-sref="index"><img class="logo-main" src="images/logo.png"/>
+                                </a>
                             </div>
 
-                               
+                            <!-- Main menu-->
+                            <div class="menu_wrapper">
+                                <nav id="menu">
+                                    <ul id="menu-main-menu" class="menu">
+                                        <li id="menu-item-2450" class=" menu-item-type-taxonomy">
+                                            <a ui-sref="/({exclusive : true })"><span>EXCLUSIVE</span></a>
+                                        </li>
+                                        <li id="menu-item-2401" class="menu-item-type-taxonomy ">
+                                            <a ui-sref="designers-list"><span>DESIGNERS</span></a>
+                                        </li>
+                                        <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
+                                            <a ui-sref="women"><span>WOMEN</span></a>
+                                            <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
+                                                <li ng-repeat="product in womenProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
+                                                    <a class="mfn-megamenu-title" ui-sref="products({gender : 'women',topCategory : product.name})"><span>{{product.name}}</span></a>
+                                                    <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                                                        <li class="menu-item-type-taxonomy menu-item-object-product_cat">
+                                                            <a ui-sref="products({gender : 'women',topCategory : product.name,subCategory : subCat})"><span>{{subProduct.name}}</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
+                                            <a ui-sref="men"><span>MEN</span></a>
+                                            <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
+                                                <li ng-repeat="product in menProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
+                                                    <a class="mfn-megamenu-title" ui-sref="products({gender : 'men',topCategory : product.name})" ><span>{{product.name}}</span></a>
+                                                    <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                                                        <li class="menu-item-type-taxonomy menu-item-object-product_cat">
+                                                            <a ui-sref="products({gender : 'men',topCategory : product.name,subCategory : subCat})"><span>{{subProduct.name}}</span></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="accessories"><span>ACCESSORIES</span></a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="footwear"><span>FOOTWEAR</span></a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="customization" ><span>CUSTOMIZATION</span></a>
+                                        </li>
+                                        <li>
+                                        <li class="dropdown header_buttons">
+
+                                            <a id="profile_button" href="" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <div ng-hide="userLoggedIn">
+                                                    <li><a>Your Account</a></li>
+                                                    <li  class="divider"></li>
+                                                    <li>
+                                                        <div style="margin-left: 10%;">
+                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
+                                                            <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
+                                                        </div>
+                                                    </li>
+                                                </div>
+                                                <div ng-show="userLoggedIn">
+                                                    <li ><a ui-sref="my-profile({param : accountInformation })">{{userName}}</a></li>
+                                                    <li ><a ui-sref="my-profile({param : accountInformation })">{{userDetails.email}}</a></li>
+                                                    <li class="divider"></li>
+                                                    <li ><a  ui-sref="my-profile({param : myOrders })">My Orders</a></li>
+                                                    <li ><a  ui-sref="my-profile({param : wishlist })" >My wishlist</a></li>
+                                                    <li ><a  ui-sref="my-profile({param : addresBook })" >Saved addresses</a></li>
+                                                    <li ><a ui-sref="my-profile({param : rewards })">User badges</a></li>
+                                                    <li class="divider"></li>
+                                                    <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
+                                                    <li ><a href="" ng-click="logout()">Logout</a></li>
+                                                </div>
+                                            </ul>
+                                        </li>
+
+                                        <li class="header_buttons">
+                                            <a id="search_button" href="" style="font-size: 18px;"><i class="icon-search"></i></a>
+                                        </li>
+
+                                        <li class="header_buttons">
+                                            <div>
+                                                <a id="header_cart" href="" ng-click="openMyCart()"><i class="fa fa-shopping-bag"></i><span>{{shoppingcartItemCount}}</span></a></div>
+                                        </li>
+                                    </ul>
+
+                                </nav>
+                                <a class="responsive-menu-toggle " href=""><i class="icon-menu"></i></a>
+                            </div>
+
+
+                            <!-- Header Searchform area-->
+                            <div class="search_wrapper">
+                                <!-- #searchform -->
+                                <form method="get" id="searchform" action="">
+                                    <i class="icon_search icon-search"></i>
+                                    <a href="" class="icon_close"><i class="icon-cancel"></i></a>
+                                    <input type="text" class="field" name="s" id="s" placeholder="Enter your search" />
+                                    <input type="submit" class="submit flv_disp_none" value="" />
+                                </form>
+                            </div>
                         </div>
+
+
                     </div>
+                </div>
                 </divt>
                 <!-- Revolution slider area-->
-                </div>
-            </header>
-        </div>
-<div ng-include src="'views/login.html'" ng-controller="LoginController"></div>
-        <!-- #Content -->
-        <!-- Main Content -->
-        <div ui-view  autoscroll="true"></div>
+            </div>
+        </header>
+    </div>
+    <div ng-include src="'views/login.html'" ng-controller="LoginController"></div>
+    <!-- #Content -->
+    <!-- Main Content -->
+    <div ui-view  autoscroll="true"></div>
 
-        <!-- #Footer -->
-        <!-- Footer-->
-        <div class="footer-blog">
-            <a id="back_to_top" href="#" class="button button_left button_js"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>
-            <div ng-include src="'views/footer.html'"></div>
-            
-
-        </div>
-        <!-- #Wrapper -->
-        <!-- JS -->
+    <!-- #Footer -->
+    <!-- Footer-->
+    <div class="footer-blog">
+        <a id="back_to_top" href="" class="button button_left button_js"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>
+        <div ng-include src="'views/footer.html'"></div>
 
 
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    </div>
+    <!-- #Wrapper -->
+    <!-- JS -->
 
-        <script type="text/javascript" src="js/mfn.menu.js"></script>
-        <script type="text/javascript" src="js/jquery.plugins.js"></script>
-        <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
-        <script type="text/javascript" src="js/animations/animations.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-        <script type="text/javascript" src="js/jquery.elevateZoom-3.0.8.min.js"></script>
 
-        <!-- Plugins -->
-        <!--<script type="text/javascript" src="plugin/jquery.modal/javascripts/jquery.modal.js"></script>-->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 
-        <script type="text/javascript" src="plugin/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
-        <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="js/mfn.menu.js"></script>
+    <script type="text/javascript" src="js/jquery.plugins.js"></script>
+    <script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="js/animations/animations.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/jquery.elevateZoom-3.0.8.min.js"></script>
 
-        <script src="plugin/input-mask/jquery.inputmask.js"></script>
-        <script src="plugin/input-mask/jquery.inputmask.date.extensions.js"></script>
-        <script src="plugin/input-mask/jquery.inputmask.extensions.js"></script>
-        <!-- date-range-picker -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-        <script src="plugin/daterangepicker/daterangepicker.js"></script>
-        <!-- bootstrap datepicker -->
-        <script src="plugin/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Plugins -->
+    <!--<script type="text/javascript" src="plugin/jquery.modal/javascripts/jquery.modal.js"></script>-->
 
-        <script>
-            showLoginPopup = function () {
-                $('#loginModal').modal();
-            }
-        </script>
-        </div>
-    
+    <script type="text/javascript" src="plugin/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.video.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="plugin/rs-plugin/js/extensions/revolution.extension.parallax.min.js"></script>
+
+    <script src="plugin/input-mask/jquery.inputmask.js"></script>
+    <script src="plugin/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="plugin/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="plugin/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="plugin/datepicker/bootstrap-datepicker.js"></script>
+
+    <script>
+        showLoginPopup = function () {
+            $('#loginModal').modal();
+        }
+    </script>
+</div>
+
 
 </body>
 

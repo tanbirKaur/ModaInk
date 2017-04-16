@@ -168,7 +168,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 method: 'feed',
                 name: product.productName + " [ Rs. "+ product.price +"]",
                 picture : product.images[0].url,
-                link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId ,
+                link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId + '?product_name' + $rootScope.prettyUrl(product.styleName) ,
                 caption: 'Modaink | www.modaink.com',
                 description: "["+ product.brandName +"] " + product.productDescription,
                 message: "Checkout this design"

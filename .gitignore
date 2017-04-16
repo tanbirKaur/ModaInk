@@ -2,3 +2,5 @@
 */*.DS_Store
 .idea/
 **/*.idea/
+node_modules/
+bower_components

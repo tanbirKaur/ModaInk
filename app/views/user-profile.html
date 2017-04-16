@@ -111,20 +111,20 @@
 										<li class="product" ng-repeat="item in wishlistItems">
 											<div class="image_frame" >
 												<div class="image_wrapper">
-													<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}">
+													<a ui-sref="product-details({productId : item.product.id, designerId : item.product.designerId,product_name : $root.prettyUrl(product.styleName)})" >
 														<div class="mask">
 														<img ng-src="{{item.product.previewImage}}" title="{{item.product.productDescription}}" alt="{{item.product.productDescription}}">
 														</div>
 													</a>
 												</div>
 												<span ng-if="item.product.isExclusive" class="onsale"><i class="icon-star"></i></span>
-												<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}"></a>
+												<a ui-sref="product-details({productId : item.product.id, designerId : item.product.designerId,product_name : $root.prettyUrl(product.styleName)})" ></a>
 											</div>
 											<div class="desc">
-												<h4><a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}">{{item.product.productName}}</a></h4>
+												<h4><a ui-sref="product-details({productId : item.product.id, designerId : item.product.designerId,product_name : $root.prettyUrl(product.styleName)})" >{{item.product.productName}}</a></h4>
 												<div >
 												<span class="price"><span class="amount">Rs. {{item.product.price}}</span></span>
-												<a href="/#/product-details/{{item.product.id}}/{{item.product.designerId}}" ng-click="addToBag(item)"> <i class="fa fa-shopping-bag"></i>Move to Bag</a>
+												<a ui-sref="product-details({productId : item.product.id, designerId : item.product.designerId,product_name : $root.prettyUrl(product.styleName)})" ng-click="addToBag(item)"> <i class="fa fa-shopping-bag"></i>Move to Bag</a>
 												<a href="" ng-click="removeItemFromWishlist(item.id)" style="float: right;"> <i class="fa fa-trash-o"></i></a>
 												</div>
 											</div>
