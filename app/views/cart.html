@@ -40,7 +40,7 @@
 			<div class="prod-set">
 				<div ng-repeat="cartItem in cartInfo.shoppingcartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
-						<a ui-sref="product-details({productId : cartItem.product.id,designerId : cartItem.product.designer.id,product_name : $root.prettyUrl(product.styleName)})">
+						<a ui-sref="product-details({gender : cartItem.product.gender,topCategory : $root.prettyUrl(cartItem.product.masterCategory), subCategory : $root.prettyUrl(cartItem.product.articleType) ,productId : cartItem.product.id,designerId : cartItem.product.designer.id,product_name : $root.prettyUrl(product.styleName)})">
 							<img ng-src="{{cartItem.product.previewImage}}" alt="{{cartItem.product.productName}}" width="96" height="128">
 						</a>
 					</div>

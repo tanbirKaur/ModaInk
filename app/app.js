@@ -54,12 +54,12 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 
 		.state("/", {
-			url: "/products?exclusive&brand&isCustomizable&isDiscounted&topCategory&subCategory",
+			url: "/search-products?exclusive&brand&isCustomizable&isDiscounted&topCategory&subCategory",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
 		.state("products", {
-			url: "/products/:gender/:topCategory?subCategory",
+			url: "/:gender/:topCategory/:subCategory",
 			templateUrl : "views/products.html",
 			controller : "HomeController"
 		})
@@ -71,7 +71,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state('designer-details', {
 			templateUrl : "views/designer-details.html",
-			url : "/designer-details/:designerId?brand_name&designer_name",
+			url : "/designer/:designerId?brand_name&designer_name",
 			controller : 'DesignerDetailsController',
 			data: {
 				meta: {
@@ -86,7 +86,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
-			url : "/product-details/:productId/:designerId?product_name",
+			url : "/:gender/:topCategory/:subCategory/:productId/:designerId/:product_name",
 			resolve : {
 				//product_name : function(product_name){
 				//	console.log(product_name);
