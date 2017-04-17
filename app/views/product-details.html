@@ -118,7 +118,7 @@
                     </div>
                     <ul class="shop_slider_ul">
                     <li ng-repeat="product in similarProducts" >
-                        <a ui-sref="product-details({productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
+                        <a ui-sref="product-details({gender : product.gender,topCategory : $root.prettyUrl(product.masterCategory), subCategory : $root.prettyUrl(product.articleType) ,productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
                             <div class="item_wrapper">
                                 <div class="image_frame">
                                     <div class="image_wrapper">
@@ -150,7 +150,7 @@
                     <div class="shop_slider">
                         <ul class="shop_slider_ul">
                             <li ng-repeat="product in sameBrandProducts " >
-                                <a ui-sref="product-details({productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
+                                <a ui-sref="product-details({gender : product.gender,topCategory : $root.prettyUrl(product.masterCategory), subCategory : $root.prettyUrl(product.articleType) ,productId : product.id,designerId : designerId,product_name : $root.prettyUrl(product.styleName) })" style="text-decoration: none">
                                     <div class="item_wrapper">
                                         <div class="image_frame">
                                             <div class="image_wrapper">
