@@ -11,11 +11,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 
 
 
-	//$locationProvider.html5Mode({
-	//	enabled : true
-		//,
-		//requireBase : false
-	//});
+//	$locationProvider.html5Mode(true);
 
 
 	$locationProvider.hashPrefix('!');
