@@ -121,7 +121,7 @@ app.controller('DesignerController', function($scope,$stateParams,$location, htt
         };
 
         if($scope.designerBrandDetails.pickupAddress.landmark){
-            newDesignerRequest.pickupAddress.landmark = $scope.designerBrandDetails.pickupAddress.landmark
+            newDesignerRequest.brand.pickupAddress.landmark = $scope.designerBrandDetails.pickupAddress.landmark
         }
         if($scope.designerBrandDetails.logoUrl){
 
