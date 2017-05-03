@@ -1,5 +1,6 @@
 var app = window.app;
 app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService,ngMeta) {
+    window.prerenderReady = false;
     var productId = $stateParams.productId;
     var designerId = $stateParams.designerId;
     $scope.products = storageService.get("products");
@@ -284,6 +285,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         });
         $scope.getProductsOfSameBrand();
         $scope.getSimilarProducts();
+        window.prerenderReady = true;
     };
 
     $scope.onGetProductsFailure = function (response) {
