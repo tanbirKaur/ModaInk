@@ -222,6 +222,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.sameBrandProducts.push(product);
             }
         })
+        //window.prerenderReady = true;
     };
     $scope.onGetSimilarProductsSuccess = function (response) {
         $scope.similarProductInfo = response.data;
@@ -232,6 +233,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.similarProducts.push(product);
             }
         })
+        window.prerenderReady = true;
     };
 
     $scope.onGetProductsFailure = function (response) {
@@ -285,7 +287,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         });
         $scope.getProductsOfSameBrand();
         $scope.getSimilarProducts();
-        window.prerenderReady = true;
+
     };
 
     $scope.onGetProductsFailure = function (response) {
