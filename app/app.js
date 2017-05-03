@@ -1,6 +1,7 @@
 var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter",'satellizer','ngMeta']);
 window.app == app;
 window.apiUrl = "http://modaink.com/api";
+window.prerenderReady = false;
 app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $authProvider,localStorageServiceProvider,ngMetaProvider){
 
 
@@ -129,11 +130,10 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
 			url : "/:gender/:topCategory/:subCategory/:productId/:designerId/:product_name",
-			resolve : {
-				//product_name : function(product_name){
-				//	console.log(product_name);
-				//}
-			},
+			//resolve : {
+			//	just_run : function(){
+			//	}
+			//},
 			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {
@@ -354,8 +354,7 @@ app.run(function($rootScope,ngMeta){
 	$rootScope.prettyUrl = function(str){
 		if(str){
 			//str.replace('&' , '-');
-			str.replace(/\s+/g, '-').toLowerCase();
-			return encodeURIComponent(str);
+			return str.replace(/\s+/g, '-').toLowerCase();
 		}
 		else return;
 	};
