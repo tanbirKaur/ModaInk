@@ -354,7 +354,8 @@ app.run(function($rootScope,ngMeta){
 	$rootScope.prettyUrl = function(str){
 		if(str){
 			//str.replace('&' , '-');
-			return str.replace(/\s+/g, '-').toLowerCase();
+			str.replace(/\s+/g, '-').toLowerCase();
+			return encodeURIComponent(str);
 		}
 		else return;
 	};
