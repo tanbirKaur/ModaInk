@@ -1,7 +1,7 @@
 var app = angular.module("ModaInk", ["ui.router","LocalStorageModule","angular.filter",'satellizer','ngMeta']);
 window.app == app;
 window.apiUrl = "http://modaink.com/api";
-window.prerenderReady = false;
+//window.prerenderReady = false;
 app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $authProvider,localStorageServiceProvider,ngMetaProvider){
 
 

@@ -28,11 +28,11 @@
 var express = require('express');
 
 var app = module.exports = express();
-
+var prerender = require('prerender-node');
 app.configure(function(){ 
   // Here we require the prerender middleware that will handle requests from Search Engine crawlers 
   // We set the token only if we're using the Prerender.io service 
-  app.use(require('prerender-node').set('prerenderToken', 'LWRaw9u7sFk7m13Lpak8')); 
+  app.use(prerender.set('prerenderToken', 'LWRaw9u7sFk7m13Lpak8').set('resourceDownloadTimeout',30000).set('jsTimeout',30000));
   app.use(express.static('./')); app.use(app.router); 
 });
 
