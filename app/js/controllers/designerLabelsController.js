@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService) {
+app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService,ngMeta) {
     var productId = $stateParams.productId;
     var designerId = $stateParams.designerId;
     $scope.products = storageService.get("products");
@@ -264,6 +264,16 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
     $scope.onGetProductsSuccess = function (response) {
         $scope.allProducts = response.data.products;
         $scope.product = findProductById(productId);
+
+        ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('og:image',$scope.product.previewImage);
+
+        ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('twitter:image',$scope.product.previewImage);
+
+        ngMeta.setTag('description',$scope.product.productDescription);
+
         $scope.previewImage = $scope.product.previewImage;
         if(!$scope.product.images) $scope.product.images = [];
         $scope.product.images.push({url:$scope.product.previewImage});

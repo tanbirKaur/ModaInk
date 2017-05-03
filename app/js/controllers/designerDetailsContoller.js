@@ -24,8 +24,15 @@ app.controller('DesignerDetailsController', function($scope,$window,$stateParams
         var designerDetailsFound = response.statusText == "OK";
         if (designerDetailsFound) {
             $scope.designerDetails = response.data;
-            ngMeta.setTitle($scope.designerDetails.firstName + ' ' + $scope.designerDetails.lastName);
+            ngMeta.setTitle($scope.designerDetails.brandName + ' By ' + $scope.designerDetails.firstName + ' ' + $scope.designerDetails.lastName + ' | Modaink');
+            ngMeta.setTag('og:title' ,$scope.designerDetails.brandName + ' By ' + $scope.designerDetails.firstName + ' ' + $scope.designerDetails.lastName + ' | Modaink');
+            ngMeta.setTag('og:image',$scope.designerDetails.brandLogoUrl);
+
+            ngMeta.setTag('twitter:title' ,$scope.designerDetails.brandName + ' By ' + $scope.designerDetails.firstName + ' ' + $scope.designerDetails.lastName + ' | Modaink');
+            ngMeta.setTag('twitter:image',$scope.designerDetails.brandLogoUrl);
+
             ngMeta.setTag('description',$scope.designerDetails.description);
+
         }
     }
     $scope.onGetDesignerDetailsFailure = function (response) {

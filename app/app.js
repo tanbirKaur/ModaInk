@@ -6,8 +6,31 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 
 	ngMetaProvider.useTitleSuffix(true);
 	ngMetaProvider.setDefaultTitle('Modaink');
-	ngMetaProvider.setDefaultTitleSuffix(' | Modaink');
+	ngMetaProvider.setDefaultTitleSuffix(' | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('author', 'modaink');
+	ngMetaProvider.setDefaultTag('description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('robots', 'follow,index');
+
+	ngMetaProvider.setDefaultTag('og:locale', 'en');
+	ngMetaProvider.setDefaultTag('og:type', 'website');
+	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
+	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('og:image', 'modaink');
+	ngMetaProvider.setDefaultTag('og:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('og:site_name', 'Modaink');
+	ngMetaProvider.setDefaultTag('og:image:type', '.jpg');
+	ngMetaProvider.setDefaultTag('og:image:width', '1200');
+	ngMetaProvider.setDefaultTag('og:image:height', '630');
+
+
+	ngMetaProvider.setDefaultTag('twitter:card', 'summary');
+	ngMetaProvider.setDefaultTag('twitter:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('twitter:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('twitter:image', 'modaink');
+
+
+
+
 
 
 
@@ -20,14 +43,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("index", {
 			url: "/",
 			templateUrl : "views/home.html",
-			controller : "HomeController",
-			data: {
-				meta: {
-					'title': 'Home page',
-					'description': 'This is the description shown in Google search results',
-					'robots' : 'follow,index'
-				}
-			}
+			controller : "HomeController"
 		})
 		.state("madeToOrder",{
 			url : '/madeToOrder',
@@ -36,6 +52,11 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("customization",{
 			url : '/customization',
 			templateUrl:"views/customize-how-it-works.html",
+			data: {
+				meta: {
+					'title': 'Customization | Modaink'
+				}
+			}
 			// controller : "logoutController"
 		})
 		.state("customize",{
@@ -46,34 +67,49 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("footwear",{
 			url : '/footwear',
 			templateUrl:"views/footwear.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Footwear | Modaink'
+				}
+			}
 		})
 
 		.state("/", {
 			url: "/search-products?exclusive&brand&isCustomizable&isDiscounted&topCategory&subCategory",
 			templateUrl : "views/products.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Search dresses, shoes and accessories | Modaink'
+				}
+			}
 		})
 		.state("products", {
 			url: "/:gender/:topCategory/:subCategory",
 			templateUrl : "views/products.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Search dresses, shoes and accessories | Modaink'
+				}
+			}
 		})
 
 		.state("designers-list", {
 			url: "/designers",
 			templateUrl : "views/designer-list.html",
-			controller : 'DesignersController'
+			controller : 'DesignersController',
+			data: {
+				meta: {
+					'title': 'Fashion Designers | Modaink'
+				}
+			}
 		})
 		.state('designer-details', {
 			templateUrl : "views/designer-details.html",
 			url : "/designer/:designerId?brand_name&designer_name",
-			controller : 'DesignerDetailsController',
-			data: {
-				meta: {
-					'robots' : 'follow,index'
-				}
-			}
+			controller : 'DesignerDetailsController'
 		})
 		.state('designer-collections', {
 			templateUrl : "views/designer-collections.html",
@@ -108,17 +144,32 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("women", {
 			url:"/women",
 			templateUrl : "views/women.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Women dresses, shoes and accessories | Modaink'
+				}
+			}
 		})
 		.state("men", {
 			url:"/men",
 			templateUrl : "views/men.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Men dresses, shoes and accessories | Modaink'
+				}
+			}
 		})
 		.state("accessories", {
 			url:"/accessories",
 			templateUrl : "views/accessories.html",
-			controller : "HomeController"
+			controller : "HomeController",
+			data: {
+				meta: {
+					'title': 'Accessories | Modaink'
+				}
+			}
 		})
 		.state("diamond-designers", {
 			url:"/diamond-designers",
