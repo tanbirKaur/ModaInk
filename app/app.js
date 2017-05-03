@@ -11,7 +11,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('robots', 'follow,index');
 
-	ngMetaProvider.setDefaultTag('og:locale', 'en');
+	//ngMetaProvider.setDefaultTag('og:locale', 'en');
 	ngMetaProvider.setDefaultTag('og:type', 'website');
 	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
 	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
@@ -54,7 +54,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			templateUrl:"views/customize-how-it-works.html",
 			data: {
 				meta: {
-					'title': 'Customization | Modaink'
+					'title': 'Customization | Modaink',
+					'og:title' : 'Customization | Modaink',
+					'twitter:title' : 'Customization | Modaink'
 				}
 			}
 			// controller : "logoutController"
@@ -70,7 +72,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Footwear | Modaink'
+					'title': 'Footwear | Modaink',
+					'og:title' : 'Footwear | Modaink',
+					'twitter:title' : 'Footwear | Modaink'
 				}
 			}
 		})
@@ -81,7 +85,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Search dresses, shoes and accessories | Modaink'
+					'title': 'Search dresses, shoes and accessories | Modaink',
+					'og:title' : 'Search dresses, shoes and accessories | Modaink',
+					'twitter:title' : 'Search dresses, shoes and accessories | Modaink'
 				}
 			}
 		})
@@ -91,7 +97,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Search dresses, shoes and accessories | Modaink'
+					'title': 'Search dresses, shoes and accessories | Modaink',
+					'og:title' : 'Search dresses, shoes and accessories | Modaink',
+					'twitter:title' : 'Search dresses, shoes and accessories | Modaink'
 				}
 			}
 		})
@@ -102,7 +110,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : 'DesignersController',
 			data: {
 				meta: {
-					'title': 'Fashion Designers | Modaink'
+					'title': 'Fashion Designers | Modaink',
+					'og:title' : 'Fashion Designers | Modaink',
+					'twitter:title' : 'Fashion Designers | Modaink'
 				}
 			}
 		})
@@ -147,7 +157,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Women dresses, shoes and accessories | Modaink'
+					'title': 'Women dresses, shoes and accessories | Modaink',
+					'og:title' : 'Women dresses, shoes and accessories | Modaink',
+					'twitter:title' : 'Women dresses, shoes and accessories | Modaink'
 				}
 			}
 		})
@@ -157,7 +169,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Men dresses, shoes and accessories | Modaink'
+					'title': 'Men dresses, shoes and accessories | Modaink',
+					'og:title' : 'Men dresses, shoes and accessories | Modaink',
+					'twitter:title' : 'Men dresses, shoes and accessories | Modaink'
 				}
 			}
 		})
@@ -167,7 +181,9 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 			controller : "HomeController",
 			data: {
 				meta: {
-					'title': 'Accessories | Modaink'
+					'title': 'Accessories | Modaink',
+					'og:title' : 'Accessories | Modaink',
+					'twitter:title' : 'Accessories | Modaink'
 				}
 			}
 		})
@@ -337,7 +353,7 @@ app.run(function($rootScope,ngMeta){
 
 	$rootScope.prettyUrl = function(str){
 		if(str){
-			str.replace('&' , '-');
+			//str.replace('&' , '-');
 			return str.replace(/\s+/g, '-').toLowerCase();
 		}
 		else return;
