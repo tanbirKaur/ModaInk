@@ -12,7 +12,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('robots', 'follow,index');
 
 	ngMetaProvider.setDefaultTag('og:locale', 'en');
-	//ngMetaProvider.setDefaultTag('og:type', 'website');
+	ngMetaProvider.setDefaultTag('og:type', 'website');
 	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
 	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('og:image', 'modaink');
@@ -336,8 +336,10 @@ function testAPI() {
 app.run(function($rootScope,ngMeta){
 
 	$rootScope.prettyUrl = function(str){
-		if(str)
-		return str.replace(/\s+/g, '-').toLowerCase();
+		if(str){
+			str.replace('&' , '-');
+			return str.replace(/\s+/g, '-').toLowerCase();
+		}
 		else return;
 	};
 
