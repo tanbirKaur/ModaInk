@@ -1,6 +1,6 @@
 var app = window.app;
 app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService,ngMeta) {
-    window.prerenderReady = false;
+    //window.prerenderReady = false;
     var productId = $stateParams.productId;
     var designerId = $stateParams.designerId;
     $scope.products = storageService.get("products");
@@ -169,7 +169,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 method: 'feed',
                 name: product.productName + " [ Rs. "+ product.price +"]",
                 picture : product.images[0].url,
-                link: "www.modaink.com/#/product-details/" +product.id +"/"+ product.designerId + '?product_name' + $rootScope.prettyUrl(product.styleName) ,
+                link: "www.modaink.com/#!/product-details/" +product.id +"/"+ product.designerId + '?product_name' + $rootScope.prettyUrl(product.styleName) ,
                 caption: 'Modaink | www.modaink.com',
                 description: "["+ product.brandName +"] " + product.productDescription,
                 message: "Checkout this design"
@@ -233,7 +233,6 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.similarProducts.push(product);
             }
         });
-        window.prerenderReady = true;
     };
 
     $scope.onGetProductsFailure = function (response) {
@@ -268,14 +267,13 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         $scope.allProducts = response.data.products;
         $scope.product = findProductById(productId);
 
-        ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        ngMeta.setTag('og:image',$scope.product.previewImage);
+        //ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        //ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        //ngMeta.setTag('og:image',$scope.product.previewImage);
 
-        ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        ngMeta.setTag('twitter:image',$scope.product.previewImage);
-
-        ngMeta.setTag('description',$scope.product.productDescription);
+        //ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        //ngMeta.setTag('twitter:image',$scope.product.previewImage);
+        //ngMeta.setTag('description',$scope.product.productDescription);
 
         $scope.previewImage = $scope.product.previewImage;
         if(!$scope.product.images) $scope.product.images = [];
@@ -296,7 +294,10 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
 
     if (productId) {
+        console.log($stateParams);
+        ngMeta.setTitle($stateParams.product_name);
         $scope.getProducts();
+
     };
 
 
