@@ -222,7 +222,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.sameBrandProducts.push(product);
             }
         })
-        //window.prerenderReady = true;
+        window.prerenderReady = true;
     };
     $scope.onGetSimilarProductsSuccess = function (response) {
         $scope.similarProductInfo = response.data;
@@ -233,6 +233,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.similarProducts.push(product);
             }
         });
+
     };
 
     $scope.onGetProductsFailure = function (response) {
@@ -267,13 +268,14 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
         $scope.allProducts = response.data.products;
         $scope.product = findProductById(productId);
 
-        //ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        //ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        //ngMeta.setTag('og:image',$scope.product.previewImage);
+        ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('og:image',$scope.product.previewImage);
 
-        //ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
-        //ngMeta.setTag('twitter:image',$scope.product.previewImage);
-        //ngMeta.setTag('description',$scope.product.productDescription);
+        ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('twitter:image',$scope.product.previewImage);
+
+        ngMeta.setTag('description',$scope.product.productDescription);
 
         $scope.previewImage = $scope.product.previewImage;
         if(!$scope.product.images) $scope.product.images = [];
@@ -294,10 +296,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
 
     if (productId) {
-        console.log($stateParams);
-        ngMeta.setTitle($stateParams.product_name);
         $scope.getProducts();
-
     };
 
 
