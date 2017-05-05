@@ -222,7 +222,6 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
                 $scope.sameBrandProducts.push(product);
             }
         })
-        window.prerenderReady = true;
     };
     $scope.onGetSimilarProductsSuccess = function (response) {
         $scope.similarProductInfo = response.data;
