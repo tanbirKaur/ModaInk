@@ -1977,7 +1977,9 @@ ul.rating {
     border-bottom: 2px solid #181818;
     height: 500px;
 }
-
+.cart-page{
+    margin-left: 15%; margin-right: 15%; margin-bottom: 10%;
+}
 
 @media (max-width: 720px) {
     .without_headers {
@@ -2058,6 +2060,31 @@ ul.rating {
     .section-acc{
         height: 100%;
     }
+
+    .new-product , .dress-info{
+        margin: 0;
+    }
+    .fancy_heading .title{
+        font-size: 30px;
+    }
+    .shop_slider .shop_slider_ul li{
+     width: 100%;
+    }
+
+    .column_fancy_heading{
+        width: 100% !important;
+    }
+
+    .cart-page{
+         margin-left: 0%; margin-right: 0%; margin-bottom: 20%;
+     }
+
+    #right {
+         display: block;
+         width: 100%;
+        padding-right: 35px;
+    }
+
 
 }
 
