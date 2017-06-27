@@ -33,6 +33,8 @@ app.controller('DesignersController', function($scope,$stateParams, httpService)
 				designer.alphabet = designer.firstName[0];
 				return designer;
 			});
+
+			console.log($scope.designerList)
 		};
 	}
 	$scope.onGetDesignersFailure = function (response) {

@@ -31,6 +31,7 @@ body:not(.template-slider) #Content {
 
 .section {
     position: relative;
+    padding-bottom: 5%;
 }
 
 .section_wrapper,.container_menu {

@@ -2085,6 +2085,14 @@ ul.rating {
         padding-right: 35px;
     }
 
+    .without_headers {
+        margin-top: 0px;
+    }
+
+    .user-profile-actions{
+        margin: 0% 2%;
+    }
+
 
 }
 

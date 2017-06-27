@@ -70,7 +70,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getDesigners = function () {
-        httpService.callHttp("POST", "designers/searchService/search/filteredSearch" , {}, {}, {}, $scope.onGetDesignersSuccess, $scope.onGetDesignersFailure);
+        httpService.callHttp("POST", "designers/searchService/search/filteredSearch" , {}, {}, {}, $scope.onGetDesignerslistSuccess, $scope.onGetDesignerslistFailure);
 
 	};
 
@@ -201,10 +201,10 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		storageService.set("cartItems",	$scope.shoppingcartItems);
 	};
 
-	$scope.onGetDesignersSuccess = function (response) {
+	$scope.onGetDesignerslistSuccess = function (response) {
 		$scope.designers = response.data.designers;
 	};
-	$scope.onGetDesignersFailure = function (response) {
+	$scope.onGetDesignerslistFailure = function (response) {
 		console.log("onGetDesignersFailure:",response);
 	};
 
