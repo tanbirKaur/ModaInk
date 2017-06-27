@@ -12,7 +12,7 @@
 
 							<div class="shop-filters">
 								<p class="woocommerce-result-count">
-									Showing {{products.length}} results
+									Showing {{products.length}} results of {{allProductInfo.totalProducts}}
 								</p>
 								<form class="woocommerce-ordering" method="get">
 									<ul class="sort widget woocommerce">
@@ -46,7 +46,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="section" ng-if="products.length > 0">
+				<div class="section" ng-if="products.length > 0 && products.length < allProductInfo.totalProducts">
 					<button ng-click="showMoreProducts()" class="btn btn-flat btn-sm center-block">Show More</button>
 				</div>
 				<div class="section" ng-if="products.length == 0">

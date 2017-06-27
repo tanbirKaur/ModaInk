@@ -80,7 +80,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	};
 
 	$scope.getProducts = function (params) {
-		if (!params) params = {offset:0,limit:28};
+		if (!params || params == null) params = {offset:0,limit:28};
 		var filterInfo = {filters:[],sortBy:[]};
 		filterInfo.query = $scope.searchQuery;
 		Object.keys($scope.sortOption).forEach(function(key){
