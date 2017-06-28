@@ -99,7 +99,7 @@
 	    	mfn_header_height = jQuery('.mfn-main-slider').innerHeight() + jQuery('#Header').innerHeight();
 	    } else {
 	    	// default
-	    	mfn_header_height = jQuery('#Top_bar').innerHeight() + jQuery('#Action_bar').innerHeight();
+	    	mfn_header_height = jQuery('#responsive-header').innerHeight() + jQuery('#Action_bar').innerHeight();
 	    }
     }
     
@@ -110,14 +110,14 @@
 			var window_y = jQuery(window).scrollTop();
 
 			if( window_y > start_y ){
-				if( ! (jQuery('#Top_bar').hasClass('is-sticky'))){
+				if( ! (jQuery('#responsive-header').hasClass('is-sticky'))){
 					
-					jQuery('.header-classic .header_placeholder').css('height', jQuery('#Top_bar').innerHeight() - jQuery('#Action_bar').innerHeight());
+					jQuery('.header-classic .header_placeholder').css('height', jQuery('#responsive-header').innerHeight() - jQuery('#Action_bar').innerHeight());
 					jQuery('.header-stack   .header_placeholder').css('height', 71);
-					jQuery('.header-below   .header_placeholder').css('height', jQuery('#Top_bar').innerHeight());
-					jQuery('.minimalist-header .header_placeholder').css('height', jQuery('#Top_bar').innerHeight());
+					jQuery('.header-below   .header_placeholder').css('height', jQuery('#responsive-header').innerHeight());
+					jQuery('.minimalist-header .header_placeholder').css('height', jQuery('#responsive-header').innerHeight());
 					
-					jQuery('#Top_bar')
+					jQuery('#responsive-header')
 						.addClass('is-sticky')
 						.css('top',-60)
 						.animate({
@@ -126,9 +126,9 @@
 				}
 			}
 			else {
-				if(jQuery('#Top_bar').hasClass('is-sticky')) {
+				if(jQuery('#responsive-header').hasClass('is-sticky')) {
 					jQuery('.header_placeholder').css('height',0);
-					jQuery('#Top_bar')
+					jQuery('#responsive-header')
 						.removeClass('is-sticky')
 						.css('top', topBarTop);
 				}	
@@ -220,7 +220,7 @@
 	 * --------------------------------------------------------------------------- */
 	function mfn_header(){
 		var rightW = jQuery('.top_bar_right').innerWidth();
-		var parentW = jQuery('#Top_bar .one').innerWidth() - 10;
+		var parentW = jQuery('#responsive-header .one').innerWidth() - 10;
 		var leftW = parentW - rightW;
 		jQuery('.top_bar_left, .menu > li > ul.mfn-megamenu ').width( leftW );
 	}
@@ -253,7 +253,7 @@
 		
 		if( hash && jQuery(hash).length ){	
 			
-			var stickyH = jQuery('.sticky-header #Top_bar').innerHeight();
+			var stickyH = jQuery('.sticky-header #responsive-header').innerHeight();
 			var tabsHeaderH = jQuery(hash).siblings('.ui-tabs-nav').innerHeight();
 			
 			jQuery('html, body').animate({ 
@@ -269,7 +269,7 @@
 	function onePageActive(){
 		if( jQuery('body').hasClass('one-page') ){
 			
-			var stickyH = jQuery('.sticky-header #Top_bar').innerHeight();
+			var stickyH = jQuery('.sticky-header #responsive-header').innerHeight();
 	
 			var winTop = jQuery(window).scrollTop();
 			var offset = stickyH + 1; // offset top
@@ -312,7 +312,7 @@
 	 * ----------------------------------------------------------------------------------------------------------------------- */
 	jQuery(document).ready(function(){
 	
-		topBarTop = parseInt(jQuery('#Top_bar').css('top'), 10);
+		topBarTop = parseInt(jQuery('#responsive-header').css('top'), 10);
 		if( topBarTop < 0 ) topBarTop = 61;
 		topBarTop = topBarTop + 'px';
 
@@ -345,7 +345,7 @@
 		jQuery('.responsive-menu-toggle').click(function(e){
 			e.preventDefault();
 			var el = jQuery(this)
-			var menu = jQuery('#Top_bar #menu');
+			var menu = jQuery('#responsive-header #menu');
 			var menuWrap = menu.closest('.menu_wrapper');
 			el.toggleClass('active');
 			
@@ -436,12 +436,12 @@
 					var tabsHeaderH = jQuery(hash).siblings('.ui-tabs-nav').innerHeight();
 
 					// FIX | sticky top bar height
-					var topBar = jQuery('.sticky-header #Top_bar');
+					var topBar = jQuery('.sticky-header #responsive-header');
 					if( topBar.hasClass('is-sticky') ){
-						stickyH = jQuery('.sticky-header #Top_bar').innerHeight();
+						stickyH = jQuery('.sticky-header #responsive-header').innerHeight();
 					} else {
 						topBar.addClass('is-sticky');
-						stickyH = jQuery('.sticky-header #Top_bar').innerHeight();
+						stickyH = jQuery('.sticky-header #responsive-header').innerHeight();
 						topBar.removeClass('is-sticky');
 					}	
 
@@ -622,9 +622,9 @@
 		/* ---------------------------------------------------------------------------
 		 * Header Search
 		 * --------------------------------------------------------------------------- */
-		jQuery("#search_button, #Top_bar .icon_close").click(function(e){
+		jQuery("#search_button, #responsive-header .icon_close").click(function(e){
 			e.preventDefault();
-			jQuery('#Top_bar .search_wrapper').fadeToggle();
+			jQuery('#responsive-header .search_wrapper').fadeToggle();
 		});
 	
 		
@@ -762,7 +762,7 @@
 		jQuery('.portfolio_next_js').click(function(e){
 			e.preventDefault();
 			
-			var stickyH = jQuery('#Top_bar.is-sticky').innerHeight();
+			var stickyH = jQuery('#responsive-header.is-sticky').innerHeight();
 			var item = jQuery(this).closest('.portfolio-item').next();
 			
 			if( item.length ){
@@ -775,7 +775,7 @@
 		jQuery('.portfolio_prev_js').click(function(e){
 			e.preventDefault();
 			
-			var stickyH = jQuery('#Top_bar.is-sticky').innerHeight();
+			var stickyH = jQuery('#responsive-header.is-sticky').innerHeight();
 			var item = jQuery(this).closest('.portfolio-item').prev();
 			
 			if( item.length ){
@@ -802,7 +802,7 @@
 			var url = jQuery(this).attr('href');
 			var hash = '#' + url.split('#')[1];
 			
-			var stickyH = jQuery('.sticky-header #Top_bar').innerHeight();
+			var stickyH = jQuery('.sticky-header #responsive-header').innerHeight();
 			var tabsHeaderH = jQuery(hash).siblings('.ui-tabs-nav').innerHeight();
 			
 			if( hash && jQuery(hash).length ){

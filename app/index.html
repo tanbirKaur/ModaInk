@@ -8,6 +8,7 @@
 <!--<![endif]-->
 
 <head>
+    
 
     <!-- Basic Page Needs -->
     <base href="/">
@@ -48,6 +49,12 @@
     <!-- Revolution Slider -->
     <link rel="stylesheet" href="plugin/rs-plugin/css/settings.css">
     <link rel='stylesheet' id='custom-css' href='css/custom.css'>
+
+    <style >
+       
+    </style>
+    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
@@ -81,136 +88,117 @@
 <body ng-app="ModaInk" ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
     <!-- #Wrapper -->
     <!-- Main Theme Wrapper -->
-    <div id="Wrapper">
+    
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="responsive-header" role= "navigation" style="opacity: 0.8; z-index: 10000; width:100%;">
+          <div>
+            <div class="navbar-header">
+             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span> 
+             </button>
+              <a href="/" class="navbar-brand"><img width="135px" height="42px" class="logo-main" src="images/logo.png" style="margin-top: -10px; margin-left: 20px;" /></a>
+            </div>  
+            <div class="collapse navbar-collapse" id="myNavbar" style="background-color: black">
+             <ul class="nav navbar-nav" style="cursor: pointer; font-size: 1.2em;">
+                <li><a href="/#/products?exclusive=true" style="color: white;" class="nav_link">EXCLUSIVE</a></li>
+                <li><a href="/#/designers" style="color: white;" class="nav_link">DESIGNERS</a></li>
+                <li class="dropdown women"><a ui-sref="women" class="dropdown-toggle nav_link" data-toggle = "dropdown" style="color: white;" class="nav_link">WOMEN</b></a>
+                   <ul class="dropdown-menu women-drop" style="opacity: 1; width: 800px;">
+                      
+                      <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:0"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                           <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                           <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}">
+                               {{subProduct.name}}</a></li>
+                           </ul>
+                       </li>
+                       <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:1"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                           <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                           <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}" >
+                               {{subProduct.name}}</a></li>
+                           </ul>
+                       </li>
+                       <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:2"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                           <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                           <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}">
+                               {{subProduct.name}}</a></li>
+                           </ul>
+                       </li>      
+                    </ul>
+                </li>
+                <li class="dropdown men"><a ui-sref="men" class="dropdown-toggle nav_link" data-toggle = "dropdown" style="color: white;">MEN</a>
+                    <ul class="dropdown-menu men-drop" style="background-color: black; width: 800px;">
+                      <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:0"><a style="color: white;" href="/#/products/men/{{product.name}}"><span>{{product.name|uppercase}}</span></a>
+                         <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                             <li class="drop_links">
+                                 <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
+                                >  <span>{{subProduct.name}}</span></a>
+                             </li>
+                         </ul>
+                      </li>
+                      <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:1"><a style="color: white;" href="/#/products/men/{{product.name}}">{{product.name|uppercase}}</a>
+                         <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                             <li class="drop_links">
+                                 <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
+                                >  <span>{{subProduct.name}}</span></a>
+                             </li>
+                         </ul>
+                      </li>
+                      <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:2"><a style="color: white;" href="/#/products/men/{{product.name}}">{{product.name|uppercase}}</a>
+                         <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
+                             <li class="drop_links">
+                                 <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
+                                 >  <span>{{subProduct.name}}</span></a>
+                             </li>
+                         </ul>
+                      </li>
+                             
+                    </ul>
+                </li>
+                <li><a ui-sref="accessories" style="color: white;" class="nav_link">ACCESSORIES</a></li>
+                <li><a ui-sref="footwear" style="color: white;" class="nav_link">FOOTWEAR</a></li>
+                <li><a ui-sref="customization" style="color: white;" class="nav_link">CUSTOMIZATION</a></li>
+             </ul>  
+             <ul class="nav navbar-nav navbar-right" style="font-size: 1.3em;">
+                <li class="dropdown nav_button user"><a ui-sref="#" class="dropdown-toggle user nav_button" data-toggle = "dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
+                   <ul class="dropdown-menu user-drop" style="width: 200px; background-color: black;" >
+                   <div ng-hide="userLoggedIn">
+                    <li class="your_account-li"><a class="your_account-a" href="">Your Account</a></li>
+                    <li class="divider"></li>
+                    <li style="margin-left: 15%;"><button style="background-color: rgb(180,157,107); color: white;" class="btn btn-default btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button><button class="btn btn-default btn-sm" data-toggle="modal" data-target="#registerModal" style="background-color: rgb(180,157,107); color: white;">SIGN UP</button></li> 
+                    </div> 
+                     <div ng-show="userLoggedIn">
+                        <li ><a href="/#/myProfile/accountInformation">{{userName}}</a></li>
+                        <li ><a href="/#/myProfile/accountInformation">{{userDetails.email}}</a></li>
+                        <li class="divider"></li>
+                        <li ><a href="/#/myProfile/myOrders">My Orders</a></li>
+                        <li ><a href="/#/myProfile/wishlist">My wishlist</a></li>
+                        <li ><a href="/#/myProfile/addresBook">Saved addresses</a></li>
+                        <li ><a href="/#/myProfile/rewards">User badges</a></li>
+                        <li class="divider"></li>
+                        <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
+                        <li ><a href="" ng-click="logout()">Logout</a></li>
+                    </div>
 
-        <!-- #Header_bg -->
-        <!-- Header Wrapper -->
-        <div id="Header_wrapper" class="bg-parallax" data-stellar-background-ratio="0.5"s>
 
-            <!-- #Header -->
-            <!-- Header -->
-            <header id="Header">
-                <!-- Header -  Logo and Menu area -->
-                <div id="Top_bar" class="is-sticky">
-
-                    <div class="container_menu">
-                        <div class="column one">
-
-                            <div class="top_bar_left clearfix">
-                                <div class="logo">
-                                    <a id="logo" href="/"><img class="logo-main" src="images/logo.png"/>
-                                    </a>
-                                </div>
-                               
-                                <!-- Main menu-->
-                                <div class="menu_wrapper">
-                                    <nav id="menu">
-                                        <ul id="menu-main-menu" class="menu">
-                                            <li id="menu-item-2450" class=" menu-item-type-taxonomy">
-                                                <a href="/#/products?exclusive=true"><span>EXCLUSIVE</span></a>
-                                            </li>
-                                            <li id="menu-item-2401" class="menu-item-type-taxonomy ">
-                                                <a href="/#/designers"><span>DESIGNERS</span></a>
-                                            </li>
-                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/#/women"><span>WOMEN</span></a>
-                                                <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li ng-repeat="product in womenProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/#/products/women/{{product.name}}"><span>{{product.name}}</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/#/products/women/{{product.name}}?subCategory={{subCat}}"><span>{{subProduct.name}}</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat ">
-                                                <a href="/#/men"><span>MEN</span></a>
-                                                <ul class="sub-menu mfn-megamenu mfn-megamenu-3" style="opacity: 1;">
-                                                    <li ng-repeat="product in menProducts" class="menu-item-type-taxonomy menu-item-object-product_cat mfn-megamenu-cols-3">
-                                                        <a class="mfn-megamenu-title" href="/#/products/men/{{product.name}}"><span>{{product.name}}</span></a>
-                                                        <ul class="sub-menu mfn-megamenu mfn-megamenu-3" ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                                            <li class="menu-item-type-taxonomy menu-item-object-product_cat">
-                                                                <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"><span>{{subProduct.name}}</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="/#/accessories"><span>ACCESSORIES</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="/#/footwear"><span>FOOTWEAR</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="/#/customization"><span>CUSTOMIZATION</span></a>
-                                            </li>
-                                            <li>
-                                            <li class="dropdown header_buttons">
-
-                                                  <a id="profile_button" href="" class="dropdown-toggle " data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
-                                                  <ul class="dropdown-menu">
-                                                    <div ng-hide="userLoggedIn">
-                                                        <li><a>Your Account</a></li>
-                                                        <li  class="divider"></li>
-                                                        <li>
-                                                            <div style="margin-left: 10%;">
-                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button>
-                                                                <button class="btn btn-sm" data-toggle="modal" data-target="#registerModal">SIGN UP</button>
-                                                            </div>
-                                                        </li>
-                                                    </div>
-                                                    <div ng-show="userLoggedIn">
-                                                        <li ><a href="/#/myProfile/accountInformation">{{userName}}</a></li>
-                                                        <li ><a href="/#/myProfile/accountInformation">{{userDetails.email}}</a></li>
-                                                        <li class="divider"></li>
-                                                        <li ><a href="/#/myProfile/myOrders">My Orders</a></li>
-                                                        <li ><a href="/#/myProfile/wishlist">My wishlist</a></li>
-                                                        <li ><a href="/#/myProfile/addresBook">Saved addresses</a></li>
-                                                        <li ><a href="/#/myProfile/rewards">User badges</a></li>
-                                                        <li class="divider"></li>
-                                                        <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
-                                                        <li ><a href="" ng-click="logout()">Logout</a></li>
-                                                    </div>
-                                                  </ul>
-                                            </li>
-                                            
-                                            <li class="header_buttons">
-                                                <a id="search_button" href="#" style="font-size: 18px;"><i class="icon-search"></i></a>
-                                            </li>
-
-                                            <li class="header_buttons">
-                                            <div>
-                                                <a id="header_cart" href="" ng-click="openMyCart()"><i class="fa fa-shopping-bag"></i><span>{{shoppingcartItemCount}}</span></a></div>
-                                            </li>
-                                        </ul>
-
-                                    </nav>
-                                    <a class="responsive-menu-toggle " href="#"><i class="icon-menu"></i></a>
-                                </div>
-
-                        
-                                <!-- Header Searchform area-->
-                                <div class="search_wrapper">
+                   </ul>
+                </li>
+                <li class="btn-search" id="search_button" style="cursor: pointer;"><a ui-sref="#" class="nav_button search"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li class="nav_button bag" ><a ui-sref="cart" class="nav_button"><i style="color:white;" class="fa fa-shopping-bag"></i><span class="shop-badge badge">{{shoppingcartItemCount}}</span></a></li>
+             </ul>
+             <div class="search_wrapper" style="background-color:rgb(0,0,0)">
                                     <!-- #searchform -->
                                     <form method="get" id="searchform" action="#">
                                         <i class="icon_search icon-search"></i>
-                                        <a href="#" class="icon_close"><i class="icon-cancel"></i></a>
+                                        <a style="right: " href="#" class="icon_close"><i style="color: white;" class="icon-cancel"></i></a>
                                         <input type="text" class="field" name="s" id="s" placeholder="Enter your search" />
                                         <input type="submit" class="submit flv_disp_none" value="" />
                                     </form>
-                                </div>
-                            </div>
-
-                               
-                        </div>
-                    </div>
-                </divt>
-                <!-- Revolution slider area-->
-                </div>
-            </header>
-        </div>
+            </div>
+            </div>
+            </div>
+            </nav> 
+              
 <div ng-include src="'views/login.html'" ng-controller="LoginController"></div>
         <!-- #Content -->
         <!-- Main Content -->
@@ -221,9 +209,9 @@
         <div class="footer-blog">
             <a id="back_to_top" href="#" class="button button_left button_js"><span class="button_icon"><i class="icon-up-open-big"></i></span></a>
             <div ng-include src="'views/footer.html'"></div>
-            
+        </div>    
 
-        </div>
+
         <!-- #Wrapper -->
         <!-- JS -->
 
@@ -264,8 +252,31 @@
             showLoginPopup = function () {
                 $('#loginModal').modal();
             }
+             $(‘.navbar-collapse a’).click(function(){
+             $(“.navbar-collapse”).collapse(‘hide’);
+              });
+
+
+             $(document).on(‘click’,function(){
+             $(‘.navbar-toggle’).collapse(‘hide’);
+                })
+
+             $('.btn-search').on('click', function(e){
+                e.preventDefault();
+               $('.searchbar').slideToggle(300, function(){
+               // callback after search bar animation
+                });
+              });
+
+             $('your_account-li').hover(function(){
+                    $("your_account-a").css("color", "black");
+             });
+
+
+
+
+
         </script>
-        </div>
     
 
 </body>

@@ -1360,7 +1360,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 }
 
 /* Search wrapper */
-#Top_bar .search_wrapper {
+#responsive-header .search_wrapper {
     position: absolute;
     left: 0;
     top: 100%;
@@ -1373,7 +1373,8 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
     box-sizing: border-box;
 }
 
-#Top_bar .search_wrapper input[type="text"] {
+#responsive-header .search_wrapper input[type="text"] {
+    color: white;
     width: 100%;
     margin: 0;
     -webkit-box-shadow: 0 0 0;
@@ -1382,28 +1383,30 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
     background: none;
     border-width: 0 0 1px;
     border-style: solid;
-    border-color: rgba(255,255,255,.08) !important;
+    border-color: white !important;
     font-size: 15px;
-    color: #000;
+    color: white;
 }
 
 
 
-#Top_bar .search_wrapper input[type="text"]:focus {
+#responsive-header .search_wrapper input[type="text"]:focus {
     background-color: transparent !important;
 }
 
-#Top_bar .search_wrapper .icon_search,#Top_bar .search_wrapper .icon_close {
+#responsive-header .search_wrapper .icon_search,#responsive-header .search_wrapper .icon_close {
     position: absolute;
     top: 25px;
+    right: 5%;
     font-size: 20px;
     line-height: 20px;
     display: block;
+    color: white;
 }
 
-#Top_bar .search_wrapper .icon_search {
+#responsive-header .search_wrapper .icon_search {
     left: 18px;
-    color: rgba(0,0,0,.5);
+    color: white;
 }
 
 #Top_bar .search_wrapper .icon_close {
@@ -1608,7 +1611,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 #Top_bar .menu > li > a span:not(.description) {
     display: block;
     line-height: 60px;
-    padding: 0 30px;
+    padding: 0 25px;
     white-space: nowrap;
     border-right-width: 1px;
     border-style: solid;
@@ -7596,5 +7599,224 @@ body {
 
 .orderConfirmation h3, h5 {
     text-align: center;
+
+}
+
+
+.navbar-nav li a:hover{
+            color: rgb(180,157,107) !important;
+
+         }   
+
+
+.navbar-nav li a.nav_link:hover{
+            border-bottom: 2px;
+            border-color: rgb(180,157,107) ;
+            border-style:solid;
+
+         }            
+.navbar-nav li a.nav_button:hover{
+            border-bottom: 2px;
+            border-color: rgb(180,157,107) ;
+            border-style:solid;
+
+         }
+
+.nav_link{
+        font-size: 0.8em;
+        margin-left: 30px;
+    }
+.drop_links{
+    margin: 10px;
+    font-size: 1.1em;
+
+}         
+
+.drop_head a:hover{
+    color: black;
+    background-color: transparent !important;
+
+}
+
+.drop_links:hover a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+
+}
+.drop_links:hover{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+
+}
+.drop_links a:hover{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+
+}
+
+.women-drop{
+        background-color: black !important;
+
+    }
+
+
+
+@media(min-width: 1090px) and (max-width: 1234px){
+    .nav_link{
+        margin-left: 20px;
+        font-size: 0.8em;
+    }
+
+    .logo-main{
+           width: 70px;
+    }
+}
+
+@media(min-width: 980px) and (max-width: 1090px){
+    .nav_link{
+        margin-left: 5px;
+        font-size: 0.8em;
+    }
+
+    .logo-main{
+           width: 70px;
+    }
+}
+@media(min-width: 865px) and (max-width: 979px){
+    .nav_link{
+        margin-left: -5px;
+        font-size: 0.7em;
+    }
+
+    .nav-button{
+        margin-left: -10px;
+    }
+
+
+    .logo-main{
+           width: 60px;
+    }
+}
+@media(min-width: 768px) and (max-width: 864px){
+    .nav_link{
+        font-size: 0.6em;
+        margin-left: -10px;
+
+    }
+        .nav-button{
+        margin-left: -10px;
+    }
+
+    .logo-main{
+           width: 60px;
+    }
+}
+
+@media(max-width: 720px){
+        .women-drop{
+        background-color: grey !important;
+
+    }
+
+    .women-drop .drop_head{
+        padding-left: 100px !important;
+    }
+
+    .women-drop .drop_links{
+        padding-left: 50px !important;
+    }
+       .men-drop{
+        background-color: grey !important;
+
+    }
+
+    .men-drop .drop_head{
+        padding-left: 100px !important;
+    }
+
+    .men-drop .drop_links{
+        padding-left: 50px !important;
+    }
+}    
+
+
+
+
+.shop-badge{
+    position: absolute;
+    top: 9px;
+    right: 4px;
+    background-color: rgb(180,157,107);
+}
+
+.women:hover .women-drop {
+    display: block;
+}
+
+.men:hover .men-drop {
+    display: block;
+}
+
+.user:hover .user-drop {
+    display: block;
+}
+
+.glyphicon{
+    color: white;
+}
+
+.caret{
+    color: white;
+}
+
+.search:hover .glyphicon{
+    color: rgb(180,157,107);
+}
+
+.user:hover .glyphicon{
+    color: rgb(180,157,107);
+}
+.user:hover .caret{
+    color: rgb(180,157,107);
+}
+
+.your_account-a{
+    color: white; 
+    margin-left: 30%;
+}
+
+.your_account-li:hover{
+    background-color: white;
+}
+
+.your_account-li:hover .your_account-a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.drop_links a{
+    color: white;
+}
+.your_account-li:hover .your_account-a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body{
+    position: relative;
+}
+
+.mens-drop{
+ position: absolute;
+ left: 0;
+ right: 0;
 
 }
