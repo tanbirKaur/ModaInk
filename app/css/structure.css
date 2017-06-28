@@ -7810,13 +7810,4 @@ body {
     font-weight: bold;
 }
 
-body{
-    position: relative;
-}
 
-.mens-drop{
- position: absolute;
- left: 0;
- right: 0;
-
-}
