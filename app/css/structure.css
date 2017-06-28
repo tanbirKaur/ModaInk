@@ -7626,11 +7626,16 @@ body {
         font-size: 0.8em;
         margin-left: 30px;
     }
+
 .drop_links{
-    margin: 10px;
+    padding: 10px;
     font-size: 1.1em;
 
-}         
+} 
+
+.right_buttons{
+    margin-right: 2%
+}        
 
 .drop_head a:hover{
     color: black;
@@ -7670,10 +7675,42 @@ body {
 }
 
 
-@media(min-width: 1090px) and (max-width: 1234px){
+@media(min-width: 1090px) and (max-width: 1114px){
     .nav_link{
         margin-left: 20px;
         font-size: 0.8em;
+    }
+
+    .logo-main{
+           width: 70px;
+    }
+}
+
+@media(min-width: 1127px) and (max-width: 1194px){
+    .nav_link{
+        margin-left: 26px;
+        font-size: 0.8em;
+    }
+
+    .logo-main{
+           width: 70px;
+    }
+}
+
+@media(min-width: 1115px) and (max-width: 1127px){
+    .nav_link{
+        margin-left: 23px;
+        font-size: 0.8em;
+    }
+
+    .logo-main{
+           width: 70px;
+    }
+}
+@media(min-width: 1195px) and (max-width: 1234px){
+    .nav_link{
+        margin-left: 25px;
+        font-size: 0.9em;
     }
 
     .logo-main{
@@ -7754,10 +7791,11 @@ body {
     }
 }    
 
-
-
-
-
+.designer_column {
+   height: 275px;
+   width: 20%;
+   margin: 10px 0 10px 0;
+}
 
 .shop-badge{
     position: absolute;
@@ -7773,7 +7811,6 @@ body {
 .men:hover .men-drop {
     display: block;
 }
-
 
 .user:hover .user-drop {
     display: block;

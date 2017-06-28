@@ -11,7 +11,7 @@ a:hover {
 }
 .designer_column {
 	height: 275px;
-	width: 175px;
+	width: 20%;
 	margin: 10px 0 10px 0;
 }
 
@@ -872,7 +872,7 @@ div.fotos li.roomone {
 
 .login-form form {
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 24px;
 }
 
 
