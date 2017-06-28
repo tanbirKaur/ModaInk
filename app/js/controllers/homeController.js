@@ -6,7 +6,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	$scope.filterChecks = {};
 	$scope.productFilters = [];
     $scope.searchQuery = {};
-	$scope.sortOption = {};
+	$scope.sortOption = {'price':'asc'};
 	$scope.filterParams = {};
 	$scope.filterGender = $stateParams.gender;
     $scope.topCategory = $stateParams.topCategory;
