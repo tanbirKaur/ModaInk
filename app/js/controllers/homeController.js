@@ -212,6 +212,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.allProductInfo = response.data;
 		$scope.allProducts = response.data.products;
         var products = response.data.products;
+        $scope.$emit('needsScroll')
         if($scope.shouldShowMoreProducts){
             products.forEach(function (product) {
                 $scope.products.push(product);

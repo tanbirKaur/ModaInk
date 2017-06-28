@@ -161,7 +161,7 @@
              </ul>  
              <ul class="nav navbar-nav navbar-right" style="font-size: 1.3em;">
                 <li class="dropdown nav_button user"><a ui-sref="#" class="dropdown-toggle user nav_button" data-toggle = "dropdown"><span class="glyphicon glyphicon-user"></span><b class="caret"></b></a>
-                   <ul class="dropdown-menu user-drop" style="width: 200px; background-color: black;" >
+                   <ul class="dropdown-menu user-drop" style="background-color: black;" >
                    <div ng-hide="userLoggedIn">
                     <li class="your_account-li"><a class="your_account-a" href="">Your Account</a></li>
                     <li class="divider"></li>
@@ -184,7 +184,7 @@
                    </ul>
                 </li>
                 <li class="btn-search" id="search_button" style="cursor: pointer;"><a ui-sref="#" class="nav_button search"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li class="nav_button bag" ><a ui-sref="cart" class="nav_button"><i style="color:white;" class="fa fa-shopping-bag"></i><span class="shop-badge badge">{{shoppingcartItemCount}}</span></a></li>
+                <li class="nav_button bag" ><a ng-click="openMyCart()" class="nav_button"><i style="color:white;" class="fa fa-shopping-bag"></i><span class="shop-badge badge">{{shoppingcartItemCount}}</span></a></li>
              </ul>
              <div class="search_wrapper" style="background-color:rgb(0,0,0)">
                                     <!-- #searchform -->
@@ -252,14 +252,8 @@
             showLoginPopup = function () {
                 $('#loginModal').modal();
             }
-             $(‘.navbar-collapse a’).click(function(){
-             $(“.navbar-collapse”).collapse(‘hide’);
-              });
 
-
-             $(document).on(‘click’,function(){
-             $(‘.navbar-toggle’).collapse(‘hide’);
-                })
+             
 
              $('.btn-search').on('click', function(e){
                 e.preventDefault();
@@ -268,19 +262,16 @@
                 });
               });
 
-             $('your_account-li').hover(function(){
-                    $("your_account-a").css("color", "black");
-             });
 
-             $(function() {
-               $(window).unload(function() {
-                 var scrollPosition = $("body").scrollTop();
-                 sessionStorage.pos = scrollPosition;
-               });
-             if(sessionStorage.pos) {
-             $("body").scrollTop(sessionStorage.pos);
-   }
-});
+
+             $('.navbar-collapse a').click(function(){
+             $(".navbar-collapse").collapse('hide');
+              });
+
+
+             $(document).on('click',function(){
+             $('.navbar-collapse').collapse('hide');
+                })
 
 
 

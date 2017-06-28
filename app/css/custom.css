@@ -872,7 +872,7 @@ div.fotos li.roomone {
 
 .login-form form {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 5px;
 }
 
 
@@ -1983,7 +1983,7 @@ ul.rating {
 
 @media (max-width: 720px) {
     .without_headers {
-        margin-top: 0px;
+        margin-top: 60px;
     }
 
     .whatToBuy{
@@ -2086,7 +2086,7 @@ ul.rating {
     }
 
     .without_headers {
-        margin-top: 0px;
+        margin-top: 60px;
     }
 
     .user-profile-actions{

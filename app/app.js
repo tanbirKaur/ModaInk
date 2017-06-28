@@ -245,6 +245,26 @@ function testAPI() {
     });
 }
 
+app.directive('body', function($rootScope,storageService) {
+    return {
+        restrict: 'E',
+        scope: true,
+        link: function(scope, elem, attr) {
+		var prevState = '/';
+$rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+	prevState = fromState.name+'Scroll';
+	nextState = toState.name+'Scroll';
+	storageService.set(prevState,window.scrollY);
+});
+
+$rootScope.$on("needsScroll", function (event) {
+    window.scrollTo(0, storageService.get(nextState));
+});
+
+            }
+        }
+    
+});
 
 
 

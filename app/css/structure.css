@@ -7665,6 +7665,9 @@ body {
 
     }
 
+.user-drop{
+    width: 200px;
+}
 
 
 @media(min-width: 1090px) and (max-width: 1234px){
@@ -7743,7 +7746,15 @@ body {
     .men-drop .drop_links{
         padding-left: 50px !important;
     }
+    .user-drop{
+        background-color: grey !important;
+    }
+    .user-drop .your-account-li{
+        padding-left: 100px;
+    }
 }    
+
+
 
 
 

@@ -622,9 +622,9 @@
 		/* ---------------------------------------------------------------------------
 		 * Header Search
 		 * --------------------------------------------------------------------------- */
-		jQuery("#search_button, #responsive-header .icon_close").click(function(e){
+		jQuery("#search_button, .icon_close").click(function(e){
 			e.preventDefault();
-			jQuery('#responsive-header .search_wrapper').fadeToggle();
+			jQuery('.search_wrapper').fadeToggle();
 		});
 	
 		
