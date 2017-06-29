@@ -268,7 +268,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
             $scope.productSearchResult = res.data.products;
             var tempMap = {};
             $scope.productSearchBrands = $scope.productSearchResult.reduce(function (arr,product) {
-                if(!tempMap[product.brandName]){
+                var searchMatched = product.brandName.toLowerCase().contains($scope.$searchAllProducts.toLowerCase());
+                var brandNotAdded = !tempMap[product.brandName];
+                if(searchMatched && brandNotAdded){
                     tempMap[product.brandName] = true;
                     arr.push(product.brandName);
                 }
