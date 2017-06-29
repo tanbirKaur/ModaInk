@@ -441,9 +441,9 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     };
 
 	$(document).click(function (e) {
-	    $timeout(function () {
-	        console.log(e);
-            $('.search_wrapper').fadeToggle();
+        e.stopPropagation();
+        $timeout(function () {
+            $('.search_wrapper').hide();
             $scope.productSearchResult = [];
             $scope.productSearchBrands = [];
         })
