@@ -266,11 +266,22 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 	    var query = {q:q,offset:0,limit:20};
         httpService.searchProducts(query,function (res) {
             $scope.productSearchResult = res.data.products;
+            var tempMap = {};
+            $scope.productSearchBrands = $scope.productSearchResult.reduce(function (arr,product) {
+                if(!tempMap[product.brandName]){
+                    tempMap[product.brandName] = true;
+                    arr.push(product.brandName);
+                }
+                return arr;
+            },[])
         });
     };
 
 	$scope.showProduct = function (product) {
 	    $state.go("product-details",{productId:product.id,designerId:product.designerId})
+    };
+	$scope.showBrand = function (brand) {
+	    $state.go("/",{brand:brand})
     };
 
 	//Web View Methods
