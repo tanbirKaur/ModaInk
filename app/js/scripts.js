@@ -624,6 +624,7 @@
 		 * --------------------------------------------------------------------------- */
 		jQuery("#search_button, #icon_close").click(function(e){
 			e.preventDefault();
+            e.stopPropagation();
 			jQuery('.search_wrapper').fadeToggle();
 		});
 

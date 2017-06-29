@@ -435,6 +435,20 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		}
 	}
 
+	$scope.stopPropogation = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
+	$(document).click(function (e) {
+	    $timeout(function () {
+	        console.log(e);
+            $('.search_wrapper').fadeToggle();
+            $scope.productSearchResult = [];
+            $scope.productSearchBrands = [];
+        })
+    });
+
     $scope.hasImaget = function (designer) {
         return designer.avatarUrl != undefined;
     }
