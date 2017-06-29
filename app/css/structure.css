@@ -1375,7 +1375,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 
 #responsive-header .search_wrapper input[type="text"] {
     color: white;
-    width: 100%;
+    width: 90%;
     margin: 0;
     -webkit-box-shadow: 0 0 0;
     box-shadow: 0 0 0;
@@ -1407,6 +1407,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header {
 #responsive-header .search_wrapper .icon_search {
     left: 18px;
     color: white;
+    width:2%;;
 }
 
 #Top_bar .search_wrapper .icon_close {

@@ -191,20 +191,30 @@
                 <!-- #searchform -->
                 <form method="get" id="searchform" action="#">
                     <i class="icon_search icon-search"></i>
-                    <a style="right: " href="#" class="icon_close"><i style="color: white;" class="icon-cancel"></i></a>
                     <input autocomplete="off" ng-change="searchAllProducts($searchAllProducts)" ng-model="$searchAllProducts" type="text" class="field" name="s" id="s" placeholder="Enter your search" />
                     <input type="button" class="submit flv_disp_none" value="" />
-                    <ul>
-                        <li ng-if="productSearchBrands.length">Brand
-                            <ul>
-                                <li ng-repeat="brand in productSearchBrands" ng-click="showBrand(brand)">{{brand}} </li>
-                            </ul>
-                        </li>
-                        <li ng-if="productSearchResult.length">Products
-                            <ul>
-                                <li ng-repeat="product in productSearchResult" ng-click="showProduct(product)">{{product.styleName}} </li>
-                            </ul>
-                        </li>
+                    <a href="#" id="icon_close" class="icon_close"><i style="color: white;" class="icon-cancel"></i></a>
+
+                    <ul style="padding: 2%; color: #fff;">
+                        <li ng-if="productSearchBrands.length" style="text-transform: uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid  #c8a75e;
+    width: 5%;
+    padding-top: 2%;"> Brand </li>
+                        <li ng-repeat="brand in productSearchBrands" ng-click="showBrand(brand)" style="    padding-left: 2%;
+    font-size: 18px;
+    padding-top: 5px;">{{brand}} </li>
+
+
+                        <li ng-if="productSearchResult.length" style="text-transform: uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid  #c8a75e;
+    width: 5%;">Products </li>
+
+                                <li ng-repeat="product in productSearchResult" ng-click="showProduct(product)" style="    padding-left: 2%;
+    font-size: 18px;
+    padding-top: 5px;">{{product.styleName}} </li>
+
                     </ul>
                 </form>
             </div>
@@ -263,20 +273,8 @@
     showLoginPopup = function () {
         $('#loginModal').modal();
     }
-    $('.btn-search').on('click', function(e){
-        e.preventDefault();
-        $('.searchbar').slideToggle(300, function(){
-            // callback after search bar animation
-        });
-    });
-    $('.navbar-collapse a').click(function(){
-        $(".navbar-collapse").collapse('hide');
-    });
 
 
-    $(document).on('click',function(){
-        $('.navbar-collapse').collapse('hide');
-    })
 </script>
 </body>
 </html>

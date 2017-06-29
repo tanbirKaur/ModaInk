@@ -263,7 +263,7 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
     };
 
 	$scope.searchAllProducts = function (q) {
-	    var query = {q:q,offset:0,limit:20};
+	    var query = {q:q,offset:0,limit:10};
         httpService.searchProducts(query,function (res) {
             $scope.productSearchResult = res.data.products;
             var tempMap = {};
