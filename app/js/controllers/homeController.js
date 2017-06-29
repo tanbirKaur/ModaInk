@@ -262,6 +262,17 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
         return filterKeyNames[name];
     };
 
+	$scope.searchAllProducts = function (q) {
+	    var query = {q:q,offset:0,limit:20};
+        httpService.searchProducts(query,function (res) {
+            $scope.productSearchResult = res.data.products;
+        });
+    };
+
+	$scope.showProduct = function (product) {
+	    $state.go("product-details",{productId:product.id,designerId:product.designerId})
+    };
+
 	//Web View Methods
 	$scope.addFilter = function(name,key,val,checked){
 		var filter = {name:name,key:key,value:val};

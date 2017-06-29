@@ -192,8 +192,9 @@
                                     <form method="get" id="searchform" action="#">
                                         <i class="icon_search icon-search"></i>
                                         <a style="right: " href="#" class="icon_close"><i style="color: white;" class="icon-cancel"></i></a>
-                                        <input type="text" class="field" name="s" id="s" placeholder="Enter your search" />
-                                        <input type="submit" class="submit flv_disp_none" value="" />
+                                        <input ng-change="searchAllProducts($searchAllProducts)" ng-model="$searchAllProducts" type="text" class="field" name="s" id="s" placeholder="Enter your search" />
+                                        <input type="button" class="submit flv_disp_none" value="" />
+                                        <ul><li ng-repeat="product in productSearchResult" ng-click="showProduct(product)">{{product.styleName}}</li></ul>
                                     </form>
             </div>
             </div>
