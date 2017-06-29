@@ -27,7 +27,6 @@ window.apiUrl = "http://modaink.com/api";
 			templateUrl:"views/footwear.html",
             controller : "HomeController"
 		})
-
 		.state("/", {
 			url: "/products?exclusive&brand&isCustomizable&isDiscounted&topCategory&subCategory",
 			templateUrl : "views/products.html",
@@ -36,9 +35,8 @@ window.apiUrl = "http://modaink.com/api";
 		.state("products", {
 			url: "/products/:gender/:topCategory?subCategory",
 			templateUrl : "views/products.html",
-			controller : "HomeController"
+			controller : "ProductSearchController"
 		})
-
 		.state("designers-list", {
 			url: "/designers",
 			templateUrl : "views/designer-list.html",
@@ -254,6 +252,10 @@ app.directive('body', function($rootScope,storageService) {
 $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
     $rootScope.prevState = fromState.name+'Scroll';
     $rootScope.nextState = toState.name+'Scroll';
+    if(['/','products'].indexOf(toState.name)>-1){
+        $rootScope.prevStateProducts = toState.name+'Products';
+        storageService.set($rootScope.prevStateProducts,window.scrollY);
+	}
 	storageService.set($rootScope.prevState,window.scrollY);
 });
 
