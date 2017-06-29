@@ -252,13 +252,9 @@ app.directive('body', function($rootScope,storageService) {
         link: function(scope, elem, attr) {
 		var prevState = '/';
 $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-	prevState = fromState.name+'Scroll';
-	nextState = toState.name+'Scroll';
-	storageService.set(prevState,window.scrollY);
-});
-
-$rootScope.$on("needsScroll", function (event) {
-    window.scrollTo(0, storageService.get(nextState));
+    $rootScope.prevState = fromState.name+'Scroll';
+    $rootScope.nextState = toState.name+'Scroll';
+	storageService.set($rootScope.prevState,window.scrollY);
 });
 
             }

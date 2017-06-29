@@ -212,8 +212,8 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		$scope.allProductInfo = response.data;
 		$scope.allProducts = response.data.products;
         var products = response.data.products;
-        $scope.$emit('needsScroll')
         if($scope.shouldShowMoreProducts){
+            $scope.shouldScroll = false;
             products.forEach(function (product) {
                 $scope.products.push(product);
             })
@@ -224,6 +224,15 @@ app.controller('HomeController', function($scope,$rootScope,$state,$stateParams,
 		storageService.set("products",$scope.products);
         $scope.shouldShowMoreProducts = false;
 	};
+
+	$scope.updateScroll = function ($last) {
+	    if(!$scope.shouldScroll === false) return;
+	    if($last){
+	        $timeout(function () {
+                window.scrollTo(0, storageService.get($rootScope.nextState));
+            },1000);
+        }
+    };
 
 	$scope.onGetProductsFailure = function (response) {
 		console.log("onGetProductsFailure:",response);
