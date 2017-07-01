@@ -12,7 +12,7 @@
 		<div class="stepper__rule" style="left: 15%; right: 65%;"></div>
 		<div class="stepper__rule" style="left: 40%; right: 40%;"></div>
 		<div class="stepper__rule" style="left: 65%; right: 15%;"></div>
-			<a class="stepper__step stepper__step--active" href="/#/checkout/cart" style="width: 25%; text-decoration: none">
+			<a class="stepper__step stepper__step--active" ui-sref="cart" style="width: 25%; text-decoration: none">
 				<span class="stepper__step-badge">1</span>
 				<span class="stepper__step-title">Bag</span>
 			</a>
@@ -40,7 +40,7 @@
 			<div class="prod-set">
 				<div ng-repeat="cartItem in cartInfo.shoppingcartItems" class="b-white row prod-item br-b-grey">
 					<div class="col1">
-						<a href="/#/product-details/{{cartItem.product.id}}/{{cartItem.product.designer.id}}" >
+						<a ui-sref="product-details({gender : cartItem.product.gender,topCategory : $root.prettyUrl(cartItem.product.masterCategory), subCategory : $root.prettyUrl(cartItem.product.articleType) ,productId : cartItem.product.id,designerId : cartItem.product.designer.id,product_name : $root.prettyUrl(product.styleName)})">
 							<img ng-src="{{cartItem.product.previewImage}}" alt="{{cartItem.product.productName}}" width="96" height="128">
 						</a>
 					</div>
@@ -78,7 +78,7 @@
 
 		<div ng-if="cartInfo.shoppingcartItems.length > 0" id="right">
 
-				<div  style="margin-left: : 10px;">PRICE DETAILS</div>
+				<div  style="margin-left : 10px;">PRICE DETAILS</div>
 
 				<div class="order-summary-span ">
 					<div>

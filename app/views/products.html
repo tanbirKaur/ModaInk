@@ -27,13 +27,13 @@
 									<li class="product" ng-repeat="product in products track by $index" ng-init="updateScroll($last)">
 										<div class="image_frame" >
 											<div class="image_wrapper">
-												<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"><div class="mask"></div><img ng-src="{{product.previewImage}}" title="{{product.productDescription}}" alt="{{product.productDescription}}"></a>
+												<a ui-sref="product-details({gender : product.gender,topCategory : $root.prettyUrl(product.masterCategory), subCategory : $root.prettyUrl(product.articleType) ,productId : product.id, designerId : product.designerId,product_name : $root.prettyUrl(product.styleName)})" target="_top"><div class="mask"></div><img ng-src="{{product.previewImage}}" title="{{product.productDescription}}" alt="{{product.productDescription}}"></a>
 											</div>
 											<span ng-if="product.isExclusive" class="onsale"><i class="icon-star"></i></span>
-											<a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top"></a>
+											<a ui-sref="product-details({gender : product.gender,topCategory : $root.prettyUrl(product.masterCategory), subCategory : $root.prettyUrl(product.articleType) ,productId : product.id, designerId : product.designerId,product_name : $root.prettyUrl(product.styleName)})"  target="_top"></a>
 										</div>
 										<div class="desc">
-											<h4><a href="/#/product-details/{{product.id}}/{{product.designerId}}" target="_top">{{product.productName}}</a></h4>
+											<h4><a ui-sref="product-details({gender : product.gender,topCategory : $root.prettyUrl(product.masterCategory), subCategory : $root.prettyUrl(product.articleType) ,productId : product.id, designerId : product.designerId,product_name : $root.prettyUrl(product.styleName)})"  target="_top">{{product.productName}}</a></h4>
 											<div >
 												<span class="price"><span class="amount">Rs. {{product.price}}</span></span>
 												<span ng-if="product.isDiscounted">Discount: {{product.discountPercent}}%</span>

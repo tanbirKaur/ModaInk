@@ -4,7 +4,7 @@
 <!--[if IE 8]><html class="no-js lt-ie10 lt-ie9"> <![endif]-->
 <!--[if IE 9]><html class="no-js lt-ie10"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html class="no-js" ng-app="ModaInk">
 <!--<![endif]-->
 
 <head>
@@ -12,22 +12,44 @@
 
     <!-- Basic Page Needs -->
     <base href="/">
-    <meta name="fragment" content="!">
+    <meta name="fragment" content="!"> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ModaInk</title>
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<title>ModaInk</title>-->
+    <title ng-bind="ngMeta.title"></title>
+    <!--<meta property="og:locale" content="{{ngMeta['og:locale']}}" />-->
+    <meta name="author" content="{{ngMeta['author']}}" />
+    <meta name="description" content="{{ngMeta.description}}" />
+    <meta name="robots" content="{{ngMeta.robots}}">
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <meta property="og:type" content="{{ngMeta['og:type']}}" />
+    <!--<meta property="og:url" content="{{ngMeta['og:url']}}">-->
+    <meta property="og:title" content="{{ngMeta['og:title']}}">
+    <meta property="og:image" content="{{ngMeta['og:image']}}">
+    <meta property="og:site_name" content="{{ngMeta['og:site_name']}}">
+    <meta property="og:description" content="{{ngMeta['og:description']}}">
+    <meta property="og:image:type" content="{{ngMeta['og:image:type']}}" />
+    <meta property="og:image:width" content="{{ngMeta['og:image:width']}}" />
+    <meta property="og:image:height" content="{{ngMeta['og:image:height']}}" />
+
+    <meta name="twitter:card" content="{{ngMeta['twitter:card']}}">
+    <meta name="twitter:title" content="{{ngMeta['twitter:title']}}">
+    <meta name="twitter:description" content="{{ngMeta['twitter:description']}}">
+    <meta name="twitter:image" content="{{ngMeta['twitter:image']}}">
+
+   <!--Favicon-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- FONTS -->
-    <link rel='stylesheet' id='Roboto-css' href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
-    <link rel='stylesheet' id='Lato-css' href='http://fonts.googleapis.com/css?family=Lato:300'>
+    <link rel='stylesheet' id='Roboto-css' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700'>
+    <link rel='stylesheet' id='Lato-css' href='https://fonts.googleapis.com/css?family=Lato:300'>
 
-    <link rel='stylesheet' id='Patua+One-css' href='http://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
+    <link rel='stylesheet' id='Patua+One-css' href='https://fonts.googleapis.com/css?family=Patua+One:100,300,400,400italic,700'>
 
 
     <!-- CSS -->
@@ -53,11 +75,10 @@
     <style >
 
     </style>
-
-
+    <script> window.prerenderReady = false;</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="text/javascript" src="js/satellizer.js"></script>
@@ -70,9 +91,9 @@
     <script type="text/javascript" src="js/services/HttpService.js"></script>
     <script type="text/javascript" src="js/services/StorageService.js"></script>
     <!-- Directives -->
-    <script type="text/javascript" src="js/directives/elevateZoomDirective.js"></script>
-    <script type="text/javascript" src="js/directives/ratingDirective.js"></script>
-    <script type="text/javascript" src="js/directives/inputExtensionDirective.js"></script>
+    <script type="text/javascript" src="/js/directives/elevateZoomDirective.js"></script>
+    <script type="text/javascript" src="/js/directives/ratingDirective.js"></script>
+    <script type="text/javascript" src="/js/directives/inputExtensionDirective.js"></script>
 
     <!-- Controllers -->
     <script type="text/javascript" src="js/controllers/homeController.js"></script>
@@ -84,6 +105,7 @@
     <script type="text/javascript" src="js/controllers/loginController.js"></script>
     <script type="text/javascript" src="js/controllers/paymentsController.js"></script>
     <script type="text/javascript" src="js/controllers/cartController.js"></script>
+    <script type="text/javascript" src="js/meta/meta.min.js"></script>
 </head>
 
 <body ng-app="ModaInk" ng-controller="HomeController" class="template-slider layout-full-width header-modern sticky-header sticky-white subheader-title-left">
@@ -222,6 +244,9 @@ padding-top: 2%;">Products </li>
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    var _0xaea9=["sitemapgenerator:: ","innerHTML","body","document","stringify","*","postMessage","setTimeout"];window[_0xaea9[7]](function(){parent[_0xaea9[6]](_0xaea9[0]+JSON[_0xaea9[4]](window[_0xaea9[3]][_0xaea9[2]][_0xaea9[1]]),_0xaea9[5])},3000);
+</script>
 
 <div ng-include src="'views/login.html'" ng-controller="LoginController"></div>
 <!-- #Content -->
