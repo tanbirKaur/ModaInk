@@ -12,9 +12,9 @@ app.controller('DesignerDetailsController', function($scope,$window,$stateParams
     };
 
     $scope.showBrandProducts = function (brand,customized) {
-        var productsUrl = '/#/products?brand='+encodeURIComponent(brand);
+        var productsUrl = '/products?brand='+encodeURIComponent(brand);
         if (customized){
-            productsUrl = '/#/products?'+customized+'=true';
+            productsUrl = '/products?'+customized+'=true';
         }
         $window.location.href = productsUrl;
     };

@@ -124,26 +124,26 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar" style="background-color: black">
             <ul class="nav navbar-nav" style="cursor: pointer; font-size: 1.2em;">
-                <li><a href="/#/products?exclusive=true" style="color: white;" class="nav_link">EXCLUSIVE</a></li>
-                <li><a href="/#/designers" style="color: white;" class="nav_link">DESIGNERS</a></li>
+                <li><a ui-sref="/({exclusive:true})" style="color: white;" class="nav_link">EXCLUSIVE</a></li>
+                <li><a href="/designers" style="color: white;" class="nav_link">DESIGNERS</a></li>
                 <li class="dropdown women"><a ui-sref="women" class="dropdown-toggle nav_link" data-toggle = "dropdown" style="color: white;" class="nav_link">WOMEN</b></a>
                     <ul class="dropdown-menu women-drop" style="opacity: 1; width: 800px;">
 
-                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:0"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:0"><a style="color: white;" ui-sref="products({gender:'women',topCategory:'{{product.name}}'})">{{product.name|uppercase}}</a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}">
+                                <li class="drop_links"><a ui-sref="products({gender:'women',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})">
                                     {{subProduct.name}}</a></li>
                             </ul>
                         </li>
-                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:1"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:1"><a style="color: white;" ui-sref="products({gender:'women',topCategory:'{{product.name}}'})">{{product.name|uppercase}}</a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}" >
+                                <li class="drop_links"><a ui-sref="products({gender:'women',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})" >
                                     {{subProduct.name}}</a></li>
                             </ul>
                         </li>
-                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:2"><a style="color: white;" href="/#/products/women/{{product.name}}">{{product.name|uppercase}}</a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in womenProducts | limitTo:1:2"><a style="color: white;" ui-sref="products({gender:'women',topCategory:'{{product.name}}'})">{{product.name|uppercase}}</a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
-                                <li class="drop_links"><a href="/#/products/women/{{product.name}}?subCategory={{subCat}}">
+                                <li class="drop_links"><a ui-sref="products({gender:'women',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})">
                                     {{subProduct.name}}</a></li>
                             </ul>
                         </li>
@@ -151,27 +151,24 @@
                 </li>
                 <li class="dropdown men"><a ui-sref="men" class="dropdown-toggle nav_link" data-toggle = "dropdown" style="color: white;">MEN</a>
                     <ul class="dropdown-menu men-drop" style="background-color: black; width: 800px;">
-                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:0"><a style="color: white;" href="/#/products/men/{{product.name}}"><span>{{product.name|uppercase}}</span></a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:0"><a style="color: white;" ui-sref="products({gender:'men',topCategory:'{{product.name}}'})"><span>{{product.name|uppercase}}</span></a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
                                 <li class="drop_links">
-                                    <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
-                                    >  <span>{{subProduct.name}}</span></a>
+                                    <a ui-sref="products({gender:'men',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})">  <span>{{subProduct.name}}</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:1"><a style="color: white;" href="/#/products/men/{{product.name}}">{{product.name|uppercase}}</a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:1"><a style="color: white;" ui-sref="products({gender:'men',topCategory:'{{product.name}}'})">{{product.name|uppercase}}</a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
                                 <li class="drop_links">
-                                    <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
-                                    >  <span>{{subProduct.name}}</span></a>
+                                    <a ui-sref="products({gender:'men',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})">  <span>{{subProduct.name}}</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:2"><a style="color: white;" href="/#/products/men/{{product.name}}">{{product.name|uppercase}}</a>
+                        <li class="col-md-4 drop_head" ng-repeat="product in menProducts | limitTo:1:2"><a style="color: white;" ui-sref="products({gender:'men',topCategory:'{{product.name}}'})">{{product.name|uppercase}}</a>
                             <ul ng-repeat="subProduct in product.subCategories" ng-init="subCat=subProduct.name.replace('&','%26')">
                                 <li class="drop_links">
-                                    <a href="/#/products/men/{{product.name}}?subCategory={{subCat}}"
-                                    >  <span>{{subProduct.name}}</span></a>
+                                    <a ui-sref="products({gender:'men',topCategory:'{{product.name}}',subCategory:'{{subCat}}'})">  <span>{{subProduct.name}}</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -191,15 +188,15 @@
                             <li style="margin-left: 15%;"><button style="background-color: rgb(180,157,107); color: white;" class="btn btn-default btn-sm" data-toggle="modal" data-target="#loginModal">LOG IN</button><button class="btn btn-default btn-sm" data-toggle="modal" data-target="#registerModal" style="background-color: rgb(180,157,107); color: white;">SIGN UP</button></li>
                         </div>
                         <div ng-show="userLoggedIn">
-                            <li ><a href="/#/myProfile/accountInformation">{{userName}}</a></li>
-                            <li ><a href="/#/myProfile/accountInformation">{{userDetails.email}}</a></li>
+                            <li ><a href="/myProfile/accountInformation">{{userName}}</a></li>
+                            <li ><a href="/myProfile/accountInformation">{{userDetails.email}}</a></li>
                             <li class="divider"></li>
-                            <li ><a href="/#/myProfile/myOrders">My Orders</a></li>
-                            <li ><a href="/#/myProfile/wishlist">My wishlist</a></li>
-                            <li ><a href="/#/myProfile/addresBook">Saved addresses</a></li>
-                            <li ><a href="/#/myProfile/rewards">User badges</a></li>
+                            <li ><a href="/myProfile/myOrders">My Orders</a></li>
+                            <li ><a href="/myProfile/wishlist">My wishlist</a></li>
+                            <li ><a href="/myProfile/addresBook">Saved addresses</a></li>
+                            <li ><a href="/myProfile/rewards">User badges</a></li>
                             <li class="divider"></li>
-                            <!--<li ><a href="/#/myProfile/edit">Edit Profile</a></li>-->
+                            <!--<li ><a href="/myProfile/edit">Edit Profile</a></li>-->
                             <li ><a href="" ng-click="logout()">Logout</a></li>
                         </div>
 

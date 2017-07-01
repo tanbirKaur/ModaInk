@@ -29,16 +29,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('twitter:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('twitter:image', 'http://34.194.97.84/images/Modaink-Index-image.jpg');
 
-
-
-
-
-
-
-//	$locationProvider.html5Mode(true);
-
-
-	$locationProvider.hashPrefix('!');
+	$locationProvider.html5Mode(true);
 
 	$stateProvider
 		.state("index", {
