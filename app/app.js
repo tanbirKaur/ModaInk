@@ -16,12 +16,10 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('og:type', 'website');
 	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
 	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
+	ngMetaProvider.setDefaultTag('og:url','http://34.194.97.84');
 	ngMetaProvider.setDefaultTag('og:image','http://34.194.97.84/images/Modaink-Index-image.jpg');
 	ngMetaProvider.setDefaultTag('og:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('og:site_name', 'Modaink');
-	ngMetaProvider.setDefaultTag('og:image:type', '.jpg');
-	ngMetaProvider.setDefaultTag('og:image:width', '1200');
-	ngMetaProvider.setDefaultTag('og:image:height', '630');
 
 
 	ngMetaProvider.setDefaultTag('twitter:card', 'summary');
@@ -55,7 +53,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state("customize",{
 			url : '/customize',
-			templateUrl:"views/customize.html",
+			templateUrl:"views/customize.html"
 			// controller : "logoutController"
 		})
 		.state("footwear",{
@@ -118,11 +116,6 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
-			url : "/:gender/:topCategory/:subCategory/:productId/:designerId/:product_name",
-			//resolve : {
-			//	just_run : function(){
-			//	}
-			//},
 			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {

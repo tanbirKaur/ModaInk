@@ -1,5 +1,5 @@
 var app = window.app;
-app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,storageService,ngMeta) {
+app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$stateParams,httpService,$state,storageService,ngMeta) {
     //window.prerenderReady = false;
     var productId = $stateParams.productId;
     var designerId = $stateParams.designerId;
@@ -269,6 +269,7 @@ app.controller('DesignerLabelsController', function($scope,$rootScope,$compile,$
 
         ngMeta.setTitle($scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
         ngMeta.setTag('og:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
+        ngMeta.setTag('og:url', $location.absUrl());
         ngMeta.setTag('og:image',$scope.product.previewImage);
 
         ngMeta.setTag('twitter:title', $scope.product.productName + ' | ' +  $scope.product.brandName + ' | Modaink');
