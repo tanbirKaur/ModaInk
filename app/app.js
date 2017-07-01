@@ -113,7 +113,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state('designer-collections', {
 			templateUrl : "views/designer-collections.html",
-			url : "/designer/collections",
+			url : "/designer/collections"
 			// controller : 'designerLabelsController'
 		})
 		.state('product-details', {
@@ -138,8 +138,15 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("login", {
 			url: "/login",
 			templateUrl : "views/login.html",
-			controller : "HomeController"
-		})
+			controller : "HomeController",
+            data: {
+                meta: {
+                    'title': 'Login to modaink | Modaink',
+                    'og:title' : 'Login to modaink | Modaink',
+                    'twitter:title' : 'Login to modaink | Modaink'
+                }
+            }
+        })
 		.state("women", {
 			url:"/women",
 			templateUrl : "views/women.html",
@@ -178,8 +185,15 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state("diamond-designers", {
 			url:"/diamond-designers",
-			templateUrl : "views/dimond-designers.html"
-		})
+			templateUrl : "views/dimond-designers.html",
+            data: {
+                meta: {
+                    'title': 'Diamond Designers | Modaink',
+                    'og:title' : 'Diamond Designers | Modaink',
+                    'twitter:title' : 'Diamond Designers | Modaink'
+                }
+            }
+        })
 		.state("my-profile", {
 			url:"/myProfile/:param",
 			templateUrl : "views/user-profile.html",
@@ -188,16 +202,37 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("become-seller", {
 			url:"/becomeSeller",
 			templateUrl : "views/vendor-signup-and how-it-works.html",
-			controller:'DesignerLabelsController'
-		})
+			controller:'DesignerLabelsController',
+            data: {
+                meta: {
+                    'title': 'Become a seller at modaink | Modaink',
+                    'og:title' : 'Become a seller at modaink | Modaink',
+                    'twitter:title' : 'Become a seller at modaink | Modaink'
+                }
+            }
+        })
 		.state("about-us", {
 			url:"/aboutUs",
-			templateUrl : "views/about-us.html"
+			templateUrl : "views/about-us.html",
+            data: {
+                meta: {
+                    'title': 'About us | Modaink',
+                    'og:title' : 'About us | Modaink',
+                    'twitter:title' : 'About us | Modaink'
+                }
+            }
 		})
 		.state("privacy-policy", {
 			url:"/privacy-policy",
-			templateUrl : "views/privacy-policy.html"
-		})
+			templateUrl : "views/privacy-policy.html",
+            data: {
+                meta: {
+                    'title': 'Privacy policy | Modaink',
+                    'og:title' : 'Privacy policy| Modaink',
+                    'twitter:title' : 'Privacy policy | Modaink'
+                }
+            }
+        })
 		.state("returns-and-exchange", {
 			url:"/returns-and-exchange",
 			templateUrl : "views/returns-and-exchange.html"
@@ -208,8 +243,15 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state("terms-and-cond", {
 			url:"/terms-and-cond",
-			templateUrl : "views/terms-and-cond.html"
-		})
+			templateUrl : "views/terms-and-cond.html",
+            data: {
+                meta: {
+                    'title': 'Terms and conditions | Modaink',
+                    'og:title' : 'Terms and conditions | Modaink',
+                    'twitter:title' : 'Terms and conditions | Modaink'
+                }
+            }
+        })
 		.state("disclaimer", {
 			url:"/disclaimer",
 			templateUrl : "views/disclaimer.html"
@@ -240,10 +282,6 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	$urlRouterProvider.otherwise("/");
 	localStorageServiceProvider.setPrefix('modaink')
 		.setStorageType('sessionStorage');
-
-
-
-
 });
 app.directive('script', function() {
 	return {
@@ -350,10 +388,8 @@ $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromStat
 	}
 	storageService.set($rootScope.prevState,window.scrollY);
 });
-
             }
         }
-    
 });
 
 
