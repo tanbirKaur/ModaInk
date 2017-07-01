@@ -116,6 +116,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		})
 		.state('product-details', {
 			templateUrl : "views/product-details.html",
+            url : "/:gender/:topCategory/:subCategory/:productId/:designerId/:product_name",
 			controller : 'DesignerLabelsController'
 		})
 		.state("cart", {
