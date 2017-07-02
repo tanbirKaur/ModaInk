@@ -16,8 +16,8 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('og:type', 'website');
 	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
 	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
-	ngMetaProvider.setDefaultTag('og:url','http://34.194.97.84');
-	ngMetaProvider.setDefaultTag('og:image','http://34.194.97.84/images/Modaink-Index-image.jpg');
+	ngMetaProvider.setDefaultTag('og:url','http://modaink.com');
+	ngMetaProvider.setDefaultTag('og:image','http://modaink.com/images/Modaink-Index-image.jpg');
 	ngMetaProvider.setDefaultTag('og:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('og:site_name', 'Modaink');
 
@@ -25,7 +25,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 	ngMetaProvider.setDefaultTag('twitter:card', 'summary');
 	ngMetaProvider.setDefaultTag('twitter:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('twitter:description', 'Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
-	ngMetaProvider.setDefaultTag('twitter:image', 'http://34.194.97.84/images/Modaink-Index-image.jpg');
+	ngMetaProvider.setDefaultTag('twitter:image', 'http://modaink.com/images/Modaink-Index-image.jpg');
 
 	$locationProvider.html5Mode(true);
 
