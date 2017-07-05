@@ -41,7 +41,7 @@ app.use(require('prerender-node').set('prerenderToken', 'LWRaw9u7sFk7m13Lpak8').
 }));
 app.use(express.static('./'));
 
-var baseUrl = "http://34.194.97.84";
+var baseUrl = "http://modaink.com";
 
 // This will ensure that all routing is handed over to AngularJS
 client.registerMethod("getProducts", "http://modaink.com/api/products/searchService/search/filteredSearch", "POST");
