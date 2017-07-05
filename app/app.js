@@ -14,7 +14,6 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 
 	//ngMetaProvider.setDefaultTag('og:locale', 'en');
 	ngMetaProvider.setDefaultTag('og:type', 'website');
-	//ngMetaProvider.setDefaultTag('og:url', 'modaink');
 	ngMetaProvider.setDefaultTag('og:title', 'Modaink | Marketplace for designer dresses, designer suits, handmade jewelry, fashion dresses, fashion scarves');
 	ngMetaProvider.setDefaultTag('og:url','http://modaink.com');
 	ngMetaProvider.setDefaultTag('og:image','http://modaink.com/images/Modaink-Index-image.jpg');
