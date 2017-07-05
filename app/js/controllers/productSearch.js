@@ -73,11 +73,6 @@ app.controller('ProductSearchController', function($scope,$rootScope,$state,$sta
         httpService.callHttp("GET","users/"+$scope.userDetails.id+"/shoppingcartItems/checkout",{},{},{},$scope.onGetShoppingCartItemsSuccess,$scope.onGetShoppingCartItemsFailure);
     };
 
-    $scope.getDesigners = function () {
-        httpService.callHttp("POST", "designers/searchService/search/filteredSearch" , {}, {}, {}, $scope.onGetDesignerslistSuccess, $scope.onGetDesignerslistFailure);
-
-    };
-
     $scope.getCategories = function () {
         var params = {includeSubCategories:true};
         httpService.callHttp("GET","categories",params,{},{},$scope.onGetCategorySuccess,$scope.onGetCategoryFailure,true);
@@ -205,13 +200,6 @@ app.controller('ProductSearchController', function($scope,$rootScope,$state,$sta
     $scope.onGetShoppingCartItemsFailure = function () {
         console.log('onGetShoppingCartItemsFailure');
         storageService.set("cartItems",	$scope.shoppingcartItems);
-    };
-
-    $scope.onGetDesignerslistSuccess = function (response) {
-        $scope.designers = response.data.designers;
-    };
-    $scope.onGetDesignerslistFailure = function (response) {
-        console.log("onGetDesignersFailure:",response);
     };
 
     $scope.onGetProductsSuccess = function (response) {
@@ -402,7 +390,6 @@ app.controller('ProductSearchController', function($scope,$rootScope,$state,$sta
         $scope.filterChecks[$scope.filterGender]=true;
         $scope.addFilter($scope.filterGender+' products', "gender", $scope.filterGender);
     } else {
-        $scope.getDesigners();
         $scope.getCategories();
         $scope.getProducts();
         if(storageService.get("accessToken")){

@@ -168,7 +168,7 @@ app.config(function($locationProvider, $stateProvider, $urlRouterProvider, $auth
 		.state("accessories", {
 			url:"/accessories",
 			templateUrl : "views/accessories.html",
-			controller : "HomeController",
+			controller : "AccessoriesController",
 			data: {
 				meta: {
 					'title': 'Accessories | Modaink',

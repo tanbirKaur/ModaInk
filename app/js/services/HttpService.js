@@ -47,6 +47,14 @@ app.factory('httpService', ['$http','storageService', function($http,storageServ
         },true);
     }
 
+    httpService.getDesigners = function (successCallback,failureCallback) {
+        httpService.callHttp("POST","designers/searchService/search/filteredSearch",{},{},{},function (response) {
+            redirectCallback(response,emptyFunction,successCallback);
+        },function (response) {
+            redirectCallback(response,httpFailed,failureCallback,"getDesigners");
+        },true);
+    }
+
     httpService.addNewReview = function (productId,review,successCallback,failureCallback) {
         httpService.callHttp("POST","products/"+productId+"/reviews",{},{},review,function (response) {
             redirectCallback(response,emptyFunction,successCallback);
